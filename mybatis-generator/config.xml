@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <classPathEntry location="mysql-connector-java-8.0.11.jar" />
+
+    <context id="IMTables" targetRuntime="MyBatis3">
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <!-- db connection -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" userId="root" password="chenqi0315"
+                        connectionURL="jdbc:mysql://localhost:3306/IM?useUnicode=true&amp;tinyInt1isBit=false&amp;useSSL=false">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- package location -->
+        <javaModelGenerator targetPackage="com.model" targetProject="/Users/chenqi/IdeaProjects/lalala/src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="mapper" targetProject="/Users/chenqi/IdeaProjects/lalala/src/main/resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.dao" targetProject="/Users/chenqi/IdeaProjects/lalala/src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!-- tables -->
+        <!--<table tableName="asc_visit" domainObjectName="AscVisit"-->
+            <!--enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+            <!--enableUpdateByExample="false">-->
+            <!--<generatedKey column="visit_id" sqlStatement="MySql" identity="true" />-->
+        <!--</table>-->
+        <!--<table tableName="asc_visit_plan" domainObjectName="AscVisitPlan"-->
+               <!--enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--enableUpdateByExample="false">-->
+            <!--<generatedKey column="plan_id" sqlStatement="MySql" identity="true" />-->
+        <!--</table>-->
+        <!--<table tableName="asc_achievement" domainObjectName="AscAchievement"-->
+               <!--enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--enableUpdateByExample="false">-->
+            <!--<generatedKey column="achievement_id" sqlStatement="MySql" identity="true" />-->
+        <!--</table>-->
+        <!--<table tableName="asc_commission" domainObjectName="AscCommission"-->
+               <!--enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--enableUpdateByExample="false">-->
+            <!--<generatedKey column="commission_id" sqlStatement="MySql" identity="true" />-->
+        <!--</table>-->
+
+        <!--<table tableName="asc_clue" domainObjectName="AscClue">-->
+            <!--<generatedKey column="clue_id" sqlStatement="MySql" identity="true" />-->
+        <!--</table>-->
+
+        <!--<table tableName="asc_clue_online" domainObjectName="AscClueOnline">-->
+            <!--<generatedKey column="clue_id" sqlStatement="MySql" identity="true" />-->
+        <!--</table>-->
+
+        <!--<table tableName="asc_action_statement" domainObjectName="AscActionStatement">-->
+            <!--<generatedKey column="key_id" sqlStatement="MySql" identity="true" />-->
+        <!--</table>-->
+        <!--<table tableName="agent_company_store_detail" domainObjectName="AgentCompanyStoreDetail">-->
+        <!--</table>-->
+        <!--<table tableName="asc_agent_list" domainObjectName="AscAgentList">-->
+        <!--</table>-->
+        <!--<table tableName="asc_store_list" domainObjectName="AscStoreList">-->
+        <!--</table>-->
+        <!--<table tableName="asc_company_list" domainObjectName="AscCompanyList">-->
+        <!--</table>-->
+        <!--<table tableName="asc_business_staff" domainObjectName="AscBizStaff"/>-->
+        <!--<table tableName="asc_biz_city_relation" domainObjectName="AscBizCityRelation"/>-->
+        <!--<table tableName="asc_store" domainObjectName="AscStore"/>-->
+        <!--<table tableName="t_saas_order" domainObjectName="SaasOrder"/>-->
+        <!--<table tableName="t_saas_order_detail" domainObjectName="SaasOrderDetail"/>-->
+        <!--<table tableName="t_saas_order_performance" domainObjectName="SaasOrderPerformance"/>-->
+        <!--<table tableName="t_saas_order_buyer" domainObjectName="SaasOrderBuyer"/>
+        <table tableName="t_saas_order_seller" domainObjectName="SaasOrderSeller"/>
+        <table tableName="t_saas_order_performance_proportion" domainObjectName="SaasOrderProportion"/>
+        <table tableName="t_saas_order_finance_pay_receipt" domainObjectName="SaasOrderPayReceipt"/>-->
+        <!--<table tableName="t_order_attachment" domainObjectName="SaasOrderAttachment"/>-->
+        <table tableName="Operator" domainObjectName="Operator"/>
+        <!--<table tableName="t_saas_order_procedure_template" domainObjectName="SaasOrderStepTemplate"/>-->
+        <!--<table tableName="t_saas_order_procedure_template" domainObjectName="SaasOrderStepTemplate"/>-->
+        <!--<table tableName="t_saas_order_step_template" domainObjectName="SaasOrderStepTemplate2"/>-->
+        <!--<table tableName="t_saas_order_execute_step" domainObjectName="SaasOrderExecuteStep"/>-->
+        <!--<table tableName="t_saas_order_procedure_step_ref" domainObjectName="SaasOrderStepTemplateRef"/>-->
+        <!--<table tableName="t_saas_order_step_customize_field" domainObjectName="SaasOrderStepCustomizeField"/>-->
+        <!--<table tableName="t_saas_order_step_customize_field_value" domainObjectName="SaasOrderStepCustomizeFieldValue"/>-->
+        <!--<table tableName="t_saas_order_attachment" domainObjectName="SaasOrderAttachment"/>-->
+
+    </context>
+</generatorConfiguration>
