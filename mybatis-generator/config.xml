@@ -17,6 +17,7 @@
 
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false" />
+
         </javaTypeResolver>
 
         <!-- package location -->
@@ -82,7 +83,9 @@
         <table tableName="t_saas_order_performance_proportion" domainObjectName="SaasOrderProportion"/>
         <table tableName="t_saas_order_finance_pay_receipt" domainObjectName="SaasOrderPayReceipt"/>-->
         <!--<table tableName="t_order_attachment" domainObjectName="SaasOrderAttachment"/>-->
-        <table tableName="Operator" domainObjectName="Operator"/>
+        <table tableName="Operator" domainObjectName="Operator">
+          <property name="useActualColumnNames" value="true"/>
+        </table>
         <!--<table tableName="t_saas_order_procedure_template" domainObjectName="SaasOrderStepTemplate"/>-->
         <!--<table tableName="t_saas_order_procedure_template" domainObjectName="SaasOrderStepTemplate"/>-->
         <!--<table tableName="t_saas_order_step_template" domainObjectName="SaasOrderStepTemplate2"/>-->

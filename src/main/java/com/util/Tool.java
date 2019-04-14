@@ -13,10 +13,10 @@ import java.util.Map;
 public class Tool {
     public static Map<String, String> checkLogin(Operator operator){
         Map<String,String> map = new HashMap<String,String>();
-        if(operator.getSzsignonname()==null || operator.getSzsignonname().trim()=="" ){
+        if(operator.getSzSignOnName()==null || operator.getSzSignOnName().trim()=="" ){
             map.put("username", "用户名不能为空！");
         }
-        if(operator.getSzsignonpassword()==null || operator.getSzsignonpassword().trim()==""){
+        if(operator.getSzSignOnPassword()==null || operator.getSzSignOnPassword().trim()==""){
             map.put("password", "密码不能为空！");
         }
 

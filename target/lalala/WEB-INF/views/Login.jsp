@@ -23,9 +23,9 @@
 		<img src="${pageContext.request.contextPath}/images/avtar.png" />
 	</div>
 			<form action='${pageContext.request.contextPath}/operator/checkOperator.do' method='post'>
-					<input type="text" class="text" name='szsignonname' value="${cookie.c_name.value}" />
+					<input type="text" class="text" name='szSignOnName' value="${cookie.c_name.value}" />
 						<div class="key"> 
-					    <input type="password" name='szsignonpassword' value="${cookie.c_pass.value}" />
+					    <input type="password" name='szSignOnPassword' value="${cookie.c_pass.value}" />
 						</div>
                         <div style='margin-bottom:20px'>
                     <input type='checkbox' name='save' value='1'/>

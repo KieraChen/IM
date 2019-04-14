@@ -33,7 +33,7 @@ div.main-order{ line-height:30px; padding:10px 0 0 0;}
 <table width="99%" border="0" cellspacing="0" cellpadding="0" id="main">
   <tr>
     <td  align="left" valign="top">
-    <span class="time"><strong>欢迎！${operator.szsignonname}</strong>${operator.szsignonpassword == 0 ? "普通管理员" : "超级管理员"}</span>
+    <span class="time"><strong>欢迎！${operator.szSignOnName}</strong>${operator.szPower == 0 ? "普通管理员" : "超级管理员"}</span>
 
     </td>
   </tr>

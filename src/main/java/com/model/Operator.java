@@ -3,233 +3,243 @@ package com.model;
 import java.math.BigDecimal;
 
 public class Operator {
-    private Integer loperatorid;
+    private Integer lOperatorID;
 
-    private Integer lemployeeid;
+    private Integer lEmployeeID;
 
-    private String szsignonname;
+    private String szSignOnName;
 
-    private String szsignonpassword;
+    private String szSignOnPassword;
 
-    private String szeffectivedate;
+    private Integer szPower;
 
-    private String szexpirationdate;
+    private String szEffectiveDate;
 
-    private String szpasswordeffectivedate;
+    private String szExpirationDate;
 
-    private String szpasswordexpirationdate;
+    private String szPasswordEffectiveDate;
 
-    private Integer szpasswordexpirationrange;
+    private String szPasswordExpirationDate;
 
-    private Integer lpasswordexpirationrange;
+    private Integer szPasswordExpirationRange;
 
-    private Short bpasswordresetflag;
+    private Integer lPasswordExpirationRange;
 
-    private Short bpasswordchangeflag;
+    private Short bPasswordResetFlag;
 
-    private Integer lpasswordentryerrorcount;
+    private Short bPasswordChangeFlag;
 
-    private Short blefthandedflag;
+    private Integer lPasswordEntryErrorCount;
 
-    private String szexternalid;
+    private Short bLeftHandedFlag;
 
-    private String szprintcode;
+    private String szExternalID;
 
-    private String szcomment;
+    private String szPrintCode;
 
-    private BigDecimal dlowartdiscprice;
+    private String szComment;
 
-    private String szpreferedgui;
+    private BigDecimal dLowArtDiscPrice;
 
-    private String szdallaskeyid;
+    private String szPreferedGui;
 
-    private Integer ltechlayeraccessid;
+    private String szDallasKeyID;
 
-    private String szlastupdlocal;
+    private Integer lTechLayerAccessID;
 
-    private Short bexternalcashier;
+    private String szLastUpdLocal;
 
-    public Integer getLoperatorid() {
-        return loperatorid;
+    private Short bExternalCashier;
+
+    public Integer getlOperatorID() {
+        return lOperatorID;
     }
 
-    public void setLoperatorid(Integer loperatorid) {
-        this.loperatorid = loperatorid;
+    public void setlOperatorID(Integer lOperatorID) {
+        this.lOperatorID = lOperatorID;
     }
 
-    public Integer getLemployeeid() {
-        return lemployeeid;
+    public Integer getlEmployeeID() {
+        return lEmployeeID;
     }
 
-    public void setLemployeeid(Integer lemployeeid) {
-        this.lemployeeid = lemployeeid;
+    public void setlEmployeeID(Integer lEmployeeID) {
+        this.lEmployeeID = lEmployeeID;
     }
 
-    public String getSzsignonname() {
-        return szsignonname;
+    public String getSzSignOnName() {
+        return szSignOnName;
     }
 
-    public void setSzsignonname(String szsignonname) {
-        this.szsignonname = szsignonname;
+    public void setSzSignOnName(String szSignOnName) {
+        this.szSignOnName = szSignOnName;
     }
 
-    public String getSzsignonpassword() {
-        return szsignonpassword;
+    public String getSzSignOnPassword() {
+        return szSignOnPassword;
     }
 
-    public void setSzsignonpassword(String szsignonpassword) {
-        this.szsignonpassword = szsignonpassword;
+    public void setSzSignOnPassword(String szSignOnPassword) {
+        this.szSignOnPassword = szSignOnPassword;
     }
 
-    public String getSzeffectivedate() {
-        return szeffectivedate;
+    public Integer getSzPower() {
+        return szPower;
     }
 
-    public void setSzeffectivedate(String szeffectivedate) {
-        this.szeffectivedate = szeffectivedate;
+    public void setSzPower(Integer szPower) {
+        this.szPower = szPower;
     }
 
-    public String getSzexpirationdate() {
-        return szexpirationdate;
+    public String getSzEffectiveDate() {
+        return szEffectiveDate;
     }
 
-    public void setSzexpirationdate(String szexpirationdate) {
-        this.szexpirationdate = szexpirationdate;
+    public void setSzEffectiveDate(String szEffectiveDate) {
+        this.szEffectiveDate = szEffectiveDate;
     }
 
-    public String getSzpasswordeffectivedate() {
-        return szpasswordeffectivedate;
+    public String getSzExpirationDate() {
+        return szExpirationDate;
     }
 
-    public void setSzpasswordeffectivedate(String szpasswordeffectivedate) {
-        this.szpasswordeffectivedate = szpasswordeffectivedate;
+    public void setSzExpirationDate(String szExpirationDate) {
+        this.szExpirationDate = szExpirationDate;
     }
 
-    public String getSzpasswordexpirationdate() {
-        return szpasswordexpirationdate;
+    public String getSzPasswordEffectiveDate() {
+        return szPasswordEffectiveDate;
     }
 
-    public void setSzpasswordexpirationdate(String szpasswordexpirationdate) {
-        this.szpasswordexpirationdate = szpasswordexpirationdate;
+    public void setSzPasswordEffectiveDate(String szPasswordEffectiveDate) {
+        this.szPasswordEffectiveDate = szPasswordEffectiveDate;
     }
 
-    public Integer getSzpasswordexpirationrange() {
-        return szpasswordexpirationrange;
+    public String getSzPasswordExpirationDate() {
+        return szPasswordExpirationDate;
     }
 
-    public void setSzpasswordexpirationrange(Integer szpasswordexpirationrange) {
-        this.szpasswordexpirationrange = szpasswordexpirationrange;
+    public void setSzPasswordExpirationDate(String szPasswordExpirationDate) {
+        this.szPasswordExpirationDate = szPasswordExpirationDate;
     }
 
-    public Integer getLpasswordexpirationrange() {
-        return lpasswordexpirationrange;
+    public Integer getSzPasswordExpirationRange() {
+        return szPasswordExpirationRange;
     }
 
-    public void setLpasswordexpirationrange(Integer lpasswordexpirationrange) {
-        this.lpasswordexpirationrange = lpasswordexpirationrange;
+    public void setSzPasswordExpirationRange(Integer szPasswordExpirationRange) {
+        this.szPasswordExpirationRange = szPasswordExpirationRange;
     }
 
-    public Short getBpasswordresetflag() {
-        return bpasswordresetflag;
+    public Integer getlPasswordExpirationRange() {
+        return lPasswordExpirationRange;
     }
 
-    public void setBpasswordresetflag(Short bpasswordresetflag) {
-        this.bpasswordresetflag = bpasswordresetflag;
+    public void setlPasswordExpirationRange(Integer lPasswordExpirationRange) {
+        this.lPasswordExpirationRange = lPasswordExpirationRange;
     }
 
-    public Short getBpasswordchangeflag() {
-        return bpasswordchangeflag;
+    public Short getbPasswordResetFlag() {
+        return bPasswordResetFlag;
     }
 
-    public void setBpasswordchangeflag(Short bpasswordchangeflag) {
-        this.bpasswordchangeflag = bpasswordchangeflag;
+    public void setbPasswordResetFlag(Short bPasswordResetFlag) {
+        this.bPasswordResetFlag = bPasswordResetFlag;
     }
 
-    public Integer getLpasswordentryerrorcount() {
-        return lpasswordentryerrorcount;
+    public Short getbPasswordChangeFlag() {
+        return bPasswordChangeFlag;
     }
 
-    public void setLpasswordentryerrorcount(Integer lpasswordentryerrorcount) {
-        this.lpasswordentryerrorcount = lpasswordentryerrorcount;
+    public void setbPasswordChangeFlag(Short bPasswordChangeFlag) {
+        this.bPasswordChangeFlag = bPasswordChangeFlag;
     }
 
-    public Short getBlefthandedflag() {
-        return blefthandedflag;
+    public Integer getlPasswordEntryErrorCount() {
+        return lPasswordEntryErrorCount;
     }
 
-    public void setBlefthandedflag(Short blefthandedflag) {
-        this.blefthandedflag = blefthandedflag;
+    public void setlPasswordEntryErrorCount(Integer lPasswordEntryErrorCount) {
+        this.lPasswordEntryErrorCount = lPasswordEntryErrorCount;
     }
 
-    public String getSzexternalid() {
-        return szexternalid;
+    public Short getbLeftHandedFlag() {
+        return bLeftHandedFlag;
     }
 
-    public void setSzexternalid(String szexternalid) {
-        this.szexternalid = szexternalid;
+    public void setbLeftHandedFlag(Short bLeftHandedFlag) {
+        this.bLeftHandedFlag = bLeftHandedFlag;
     }
 
-    public String getSzprintcode() {
-        return szprintcode;
+    public String getSzExternalID() {
+        return szExternalID;
     }
 
-    public void setSzprintcode(String szprintcode) {
-        this.szprintcode = szprintcode;
+    public void setSzExternalID(String szExternalID) {
+        this.szExternalID = szExternalID;
     }
 
-    public String getSzcomment() {
-        return szcomment;
+    public String getSzPrintCode() {
+        return szPrintCode;
     }
 
-    public void setSzcomment(String szcomment) {
-        this.szcomment = szcomment;
+    public void setSzPrintCode(String szPrintCode) {
+        this.szPrintCode = szPrintCode;
     }
 
-    public BigDecimal getDlowartdiscprice() {
-        return dlowartdiscprice;
+    public String getSzComment() {
+        return szComment;
     }
 
-    public void setDlowartdiscprice(BigDecimal dlowartdiscprice) {
-        this.dlowartdiscprice = dlowartdiscprice;
+    public void setSzComment(String szComment) {
+        this.szComment = szComment;
     }
 
-    public String getSzpreferedgui() {
-        return szpreferedgui;
+    public BigDecimal getdLowArtDiscPrice() {
+        return dLowArtDiscPrice;
     }
 
-    public void setSzpreferedgui(String szpreferedgui) {
-        this.szpreferedgui = szpreferedgui;
+    public void setdLowArtDiscPrice(BigDecimal dLowArtDiscPrice) {
+        this.dLowArtDiscPrice = dLowArtDiscPrice;
     }
 
-    public String getSzdallaskeyid() {
-        return szdallaskeyid;
+    public String getSzPreferedGui() {
+        return szPreferedGui;
     }
 
-    public void setSzdallaskeyid(String szdallaskeyid) {
-        this.szdallaskeyid = szdallaskeyid;
+    public void setSzPreferedGui(String szPreferedGui) {
+        this.szPreferedGui = szPreferedGui;
     }
 
-    public Integer getLtechlayeraccessid() {
-        return ltechlayeraccessid;
+    public String getSzDallasKeyID() {
+        return szDallasKeyID;
     }
 
-    public void setLtechlayeraccessid(Integer ltechlayeraccessid) {
-        this.ltechlayeraccessid = ltechlayeraccessid;
+    public void setSzDallasKeyID(String szDallasKeyID) {
+        this.szDallasKeyID = szDallasKeyID;
     }
 
-    public String getSzlastupdlocal() {
-        return szlastupdlocal;
+    public Integer getlTechLayerAccessID() {
+        return lTechLayerAccessID;
     }
 
-    public void setSzlastupdlocal(String szlastupdlocal) {
-        this.szlastupdlocal = szlastupdlocal;
+    public void setlTechLayerAccessID(Integer lTechLayerAccessID) {
+        this.lTechLayerAccessID = lTechLayerAccessID;
     }
 
-    public Short getBexternalcashier() {
-        return bexternalcashier;
+    public String getSzLastUpdLocal() {
+        return szLastUpdLocal;
     }
 
-    public void setBexternalcashier(Short bexternalcashier) {
-        this.bexternalcashier = bexternalcashier;
+    public void setSzLastUpdLocal(String szLastUpdLocal) {
+        this.szLastUpdLocal = szLastUpdLocal;
+    }
+
+    public Short getbExternalCashier() {
+        return bExternalCashier;
+    }
+
+    public void setbExternalCashier(Short bExternalCashier) {
+        this.bExternalCashier = bExternalCashier;
     }
 }

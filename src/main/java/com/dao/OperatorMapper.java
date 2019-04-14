@@ -10,7 +10,7 @@ public interface OperatorMapper {
 
     int deleteByExample(OperatorExample example);
 
-    int deleteByPrimaryKey(Integer loperatorid);
+    int deleteByPrimaryKey(Integer lOperatorID);
 
     int insert(Operator record);
 
@@ -18,7 +18,7 @@ public interface OperatorMapper {
 
     List<Operator> selectByExample(OperatorExample example);
 
-    Operator selectByPrimaryKey(Integer loperatorid);
+    Operator selectByPrimaryKey(Integer lOperatorID);
 
     int updateByExampleSelective(@Param("record") Operator record, @Param("example") OperatorExample example);
 

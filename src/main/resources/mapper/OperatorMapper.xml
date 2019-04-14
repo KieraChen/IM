@@ -2,29 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.dao.OperatorMapper" >
   <resultMap id="BaseResultMap" type="com.model.Operator" >
-    <id column="lOperatorID" property="loperatorid" jdbcType="INTEGER" />
-    <result column="lEmployeeID" property="lemployeeid" jdbcType="INTEGER" />
-    <result column="szSignOnName" property="szsignonname" jdbcType="VARCHAR" />
-    <result column="szSignOnPassword" property="szsignonpassword" jdbcType="VARCHAR" />
-    <result column="szEffectiveDate" property="szeffectivedate" jdbcType="VARCHAR" />
-    <result column="szExpirationDate" property="szexpirationdate" jdbcType="VARCHAR" />
-    <result column="szPasswordEffectiveDate" property="szpasswordeffectivedate" jdbcType="VARCHAR" />
-    <result column="szPasswordExpirationDate" property="szpasswordexpirationdate" jdbcType="VARCHAR" />
-    <result column="szPasswordExpirationRange" property="szpasswordexpirationrange" jdbcType="INTEGER" />
-    <result column="lPasswordExpirationRange" property="lpasswordexpirationrange" jdbcType="INTEGER" />
-    <result column="bPasswordResetFlag" property="bpasswordresetflag" jdbcType="SMALLINT" />
-    <result column="bPasswordChangeFlag" property="bpasswordchangeflag" jdbcType="SMALLINT" />
-    <result column="lPasswordEntryErrorCount" property="lpasswordentryerrorcount" jdbcType="INTEGER" />
-    <result column="bLeftHandedFlag" property="blefthandedflag" jdbcType="SMALLINT" />
-    <result column="szExternalID" property="szexternalid" jdbcType="VARCHAR" />
-    <result column="szPrintCode" property="szprintcode" jdbcType="VARCHAR" />
-    <result column="szComment" property="szcomment" jdbcType="VARCHAR" />
-    <result column="dLowArtDiscPrice" property="dlowartdiscprice" jdbcType="DECIMAL" />
-    <result column="szPreferedGui" property="szpreferedgui" jdbcType="VARCHAR" />
-    <result column="szDallasKeyID" property="szdallaskeyid" jdbcType="VARCHAR" />
-    <result column="lTechLayerAccessID" property="ltechlayeraccessid" jdbcType="INTEGER" />
-    <result column="szLastUpdLocal" property="szlastupdlocal" jdbcType="VARCHAR" />
-    <result column="bExternalCashier" property="bexternalcashier" jdbcType="SMALLINT" />
+    <id column="lOperatorID" property="lOperatorID" jdbcType="INTEGER" />
+    <result column="lEmployeeID" property="lEmployeeID" jdbcType="INTEGER" />
+    <result column="szSignOnName" property="szSignOnName" jdbcType="VARCHAR" />
+    <result column="szSignOnPassword" property="szSignOnPassword" jdbcType="VARCHAR" />
+    <result column="szPower" property="szPower" jdbcType="INTEGER" />
+    <result column="szEffectiveDate" property="szEffectiveDate" jdbcType="VARCHAR" />
+    <result column="szExpirationDate" property="szExpirationDate" jdbcType="VARCHAR" />
+    <result column="szPasswordEffectiveDate" property="szPasswordEffectiveDate" jdbcType="VARCHAR" />
+    <result column="szPasswordExpirationDate" property="szPasswordExpirationDate" jdbcType="VARCHAR" />
+    <result column="szPasswordExpirationRange" property="szPasswordExpirationRange" jdbcType="INTEGER" />
+    <result column="lPasswordExpirationRange" property="lPasswordExpirationRange" jdbcType="INTEGER" />
+    <result column="bPasswordResetFlag" property="bPasswordResetFlag" jdbcType="SMALLINT" />
+    <result column="bPasswordChangeFlag" property="bPasswordChangeFlag" jdbcType="SMALLINT" />
+    <result column="lPasswordEntryErrorCount" property="lPasswordEntryErrorCount" jdbcType="INTEGER" />
+    <result column="bLeftHandedFlag" property="bLeftHandedFlag" jdbcType="SMALLINT" />
+    <result column="szExternalID" property="szExternalID" jdbcType="VARCHAR" />
+    <result column="szPrintCode" property="szPrintCode" jdbcType="VARCHAR" />
+    <result column="szComment" property="szComment" jdbcType="VARCHAR" />
+    <result column="dLowArtDiscPrice" property="dLowArtDiscPrice" jdbcType="DECIMAL" />
+    <result column="szPreferedGui" property="szPreferedGui" jdbcType="VARCHAR" />
+    <result column="szDallasKeyID" property="szDallasKeyID" jdbcType="VARCHAR" />
+    <result column="lTechLayerAccessID" property="lTechLayerAccessID" jdbcType="INTEGER" />
+    <result column="szLastUpdLocal" property="szLastUpdLocal" jdbcType="VARCHAR" />
+    <result column="bExternalCashier" property="bExternalCashier" jdbcType="SMALLINT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -85,11 +86,11 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    lOperatorID, lEmployeeID, szSignOnName, szSignOnPassword, szEffectiveDate, szExpirationDate, 
-    szPasswordEffectiveDate, szPasswordExpirationDate, szPasswordExpirationRange, lPasswordExpirationRange, 
-    bPasswordResetFlag, bPasswordChangeFlag, lPasswordEntryErrorCount, bLeftHandedFlag, 
-    szExternalID, szPrintCode, szComment, dLowArtDiscPrice, szPreferedGui, szDallasKeyID, 
-    lTechLayerAccessID, szLastUpdLocal, bExternalCashier
+    lOperatorID, lEmployeeID, szSignOnName, szSignOnPassword, szPower, szEffectiveDate, 
+    szExpirationDate, szPasswordEffectiveDate, szPasswordExpirationDate, szPasswordExpirationRange, 
+    lPasswordExpirationRange, bPasswordResetFlag, bPasswordChangeFlag, lPasswordEntryErrorCount, 
+    bLeftHandedFlag, szExternalID, szPrintCode, szComment, dLowArtDiscPrice, szPreferedGui, 
+    szDallasKeyID, lTechLayerAccessID, szLastUpdLocal, bExternalCashier
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.model.OperatorExample" >
     select
@@ -109,11 +110,11 @@
     select 
     <include refid="Base_Column_List" />
     from Operator
-    where lOperatorID = #{loperatorid,jdbcType=INTEGER}
+    where lOperatorID = #{lOperatorID,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from Operator
-    where lOperatorID = #{loperatorid,jdbcType=INTEGER}
+    where lOperatorID = #{lOperatorID,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.model.OperatorExample" >
     delete from Operator
@@ -123,168 +124,174 @@
   </delete>
   <insert id="insert" parameterType="com.model.Operator" >
     insert into Operator (lOperatorID, lEmployeeID, szSignOnName, 
-      szSignOnPassword, szEffectiveDate, szExpirationDate, 
-      szPasswordEffectiveDate, szPasswordExpirationDate, 
-      szPasswordExpirationRange, lPasswordExpirationRange, 
-      bPasswordResetFlag, bPasswordChangeFlag, 
-      lPasswordEntryErrorCount, bLeftHandedFlag, 
-      szExternalID, szPrintCode, szComment, 
-      dLowArtDiscPrice, szPreferedGui, szDallasKeyID, 
-      lTechLayerAccessID, szLastUpdLocal, bExternalCashier
-      )
-    values (#{loperatorid,jdbcType=INTEGER}, #{lemployeeid,jdbcType=INTEGER}, #{szsignonname,jdbcType=VARCHAR}, 
-      #{szsignonpassword,jdbcType=VARCHAR}, #{szeffectivedate,jdbcType=VARCHAR}, #{szexpirationdate,jdbcType=VARCHAR}, 
-      #{szpasswordeffectivedate,jdbcType=VARCHAR}, #{szpasswordexpirationdate,jdbcType=VARCHAR}, 
-      #{szpasswordexpirationrange,jdbcType=INTEGER}, #{lpasswordexpirationrange,jdbcType=INTEGER}, 
-      #{bpasswordresetflag,jdbcType=SMALLINT}, #{bpasswordchangeflag,jdbcType=SMALLINT}, 
-      #{lpasswordentryerrorcount,jdbcType=INTEGER}, #{blefthandedflag,jdbcType=SMALLINT}, 
-      #{szexternalid,jdbcType=VARCHAR}, #{szprintcode,jdbcType=VARCHAR}, #{szcomment,jdbcType=VARCHAR}, 
-      #{dlowartdiscprice,jdbcType=DECIMAL}, #{szpreferedgui,jdbcType=VARCHAR}, #{szdallaskeyid,jdbcType=VARCHAR}, 
-      #{ltechlayeraccessid,jdbcType=INTEGER}, #{szlastupdlocal,jdbcType=VARCHAR}, #{bexternalcashier,jdbcType=SMALLINT}
-      )
+      szSignOnPassword, szPower, szEffectiveDate, 
+      szExpirationDate, szPasswordEffectiveDate, 
+      szPasswordExpirationDate, szPasswordExpirationRange, 
+      lPasswordExpirationRange, bPasswordResetFlag, 
+      bPasswordChangeFlag, lPasswordEntryErrorCount, 
+      bLeftHandedFlag, szExternalID, szPrintCode, 
+      szComment, dLowArtDiscPrice, szPreferedGui, 
+      szDallasKeyID, lTechLayerAccessID, szLastUpdLocal, 
+      bExternalCashier)
+    values (#{lOperatorID,jdbcType=INTEGER}, #{lEmployeeID,jdbcType=INTEGER}, #{szSignOnName,jdbcType=VARCHAR}, 
+      #{szSignOnPassword,jdbcType=VARCHAR}, #{szPower,jdbcType=INTEGER}, #{szEffectiveDate,jdbcType=VARCHAR}, 
+      #{szExpirationDate,jdbcType=VARCHAR}, #{szPasswordEffectiveDate,jdbcType=VARCHAR}, 
+      #{szPasswordExpirationDate,jdbcType=VARCHAR}, #{szPasswordExpirationRange,jdbcType=INTEGER}, 
+      #{lPasswordExpirationRange,jdbcType=INTEGER}, #{bPasswordResetFlag,jdbcType=SMALLINT}, 
+      #{bPasswordChangeFlag,jdbcType=SMALLINT}, #{lPasswordEntryErrorCount,jdbcType=INTEGER}, 
+      #{bLeftHandedFlag,jdbcType=SMALLINT}, #{szExternalID,jdbcType=VARCHAR}, #{szPrintCode,jdbcType=VARCHAR}, 
+      #{szComment,jdbcType=VARCHAR}, #{dLowArtDiscPrice,jdbcType=DECIMAL}, #{szPreferedGui,jdbcType=VARCHAR}, 
+      #{szDallasKeyID,jdbcType=VARCHAR}, #{lTechLayerAccessID,jdbcType=INTEGER}, #{szLastUpdLocal,jdbcType=VARCHAR}, 
+      #{bExternalCashier,jdbcType=SMALLINT})
   </insert>
   <insert id="insertSelective" parameterType="com.model.Operator" >
     insert into Operator
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="loperatorid != null" >
+      <if test="lOperatorID != null" >
         lOperatorID,
       </if>
-      <if test="lemployeeid != null" >
+      <if test="lEmployeeID != null" >
         lEmployeeID,
       </if>
-      <if test="szsignonname != null" >
+      <if test="szSignOnName != null" >
         szSignOnName,
       </if>
-      <if test="szsignonpassword != null" >
+      <if test="szSignOnPassword != null" >
         szSignOnPassword,
       </if>
-      <if test="szeffectivedate != null" >
+      <if test="szPower != null" >
+        szPower,
+      </if>
+      <if test="szEffectiveDate != null" >
         szEffectiveDate,
       </if>
-      <if test="szexpirationdate != null" >
+      <if test="szExpirationDate != null" >
         szExpirationDate,
       </if>
-      <if test="szpasswordeffectivedate != null" >
+      <if test="szPasswordEffectiveDate != null" >
         szPasswordEffectiveDate,
       </if>
-      <if test="szpasswordexpirationdate != null" >
+      <if test="szPasswordExpirationDate != null" >
         szPasswordExpirationDate,
       </if>
-      <if test="szpasswordexpirationrange != null" >
+      <if test="szPasswordExpirationRange != null" >
         szPasswordExpirationRange,
       </if>
-      <if test="lpasswordexpirationrange != null" >
+      <if test="lPasswordExpirationRange != null" >
         lPasswordExpirationRange,
       </if>
-      <if test="bpasswordresetflag != null" >
+      <if test="bPasswordResetFlag != null" >
         bPasswordResetFlag,
       </if>
-      <if test="bpasswordchangeflag != null" >
+      <if test="bPasswordChangeFlag != null" >
         bPasswordChangeFlag,
       </if>
-      <if test="lpasswordentryerrorcount != null" >
+      <if test="lPasswordEntryErrorCount != null" >
         lPasswordEntryErrorCount,
       </if>
-      <if test="blefthandedflag != null" >
+      <if test="bLeftHandedFlag != null" >
         bLeftHandedFlag,
       </if>
-      <if test="szexternalid != null" >
+      <if test="szExternalID != null" >
         szExternalID,
       </if>
-      <if test="szprintcode != null" >
+      <if test="szPrintCode != null" >
         szPrintCode,
       </if>
-      <if test="szcomment != null" >
+      <if test="szComment != null" >
         szComment,
       </if>
-      <if test="dlowartdiscprice != null" >
+      <if test="dLowArtDiscPrice != null" >
         dLowArtDiscPrice,
       </if>
-      <if test="szpreferedgui != null" >
+      <if test="szPreferedGui != null" >
         szPreferedGui,
       </if>
-      <if test="szdallaskeyid != null" >
+      <if test="szDallasKeyID != null" >
         szDallasKeyID,
       </if>
-      <if test="ltechlayeraccessid != null" >
+      <if test="lTechLayerAccessID != null" >
         lTechLayerAccessID,
       </if>
-      <if test="szlastupdlocal != null" >
+      <if test="szLastUpdLocal != null" >
         szLastUpdLocal,
       </if>
-      <if test="bexternalcashier != null" >
+      <if test="bExternalCashier != null" >
         bExternalCashier,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="loperatorid != null" >
-        #{loperatorid,jdbcType=INTEGER},
+      <if test="lOperatorID != null" >
+        #{lOperatorID,jdbcType=INTEGER},
       </if>
-      <if test="lemployeeid != null" >
-        #{lemployeeid,jdbcType=INTEGER},
+      <if test="lEmployeeID != null" >
+        #{lEmployeeID,jdbcType=INTEGER},
       </if>
-      <if test="szsignonname != null" >
-        #{szsignonname,jdbcType=VARCHAR},
+      <if test="szSignOnName != null" >
+        #{szSignOnName,jdbcType=VARCHAR},
       </if>
-      <if test="szsignonpassword != null" >
-        #{szsignonpassword,jdbcType=VARCHAR},
+      <if test="szSignOnPassword != null" >
+        #{szSignOnPassword,jdbcType=VARCHAR},
       </if>
-      <if test="szeffectivedate != null" >
-        #{szeffectivedate,jdbcType=VARCHAR},
+      <if test="szPower != null" >
+        #{szPower,jdbcType=INTEGER},
       </if>
-      <if test="szexpirationdate != null" >
-        #{szexpirationdate,jdbcType=VARCHAR},
+      <if test="szEffectiveDate != null" >
+        #{szEffectiveDate,jdbcType=VARCHAR},
       </if>
-      <if test="szpasswordeffectivedate != null" >
-        #{szpasswordeffectivedate,jdbcType=VARCHAR},
+      <if test="szExpirationDate != null" >
+        #{szExpirationDate,jdbcType=VARCHAR},
       </if>
-      <if test="szpasswordexpirationdate != null" >
-        #{szpasswordexpirationdate,jdbcType=VARCHAR},
+      <if test="szPasswordEffectiveDate != null" >
+        #{szPasswordEffectiveDate,jdbcType=VARCHAR},
       </if>
-      <if test="szpasswordexpirationrange != null" >
-        #{szpasswordexpirationrange,jdbcType=INTEGER},
+      <if test="szPasswordExpirationDate != null" >
+        #{szPasswordExpirationDate,jdbcType=VARCHAR},
       </if>
-      <if test="lpasswordexpirationrange != null" >
-        #{lpasswordexpirationrange,jdbcType=INTEGER},
+      <if test="szPasswordExpirationRange != null" >
+        #{szPasswordExpirationRange,jdbcType=INTEGER},
       </if>
-      <if test="bpasswordresetflag != null" >
-        #{bpasswordresetflag,jdbcType=SMALLINT},
+      <if test="lPasswordExpirationRange != null" >
+        #{lPasswordExpirationRange,jdbcType=INTEGER},
       </if>
-      <if test="bpasswordchangeflag != null" >
-        #{bpasswordchangeflag,jdbcType=SMALLINT},
+      <if test="bPasswordResetFlag != null" >
+        #{bPasswordResetFlag,jdbcType=SMALLINT},
       </if>
-      <if test="lpasswordentryerrorcount != null" >
-        #{lpasswordentryerrorcount,jdbcType=INTEGER},
+      <if test="bPasswordChangeFlag != null" >
+        #{bPasswordChangeFlag,jdbcType=SMALLINT},
       </if>
-      <if test="blefthandedflag != null" >
-        #{blefthandedflag,jdbcType=SMALLINT},
+      <if test="lPasswordEntryErrorCount != null" >
+        #{lPasswordEntryErrorCount,jdbcType=INTEGER},
       </if>
-      <if test="szexternalid != null" >
-        #{szexternalid,jdbcType=VARCHAR},
+      <if test="bLeftHandedFlag != null" >
+        #{bLeftHandedFlag,jdbcType=SMALLINT},
       </if>
-      <if test="szprintcode != null" >
-        #{szprintcode,jdbcType=VARCHAR},
+      <if test="szExternalID != null" >
+        #{szExternalID,jdbcType=VARCHAR},
       </if>
-      <if test="szcomment != null" >
-        #{szcomment,jdbcType=VARCHAR},
+      <if test="szPrintCode != null" >
+        #{szPrintCode,jdbcType=VARCHAR},
       </if>
-      <if test="dlowartdiscprice != null" >
-        #{dlowartdiscprice,jdbcType=DECIMAL},
+      <if test="szComment != null" >
+        #{szComment,jdbcType=VARCHAR},
       </if>
-      <if test="szpreferedgui != null" >
-        #{szpreferedgui,jdbcType=VARCHAR},
+      <if test="dLowArtDiscPrice != null" >
+        #{dLowArtDiscPrice,jdbcType=DECIMAL},
       </if>
-      <if test="szdallaskeyid != null" >
-        #{szdallaskeyid,jdbcType=VARCHAR},
+      <if test="szPreferedGui != null" >
+        #{szPreferedGui,jdbcType=VARCHAR},
       </if>
-      <if test="ltechlayeraccessid != null" >
-        #{ltechlayeraccessid,jdbcType=INTEGER},
+      <if test="szDallasKeyID != null" >
+        #{szDallasKeyID,jdbcType=VARCHAR},
       </if>
-      <if test="szlastupdlocal != null" >
-        #{szlastupdlocal,jdbcType=VARCHAR},
+      <if test="lTechLayerAccessID != null" >
+        #{lTechLayerAccessID,jdbcType=INTEGER},
       </if>
-      <if test="bexternalcashier != null" >
-        #{bexternalcashier,jdbcType=SMALLINT},
+      <if test="szLastUpdLocal != null" >
+        #{szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="bExternalCashier != null" >
+        #{bExternalCashier,jdbcType=SMALLINT},
       </if>
     </trim>
   </insert>
@@ -297,74 +304,77 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update Operator
     <set >
-      <if test="record.loperatorid != null" >
-        lOperatorID = #{record.loperatorid,jdbcType=INTEGER},
+      <if test="record.lOperatorID != null" >
+        lOperatorID = #{record.lOperatorID,jdbcType=INTEGER},
       </if>
-      <if test="record.lemployeeid != null" >
-        lEmployeeID = #{record.lemployeeid,jdbcType=INTEGER},
+      <if test="record.lEmployeeID != null" >
+        lEmployeeID = #{record.lEmployeeID,jdbcType=INTEGER},
       </if>
-      <if test="record.szsignonname != null" >
-        szSignOnName = #{record.szsignonname,jdbcType=VARCHAR},
+      <if test="record.szSignOnName != null" >
+        szSignOnName = #{record.szSignOnName,jdbcType=VARCHAR},
       </if>
-      <if test="record.szsignonpassword != null" >
-        szSignOnPassword = #{record.szsignonpassword,jdbcType=VARCHAR},
+      <if test="record.szSignOnPassword != null" >
+        szSignOnPassword = #{record.szSignOnPassword,jdbcType=VARCHAR},
       </if>
-      <if test="record.szeffectivedate != null" >
-        szEffectiveDate = #{record.szeffectivedate,jdbcType=VARCHAR},
+      <if test="record.szPower != null" >
+        szPower = #{record.szPower,jdbcType=INTEGER},
       </if>
-      <if test="record.szexpirationdate != null" >
-        szExpirationDate = #{record.szexpirationdate,jdbcType=VARCHAR},
+      <if test="record.szEffectiveDate != null" >
+        szEffectiveDate = #{record.szEffectiveDate,jdbcType=VARCHAR},
       </if>
-      <if test="record.szpasswordeffectivedate != null" >
-        szPasswordEffectiveDate = #{record.szpasswordeffectivedate,jdbcType=VARCHAR},
+      <if test="record.szExpirationDate != null" >
+        szExpirationDate = #{record.szExpirationDate,jdbcType=VARCHAR},
       </if>
-      <if test="record.szpasswordexpirationdate != null" >
-        szPasswordExpirationDate = #{record.szpasswordexpirationdate,jdbcType=VARCHAR},
+      <if test="record.szPasswordEffectiveDate != null" >
+        szPasswordEffectiveDate = #{record.szPasswordEffectiveDate,jdbcType=VARCHAR},
       </if>
-      <if test="record.szpasswordexpirationrange != null" >
-        szPasswordExpirationRange = #{record.szpasswordexpirationrange,jdbcType=INTEGER},
+      <if test="record.szPasswordExpirationDate != null" >
+        szPasswordExpirationDate = #{record.szPasswordExpirationDate,jdbcType=VARCHAR},
       </if>
-      <if test="record.lpasswordexpirationrange != null" >
-        lPasswordExpirationRange = #{record.lpasswordexpirationrange,jdbcType=INTEGER},
+      <if test="record.szPasswordExpirationRange != null" >
+        szPasswordExpirationRange = #{record.szPasswordExpirationRange,jdbcType=INTEGER},
       </if>
-      <if test="record.bpasswordresetflag != null" >
-        bPasswordResetFlag = #{record.bpasswordresetflag,jdbcType=SMALLINT},
+      <if test="record.lPasswordExpirationRange != null" >
+        lPasswordExpirationRange = #{record.lPasswordExpirationRange,jdbcType=INTEGER},
       </if>
-      <if test="record.bpasswordchangeflag != null" >
-        bPasswordChangeFlag = #{record.bpasswordchangeflag,jdbcType=SMALLINT},
+      <if test="record.bPasswordResetFlag != null" >
+        bPasswordResetFlag = #{record.bPasswordResetFlag,jdbcType=SMALLINT},
       </if>
-      <if test="record.lpasswordentryerrorcount != null" >
-        lPasswordEntryErrorCount = #{record.lpasswordentryerrorcount,jdbcType=INTEGER},
+      <if test="record.bPasswordChangeFlag != null" >
+        bPasswordChangeFlag = #{record.bPasswordChangeFlag,jdbcType=SMALLINT},
       </if>
-      <if test="record.blefthandedflag != null" >
-        bLeftHandedFlag = #{record.blefthandedflag,jdbcType=SMALLINT},
+      <if test="record.lPasswordEntryErrorCount != null" >
+        lPasswordEntryErrorCount = #{record.lPasswordEntryErrorCount,jdbcType=INTEGER},
       </if>
-      <if test="record.szexternalid != null" >
-        szExternalID = #{record.szexternalid,jdbcType=VARCHAR},
+      <if test="record.bLeftHandedFlag != null" >
+        bLeftHandedFlag = #{record.bLeftHandedFlag,jdbcType=SMALLINT},
       </if>
-      <if test="record.szprintcode != null" >
-        szPrintCode = #{record.szprintcode,jdbcType=VARCHAR},
+      <if test="record.szExternalID != null" >
+        szExternalID = #{record.szExternalID,jdbcType=VARCHAR},
       </if>
-      <if test="record.szcomment != null" >
-        szComment = #{record.szcomment,jdbcType=VARCHAR},
+      <if test="record.szPrintCode != null" >
+        szPrintCode = #{record.szPrintCode,jdbcType=VARCHAR},
       </if>
-      <if test="record.dlowartdiscprice != null" >
-        dLowArtDiscPrice = #{record.dlowartdiscprice,jdbcType=DECIMAL},
+      <if test="record.szComment != null" >
+        szComment = #{record.szComment,jdbcType=VARCHAR},
       </if>
-      <if test="record.szpreferedgui != null" >
-        szPreferedGui = #{record.szpreferedgui,jdbcType=VARCHAR},
+      <if test="record.dLowArtDiscPrice != null" >
+        dLowArtDiscPrice = #{record.dLowArtDiscPrice,jdbcType=DECIMAL},
       </if>
-      <if test="record.szdallaskeyid != null" >
-        szDallasKeyID = #{record.szdallaskeyid,jdbcType=VARCHAR},
+      <if test="record.szPreferedGui != null" >
+        szPreferedGui = #{record.szPreferedGui,jdbcType=VARCHAR},
       </if>
-      <if test="record.ltechlayeraccessid != null" >
-        lTechLayerAccessID = #{record.ltechlayeraccessid,jdbcType=INTEGER},
+      <if test="record.szDallasKeyID != null" >
+        szDallasKeyID = #{record.szDallasKeyID,jdbcType=VARCHAR},
       </if>
-      <if test="record.szlastupdlocal != null" >
-        szLastUpdLocal = #{record.szlastupdlocal,jdbcType=VARCHAR},
+      <if test="record.lTechLayerAccessID != null" >
+        lTechLayerAccessID = #{record.lTechLayerAccessID,jdbcType=INTEGER},
       </if>
-      <if test="record.bexternalcashier != null" >
-        bExternalCashier = #{record.bexternalcashier,jdbcType=SMALLINT},
+      <if test="record.szLastUpdLocal != null" >
+        szLastUpdLocal = #{record.szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bExternalCashier != null" >
+        bExternalCashier = #{record.bExternalCashier,jdbcType=SMALLINT},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -373,29 +383,30 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update Operator
-    set lOperatorID = #{record.loperatorid,jdbcType=INTEGER},
-      lEmployeeID = #{record.lemployeeid,jdbcType=INTEGER},
-      szSignOnName = #{record.szsignonname,jdbcType=VARCHAR},
-      szSignOnPassword = #{record.szsignonpassword,jdbcType=VARCHAR},
-      szEffectiveDate = #{record.szeffectivedate,jdbcType=VARCHAR},
-      szExpirationDate = #{record.szexpirationdate,jdbcType=VARCHAR},
-      szPasswordEffectiveDate = #{record.szpasswordeffectivedate,jdbcType=VARCHAR},
-      szPasswordExpirationDate = #{record.szpasswordexpirationdate,jdbcType=VARCHAR},
-      szPasswordExpirationRange = #{record.szpasswordexpirationrange,jdbcType=INTEGER},
-      lPasswordExpirationRange = #{record.lpasswordexpirationrange,jdbcType=INTEGER},
-      bPasswordResetFlag = #{record.bpasswordresetflag,jdbcType=SMALLINT},
-      bPasswordChangeFlag = #{record.bpasswordchangeflag,jdbcType=SMALLINT},
-      lPasswordEntryErrorCount = #{record.lpasswordentryerrorcount,jdbcType=INTEGER},
-      bLeftHandedFlag = #{record.blefthandedflag,jdbcType=SMALLINT},
-      szExternalID = #{record.szexternalid,jdbcType=VARCHAR},
-      szPrintCode = #{record.szprintcode,jdbcType=VARCHAR},
-      szComment = #{record.szcomment,jdbcType=VARCHAR},
-      dLowArtDiscPrice = #{record.dlowartdiscprice,jdbcType=DECIMAL},
-      szPreferedGui = #{record.szpreferedgui,jdbcType=VARCHAR},
-      szDallasKeyID = #{record.szdallaskeyid,jdbcType=VARCHAR},
-      lTechLayerAccessID = #{record.ltechlayeraccessid,jdbcType=INTEGER},
-      szLastUpdLocal = #{record.szlastupdlocal,jdbcType=VARCHAR},
-      bExternalCashier = #{record.bexternalcashier,jdbcType=SMALLINT}
+    set lOperatorID = #{record.lOperatorID,jdbcType=INTEGER},
+      lEmployeeID = #{record.lEmployeeID,jdbcType=INTEGER},
+      szSignOnName = #{record.szSignOnName,jdbcType=VARCHAR},
+      szSignOnPassword = #{record.szSignOnPassword,jdbcType=VARCHAR},
+      szPower = #{record.szPower,jdbcType=INTEGER},
+      szEffectiveDate = #{record.szEffectiveDate,jdbcType=VARCHAR},
+      szExpirationDate = #{record.szExpirationDate,jdbcType=VARCHAR},
+      szPasswordEffectiveDate = #{record.szPasswordEffectiveDate,jdbcType=VARCHAR},
+      szPasswordExpirationDate = #{record.szPasswordExpirationDate,jdbcType=VARCHAR},
+      szPasswordExpirationRange = #{record.szPasswordExpirationRange,jdbcType=INTEGER},
+      lPasswordExpirationRange = #{record.lPasswordExpirationRange,jdbcType=INTEGER},
+      bPasswordResetFlag = #{record.bPasswordResetFlag,jdbcType=SMALLINT},
+      bPasswordChangeFlag = #{record.bPasswordChangeFlag,jdbcType=SMALLINT},
+      lPasswordEntryErrorCount = #{record.lPasswordEntryErrorCount,jdbcType=INTEGER},
+      bLeftHandedFlag = #{record.bLeftHandedFlag,jdbcType=SMALLINT},
+      szExternalID = #{record.szExternalID,jdbcType=VARCHAR},
+      szPrintCode = #{record.szPrintCode,jdbcType=VARCHAR},
+      szComment = #{record.szComment,jdbcType=VARCHAR},
+      dLowArtDiscPrice = #{record.dLowArtDiscPrice,jdbcType=DECIMAL},
+      szPreferedGui = #{record.szPreferedGui,jdbcType=VARCHAR},
+      szDallasKeyID = #{record.szDallasKeyID,jdbcType=VARCHAR},
+      lTechLayerAccessID = #{record.lTechLayerAccessID,jdbcType=INTEGER},
+      szLastUpdLocal = #{record.szLastUpdLocal,jdbcType=VARCHAR},
+      bExternalCashier = #{record.bExternalCashier,jdbcType=SMALLINT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -403,99 +414,103 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.model.Operator" >
     update Operator
     <set >
-      <if test="lemployeeid != null" >
-        lEmployeeID = #{lemployeeid,jdbcType=INTEGER},
+      <if test="lEmployeeID != null" >
+        lEmployeeID = #{lEmployeeID,jdbcType=INTEGER},
       </if>
-      <if test="szsignonname != null" >
-        szSignOnName = #{szsignonname,jdbcType=VARCHAR},
+      <if test="szSignOnName != null" >
+        szSignOnName = #{szSignOnName,jdbcType=VARCHAR},
       </if>
-      <if test="szsignonpassword != null" >
-        szSignOnPassword = #{szsignonpassword,jdbcType=VARCHAR},
+      <if test="szSignOnPassword != null" >
+        szSignOnPassword = #{szSignOnPassword,jdbcType=VARCHAR},
       </if>
-      <if test="szeffectivedate != null" >
-        szEffectiveDate = #{szeffectivedate,jdbcType=VARCHAR},
+      <if test="szPower != null" >
+        szPower = #{szPower,jdbcType=INTEGER},
       </if>
-      <if test="szexpirationdate != null" >
-        szExpirationDate = #{szexpirationdate,jdbcType=VARCHAR},
+      <if test="szEffectiveDate != null" >
+        szEffectiveDate = #{szEffectiveDate,jdbcType=VARCHAR},
       </if>
-      <if test="szpasswordeffectivedate != null" >
-        szPasswordEffectiveDate = #{szpasswordeffectivedate,jdbcType=VARCHAR},
+      <if test="szExpirationDate != null" >
+        szExpirationDate = #{szExpirationDate,jdbcType=VARCHAR},
       </if>
-      <if test="szpasswordexpirationdate != null" >
-        szPasswordExpirationDate = #{szpasswordexpirationdate,jdbcType=VARCHAR},
+      <if test="szPasswordEffectiveDate != null" >
+        szPasswordEffectiveDate = #{szPasswordEffectiveDate,jdbcType=VARCHAR},
       </if>
-      <if test="szpasswordexpirationrange != null" >
-        szPasswordExpirationRange = #{szpasswordexpirationrange,jdbcType=INTEGER},
+      <if test="szPasswordExpirationDate != null" >
+        szPasswordExpirationDate = #{szPasswordExpirationDate,jdbcType=VARCHAR},
       </if>
-      <if test="lpasswordexpirationrange != null" >
-        lPasswordExpirationRange = #{lpasswordexpirationrange,jdbcType=INTEGER},
+      <if test="szPasswordExpirationRange != null" >
+        szPasswordExpirationRange = #{szPasswordExpirationRange,jdbcType=INTEGER},
       </if>
-      <if test="bpasswordresetflag != null" >
-        bPasswordResetFlag = #{bpasswordresetflag,jdbcType=SMALLINT},
+      <if test="lPasswordExpirationRange != null" >
+        lPasswordExpirationRange = #{lPasswordExpirationRange,jdbcType=INTEGER},
       </if>
-      <if test="bpasswordchangeflag != null" >
-        bPasswordChangeFlag = #{bpasswordchangeflag,jdbcType=SMALLINT},
+      <if test="bPasswordResetFlag != null" >
+        bPasswordResetFlag = #{bPasswordResetFlag,jdbcType=SMALLINT},
       </if>
-      <if test="lpasswordentryerrorcount != null" >
-        lPasswordEntryErrorCount = #{lpasswordentryerrorcount,jdbcType=INTEGER},
+      <if test="bPasswordChangeFlag != null" >
+        bPasswordChangeFlag = #{bPasswordChangeFlag,jdbcType=SMALLINT},
       </if>
-      <if test="blefthandedflag != null" >
-        bLeftHandedFlag = #{blefthandedflag,jdbcType=SMALLINT},
+      <if test="lPasswordEntryErrorCount != null" >
+        lPasswordEntryErrorCount = #{lPasswordEntryErrorCount,jdbcType=INTEGER},
       </if>
-      <if test="szexternalid != null" >
-        szExternalID = #{szexternalid,jdbcType=VARCHAR},
+      <if test="bLeftHandedFlag != null" >
+        bLeftHandedFlag = #{bLeftHandedFlag,jdbcType=SMALLINT},
       </if>
-      <if test="szprintcode != null" >
-        szPrintCode = #{szprintcode,jdbcType=VARCHAR},
+      <if test="szExternalID != null" >
+        szExternalID = #{szExternalID,jdbcType=VARCHAR},
       </if>
-      <if test="szcomment != null" >
-        szComment = #{szcomment,jdbcType=VARCHAR},
+      <if test="szPrintCode != null" >
+        szPrintCode = #{szPrintCode,jdbcType=VARCHAR},
       </if>
-      <if test="dlowartdiscprice != null" >
-        dLowArtDiscPrice = #{dlowartdiscprice,jdbcType=DECIMAL},
+      <if test="szComment != null" >
+        szComment = #{szComment,jdbcType=VARCHAR},
       </if>
-      <if test="szpreferedgui != null" >
-        szPreferedGui = #{szpreferedgui,jdbcType=VARCHAR},
+      <if test="dLowArtDiscPrice != null" >
+        dLowArtDiscPrice = #{dLowArtDiscPrice,jdbcType=DECIMAL},
       </if>
-      <if test="szdallaskeyid != null" >
-        szDallasKeyID = #{szdallaskeyid,jdbcType=VARCHAR},
+      <if test="szPreferedGui != null" >
+        szPreferedGui = #{szPreferedGui,jdbcType=VARCHAR},
       </if>
-      <if test="ltechlayeraccessid != null" >
-        lTechLayerAccessID = #{ltechlayeraccessid,jdbcType=INTEGER},
+      <if test="szDallasKeyID != null" >
+        szDallasKeyID = #{szDallasKeyID,jdbcType=VARCHAR},
       </if>
-      <if test="szlastupdlocal != null" >
-        szLastUpdLocal = #{szlastupdlocal,jdbcType=VARCHAR},
+      <if test="lTechLayerAccessID != null" >
+        lTechLayerAccessID = #{lTechLayerAccessID,jdbcType=INTEGER},
       </if>
-      <if test="bexternalcashier != null" >
-        bExternalCashier = #{bexternalcashier,jdbcType=SMALLINT},
+      <if test="szLastUpdLocal != null" >
+        szLastUpdLocal = #{szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="bExternalCashier != null" >
+        bExternalCashier = #{bExternalCashier,jdbcType=SMALLINT},
       </if>
     </set>
-    where lOperatorID = #{loperatorid,jdbcType=INTEGER}
+    where lOperatorID = #{lOperatorID,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.model.Operator" >
     update Operator
-    set lEmployeeID = #{lemployeeid,jdbcType=INTEGER},
-      szSignOnName = #{szsignonname,jdbcType=VARCHAR},
-      szSignOnPassword = #{szsignonpassword,jdbcType=VARCHAR},
-      szEffectiveDate = #{szeffectivedate,jdbcType=VARCHAR},
-      szExpirationDate = #{szexpirationdate,jdbcType=VARCHAR},
-      szPasswordEffectiveDate = #{szpasswordeffectivedate,jdbcType=VARCHAR},
-      szPasswordExpirationDate = #{szpasswordexpirationdate,jdbcType=VARCHAR},
-      szPasswordExpirationRange = #{szpasswordexpirationrange,jdbcType=INTEGER},
-      lPasswordExpirationRange = #{lpasswordexpirationrange,jdbcType=INTEGER},
-      bPasswordResetFlag = #{bpasswordresetflag,jdbcType=SMALLINT},
-      bPasswordChangeFlag = #{bpasswordchangeflag,jdbcType=SMALLINT},
-      lPasswordEntryErrorCount = #{lpasswordentryerrorcount,jdbcType=INTEGER},
-      bLeftHandedFlag = #{blefthandedflag,jdbcType=SMALLINT},
-      szExternalID = #{szexternalid,jdbcType=VARCHAR},
-      szPrintCode = #{szprintcode,jdbcType=VARCHAR},
-      szComment = #{szcomment,jdbcType=VARCHAR},
-      dLowArtDiscPrice = #{dlowartdiscprice,jdbcType=DECIMAL},
-      szPreferedGui = #{szpreferedgui,jdbcType=VARCHAR},
-      szDallasKeyID = #{szdallaskeyid,jdbcType=VARCHAR},
-      lTechLayerAccessID = #{ltechlayeraccessid,jdbcType=INTEGER},
-      szLastUpdLocal = #{szlastupdlocal,jdbcType=VARCHAR},
-      bExternalCashier = #{bexternalcashier,jdbcType=SMALLINT}
-    where lOperatorID = #{loperatorid,jdbcType=INTEGER}
+    set lEmployeeID = #{lEmployeeID,jdbcType=INTEGER},
+      szSignOnName = #{szSignOnName,jdbcType=VARCHAR},
+      szSignOnPassword = #{szSignOnPassword,jdbcType=VARCHAR},
+      szPower = #{szPower,jdbcType=INTEGER},
+      szEffectiveDate = #{szEffectiveDate,jdbcType=VARCHAR},
+      szExpirationDate = #{szExpirationDate,jdbcType=VARCHAR},
+      szPasswordEffectiveDate = #{szPasswordEffectiveDate,jdbcType=VARCHAR},
+      szPasswordExpirationDate = #{szPasswordExpirationDate,jdbcType=VARCHAR},
+      szPasswordExpirationRange = #{szPasswordExpirationRange,jdbcType=INTEGER},
+      lPasswordExpirationRange = #{lPasswordExpirationRange,jdbcType=INTEGER},
+      bPasswordResetFlag = #{bPasswordResetFlag,jdbcType=SMALLINT},
+      bPasswordChangeFlag = #{bPasswordChangeFlag,jdbcType=SMALLINT},
+      lPasswordEntryErrorCount = #{lPasswordEntryErrorCount,jdbcType=INTEGER},
+      bLeftHandedFlag = #{bLeftHandedFlag,jdbcType=SMALLINT},
+      szExternalID = #{szExternalID,jdbcType=VARCHAR},
+      szPrintCode = #{szPrintCode,jdbcType=VARCHAR},
+      szComment = #{szComment,jdbcType=VARCHAR},
+      dLowArtDiscPrice = #{dLowArtDiscPrice,jdbcType=DECIMAL},
+      szPreferedGui = #{szPreferedGui,jdbcType=VARCHAR},
+      szDallasKeyID = #{szDallasKeyID,jdbcType=VARCHAR},
+      lTechLayerAccessID = #{lTechLayerAccessID,jdbcType=INTEGER},
+      szLastUpdLocal = #{szLastUpdLocal,jdbcType=VARCHAR},
+      bExternalCashier = #{bExternalCashier,jdbcType=SMALLINT}
+    where lOperatorID = #{lOperatorID,jdbcType=INTEGER}
   </update>
 </mapper>

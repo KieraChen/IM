@@ -28,7 +28,7 @@ body{overflow-x:hidden; background:url(${pageContext.request.contextPath}/images
 <body onselectstart="return false;" ondragstart="return false;" oncontextmenu="return false;">
 <div id="left-top">
 	<div><img src="${pageContext.request.contextPath}/images/avtar.png" width="44" height="44" /></div>
-    <span>用户：${operator.szsignonname}<br>权限：${operator.szsignonpassword == 0 ? "普通管理员" : "超级管理员"}</span>
+    <span>用户：${operator.szSignOnName}<br>权限：${operator.szPower == 0 ? "普通管理员" : "超级管理员"}</span>
 </div>
     <div style="float: left" id="my_menu" class="sdmenu">
       <div>
@@ -37,7 +37,7 @@ body{overflow-x:hidden; background:url(${pageContext.request.contextPath}/images
       </div>
       <div class="collapsed">
         <span>系统管理</span>
-        <a href="${pageContext.request.contextPath}/" target="mainFrame" onFocus="this.blur()">用户管理</a>
+        <a href="${pageContext.request.contextPath}/operator/selectOperator.do" target="mainFrame" onFocus="this.blur()">用户管理</a>
         <a href="${pageContext.request.contextPath}/" target="mainFrame" onFocus="this.blur()">门店管理</a>
       </div>
       <div class="collapsed">

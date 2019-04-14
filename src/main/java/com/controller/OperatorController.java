@@ -1,11 +1,14 @@
 package com.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.model.Operator;
 import com.service.IOperatorService;
 import com.util.Tool;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -17,6 +20,7 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author chenqi
@@ -76,8 +80,8 @@ public class OperatorController {
                 //设置cookie
                 if("1".equals(save)){
 
-                    String name = URLEncoder.encode(operator1.getSzsignonname(), "UTF-8");
-                    String pass = URLEncoder.encode(operator1.getSzsignonpassword(), "UTF-8");
+                    String name = URLEncoder.encode(operator1.getSzSignOnName(), "UTF-8");
+                    String pass = URLEncoder.encode(operator1.getSzSignOnPassword(), "UTF-8");
 
                     Cookie cookie1 = new Cookie("c_name",name);
                     Cookie cookie2 = new Cookie("c_pass",pass);
@@ -104,12 +108,33 @@ public class OperatorController {
 
     }
 
+    //验证登录
+    @RequestMapping("selectOperator")
+    public String selectOperator(Model model, Operator operator, @RequestParam(value="pn",defaultValue="1")Integer pn){
+
+        PageInfo<Operator> page = operatorService.selectOperator(operator,pn);
+
+        model.addAttribute("pageInfo", page);
+        model.addAttribute("operator",operator);
+        return "OperatorMain";
+    }
+
     //安全退出
     @RequestMapping("Exit")
     public String exit(HttpServletRequest request){
         HttpSession session = request.getSession();
         session.invalidate();
         return "Index";
+    }
+
+    //删除operator
+    @RequestMapping("deleteOperator")
+    public void deleteOperator(Model model, Operator operator, List<Operator> operators, @RequestParam(value="pn",defaultValue="1")Integer pn){
+
+        List<Integer> ids = operators.stream().map(Operator::getlOperatorID).collect(Collectors.toList());
+
+        operatorService.deleteOperator(ids);
+        selectOperator(model,operator,pn);
     }
 
 

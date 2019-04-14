@@ -1,5 +1,6 @@
 package com.service;
 
+import com.github.pagehelper.PageInfo;
 import com.model.Operator;
 
 import java.util.List;
@@ -11,4 +12,8 @@ import java.util.List;
  */
 public interface IOperatorService {
     public List<Operator> checkOperator(Operator operator);
+
+    public PageInfo<Operator> selectOperator(Operator operator, Integer pageNow);
+
+    public int deleteOperator(List<Integer> lOperatorIDs);
 }
