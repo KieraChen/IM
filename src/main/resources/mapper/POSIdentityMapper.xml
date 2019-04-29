@@ -1,0 +1,1828 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.POSIdentityMapper" >
+  <resultMap id="BaseResultMap" type="com.model.POSIdentity" >
+    <id column="szPOSItemID" property="szPOSItemID" jdbcType="VARCHAR" />
+    <id column="lRetailStoreID" property="lRetailStoreID" jdbcType="INTEGER" />
+    <result column="szItemId" property="szItemId" jdbcType="VARCHAR" />
+    <result column="szDesc" property="szDesc" jdbcType="VARCHAR" />
+    <result column="szDesc1" property="szDesc1" jdbcType="VARCHAR" />
+    <result column="szDesc2" property="szDesc2" jdbcType="VARCHAR" />
+    <result column="szDescription" property="szDescription" jdbcType="VARCHAR" />
+    <result column="bPriceEntryRequiredFlag" property="bPriceEntryRequiredFlag" jdbcType="SMALLINT" />
+    <result column="bMeasurementEntryRequired" property="bMeasurementEntryRequired" jdbcType="SMALLINT" />
+    <result column="bQuantityKeyProhibitFlag" property="bQuantityKeyProhibitFlag" jdbcType="SMALLINT" />
+    <result column="bProhibitReturnFlag" property="bProhibitReturnFlag" jdbcType="SMALLINT" />
+    <result column="bProhibitRepeatKeyFlag" property="bProhibitRepeatKeyFlag" jdbcType="SMALLINT" />
+    <result column="dFrequentShopperPointsCount" property="dFrequentShopperPointsCount" jdbcType="DECIMAL" />
+    <result column="lCurrencyID" property="lCurrencyID" jdbcType="INTEGER" />
+    <result column="dPackingUnitPriceAmount" property="dPackingUnitPriceAmount" jdbcType="DECIMAL" />
+    <result column="dPieceQuantity" property="dPieceQuantity" jdbcType="DECIMAL" />
+    <result column="dPiecePriceAmount" property="dPiecePriceAmount" jdbcType="DECIMAL" />
+    <result column="bCalculationOnPiecePriceFlag" property="bCalculationOnPiecePriceFlag" jdbcType="SMALLINT" />
+    <result column="bLinkedSaleOnlyFlag" property="bLinkedSaleOnlyFlag" jdbcType="SMALLINT" />
+    <result column="szPackingUnitCounterTypeCode" property="szPackingUnitCounterTypeCode" jdbcType="VARCHAR" />
+    <result column="bPriceNegativeFlag" property="bPriceNegativeFlag" jdbcType="SMALLINT" />
+    <result column="szQuantityEntryUnitOfMeasure" property="szQuantityEntryUnitOfMeasure" jdbcType="VARCHAR" />
+    <result column="bPriceChangeProhibitFlag" property="bPriceChangeProhibitFlag" jdbcType="SMALLINT" />
+    <result column="dPriceEntryLowAmount" property="dPriceEntryLowAmount" jdbcType="DECIMAL" />
+    <result column="dPriceEntryHighAmount" property="dPriceEntryHighAmount" jdbcType="DECIMAL" />
+    <result column="szExternalID" property="szExternalID" jdbcType="VARCHAR" />
+    <result column="d2ndPrice" property="d2ndPrice" jdbcType="DECIMAL" />
+    <result column="d3rdPrice" property="d3rdPrice" jdbcType="DECIMAL" />
+    <result column="d4thPrice" property="d4thPrice" jdbcType="DECIMAL" />
+    <result column="d5thPrice" property="d5thPrice" jdbcType="DECIMAL" />
+    <result column="dLowArtDiscPrice" property="dLowArtDiscPrice" jdbcType="DECIMAL" />
+    <result column="szArtLink" property="szArtLink" jdbcType="VARCHAR" />
+    <result column="bLocked" property="bLocked" jdbcType="SMALLINT" />
+    <result column="lWarranty" property="lWarranty" jdbcType="INTEGER" />
+    <result column="szPrintLayoutID" property="szPrintLayoutID" jdbcType="VARCHAR" />
+    <result column="szAddOnDialog" property="szAddOnDialog" jdbcType="VARCHAR" />
+    <result column="bIsContract" property="bIsContract" jdbcType="SMALLINT" />
+    <result column="bIsFiscalArt" property="bIsFiscalArt" jdbcType="SMALLINT" />
+    <result column="bIsSerialized" property="bIsSerialized" jdbcType="SMALLINT" />
+    <result column="bOnStock" property="bOnStock" jdbcType="SMALLINT" />
+    <result column="bArtKVSet" property="bArtKVSet" jdbcType="SMALLINT" />
+    <result column="bArtKSet" property="bArtKSet" jdbcType="SMALLINT" />
+    <result column="bArtVSet" property="bArtVSet" jdbcType="SMALLINT" />
+    <result column="bTotalDiscountAllowed" property="bTotalDiscountAllowed" jdbcType="SMALLINT" />
+    <result column="bScaleItemFlag" property="bScaleItemFlag" jdbcType="SMALLINT" />
+    <result column="bBrandItemFlag" property="bBrandItemFlag" jdbcType="SMALLINT" />
+    <result column="bSupervisorRequiredFlag" property="bSupervisorRequiredFlag" jdbcType="SMALLINT" />
+    <result column="bCheckPriceFlag" property="bCheckPriceFlag" jdbcType="SMALLINT" />
+    <result column="bAgeControlFlag" property="bAgeControlFlag" jdbcType="SMALLINT" />
+    <result column="szPriceUnitOfMeasureName" property="szPriceUnitOfMeasureName" jdbcType="VARCHAR" />
+    <result column="dTareAmount" property="dTareAmount" jdbcType="DECIMAL" />
+    <result column="szDateValidFrom" property="szDateValidFrom" jdbcType="VARCHAR" />
+    <result column="szTimeValidFrom" property="szTimeValidFrom" jdbcType="VARCHAR" />
+    <result column="szDateValidTo" property="szDateValidTo" jdbcType="VARCHAR" />
+    <result column="szTimeValidTo" property="szTimeValidTo" jdbcType="VARCHAR" />
+    <result column="bIsDepositItem" property="bIsDepositItem" jdbcType="SMALLINT" />
+    <result column="dQtyArtLink" property="dQtyArtLink" jdbcType="DECIMAL" />
+    <result column="bPressItem" property="bPressItem" jdbcType="SMALLINT" />
+    <result column="bQuantityEntryRequired" property="bQuantityEntryRequired" jdbcType="SMALLINT" />
+    <result column="lAgeControl" property="lAgeControl" jdbcType="INTEGER" />
+    <result column="bUseSizeAndColor" property="bUseSizeAndColor" jdbcType="SMALLINT" />
+    <result column="bIsBundleItem" property="bIsBundleItem" jdbcType="SMALLINT" />
+    <result column="bLockedByERP" property="bLockedByERP" jdbcType="SMALLINT" />
+    <result column="bLoyaltyPointsAllowed" property="bLoyaltyPointsAllowed" jdbcType="SMALLINT" />
+    <result column="lChangedByOperatorID" property="lChangedByOperatorID" jdbcType="INTEGER" />
+    <result column="dLoyaltyPoints" property="dLoyaltyPoints" jdbcType="INTEGER" />
+    <result column="szDeleteDate" property="szDeleteDate" jdbcType="VARCHAR" />
+    <result column="lTechLayerAccessID" property="lTechLayerAccessID" jdbcType="INTEGER" />
+    <result column="szLastUpdLocal" property="szLastUpdLocal" jdbcType="VARCHAR" />
+    <result column="uidObjectID" property="uidObjectID" jdbcType="VARCHAR" />
+    <result column="szAccountingID" property="szAccountingID" jdbcType="VARCHAR" />
+    <result column="bVoidAllowed" property="bVoidAllowed" jdbcType="SMALLINT" />
+    <result column="dMaxAllowedQty" property="dMaxAllowedQty" jdbcType="DECIMAL" />
+    <result column="lOperatorAgeControl" property="lOperatorAgeControl" jdbcType="INTEGER" />
+    <result column="IM_bAllowPOGoodReturn" property="IM_bAllowPOGoodReturn" jdbcType="INTEGER" />
+    <result column="IM_dMinOrderQty" property="IM_dMinOrderQty" jdbcType="DECIMAL" />
+    <result column="IM_lInventoryDays" property="IM_lInventoryDays" jdbcType="INTEGER" />
+    <result column="IM_lShelfLife" property="IM_lShelfLife" jdbcType="INTEGER" />
+    <result column="IM_lReceiveShelfLife" property="IM_lReceiveShelfLife" jdbcType="INTEGER" />
+    <result column="IM_lSaleShelfLife" property="IM_lSaleShelfLife" jdbcType="INTEGER" />
+    <result column="IM_szPrimaryStorageLocationID" property="IM_szPrimaryStorageLocationID" jdbcType="VARCHAR" />
+    <result column="IM_lOrderType" property="IM_lOrderType" jdbcType="INTEGER" />
+    <result column="IM_bFreshFoodD1" property="IM_bFreshFoodD1" jdbcType="INTEGER" />
+    <result column="IM_bFreshFoodD2" property="IM_bFreshFoodD2" jdbcType="INTEGER" />
+    <result column="IM_bFreshFoodD3" property="IM_bFreshFoodD3" jdbcType="INTEGER" />
+    <result column="IM_szOrderBlockDate" property="IM_szOrderBlockDate" jdbcType="VARCHAR" />
+    <result column="IM_szReturnBlockDate" property="IM_szReturnBlockDate" jdbcType="VARCHAR" />
+    <result column="IM_szDailySalesBlockTimeFrom" property="IM_szDailySalesBlockTimeFrom" jdbcType="VARCHAR" />
+    <result column="IM_szDailySalesBlockTimeTo" property="IM_szDailySalesBlockTimeTo" jdbcType="VARCHAR" />
+    <result column="IM_szPrimaryVendorID" property="IM_szPrimaryVendorID" jdbcType="VARCHAR" />
+    <result column="IM_szPrimaryCDCRetailStoreExternalID" property="IM_szPrimaryCDCRetailStoreExternalID" jdbcType="VARCHAR" />
+    <result column="IM_bParkingCoupon" property="IM_bParkingCoupon" jdbcType="INTEGER" />
+    <result column="IM_dMaxOrderQty" property="IM_dMaxOrderQty" jdbcType="DECIMAL" />
+    <result column="IM_bCoreItem" property="IM_bCoreItem" jdbcType="INTEGER" />
+    <result column="IM_bUnderCDUControl" property="IM_bUnderCDUControl" jdbcType="INTEGER" />
+    <result column="IM_bUnderStockControl" property="IM_bUnderStockControl" jdbcType="INTEGER" />
+    <result column="IM_lSupplySource" property="IM_lSupplySource" jdbcType="INTEGER" />
+    <result column="IM_szArticleType" property="IM_szArticleType" jdbcType="VARCHAR" />
+    <result column="IM_szPurchaseGroup" property="IM_szPurchaseGroup" jdbcType="VARCHAR" />
+    <result column="IM_bGRWithoutPOAllowed" property="IM_bGRWithoutPOAllowed" jdbcType="INTEGER" />
+    <result column="IM_bConsignment" property="IM_bConsignment" jdbcType="INTEGER" />
+    <result column="IM_bWriteOffAllowed" property="IM_bWriteOffAllowed" jdbcType="INTEGER" />
+    <result column="IM_szOrderCycleCode" property="IM_szOrderCycleCode" jdbcType="VARCHAR" />
+    <result column="IM_szIMPSA" property="IM_szIMPSA" jdbcType="VARCHAR" />
+    <result column="IM_szABCIndicator" property="IM_szABCIndicator" jdbcType="VARCHAR" />
+    <result column="IM_lDeliveryLeadTime" property="IM_lDeliveryLeadTime" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    szPOSItemID, lRetailStoreID, szItemId, szDesc, szDesc1, szDesc2, szDescription, bPriceEntryRequiredFlag, 
+    bMeasurementEntryRequired, bQuantityKeyProhibitFlag, bProhibitReturnFlag, bProhibitRepeatKeyFlag, 
+    dFrequentShopperPointsCount, lCurrencyID, dPackingUnitPriceAmount, dPieceQuantity, 
+    dPiecePriceAmount, bCalculationOnPiecePriceFlag, bLinkedSaleOnlyFlag, szPackingUnitCounterTypeCode, 
+    bPriceNegativeFlag, szQuantityEntryUnitOfMeasure, bPriceChangeProhibitFlag, dPriceEntryLowAmount, 
+    dPriceEntryHighAmount, szExternalID, d2ndPrice, d3rdPrice, d4thPrice, d5thPrice, 
+    dLowArtDiscPrice, szArtLink, bLocked, lWarranty, szPrintLayoutID, szAddOnDialog, 
+    bIsContract, bIsFiscalArt, bIsSerialized, bOnStock, bArtKVSet, bArtKSet, bArtVSet, 
+    bTotalDiscountAllowed, bScaleItemFlag, bBrandItemFlag, bSupervisorRequiredFlag, bCheckPriceFlag, 
+    bAgeControlFlag, szPriceUnitOfMeasureName, dTareAmount, szDateValidFrom, szTimeValidFrom, 
+    szDateValidTo, szTimeValidTo, bIsDepositItem, dQtyArtLink, bPressItem, bQuantityEntryRequired, 
+    lAgeControl, bUseSizeAndColor, bIsBundleItem, bLockedByERP, bLoyaltyPointsAllowed, 
+    lChangedByOperatorID, dLoyaltyPoints, szDeleteDate, lTechLayerAccessID, szLastUpdLocal, 
+    uidObjectID, szAccountingID, bVoidAllowed, dMaxAllowedQty, lOperatorAgeControl, IM_bAllowPOGoodReturn, 
+    IM_dMinOrderQty, IM_lInventoryDays, IM_lShelfLife, IM_lReceiveShelfLife, IM_lSaleShelfLife, 
+    IM_szPrimaryStorageLocationID, IM_lOrderType, IM_bFreshFoodD1, IM_bFreshFoodD2, IM_bFreshFoodD3, 
+    IM_szOrderBlockDate, IM_szReturnBlockDate, IM_szDailySalesBlockTimeFrom, IM_szDailySalesBlockTimeTo, 
+    IM_szPrimaryVendorID, IM_szPrimaryCDCRetailStoreExternalID, IM_bParkingCoupon, IM_dMaxOrderQty, 
+    IM_bCoreItem, IM_bUnderCDUControl, IM_bUnderStockControl, IM_lSupplySource, IM_szArticleType, 
+    IM_szPurchaseGroup, IM_bGRWithoutPOAllowed, IM_bConsignment, IM_bWriteOffAllowed, 
+    IM_szOrderCycleCode, IM_szIMPSA, IM_szABCIndicator, IM_lDeliveryLeadTime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.model.POSIdentityExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from POSIdentity
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.model.POSIdentityKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from POSIdentity
+    where szPOSItemID = #{szPOSItemID,jdbcType=VARCHAR}
+      and lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.model.POSIdentityKey" >
+    delete from POSIdentity
+    where szPOSItemID = #{szPOSItemID,jdbcType=VARCHAR}
+      and lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.model.POSIdentityExample" >
+    delete from POSIdentity
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.model.POSIdentity" >
+    insert into POSIdentity (szPOSItemID, lRetailStoreID, szItemId, 
+      szDesc, szDesc1, szDesc2, 
+      szDescription, bPriceEntryRequiredFlag, 
+      bMeasurementEntryRequired, bQuantityKeyProhibitFlag, 
+      bProhibitReturnFlag, bProhibitRepeatKeyFlag, 
+      dFrequentShopperPointsCount, lCurrencyID, 
+      dPackingUnitPriceAmount, dPieceQuantity, 
+      dPiecePriceAmount, bCalculationOnPiecePriceFlag, 
+      bLinkedSaleOnlyFlag, szPackingUnitCounterTypeCode, 
+      bPriceNegativeFlag, szQuantityEntryUnitOfMeasure, 
+      bPriceChangeProhibitFlag, dPriceEntryLowAmount, 
+      dPriceEntryHighAmount, szExternalID, d2ndPrice, 
+      d3rdPrice, d4thPrice, d5thPrice, 
+      dLowArtDiscPrice, szArtLink, bLocked, 
+      lWarranty, szPrintLayoutID, szAddOnDialog, 
+      bIsContract, bIsFiscalArt, bIsSerialized, 
+      bOnStock, bArtKVSet, bArtKSet, 
+      bArtVSet, bTotalDiscountAllowed, bScaleItemFlag, 
+      bBrandItemFlag, bSupervisorRequiredFlag, 
+      bCheckPriceFlag, bAgeControlFlag, szPriceUnitOfMeasureName, 
+      dTareAmount, szDateValidFrom, szTimeValidFrom, 
+      szDateValidTo, szTimeValidTo, bIsDepositItem, 
+      dQtyArtLink, bPressItem, bQuantityEntryRequired, 
+      lAgeControl, bUseSizeAndColor, bIsBundleItem, 
+      bLockedByERP, bLoyaltyPointsAllowed, 
+      lChangedByOperatorID, dLoyaltyPoints, szDeleteDate, 
+      lTechLayerAccessID, szLastUpdLocal, uidObjectID, 
+      szAccountingID, bVoidAllowed, dMaxAllowedQty, 
+      lOperatorAgeControl, IM_bAllowPOGoodReturn, 
+      IM_dMinOrderQty, IM_lInventoryDays, IM_lShelfLife, 
+      IM_lReceiveShelfLife, IM_lSaleShelfLife, 
+      IM_szPrimaryStorageLocationID, IM_lOrderType, 
+      IM_bFreshFoodD1, IM_bFreshFoodD2, IM_bFreshFoodD3, 
+      IM_szOrderBlockDate, IM_szReturnBlockDate, 
+      IM_szDailySalesBlockTimeFrom, IM_szDailySalesBlockTimeTo, 
+      IM_szPrimaryVendorID, IM_szPrimaryCDCRetailStoreExternalID, 
+      IM_bParkingCoupon, IM_dMaxOrderQty, IM_bCoreItem, 
+      IM_bUnderCDUControl, IM_bUnderStockControl, 
+      IM_lSupplySource, IM_szArticleType, IM_szPurchaseGroup, 
+      IM_bGRWithoutPOAllowed, IM_bConsignment, 
+      IM_bWriteOffAllowed, IM_szOrderCycleCode, 
+      IM_szIMPSA, IM_szABCIndicator, IM_lDeliveryLeadTime
+      )
+    values (#{szPOSItemID,jdbcType=VARCHAR}, #{lRetailStoreID,jdbcType=INTEGER}, #{szItemId,jdbcType=VARCHAR}, 
+      #{szDesc,jdbcType=VARCHAR}, #{szDesc1,jdbcType=VARCHAR}, #{szDesc2,jdbcType=VARCHAR}, 
+      #{szDescription,jdbcType=VARCHAR}, #{bPriceEntryRequiredFlag,jdbcType=SMALLINT}, 
+      #{bMeasurementEntryRequired,jdbcType=SMALLINT}, #{bQuantityKeyProhibitFlag,jdbcType=SMALLINT}, 
+      #{bProhibitReturnFlag,jdbcType=SMALLINT}, #{bProhibitRepeatKeyFlag,jdbcType=SMALLINT}, 
+      #{dFrequentShopperPointsCount,jdbcType=DECIMAL}, #{lCurrencyID,jdbcType=INTEGER}, 
+      #{dPackingUnitPriceAmount,jdbcType=DECIMAL}, #{dPieceQuantity,jdbcType=DECIMAL}, 
+      #{dPiecePriceAmount,jdbcType=DECIMAL}, #{bCalculationOnPiecePriceFlag,jdbcType=SMALLINT}, 
+      #{bLinkedSaleOnlyFlag,jdbcType=SMALLINT}, #{szPackingUnitCounterTypeCode,jdbcType=VARCHAR}, 
+      #{bPriceNegativeFlag,jdbcType=SMALLINT}, #{szQuantityEntryUnitOfMeasure,jdbcType=VARCHAR}, 
+      #{bPriceChangeProhibitFlag,jdbcType=SMALLINT}, #{dPriceEntryLowAmount,jdbcType=DECIMAL}, 
+      #{dPriceEntryHighAmount,jdbcType=DECIMAL}, #{szExternalID,jdbcType=VARCHAR}, #{d2ndPrice,jdbcType=DECIMAL}, 
+      #{d3rdPrice,jdbcType=DECIMAL}, #{d4thPrice,jdbcType=DECIMAL}, #{d5thPrice,jdbcType=DECIMAL}, 
+      #{dLowArtDiscPrice,jdbcType=DECIMAL}, #{szArtLink,jdbcType=VARCHAR}, #{bLocked,jdbcType=SMALLINT}, 
+      #{lWarranty,jdbcType=INTEGER}, #{szPrintLayoutID,jdbcType=VARCHAR}, #{szAddOnDialog,jdbcType=VARCHAR}, 
+      #{bIsContract,jdbcType=SMALLINT}, #{bIsFiscalArt,jdbcType=SMALLINT}, #{bIsSerialized,jdbcType=SMALLINT}, 
+      #{bOnStock,jdbcType=SMALLINT}, #{bArtKVSet,jdbcType=SMALLINT}, #{bArtKSet,jdbcType=SMALLINT}, 
+      #{bArtVSet,jdbcType=SMALLINT}, #{bTotalDiscountAllowed,jdbcType=SMALLINT}, #{bScaleItemFlag,jdbcType=SMALLINT}, 
+      #{bBrandItemFlag,jdbcType=SMALLINT}, #{bSupervisorRequiredFlag,jdbcType=SMALLINT}, 
+      #{bCheckPriceFlag,jdbcType=SMALLINT}, #{bAgeControlFlag,jdbcType=SMALLINT}, #{szPriceUnitOfMeasureName,jdbcType=VARCHAR}, 
+      #{dTareAmount,jdbcType=DECIMAL}, #{szDateValidFrom,jdbcType=VARCHAR}, #{szTimeValidFrom,jdbcType=VARCHAR}, 
+      #{szDateValidTo,jdbcType=VARCHAR}, #{szTimeValidTo,jdbcType=VARCHAR}, #{bIsDepositItem,jdbcType=SMALLINT}, 
+      #{dQtyArtLink,jdbcType=DECIMAL}, #{bPressItem,jdbcType=SMALLINT}, #{bQuantityEntryRequired,jdbcType=SMALLINT}, 
+      #{lAgeControl,jdbcType=INTEGER}, #{bUseSizeAndColor,jdbcType=SMALLINT}, #{bIsBundleItem,jdbcType=SMALLINT}, 
+      #{bLockedByERP,jdbcType=SMALLINT}, #{bLoyaltyPointsAllowed,jdbcType=SMALLINT}, 
+      #{lChangedByOperatorID,jdbcType=INTEGER}, #{dLoyaltyPoints,jdbcType=INTEGER}, #{szDeleteDate,jdbcType=VARCHAR}, 
+      #{lTechLayerAccessID,jdbcType=INTEGER}, #{szLastUpdLocal,jdbcType=VARCHAR}, #{uidObjectID,jdbcType=VARCHAR}, 
+      #{szAccountingID,jdbcType=VARCHAR}, #{bVoidAllowed,jdbcType=SMALLINT}, #{dMaxAllowedQty,jdbcType=DECIMAL}, 
+      #{lOperatorAgeControl,jdbcType=INTEGER}, #{IM_bAllowPOGoodReturn,jdbcType=INTEGER}, 
+      #{IM_dMinOrderQty,jdbcType=DECIMAL}, #{IM_lInventoryDays,jdbcType=INTEGER}, #{IM_lShelfLife,jdbcType=INTEGER}, 
+      #{IM_lReceiveShelfLife,jdbcType=INTEGER}, #{IM_lSaleShelfLife,jdbcType=INTEGER}, 
+      #{IM_szPrimaryStorageLocationID,jdbcType=VARCHAR}, #{IM_lOrderType,jdbcType=INTEGER}, 
+      #{IM_bFreshFoodD1,jdbcType=INTEGER}, #{IM_bFreshFoodD2,jdbcType=INTEGER}, #{IM_bFreshFoodD3,jdbcType=INTEGER}, 
+      #{IM_szOrderBlockDate,jdbcType=VARCHAR}, #{IM_szReturnBlockDate,jdbcType=VARCHAR}, 
+      #{IM_szDailySalesBlockTimeFrom,jdbcType=VARCHAR}, #{IM_szDailySalesBlockTimeTo,jdbcType=VARCHAR}, 
+      #{IM_szPrimaryVendorID,jdbcType=VARCHAR}, #{IM_szPrimaryCDCRetailStoreExternalID,jdbcType=VARCHAR}, 
+      #{IM_bParkingCoupon,jdbcType=INTEGER}, #{IM_dMaxOrderQty,jdbcType=DECIMAL}, #{IM_bCoreItem,jdbcType=INTEGER}, 
+      #{IM_bUnderCDUControl,jdbcType=INTEGER}, #{IM_bUnderStockControl,jdbcType=INTEGER}, 
+      #{IM_lSupplySource,jdbcType=INTEGER}, #{IM_szArticleType,jdbcType=VARCHAR}, #{IM_szPurchaseGroup,jdbcType=VARCHAR}, 
+      #{IM_bGRWithoutPOAllowed,jdbcType=INTEGER}, #{IM_bConsignment,jdbcType=INTEGER}, 
+      #{IM_bWriteOffAllowed,jdbcType=INTEGER}, #{IM_szOrderCycleCode,jdbcType=VARCHAR}, 
+      #{IM_szIMPSA,jdbcType=VARCHAR}, #{IM_szABCIndicator,jdbcType=VARCHAR}, #{IM_lDeliveryLeadTime,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.model.POSIdentity" >
+    insert into POSIdentity
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="szPOSItemID != null" >
+        szPOSItemID,
+      </if>
+      <if test="lRetailStoreID != null" >
+        lRetailStoreID,
+      </if>
+      <if test="szItemId != null" >
+        szItemId,
+      </if>
+      <if test="szDesc != null" >
+        szDesc,
+      </if>
+      <if test="szDesc1 != null" >
+        szDesc1,
+      </if>
+      <if test="szDesc2 != null" >
+        szDesc2,
+      </if>
+      <if test="szDescription != null" >
+        szDescription,
+      </if>
+      <if test="bPriceEntryRequiredFlag != null" >
+        bPriceEntryRequiredFlag,
+      </if>
+      <if test="bMeasurementEntryRequired != null" >
+        bMeasurementEntryRequired,
+      </if>
+      <if test="bQuantityKeyProhibitFlag != null" >
+        bQuantityKeyProhibitFlag,
+      </if>
+      <if test="bProhibitReturnFlag != null" >
+        bProhibitReturnFlag,
+      </if>
+      <if test="bProhibitRepeatKeyFlag != null" >
+        bProhibitRepeatKeyFlag,
+      </if>
+      <if test="dFrequentShopperPointsCount != null" >
+        dFrequentShopperPointsCount,
+      </if>
+      <if test="lCurrencyID != null" >
+        lCurrencyID,
+      </if>
+      <if test="dPackingUnitPriceAmount != null" >
+        dPackingUnitPriceAmount,
+      </if>
+      <if test="dPieceQuantity != null" >
+        dPieceQuantity,
+      </if>
+      <if test="dPiecePriceAmount != null" >
+        dPiecePriceAmount,
+      </if>
+      <if test="bCalculationOnPiecePriceFlag != null" >
+        bCalculationOnPiecePriceFlag,
+      </if>
+      <if test="bLinkedSaleOnlyFlag != null" >
+        bLinkedSaleOnlyFlag,
+      </if>
+      <if test="szPackingUnitCounterTypeCode != null" >
+        szPackingUnitCounterTypeCode,
+      </if>
+      <if test="bPriceNegativeFlag != null" >
+        bPriceNegativeFlag,
+      </if>
+      <if test="szQuantityEntryUnitOfMeasure != null" >
+        szQuantityEntryUnitOfMeasure,
+      </if>
+      <if test="bPriceChangeProhibitFlag != null" >
+        bPriceChangeProhibitFlag,
+      </if>
+      <if test="dPriceEntryLowAmount != null" >
+        dPriceEntryLowAmount,
+      </if>
+      <if test="dPriceEntryHighAmount != null" >
+        dPriceEntryHighAmount,
+      </if>
+      <if test="szExternalID != null" >
+        szExternalID,
+      </if>
+      <if test="d2ndPrice != null" >
+        d2ndPrice,
+      </if>
+      <if test="d3rdPrice != null" >
+        d3rdPrice,
+      </if>
+      <if test="d4thPrice != null" >
+        d4thPrice,
+      </if>
+      <if test="d5thPrice != null" >
+        d5thPrice,
+      </if>
+      <if test="dLowArtDiscPrice != null" >
+        dLowArtDiscPrice,
+      </if>
+      <if test="szArtLink != null" >
+        szArtLink,
+      </if>
+      <if test="bLocked != null" >
+        bLocked,
+      </if>
+      <if test="lWarranty != null" >
+        lWarranty,
+      </if>
+      <if test="szPrintLayoutID != null" >
+        szPrintLayoutID,
+      </if>
+      <if test="szAddOnDialog != null" >
+        szAddOnDialog,
+      </if>
+      <if test="bIsContract != null" >
+        bIsContract,
+      </if>
+      <if test="bIsFiscalArt != null" >
+        bIsFiscalArt,
+      </if>
+      <if test="bIsSerialized != null" >
+        bIsSerialized,
+      </if>
+      <if test="bOnStock != null" >
+        bOnStock,
+      </if>
+      <if test="bArtKVSet != null" >
+        bArtKVSet,
+      </if>
+      <if test="bArtKSet != null" >
+        bArtKSet,
+      </if>
+      <if test="bArtVSet != null" >
+        bArtVSet,
+      </if>
+      <if test="bTotalDiscountAllowed != null" >
+        bTotalDiscountAllowed,
+      </if>
+      <if test="bScaleItemFlag != null" >
+        bScaleItemFlag,
+      </if>
+      <if test="bBrandItemFlag != null" >
+        bBrandItemFlag,
+      </if>
+      <if test="bSupervisorRequiredFlag != null" >
+        bSupervisorRequiredFlag,
+      </if>
+      <if test="bCheckPriceFlag != null" >
+        bCheckPriceFlag,
+      </if>
+      <if test="bAgeControlFlag != null" >
+        bAgeControlFlag,
+      </if>
+      <if test="szPriceUnitOfMeasureName != null" >
+        szPriceUnitOfMeasureName,
+      </if>
+      <if test="dTareAmount != null" >
+        dTareAmount,
+      </if>
+      <if test="szDateValidFrom != null" >
+        szDateValidFrom,
+      </if>
+      <if test="szTimeValidFrom != null" >
+        szTimeValidFrom,
+      </if>
+      <if test="szDateValidTo != null" >
+        szDateValidTo,
+      </if>
+      <if test="szTimeValidTo != null" >
+        szTimeValidTo,
+      </if>
+      <if test="bIsDepositItem != null" >
+        bIsDepositItem,
+      </if>
+      <if test="dQtyArtLink != null" >
+        dQtyArtLink,
+      </if>
+      <if test="bPressItem != null" >
+        bPressItem,
+      </if>
+      <if test="bQuantityEntryRequired != null" >
+        bQuantityEntryRequired,
+      </if>
+      <if test="lAgeControl != null" >
+        lAgeControl,
+      </if>
+      <if test="bUseSizeAndColor != null" >
+        bUseSizeAndColor,
+      </if>
+      <if test="bIsBundleItem != null" >
+        bIsBundleItem,
+      </if>
+      <if test="bLockedByERP != null" >
+        bLockedByERP,
+      </if>
+      <if test="bLoyaltyPointsAllowed != null" >
+        bLoyaltyPointsAllowed,
+      </if>
+      <if test="lChangedByOperatorID != null" >
+        lChangedByOperatorID,
+      </if>
+      <if test="dLoyaltyPoints != null" >
+        dLoyaltyPoints,
+      </if>
+      <if test="szDeleteDate != null" >
+        szDeleteDate,
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        lTechLayerAccessID,
+      </if>
+      <if test="szLastUpdLocal != null" >
+        szLastUpdLocal,
+      </if>
+      <if test="uidObjectID != null" >
+        uidObjectID,
+      </if>
+      <if test="szAccountingID != null" >
+        szAccountingID,
+      </if>
+      <if test="bVoidAllowed != null" >
+        bVoidAllowed,
+      </if>
+      <if test="dMaxAllowedQty != null" >
+        dMaxAllowedQty,
+      </if>
+      <if test="lOperatorAgeControl != null" >
+        lOperatorAgeControl,
+      </if>
+      <if test="IM_bAllowPOGoodReturn != null" >
+        IM_bAllowPOGoodReturn,
+      </if>
+      <if test="IM_dMinOrderQty != null" >
+        IM_dMinOrderQty,
+      </if>
+      <if test="IM_lInventoryDays != null" >
+        IM_lInventoryDays,
+      </if>
+      <if test="IM_lShelfLife != null" >
+        IM_lShelfLife,
+      </if>
+      <if test="IM_lReceiveShelfLife != null" >
+        IM_lReceiveShelfLife,
+      </if>
+      <if test="IM_lSaleShelfLife != null" >
+        IM_lSaleShelfLife,
+      </if>
+      <if test="IM_szPrimaryStorageLocationID != null" >
+        IM_szPrimaryStorageLocationID,
+      </if>
+      <if test="IM_lOrderType != null" >
+        IM_lOrderType,
+      </if>
+      <if test="IM_bFreshFoodD1 != null" >
+        IM_bFreshFoodD1,
+      </if>
+      <if test="IM_bFreshFoodD2 != null" >
+        IM_bFreshFoodD2,
+      </if>
+      <if test="IM_bFreshFoodD3 != null" >
+        IM_bFreshFoodD3,
+      </if>
+      <if test="IM_szOrderBlockDate != null" >
+        IM_szOrderBlockDate,
+      </if>
+      <if test="IM_szReturnBlockDate != null" >
+        IM_szReturnBlockDate,
+      </if>
+      <if test="IM_szDailySalesBlockTimeFrom != null" >
+        IM_szDailySalesBlockTimeFrom,
+      </if>
+      <if test="IM_szDailySalesBlockTimeTo != null" >
+        IM_szDailySalesBlockTimeTo,
+      </if>
+      <if test="IM_szPrimaryVendorID != null" >
+        IM_szPrimaryVendorID,
+      </if>
+      <if test="IM_szPrimaryCDCRetailStoreExternalID != null" >
+        IM_szPrimaryCDCRetailStoreExternalID,
+      </if>
+      <if test="IM_bParkingCoupon != null" >
+        IM_bParkingCoupon,
+      </if>
+      <if test="IM_dMaxOrderQty != null" >
+        IM_dMaxOrderQty,
+      </if>
+      <if test="IM_bCoreItem != null" >
+        IM_bCoreItem,
+      </if>
+      <if test="IM_bUnderCDUControl != null" >
+        IM_bUnderCDUControl,
+      </if>
+      <if test="IM_bUnderStockControl != null" >
+        IM_bUnderStockControl,
+      </if>
+      <if test="IM_lSupplySource != null" >
+        IM_lSupplySource,
+      </if>
+      <if test="IM_szArticleType != null" >
+        IM_szArticleType,
+      </if>
+      <if test="IM_szPurchaseGroup != null" >
+        IM_szPurchaseGroup,
+      </if>
+      <if test="IM_bGRWithoutPOAllowed != null" >
+        IM_bGRWithoutPOAllowed,
+      </if>
+      <if test="IM_bConsignment != null" >
+        IM_bConsignment,
+      </if>
+      <if test="IM_bWriteOffAllowed != null" >
+        IM_bWriteOffAllowed,
+      </if>
+      <if test="IM_szOrderCycleCode != null" >
+        IM_szOrderCycleCode,
+      </if>
+      <if test="IM_szIMPSA != null" >
+        IM_szIMPSA,
+      </if>
+      <if test="IM_szABCIndicator != null" >
+        IM_szABCIndicator,
+      </if>
+      <if test="IM_lDeliveryLeadTime != null" >
+        IM_lDeliveryLeadTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="szPOSItemID != null" >
+        #{szPOSItemID,jdbcType=VARCHAR},
+      </if>
+      <if test="lRetailStoreID != null" >
+        #{lRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="szItemId != null" >
+        #{szItemId,jdbcType=VARCHAR},
+      </if>
+      <if test="szDesc != null" >
+        #{szDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="szDesc1 != null" >
+        #{szDesc1,jdbcType=VARCHAR},
+      </if>
+      <if test="szDesc2 != null" >
+        #{szDesc2,jdbcType=VARCHAR},
+      </if>
+      <if test="szDescription != null" >
+        #{szDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="bPriceEntryRequiredFlag != null" >
+        #{bPriceEntryRequiredFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="bMeasurementEntryRequired != null" >
+        #{bMeasurementEntryRequired,jdbcType=SMALLINT},
+      </if>
+      <if test="bQuantityKeyProhibitFlag != null" >
+        #{bQuantityKeyProhibitFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="bProhibitReturnFlag != null" >
+        #{bProhibitReturnFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="bProhibitRepeatKeyFlag != null" >
+        #{bProhibitRepeatKeyFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="dFrequentShopperPointsCount != null" >
+        #{dFrequentShopperPointsCount,jdbcType=DECIMAL},
+      </if>
+      <if test="lCurrencyID != null" >
+        #{lCurrencyID,jdbcType=INTEGER},
+      </if>
+      <if test="dPackingUnitPriceAmount != null" >
+        #{dPackingUnitPriceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="dPieceQuantity != null" >
+        #{dPieceQuantity,jdbcType=DECIMAL},
+      </if>
+      <if test="dPiecePriceAmount != null" >
+        #{dPiecePriceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="bCalculationOnPiecePriceFlag != null" >
+        #{bCalculationOnPiecePriceFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="bLinkedSaleOnlyFlag != null" >
+        #{bLinkedSaleOnlyFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="szPackingUnitCounterTypeCode != null" >
+        #{szPackingUnitCounterTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bPriceNegativeFlag != null" >
+        #{bPriceNegativeFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="szQuantityEntryUnitOfMeasure != null" >
+        #{szQuantityEntryUnitOfMeasure,jdbcType=VARCHAR},
+      </if>
+      <if test="bPriceChangeProhibitFlag != null" >
+        #{bPriceChangeProhibitFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="dPriceEntryLowAmount != null" >
+        #{dPriceEntryLowAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="dPriceEntryHighAmount != null" >
+        #{dPriceEntryHighAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="szExternalID != null" >
+        #{szExternalID,jdbcType=VARCHAR},
+      </if>
+      <if test="d2ndPrice != null" >
+        #{d2ndPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="d3rdPrice != null" >
+        #{d3rdPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="d4thPrice != null" >
+        #{d4thPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="d5thPrice != null" >
+        #{d5thPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="dLowArtDiscPrice != null" >
+        #{dLowArtDiscPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="szArtLink != null" >
+        #{szArtLink,jdbcType=VARCHAR},
+      </if>
+      <if test="bLocked != null" >
+        #{bLocked,jdbcType=SMALLINT},
+      </if>
+      <if test="lWarranty != null" >
+        #{lWarranty,jdbcType=INTEGER},
+      </if>
+      <if test="szPrintLayoutID != null" >
+        #{szPrintLayoutID,jdbcType=VARCHAR},
+      </if>
+      <if test="szAddOnDialog != null" >
+        #{szAddOnDialog,jdbcType=VARCHAR},
+      </if>
+      <if test="bIsContract != null" >
+        #{bIsContract,jdbcType=SMALLINT},
+      </if>
+      <if test="bIsFiscalArt != null" >
+        #{bIsFiscalArt,jdbcType=SMALLINT},
+      </if>
+      <if test="bIsSerialized != null" >
+        #{bIsSerialized,jdbcType=SMALLINT},
+      </if>
+      <if test="bOnStock != null" >
+        #{bOnStock,jdbcType=SMALLINT},
+      </if>
+      <if test="bArtKVSet != null" >
+        #{bArtKVSet,jdbcType=SMALLINT},
+      </if>
+      <if test="bArtKSet != null" >
+        #{bArtKSet,jdbcType=SMALLINT},
+      </if>
+      <if test="bArtVSet != null" >
+        #{bArtVSet,jdbcType=SMALLINT},
+      </if>
+      <if test="bTotalDiscountAllowed != null" >
+        #{bTotalDiscountAllowed,jdbcType=SMALLINT},
+      </if>
+      <if test="bScaleItemFlag != null" >
+        #{bScaleItemFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="bBrandItemFlag != null" >
+        #{bBrandItemFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="bSupervisorRequiredFlag != null" >
+        #{bSupervisorRequiredFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="bCheckPriceFlag != null" >
+        #{bCheckPriceFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="bAgeControlFlag != null" >
+        #{bAgeControlFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="szPriceUnitOfMeasureName != null" >
+        #{szPriceUnitOfMeasureName,jdbcType=VARCHAR},
+      </if>
+      <if test="dTareAmount != null" >
+        #{dTareAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="szDateValidFrom != null" >
+        #{szDateValidFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="szTimeValidFrom != null" >
+        #{szTimeValidFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="szDateValidTo != null" >
+        #{szDateValidTo,jdbcType=VARCHAR},
+      </if>
+      <if test="szTimeValidTo != null" >
+        #{szTimeValidTo,jdbcType=VARCHAR},
+      </if>
+      <if test="bIsDepositItem != null" >
+        #{bIsDepositItem,jdbcType=SMALLINT},
+      </if>
+      <if test="dQtyArtLink != null" >
+        #{dQtyArtLink,jdbcType=DECIMAL},
+      </if>
+      <if test="bPressItem != null" >
+        #{bPressItem,jdbcType=SMALLINT},
+      </if>
+      <if test="bQuantityEntryRequired != null" >
+        #{bQuantityEntryRequired,jdbcType=SMALLINT},
+      </if>
+      <if test="lAgeControl != null" >
+        #{lAgeControl,jdbcType=INTEGER},
+      </if>
+      <if test="bUseSizeAndColor != null" >
+        #{bUseSizeAndColor,jdbcType=SMALLINT},
+      </if>
+      <if test="bIsBundleItem != null" >
+        #{bIsBundleItem,jdbcType=SMALLINT},
+      </if>
+      <if test="bLockedByERP != null" >
+        #{bLockedByERP,jdbcType=SMALLINT},
+      </if>
+      <if test="bLoyaltyPointsAllowed != null" >
+        #{bLoyaltyPointsAllowed,jdbcType=SMALLINT},
+      </if>
+      <if test="lChangedByOperatorID != null" >
+        #{lChangedByOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="dLoyaltyPoints != null" >
+        #{dLoyaltyPoints,jdbcType=INTEGER},
+      </if>
+      <if test="szDeleteDate != null" >
+        #{szDeleteDate,jdbcType=VARCHAR},
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        #{lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="szLastUpdLocal != null" >
+        #{szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="uidObjectID != null" >
+        #{uidObjectID,jdbcType=VARCHAR},
+      </if>
+      <if test="szAccountingID != null" >
+        #{szAccountingID,jdbcType=VARCHAR},
+      </if>
+      <if test="bVoidAllowed != null" >
+        #{bVoidAllowed,jdbcType=SMALLINT},
+      </if>
+      <if test="dMaxAllowedQty != null" >
+        #{dMaxAllowedQty,jdbcType=DECIMAL},
+      </if>
+      <if test="lOperatorAgeControl != null" >
+        #{lOperatorAgeControl,jdbcType=INTEGER},
+      </if>
+      <if test="IM_bAllowPOGoodReturn != null" >
+        #{IM_bAllowPOGoodReturn,jdbcType=INTEGER},
+      </if>
+      <if test="IM_dMinOrderQty != null" >
+        #{IM_dMinOrderQty,jdbcType=DECIMAL},
+      </if>
+      <if test="IM_lInventoryDays != null" >
+        #{IM_lInventoryDays,jdbcType=INTEGER},
+      </if>
+      <if test="IM_lShelfLife != null" >
+        #{IM_lShelfLife,jdbcType=INTEGER},
+      </if>
+      <if test="IM_lReceiveShelfLife != null" >
+        #{IM_lReceiveShelfLife,jdbcType=INTEGER},
+      </if>
+      <if test="IM_lSaleShelfLife != null" >
+        #{IM_lSaleShelfLife,jdbcType=INTEGER},
+      </if>
+      <if test="IM_szPrimaryStorageLocationID != null" >
+        #{IM_szPrimaryStorageLocationID,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_lOrderType != null" >
+        #{IM_lOrderType,jdbcType=INTEGER},
+      </if>
+      <if test="IM_bFreshFoodD1 != null" >
+        #{IM_bFreshFoodD1,jdbcType=INTEGER},
+      </if>
+      <if test="IM_bFreshFoodD2 != null" >
+        #{IM_bFreshFoodD2,jdbcType=INTEGER},
+      </if>
+      <if test="IM_bFreshFoodD3 != null" >
+        #{IM_bFreshFoodD3,jdbcType=INTEGER},
+      </if>
+      <if test="IM_szOrderBlockDate != null" >
+        #{IM_szOrderBlockDate,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szReturnBlockDate != null" >
+        #{IM_szReturnBlockDate,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szDailySalesBlockTimeFrom != null" >
+        #{IM_szDailySalesBlockTimeFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szDailySalesBlockTimeTo != null" >
+        #{IM_szDailySalesBlockTimeTo,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szPrimaryVendorID != null" >
+        #{IM_szPrimaryVendorID,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szPrimaryCDCRetailStoreExternalID != null" >
+        #{IM_szPrimaryCDCRetailStoreExternalID,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_bParkingCoupon != null" >
+        #{IM_bParkingCoupon,jdbcType=INTEGER},
+      </if>
+      <if test="IM_dMaxOrderQty != null" >
+        #{IM_dMaxOrderQty,jdbcType=DECIMAL},
+      </if>
+      <if test="IM_bCoreItem != null" >
+        #{IM_bCoreItem,jdbcType=INTEGER},
+      </if>
+      <if test="IM_bUnderCDUControl != null" >
+        #{IM_bUnderCDUControl,jdbcType=INTEGER},
+      </if>
+      <if test="IM_bUnderStockControl != null" >
+        #{IM_bUnderStockControl,jdbcType=INTEGER},
+      </if>
+      <if test="IM_lSupplySource != null" >
+        #{IM_lSupplySource,jdbcType=INTEGER},
+      </if>
+      <if test="IM_szArticleType != null" >
+        #{IM_szArticleType,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szPurchaseGroup != null" >
+        #{IM_szPurchaseGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_bGRWithoutPOAllowed != null" >
+        #{IM_bGRWithoutPOAllowed,jdbcType=INTEGER},
+      </if>
+      <if test="IM_bConsignment != null" >
+        #{IM_bConsignment,jdbcType=INTEGER},
+      </if>
+      <if test="IM_bWriteOffAllowed != null" >
+        #{IM_bWriteOffAllowed,jdbcType=INTEGER},
+      </if>
+      <if test="IM_szOrderCycleCode != null" >
+        #{IM_szOrderCycleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szIMPSA != null" >
+        #{IM_szIMPSA,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szABCIndicator != null" >
+        #{IM_szABCIndicator,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_lDeliveryLeadTime != null" >
+        #{IM_lDeliveryLeadTime,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.model.POSIdentityExample" resultType="java.lang.Integer" >
+    select count(*) from POSIdentity
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update POSIdentity
+    <set >
+      <if test="record.szPOSItemID != null" >
+        szPOSItemID = #{record.szPOSItemID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lRetailStoreID != null" >
+        lRetailStoreID = #{record.lRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="record.szItemId != null" >
+        szItemId = #{record.szItemId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szDesc != null" >
+        szDesc = #{record.szDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szDesc1 != null" >
+        szDesc1 = #{record.szDesc1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szDesc2 != null" >
+        szDesc2 = #{record.szDesc2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szDescription != null" >
+        szDescription = #{record.szDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bPriceEntryRequiredFlag != null" >
+        bPriceEntryRequiredFlag = #{record.bPriceEntryRequiredFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="record.bMeasurementEntryRequired != null" >
+        bMeasurementEntryRequired = #{record.bMeasurementEntryRequired,jdbcType=SMALLINT},
+      </if>
+      <if test="record.bQuantityKeyProhibitFlag != null" >
+        bQuantityKeyProhibitFlag = #{record.bQuantityKeyProhibitFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="record.bProhibitReturnFlag != null" >
+        bProhibitReturnFlag = #{record.bProhibitReturnFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="record.bProhibitRepeatKeyFlag != null" >
+        bProhibitRepeatKeyFlag = #{record.bProhibitRepeatKeyFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="record.dFrequentShopperPointsCount != null" >
+        dFrequentShopperPointsCount = #{record.dFrequentShopperPointsCount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.lCurrencyID != null" >
+        lCurrencyID = #{record.lCurrencyID,jdbcType=INTEGER},
+      </if>
+      <if test="record.dPackingUnitPriceAmount != null" >
+        dPackingUnitPriceAmount = #{record.dPackingUnitPriceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dPieceQuantity != null" >
+        dPieceQuantity = #{record.dPieceQuantity,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dPiecePriceAmount != null" >
+        dPiecePriceAmount = #{record.dPiecePriceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.bCalculationOnPiecePriceFlag != null" >
+        bCalculationOnPiecePriceFlag = #{record.bCalculationOnPiecePriceFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="record.bLinkedSaleOnlyFlag != null" >
+        bLinkedSaleOnlyFlag = #{record.bLinkedSaleOnlyFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="record.szPackingUnitCounterTypeCode != null" >
+        szPackingUnitCounterTypeCode = #{record.szPackingUnitCounterTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bPriceNegativeFlag != null" >
+        bPriceNegativeFlag = #{record.bPriceNegativeFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="record.szQuantityEntryUnitOfMeasure != null" >
+        szQuantityEntryUnitOfMeasure = #{record.szQuantityEntryUnitOfMeasure,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bPriceChangeProhibitFlag != null" >
+        bPriceChangeProhibitFlag = #{record.bPriceChangeProhibitFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="record.dPriceEntryLowAmount != null" >
+        dPriceEntryLowAmount = #{record.dPriceEntryLowAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dPriceEntryHighAmount != null" >
+        dPriceEntryHighAmount = #{record.dPriceEntryHighAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.szExternalID != null" >
+        szExternalID = #{record.szExternalID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.d2ndPrice != null" >
+        d2ndPrice = #{record.d2ndPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.d3rdPrice != null" >
+        d3rdPrice = #{record.d3rdPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.d4thPrice != null" >
+        d4thPrice = #{record.d4thPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.d5thPrice != null" >
+        d5thPrice = #{record.d5thPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dLowArtDiscPrice != null" >
+        dLowArtDiscPrice = #{record.dLowArtDiscPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.szArtLink != null" >
+        szArtLink = #{record.szArtLink,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bLocked != null" >
+        bLocked = #{record.bLocked,jdbcType=SMALLINT},
+      </if>
+      <if test="record.lWarranty != null" >
+        lWarranty = #{record.lWarranty,jdbcType=INTEGER},
+      </if>
+      <if test="record.szPrintLayoutID != null" >
+        szPrintLayoutID = #{record.szPrintLayoutID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szAddOnDialog != null" >
+        szAddOnDialog = #{record.szAddOnDialog,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bIsContract != null" >
+        bIsContract = #{record.bIsContract,jdbcType=SMALLINT},
+      </if>
+      <if test="record.bIsFiscalArt != null" >
+        bIsFiscalArt = #{record.bIsFiscalArt,jdbcType=SMALLINT},
+      </if>
+      <if test="record.bIsSerialized != null" >
+        bIsSerialized = #{record.bIsSerialized,jdbcType=SMALLINT},
+      </if>
+      <if test="record.bOnStock != null" >
+        bOnStock = #{record.bOnStock,jdbcType=SMALLINT},
+      </if>
+      <if test="record.bArtKVSet != null" >
+        bArtKVSet = #{record.bArtKVSet,jdbcType=SMALLINT},
+      </if>
+      <if test="record.bArtKSet != null" >
+        bArtKSet = #{record.bArtKSet,jdbcType=SMALLINT},
+      </if>
+      <if test="record.bArtVSet != null" >
+        bArtVSet = #{record.bArtVSet,jdbcType=SMALLINT},
+      </if>
+      <if test="record.bTotalDiscountAllowed != null" >
+        bTotalDiscountAllowed = #{record.bTotalDiscountAllowed,jdbcType=SMALLINT},
+      </if>
+      <if test="record.bScaleItemFlag != null" >
+        bScaleItemFlag = #{record.bScaleItemFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="record.bBrandItemFlag != null" >
+        bBrandItemFlag = #{record.bBrandItemFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="record.bSupervisorRequiredFlag != null" >
+        bSupervisorRequiredFlag = #{record.bSupervisorRequiredFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="record.bCheckPriceFlag != null" >
+        bCheckPriceFlag = #{record.bCheckPriceFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="record.bAgeControlFlag != null" >
+        bAgeControlFlag = #{record.bAgeControlFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="record.szPriceUnitOfMeasureName != null" >
+        szPriceUnitOfMeasureName = #{record.szPriceUnitOfMeasureName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dTareAmount != null" >
+        dTareAmount = #{record.dTareAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.szDateValidFrom != null" >
+        szDateValidFrom = #{record.szDateValidFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szTimeValidFrom != null" >
+        szTimeValidFrom = #{record.szTimeValidFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szDateValidTo != null" >
+        szDateValidTo = #{record.szDateValidTo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szTimeValidTo != null" >
+        szTimeValidTo = #{record.szTimeValidTo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bIsDepositItem != null" >
+        bIsDepositItem = #{record.bIsDepositItem,jdbcType=SMALLINT},
+      </if>
+      <if test="record.dQtyArtLink != null" >
+        dQtyArtLink = #{record.dQtyArtLink,jdbcType=DECIMAL},
+      </if>
+      <if test="record.bPressItem != null" >
+        bPressItem = #{record.bPressItem,jdbcType=SMALLINT},
+      </if>
+      <if test="record.bQuantityEntryRequired != null" >
+        bQuantityEntryRequired = #{record.bQuantityEntryRequired,jdbcType=SMALLINT},
+      </if>
+      <if test="record.lAgeControl != null" >
+        lAgeControl = #{record.lAgeControl,jdbcType=INTEGER},
+      </if>
+      <if test="record.bUseSizeAndColor != null" >
+        bUseSizeAndColor = #{record.bUseSizeAndColor,jdbcType=SMALLINT},
+      </if>
+      <if test="record.bIsBundleItem != null" >
+        bIsBundleItem = #{record.bIsBundleItem,jdbcType=SMALLINT},
+      </if>
+      <if test="record.bLockedByERP != null" >
+        bLockedByERP = #{record.bLockedByERP,jdbcType=SMALLINT},
+      </if>
+      <if test="record.bLoyaltyPointsAllowed != null" >
+        bLoyaltyPointsAllowed = #{record.bLoyaltyPointsAllowed,jdbcType=SMALLINT},
+      </if>
+      <if test="record.lChangedByOperatorID != null" >
+        lChangedByOperatorID = #{record.lChangedByOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="record.dLoyaltyPoints != null" >
+        dLoyaltyPoints = #{record.dLoyaltyPoints,jdbcType=INTEGER},
+      </if>
+      <if test="record.szDeleteDate != null" >
+        szDeleteDate = #{record.szDeleteDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lTechLayerAccessID != null" >
+        lTechLayerAccessID = #{record.lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="record.szLastUpdLocal != null" >
+        szLastUpdLocal = #{record.szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uidObjectID != null" >
+        uidObjectID = #{record.uidObjectID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szAccountingID != null" >
+        szAccountingID = #{record.szAccountingID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bVoidAllowed != null" >
+        bVoidAllowed = #{record.bVoidAllowed,jdbcType=SMALLINT},
+      </if>
+      <if test="record.dMaxAllowedQty != null" >
+        dMaxAllowedQty = #{record.dMaxAllowedQty,jdbcType=DECIMAL},
+      </if>
+      <if test="record.lOperatorAgeControl != null" >
+        lOperatorAgeControl = #{record.lOperatorAgeControl,jdbcType=INTEGER},
+      </if>
+      <if test="record.IM_bAllowPOGoodReturn != null" >
+        IM_bAllowPOGoodReturn = #{record.IM_bAllowPOGoodReturn,jdbcType=INTEGER},
+      </if>
+      <if test="record.IM_dMinOrderQty != null" >
+        IM_dMinOrderQty = #{record.IM_dMinOrderQty,jdbcType=DECIMAL},
+      </if>
+      <if test="record.IM_lInventoryDays != null" >
+        IM_lInventoryDays = #{record.IM_lInventoryDays,jdbcType=INTEGER},
+      </if>
+      <if test="record.IM_lShelfLife != null" >
+        IM_lShelfLife = #{record.IM_lShelfLife,jdbcType=INTEGER},
+      </if>
+      <if test="record.IM_lReceiveShelfLife != null" >
+        IM_lReceiveShelfLife = #{record.IM_lReceiveShelfLife,jdbcType=INTEGER},
+      </if>
+      <if test="record.IM_lSaleShelfLife != null" >
+        IM_lSaleShelfLife = #{record.IM_lSaleShelfLife,jdbcType=INTEGER},
+      </if>
+      <if test="record.IM_szPrimaryStorageLocationID != null" >
+        IM_szPrimaryStorageLocationID = #{record.IM_szPrimaryStorageLocationID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_lOrderType != null" >
+        IM_lOrderType = #{record.IM_lOrderType,jdbcType=INTEGER},
+      </if>
+      <if test="record.IM_bFreshFoodD1 != null" >
+        IM_bFreshFoodD1 = #{record.IM_bFreshFoodD1,jdbcType=INTEGER},
+      </if>
+      <if test="record.IM_bFreshFoodD2 != null" >
+        IM_bFreshFoodD2 = #{record.IM_bFreshFoodD2,jdbcType=INTEGER},
+      </if>
+      <if test="record.IM_bFreshFoodD3 != null" >
+        IM_bFreshFoodD3 = #{record.IM_bFreshFoodD3,jdbcType=INTEGER},
+      </if>
+      <if test="record.IM_szOrderBlockDate != null" >
+        IM_szOrderBlockDate = #{record.IM_szOrderBlockDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_szReturnBlockDate != null" >
+        IM_szReturnBlockDate = #{record.IM_szReturnBlockDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_szDailySalesBlockTimeFrom != null" >
+        IM_szDailySalesBlockTimeFrom = #{record.IM_szDailySalesBlockTimeFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_szDailySalesBlockTimeTo != null" >
+        IM_szDailySalesBlockTimeTo = #{record.IM_szDailySalesBlockTimeTo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_szPrimaryVendorID != null" >
+        IM_szPrimaryVendorID = #{record.IM_szPrimaryVendorID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_szPrimaryCDCRetailStoreExternalID != null" >
+        IM_szPrimaryCDCRetailStoreExternalID = #{record.IM_szPrimaryCDCRetailStoreExternalID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_bParkingCoupon != null" >
+        IM_bParkingCoupon = #{record.IM_bParkingCoupon,jdbcType=INTEGER},
+      </if>
+      <if test="record.IM_dMaxOrderQty != null" >
+        IM_dMaxOrderQty = #{record.IM_dMaxOrderQty,jdbcType=DECIMAL},
+      </if>
+      <if test="record.IM_bCoreItem != null" >
+        IM_bCoreItem = #{record.IM_bCoreItem,jdbcType=INTEGER},
+      </if>
+      <if test="record.IM_bUnderCDUControl != null" >
+        IM_bUnderCDUControl = #{record.IM_bUnderCDUControl,jdbcType=INTEGER},
+      </if>
+      <if test="record.IM_bUnderStockControl != null" >
+        IM_bUnderStockControl = #{record.IM_bUnderStockControl,jdbcType=INTEGER},
+      </if>
+      <if test="record.IM_lSupplySource != null" >
+        IM_lSupplySource = #{record.IM_lSupplySource,jdbcType=INTEGER},
+      </if>
+      <if test="record.IM_szArticleType != null" >
+        IM_szArticleType = #{record.IM_szArticleType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_szPurchaseGroup != null" >
+        IM_szPurchaseGroup = #{record.IM_szPurchaseGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_bGRWithoutPOAllowed != null" >
+        IM_bGRWithoutPOAllowed = #{record.IM_bGRWithoutPOAllowed,jdbcType=INTEGER},
+      </if>
+      <if test="record.IM_bConsignment != null" >
+        IM_bConsignment = #{record.IM_bConsignment,jdbcType=INTEGER},
+      </if>
+      <if test="record.IM_bWriteOffAllowed != null" >
+        IM_bWriteOffAllowed = #{record.IM_bWriteOffAllowed,jdbcType=INTEGER},
+      </if>
+      <if test="record.IM_szOrderCycleCode != null" >
+        IM_szOrderCycleCode = #{record.IM_szOrderCycleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_szIMPSA != null" >
+        IM_szIMPSA = #{record.IM_szIMPSA,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_szABCIndicator != null" >
+        IM_szABCIndicator = #{record.IM_szABCIndicator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_lDeliveryLeadTime != null" >
+        IM_lDeliveryLeadTime = #{record.IM_lDeliveryLeadTime,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update POSIdentity
+    set szPOSItemID = #{record.szPOSItemID,jdbcType=VARCHAR},
+      lRetailStoreID = #{record.lRetailStoreID,jdbcType=INTEGER},
+      szItemId = #{record.szItemId,jdbcType=VARCHAR},
+      szDesc = #{record.szDesc,jdbcType=VARCHAR},
+      szDesc1 = #{record.szDesc1,jdbcType=VARCHAR},
+      szDesc2 = #{record.szDesc2,jdbcType=VARCHAR},
+      szDescription = #{record.szDescription,jdbcType=VARCHAR},
+      bPriceEntryRequiredFlag = #{record.bPriceEntryRequiredFlag,jdbcType=SMALLINT},
+      bMeasurementEntryRequired = #{record.bMeasurementEntryRequired,jdbcType=SMALLINT},
+      bQuantityKeyProhibitFlag = #{record.bQuantityKeyProhibitFlag,jdbcType=SMALLINT},
+      bProhibitReturnFlag = #{record.bProhibitReturnFlag,jdbcType=SMALLINT},
+      bProhibitRepeatKeyFlag = #{record.bProhibitRepeatKeyFlag,jdbcType=SMALLINT},
+      dFrequentShopperPointsCount = #{record.dFrequentShopperPointsCount,jdbcType=DECIMAL},
+      lCurrencyID = #{record.lCurrencyID,jdbcType=INTEGER},
+      dPackingUnitPriceAmount = #{record.dPackingUnitPriceAmount,jdbcType=DECIMAL},
+      dPieceQuantity = #{record.dPieceQuantity,jdbcType=DECIMAL},
+      dPiecePriceAmount = #{record.dPiecePriceAmount,jdbcType=DECIMAL},
+      bCalculationOnPiecePriceFlag = #{record.bCalculationOnPiecePriceFlag,jdbcType=SMALLINT},
+      bLinkedSaleOnlyFlag = #{record.bLinkedSaleOnlyFlag,jdbcType=SMALLINT},
+      szPackingUnitCounterTypeCode = #{record.szPackingUnitCounterTypeCode,jdbcType=VARCHAR},
+      bPriceNegativeFlag = #{record.bPriceNegativeFlag,jdbcType=SMALLINT},
+      szQuantityEntryUnitOfMeasure = #{record.szQuantityEntryUnitOfMeasure,jdbcType=VARCHAR},
+      bPriceChangeProhibitFlag = #{record.bPriceChangeProhibitFlag,jdbcType=SMALLINT},
+      dPriceEntryLowAmount = #{record.dPriceEntryLowAmount,jdbcType=DECIMAL},
+      dPriceEntryHighAmount = #{record.dPriceEntryHighAmount,jdbcType=DECIMAL},
+      szExternalID = #{record.szExternalID,jdbcType=VARCHAR},
+      d2ndPrice = #{record.d2ndPrice,jdbcType=DECIMAL},
+      d3rdPrice = #{record.d3rdPrice,jdbcType=DECIMAL},
+      d4thPrice = #{record.d4thPrice,jdbcType=DECIMAL},
+      d5thPrice = #{record.d5thPrice,jdbcType=DECIMAL},
+      dLowArtDiscPrice = #{record.dLowArtDiscPrice,jdbcType=DECIMAL},
+      szArtLink = #{record.szArtLink,jdbcType=VARCHAR},
+      bLocked = #{record.bLocked,jdbcType=SMALLINT},
+      lWarranty = #{record.lWarranty,jdbcType=INTEGER},
+      szPrintLayoutID = #{record.szPrintLayoutID,jdbcType=VARCHAR},
+      szAddOnDialog = #{record.szAddOnDialog,jdbcType=VARCHAR},
+      bIsContract = #{record.bIsContract,jdbcType=SMALLINT},
+      bIsFiscalArt = #{record.bIsFiscalArt,jdbcType=SMALLINT},
+      bIsSerialized = #{record.bIsSerialized,jdbcType=SMALLINT},
+      bOnStock = #{record.bOnStock,jdbcType=SMALLINT},
+      bArtKVSet = #{record.bArtKVSet,jdbcType=SMALLINT},
+      bArtKSet = #{record.bArtKSet,jdbcType=SMALLINT},
+      bArtVSet = #{record.bArtVSet,jdbcType=SMALLINT},
+      bTotalDiscountAllowed = #{record.bTotalDiscountAllowed,jdbcType=SMALLINT},
+      bScaleItemFlag = #{record.bScaleItemFlag,jdbcType=SMALLINT},
+      bBrandItemFlag = #{record.bBrandItemFlag,jdbcType=SMALLINT},
+      bSupervisorRequiredFlag = #{record.bSupervisorRequiredFlag,jdbcType=SMALLINT},
+      bCheckPriceFlag = #{record.bCheckPriceFlag,jdbcType=SMALLINT},
+      bAgeControlFlag = #{record.bAgeControlFlag,jdbcType=SMALLINT},
+      szPriceUnitOfMeasureName = #{record.szPriceUnitOfMeasureName,jdbcType=VARCHAR},
+      dTareAmount = #{record.dTareAmount,jdbcType=DECIMAL},
+      szDateValidFrom = #{record.szDateValidFrom,jdbcType=VARCHAR},
+      szTimeValidFrom = #{record.szTimeValidFrom,jdbcType=VARCHAR},
+      szDateValidTo = #{record.szDateValidTo,jdbcType=VARCHAR},
+      szTimeValidTo = #{record.szTimeValidTo,jdbcType=VARCHAR},
+      bIsDepositItem = #{record.bIsDepositItem,jdbcType=SMALLINT},
+      dQtyArtLink = #{record.dQtyArtLink,jdbcType=DECIMAL},
+      bPressItem = #{record.bPressItem,jdbcType=SMALLINT},
+      bQuantityEntryRequired = #{record.bQuantityEntryRequired,jdbcType=SMALLINT},
+      lAgeControl = #{record.lAgeControl,jdbcType=INTEGER},
+      bUseSizeAndColor = #{record.bUseSizeAndColor,jdbcType=SMALLINT},
+      bIsBundleItem = #{record.bIsBundleItem,jdbcType=SMALLINT},
+      bLockedByERP = #{record.bLockedByERP,jdbcType=SMALLINT},
+      bLoyaltyPointsAllowed = #{record.bLoyaltyPointsAllowed,jdbcType=SMALLINT},
+      lChangedByOperatorID = #{record.lChangedByOperatorID,jdbcType=INTEGER},
+      dLoyaltyPoints = #{record.dLoyaltyPoints,jdbcType=INTEGER},
+      szDeleteDate = #{record.szDeleteDate,jdbcType=VARCHAR},
+      lTechLayerAccessID = #{record.lTechLayerAccessID,jdbcType=INTEGER},
+      szLastUpdLocal = #{record.szLastUpdLocal,jdbcType=VARCHAR},
+      uidObjectID = #{record.uidObjectID,jdbcType=VARCHAR},
+      szAccountingID = #{record.szAccountingID,jdbcType=VARCHAR},
+      bVoidAllowed = #{record.bVoidAllowed,jdbcType=SMALLINT},
+      dMaxAllowedQty = #{record.dMaxAllowedQty,jdbcType=DECIMAL},
+      lOperatorAgeControl = #{record.lOperatorAgeControl,jdbcType=INTEGER},
+      IM_bAllowPOGoodReturn = #{record.IM_bAllowPOGoodReturn,jdbcType=INTEGER},
+      IM_dMinOrderQty = #{record.IM_dMinOrderQty,jdbcType=DECIMAL},
+      IM_lInventoryDays = #{record.IM_lInventoryDays,jdbcType=INTEGER},
+      IM_lShelfLife = #{record.IM_lShelfLife,jdbcType=INTEGER},
+      IM_lReceiveShelfLife = #{record.IM_lReceiveShelfLife,jdbcType=INTEGER},
+      IM_lSaleShelfLife = #{record.IM_lSaleShelfLife,jdbcType=INTEGER},
+      IM_szPrimaryStorageLocationID = #{record.IM_szPrimaryStorageLocationID,jdbcType=VARCHAR},
+      IM_lOrderType = #{record.IM_lOrderType,jdbcType=INTEGER},
+      IM_bFreshFoodD1 = #{record.IM_bFreshFoodD1,jdbcType=INTEGER},
+      IM_bFreshFoodD2 = #{record.IM_bFreshFoodD2,jdbcType=INTEGER},
+      IM_bFreshFoodD3 = #{record.IM_bFreshFoodD3,jdbcType=INTEGER},
+      IM_szOrderBlockDate = #{record.IM_szOrderBlockDate,jdbcType=VARCHAR},
+      IM_szReturnBlockDate = #{record.IM_szReturnBlockDate,jdbcType=VARCHAR},
+      IM_szDailySalesBlockTimeFrom = #{record.IM_szDailySalesBlockTimeFrom,jdbcType=VARCHAR},
+      IM_szDailySalesBlockTimeTo = #{record.IM_szDailySalesBlockTimeTo,jdbcType=VARCHAR},
+      IM_szPrimaryVendorID = #{record.IM_szPrimaryVendorID,jdbcType=VARCHAR},
+      IM_szPrimaryCDCRetailStoreExternalID = #{record.IM_szPrimaryCDCRetailStoreExternalID,jdbcType=VARCHAR},
+      IM_bParkingCoupon = #{record.IM_bParkingCoupon,jdbcType=INTEGER},
+      IM_dMaxOrderQty = #{record.IM_dMaxOrderQty,jdbcType=DECIMAL},
+      IM_bCoreItem = #{record.IM_bCoreItem,jdbcType=INTEGER},
+      IM_bUnderCDUControl = #{record.IM_bUnderCDUControl,jdbcType=INTEGER},
+      IM_bUnderStockControl = #{record.IM_bUnderStockControl,jdbcType=INTEGER},
+      IM_lSupplySource = #{record.IM_lSupplySource,jdbcType=INTEGER},
+      IM_szArticleType = #{record.IM_szArticleType,jdbcType=VARCHAR},
+      IM_szPurchaseGroup = #{record.IM_szPurchaseGroup,jdbcType=VARCHAR},
+      IM_bGRWithoutPOAllowed = #{record.IM_bGRWithoutPOAllowed,jdbcType=INTEGER},
+      IM_bConsignment = #{record.IM_bConsignment,jdbcType=INTEGER},
+      IM_bWriteOffAllowed = #{record.IM_bWriteOffAllowed,jdbcType=INTEGER},
+      IM_szOrderCycleCode = #{record.IM_szOrderCycleCode,jdbcType=VARCHAR},
+      IM_szIMPSA = #{record.IM_szIMPSA,jdbcType=VARCHAR},
+      IM_szABCIndicator = #{record.IM_szABCIndicator,jdbcType=VARCHAR},
+      IM_lDeliveryLeadTime = #{record.IM_lDeliveryLeadTime,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.model.POSIdentity" >
+    update POSIdentity
+    <set >
+      <if test="szItemId != null" >
+        szItemId = #{szItemId,jdbcType=VARCHAR},
+      </if>
+      <if test="szDesc != null" >
+        szDesc = #{szDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="szDesc1 != null" >
+        szDesc1 = #{szDesc1,jdbcType=VARCHAR},
+      </if>
+      <if test="szDesc2 != null" >
+        szDesc2 = #{szDesc2,jdbcType=VARCHAR},
+      </if>
+      <if test="szDescription != null" >
+        szDescription = #{szDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="bPriceEntryRequiredFlag != null" >
+        bPriceEntryRequiredFlag = #{bPriceEntryRequiredFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="bMeasurementEntryRequired != null" >
+        bMeasurementEntryRequired = #{bMeasurementEntryRequired,jdbcType=SMALLINT},
+      </if>
+      <if test="bQuantityKeyProhibitFlag != null" >
+        bQuantityKeyProhibitFlag = #{bQuantityKeyProhibitFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="bProhibitReturnFlag != null" >
+        bProhibitReturnFlag = #{bProhibitReturnFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="bProhibitRepeatKeyFlag != null" >
+        bProhibitRepeatKeyFlag = #{bProhibitRepeatKeyFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="dFrequentShopperPointsCount != null" >
+        dFrequentShopperPointsCount = #{dFrequentShopperPointsCount,jdbcType=DECIMAL},
+      </if>
+      <if test="lCurrencyID != null" >
+        lCurrencyID = #{lCurrencyID,jdbcType=INTEGER},
+      </if>
+      <if test="dPackingUnitPriceAmount != null" >
+        dPackingUnitPriceAmount = #{dPackingUnitPriceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="dPieceQuantity != null" >
+        dPieceQuantity = #{dPieceQuantity,jdbcType=DECIMAL},
+      </if>
+      <if test="dPiecePriceAmount != null" >
+        dPiecePriceAmount = #{dPiecePriceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="bCalculationOnPiecePriceFlag != null" >
+        bCalculationOnPiecePriceFlag = #{bCalculationOnPiecePriceFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="bLinkedSaleOnlyFlag != null" >
+        bLinkedSaleOnlyFlag = #{bLinkedSaleOnlyFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="szPackingUnitCounterTypeCode != null" >
+        szPackingUnitCounterTypeCode = #{szPackingUnitCounterTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bPriceNegativeFlag != null" >
+        bPriceNegativeFlag = #{bPriceNegativeFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="szQuantityEntryUnitOfMeasure != null" >
+        szQuantityEntryUnitOfMeasure = #{szQuantityEntryUnitOfMeasure,jdbcType=VARCHAR},
+      </if>
+      <if test="bPriceChangeProhibitFlag != null" >
+        bPriceChangeProhibitFlag = #{bPriceChangeProhibitFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="dPriceEntryLowAmount != null" >
+        dPriceEntryLowAmount = #{dPriceEntryLowAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="dPriceEntryHighAmount != null" >
+        dPriceEntryHighAmount = #{dPriceEntryHighAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="szExternalID != null" >
+        szExternalID = #{szExternalID,jdbcType=VARCHAR},
+      </if>
+      <if test="d2ndPrice != null" >
+        d2ndPrice = #{d2ndPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="d3rdPrice != null" >
+        d3rdPrice = #{d3rdPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="d4thPrice != null" >
+        d4thPrice = #{d4thPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="d5thPrice != null" >
+        d5thPrice = #{d5thPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="dLowArtDiscPrice != null" >
+        dLowArtDiscPrice = #{dLowArtDiscPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="szArtLink != null" >
+        szArtLink = #{szArtLink,jdbcType=VARCHAR},
+      </if>
+      <if test="bLocked != null" >
+        bLocked = #{bLocked,jdbcType=SMALLINT},
+      </if>
+      <if test="lWarranty != null" >
+        lWarranty = #{lWarranty,jdbcType=INTEGER},
+      </if>
+      <if test="szPrintLayoutID != null" >
+        szPrintLayoutID = #{szPrintLayoutID,jdbcType=VARCHAR},
+      </if>
+      <if test="szAddOnDialog != null" >
+        szAddOnDialog = #{szAddOnDialog,jdbcType=VARCHAR},
+      </if>
+      <if test="bIsContract != null" >
+        bIsContract = #{bIsContract,jdbcType=SMALLINT},
+      </if>
+      <if test="bIsFiscalArt != null" >
+        bIsFiscalArt = #{bIsFiscalArt,jdbcType=SMALLINT},
+      </if>
+      <if test="bIsSerialized != null" >
+        bIsSerialized = #{bIsSerialized,jdbcType=SMALLINT},
+      </if>
+      <if test="bOnStock != null" >
+        bOnStock = #{bOnStock,jdbcType=SMALLINT},
+      </if>
+      <if test="bArtKVSet != null" >
+        bArtKVSet = #{bArtKVSet,jdbcType=SMALLINT},
+      </if>
+      <if test="bArtKSet != null" >
+        bArtKSet = #{bArtKSet,jdbcType=SMALLINT},
+      </if>
+      <if test="bArtVSet != null" >
+        bArtVSet = #{bArtVSet,jdbcType=SMALLINT},
+      </if>
+      <if test="bTotalDiscountAllowed != null" >
+        bTotalDiscountAllowed = #{bTotalDiscountAllowed,jdbcType=SMALLINT},
+      </if>
+      <if test="bScaleItemFlag != null" >
+        bScaleItemFlag = #{bScaleItemFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="bBrandItemFlag != null" >
+        bBrandItemFlag = #{bBrandItemFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="bSupervisorRequiredFlag != null" >
+        bSupervisorRequiredFlag = #{bSupervisorRequiredFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="bCheckPriceFlag != null" >
+        bCheckPriceFlag = #{bCheckPriceFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="bAgeControlFlag != null" >
+        bAgeControlFlag = #{bAgeControlFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="szPriceUnitOfMeasureName != null" >
+        szPriceUnitOfMeasureName = #{szPriceUnitOfMeasureName,jdbcType=VARCHAR},
+      </if>
+      <if test="dTareAmount != null" >
+        dTareAmount = #{dTareAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="szDateValidFrom != null" >
+        szDateValidFrom = #{szDateValidFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="szTimeValidFrom != null" >
+        szTimeValidFrom = #{szTimeValidFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="szDateValidTo != null" >
+        szDateValidTo = #{szDateValidTo,jdbcType=VARCHAR},
+      </if>
+      <if test="szTimeValidTo != null" >
+        szTimeValidTo = #{szTimeValidTo,jdbcType=VARCHAR},
+      </if>
+      <if test="bIsDepositItem != null" >
+        bIsDepositItem = #{bIsDepositItem,jdbcType=SMALLINT},
+      </if>
+      <if test="dQtyArtLink != null" >
+        dQtyArtLink = #{dQtyArtLink,jdbcType=DECIMAL},
+      </if>
+      <if test="bPressItem != null" >
+        bPressItem = #{bPressItem,jdbcType=SMALLINT},
+      </if>
+      <if test="bQuantityEntryRequired != null" >
+        bQuantityEntryRequired = #{bQuantityEntryRequired,jdbcType=SMALLINT},
+      </if>
+      <if test="lAgeControl != null" >
+        lAgeControl = #{lAgeControl,jdbcType=INTEGER},
+      </if>
+      <if test="bUseSizeAndColor != null" >
+        bUseSizeAndColor = #{bUseSizeAndColor,jdbcType=SMALLINT},
+      </if>
+      <if test="bIsBundleItem != null" >
+        bIsBundleItem = #{bIsBundleItem,jdbcType=SMALLINT},
+      </if>
+      <if test="bLockedByERP != null" >
+        bLockedByERP = #{bLockedByERP,jdbcType=SMALLINT},
+      </if>
+      <if test="bLoyaltyPointsAllowed != null" >
+        bLoyaltyPointsAllowed = #{bLoyaltyPointsAllowed,jdbcType=SMALLINT},
+      </if>
+      <if test="lChangedByOperatorID != null" >
+        lChangedByOperatorID = #{lChangedByOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="dLoyaltyPoints != null" >
+        dLoyaltyPoints = #{dLoyaltyPoints,jdbcType=INTEGER},
+      </if>
+      <if test="szDeleteDate != null" >
+        szDeleteDate = #{szDeleteDate,jdbcType=VARCHAR},
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        lTechLayerAccessID = #{lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="szLastUpdLocal != null" >
+        szLastUpdLocal = #{szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="uidObjectID != null" >
+        uidObjectID = #{uidObjectID,jdbcType=VARCHAR},
+      </if>
+      <if test="szAccountingID != null" >
+        szAccountingID = #{szAccountingID,jdbcType=VARCHAR},
+      </if>
+      <if test="bVoidAllowed != null" >
+        bVoidAllowed = #{bVoidAllowed,jdbcType=SMALLINT},
+      </if>
+      <if test="dMaxAllowedQty != null" >
+        dMaxAllowedQty = #{dMaxAllowedQty,jdbcType=DECIMAL},
+      </if>
+      <if test="lOperatorAgeControl != null" >
+        lOperatorAgeControl = #{lOperatorAgeControl,jdbcType=INTEGER},
+      </if>
+      <if test="IM_bAllowPOGoodReturn != null" >
+        IM_bAllowPOGoodReturn = #{IM_bAllowPOGoodReturn,jdbcType=INTEGER},
+      </if>
+      <if test="IM_dMinOrderQty != null" >
+        IM_dMinOrderQty = #{IM_dMinOrderQty,jdbcType=DECIMAL},
+      </if>
+      <if test="IM_lInventoryDays != null" >
+        IM_lInventoryDays = #{IM_lInventoryDays,jdbcType=INTEGER},
+      </if>
+      <if test="IM_lShelfLife != null" >
+        IM_lShelfLife = #{IM_lShelfLife,jdbcType=INTEGER},
+      </if>
+      <if test="IM_lReceiveShelfLife != null" >
+        IM_lReceiveShelfLife = #{IM_lReceiveShelfLife,jdbcType=INTEGER},
+      </if>
+      <if test="IM_lSaleShelfLife != null" >
+        IM_lSaleShelfLife = #{IM_lSaleShelfLife,jdbcType=INTEGER},
+      </if>
+      <if test="IM_szPrimaryStorageLocationID != null" >
+        IM_szPrimaryStorageLocationID = #{IM_szPrimaryStorageLocationID,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_lOrderType != null" >
+        IM_lOrderType = #{IM_lOrderType,jdbcType=INTEGER},
+      </if>
+      <if test="IM_bFreshFoodD1 != null" >
+        IM_bFreshFoodD1 = #{IM_bFreshFoodD1,jdbcType=INTEGER},
+      </if>
+      <if test="IM_bFreshFoodD2 != null" >
+        IM_bFreshFoodD2 = #{IM_bFreshFoodD2,jdbcType=INTEGER},
+      </if>
+      <if test="IM_bFreshFoodD3 != null" >
+        IM_bFreshFoodD3 = #{IM_bFreshFoodD3,jdbcType=INTEGER},
+      </if>
+      <if test="IM_szOrderBlockDate != null" >
+        IM_szOrderBlockDate = #{IM_szOrderBlockDate,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szReturnBlockDate != null" >
+        IM_szReturnBlockDate = #{IM_szReturnBlockDate,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szDailySalesBlockTimeFrom != null" >
+        IM_szDailySalesBlockTimeFrom = #{IM_szDailySalesBlockTimeFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szDailySalesBlockTimeTo != null" >
+        IM_szDailySalesBlockTimeTo = #{IM_szDailySalesBlockTimeTo,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szPrimaryVendorID != null" >
+        IM_szPrimaryVendorID = #{IM_szPrimaryVendorID,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szPrimaryCDCRetailStoreExternalID != null" >
+        IM_szPrimaryCDCRetailStoreExternalID = #{IM_szPrimaryCDCRetailStoreExternalID,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_bParkingCoupon != null" >
+        IM_bParkingCoupon = #{IM_bParkingCoupon,jdbcType=INTEGER},
+      </if>
+      <if test="IM_dMaxOrderQty != null" >
+        IM_dMaxOrderQty = #{IM_dMaxOrderQty,jdbcType=DECIMAL},
+      </if>
+      <if test="IM_bCoreItem != null" >
+        IM_bCoreItem = #{IM_bCoreItem,jdbcType=INTEGER},
+      </if>
+      <if test="IM_bUnderCDUControl != null" >
+        IM_bUnderCDUControl = #{IM_bUnderCDUControl,jdbcType=INTEGER},
+      </if>
+      <if test="IM_bUnderStockControl != null" >
+        IM_bUnderStockControl = #{IM_bUnderStockControl,jdbcType=INTEGER},
+      </if>
+      <if test="IM_lSupplySource != null" >
+        IM_lSupplySource = #{IM_lSupplySource,jdbcType=INTEGER},
+      </if>
+      <if test="IM_szArticleType != null" >
+        IM_szArticleType = #{IM_szArticleType,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szPurchaseGroup != null" >
+        IM_szPurchaseGroup = #{IM_szPurchaseGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_bGRWithoutPOAllowed != null" >
+        IM_bGRWithoutPOAllowed = #{IM_bGRWithoutPOAllowed,jdbcType=INTEGER},
+      </if>
+      <if test="IM_bConsignment != null" >
+        IM_bConsignment = #{IM_bConsignment,jdbcType=INTEGER},
+      </if>
+      <if test="IM_bWriteOffAllowed != null" >
+        IM_bWriteOffAllowed = #{IM_bWriteOffAllowed,jdbcType=INTEGER},
+      </if>
+      <if test="IM_szOrderCycleCode != null" >
+        IM_szOrderCycleCode = #{IM_szOrderCycleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szIMPSA != null" >
+        IM_szIMPSA = #{IM_szIMPSA,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szABCIndicator != null" >
+        IM_szABCIndicator = #{IM_szABCIndicator,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_lDeliveryLeadTime != null" >
+        IM_lDeliveryLeadTime = #{IM_lDeliveryLeadTime,jdbcType=INTEGER},
+      </if>
+    </set>
+    where szPOSItemID = #{szPOSItemID,jdbcType=VARCHAR}
+      and lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.model.POSIdentity" >
+    update POSIdentity
+    set szItemId = #{szItemId,jdbcType=VARCHAR},
+      szDesc = #{szDesc,jdbcType=VARCHAR},
+      szDesc1 = #{szDesc1,jdbcType=VARCHAR},
+      szDesc2 = #{szDesc2,jdbcType=VARCHAR},
+      szDescription = #{szDescription,jdbcType=VARCHAR},
+      bPriceEntryRequiredFlag = #{bPriceEntryRequiredFlag,jdbcType=SMALLINT},
+      bMeasurementEntryRequired = #{bMeasurementEntryRequired,jdbcType=SMALLINT},
+      bQuantityKeyProhibitFlag = #{bQuantityKeyProhibitFlag,jdbcType=SMALLINT},
+      bProhibitReturnFlag = #{bProhibitReturnFlag,jdbcType=SMALLINT},
+      bProhibitRepeatKeyFlag = #{bProhibitRepeatKeyFlag,jdbcType=SMALLINT},
+      dFrequentShopperPointsCount = #{dFrequentShopperPointsCount,jdbcType=DECIMAL},
+      lCurrencyID = #{lCurrencyID,jdbcType=INTEGER},
+      dPackingUnitPriceAmount = #{dPackingUnitPriceAmount,jdbcType=DECIMAL},
+      dPieceQuantity = #{dPieceQuantity,jdbcType=DECIMAL},
+      dPiecePriceAmount = #{dPiecePriceAmount,jdbcType=DECIMAL},
+      bCalculationOnPiecePriceFlag = #{bCalculationOnPiecePriceFlag,jdbcType=SMALLINT},
+      bLinkedSaleOnlyFlag = #{bLinkedSaleOnlyFlag,jdbcType=SMALLINT},
+      szPackingUnitCounterTypeCode = #{szPackingUnitCounterTypeCode,jdbcType=VARCHAR},
+      bPriceNegativeFlag = #{bPriceNegativeFlag,jdbcType=SMALLINT},
+      szQuantityEntryUnitOfMeasure = #{szQuantityEntryUnitOfMeasure,jdbcType=VARCHAR},
+      bPriceChangeProhibitFlag = #{bPriceChangeProhibitFlag,jdbcType=SMALLINT},
+      dPriceEntryLowAmount = #{dPriceEntryLowAmount,jdbcType=DECIMAL},
+      dPriceEntryHighAmount = #{dPriceEntryHighAmount,jdbcType=DECIMAL},
+      szExternalID = #{szExternalID,jdbcType=VARCHAR},
+      d2ndPrice = #{d2ndPrice,jdbcType=DECIMAL},
+      d3rdPrice = #{d3rdPrice,jdbcType=DECIMAL},
+      d4thPrice = #{d4thPrice,jdbcType=DECIMAL},
+      d5thPrice = #{d5thPrice,jdbcType=DECIMAL},
+      dLowArtDiscPrice = #{dLowArtDiscPrice,jdbcType=DECIMAL},
+      szArtLink = #{szArtLink,jdbcType=VARCHAR},
+      bLocked = #{bLocked,jdbcType=SMALLINT},
+      lWarranty = #{lWarranty,jdbcType=INTEGER},
+      szPrintLayoutID = #{szPrintLayoutID,jdbcType=VARCHAR},
+      szAddOnDialog = #{szAddOnDialog,jdbcType=VARCHAR},
+      bIsContract = #{bIsContract,jdbcType=SMALLINT},
+      bIsFiscalArt = #{bIsFiscalArt,jdbcType=SMALLINT},
+      bIsSerialized = #{bIsSerialized,jdbcType=SMALLINT},
+      bOnStock = #{bOnStock,jdbcType=SMALLINT},
+      bArtKVSet = #{bArtKVSet,jdbcType=SMALLINT},
+      bArtKSet = #{bArtKSet,jdbcType=SMALLINT},
+      bArtVSet = #{bArtVSet,jdbcType=SMALLINT},
+      bTotalDiscountAllowed = #{bTotalDiscountAllowed,jdbcType=SMALLINT},
+      bScaleItemFlag = #{bScaleItemFlag,jdbcType=SMALLINT},
+      bBrandItemFlag = #{bBrandItemFlag,jdbcType=SMALLINT},
+      bSupervisorRequiredFlag = #{bSupervisorRequiredFlag,jdbcType=SMALLINT},
+      bCheckPriceFlag = #{bCheckPriceFlag,jdbcType=SMALLINT},
+      bAgeControlFlag = #{bAgeControlFlag,jdbcType=SMALLINT},
+      szPriceUnitOfMeasureName = #{szPriceUnitOfMeasureName,jdbcType=VARCHAR},
+      dTareAmount = #{dTareAmount,jdbcType=DECIMAL},
+      szDateValidFrom = #{szDateValidFrom,jdbcType=VARCHAR},
+      szTimeValidFrom = #{szTimeValidFrom,jdbcType=VARCHAR},
+      szDateValidTo = #{szDateValidTo,jdbcType=VARCHAR},
+      szTimeValidTo = #{szTimeValidTo,jdbcType=VARCHAR},
+      bIsDepositItem = #{bIsDepositItem,jdbcType=SMALLINT},
+      dQtyArtLink = #{dQtyArtLink,jdbcType=DECIMAL},
+      bPressItem = #{bPressItem,jdbcType=SMALLINT},
+      bQuantityEntryRequired = #{bQuantityEntryRequired,jdbcType=SMALLINT},
+      lAgeControl = #{lAgeControl,jdbcType=INTEGER},
+      bUseSizeAndColor = #{bUseSizeAndColor,jdbcType=SMALLINT},
+      bIsBundleItem = #{bIsBundleItem,jdbcType=SMALLINT},
+      bLockedByERP = #{bLockedByERP,jdbcType=SMALLINT},
+      bLoyaltyPointsAllowed = #{bLoyaltyPointsAllowed,jdbcType=SMALLINT},
+      lChangedByOperatorID = #{lChangedByOperatorID,jdbcType=INTEGER},
+      dLoyaltyPoints = #{dLoyaltyPoints,jdbcType=INTEGER},
+      szDeleteDate = #{szDeleteDate,jdbcType=VARCHAR},
+      lTechLayerAccessID = #{lTechLayerAccessID,jdbcType=INTEGER},
+      szLastUpdLocal = #{szLastUpdLocal,jdbcType=VARCHAR},
+      uidObjectID = #{uidObjectID,jdbcType=VARCHAR},
+      szAccountingID = #{szAccountingID,jdbcType=VARCHAR},
+      bVoidAllowed = #{bVoidAllowed,jdbcType=SMALLINT},
+      dMaxAllowedQty = #{dMaxAllowedQty,jdbcType=DECIMAL},
+      lOperatorAgeControl = #{lOperatorAgeControl,jdbcType=INTEGER},
+      IM_bAllowPOGoodReturn = #{IM_bAllowPOGoodReturn,jdbcType=INTEGER},
+      IM_dMinOrderQty = #{IM_dMinOrderQty,jdbcType=DECIMAL},
+      IM_lInventoryDays = #{IM_lInventoryDays,jdbcType=INTEGER},
+      IM_lShelfLife = #{IM_lShelfLife,jdbcType=INTEGER},
+      IM_lReceiveShelfLife = #{IM_lReceiveShelfLife,jdbcType=INTEGER},
+      IM_lSaleShelfLife = #{IM_lSaleShelfLife,jdbcType=INTEGER},
+      IM_szPrimaryStorageLocationID = #{IM_szPrimaryStorageLocationID,jdbcType=VARCHAR},
+      IM_lOrderType = #{IM_lOrderType,jdbcType=INTEGER},
+      IM_bFreshFoodD1 = #{IM_bFreshFoodD1,jdbcType=INTEGER},
+      IM_bFreshFoodD2 = #{IM_bFreshFoodD2,jdbcType=INTEGER},
+      IM_bFreshFoodD3 = #{IM_bFreshFoodD3,jdbcType=INTEGER},
+      IM_szOrderBlockDate = #{IM_szOrderBlockDate,jdbcType=VARCHAR},
+      IM_szReturnBlockDate = #{IM_szReturnBlockDate,jdbcType=VARCHAR},
+      IM_szDailySalesBlockTimeFrom = #{IM_szDailySalesBlockTimeFrom,jdbcType=VARCHAR},
+      IM_szDailySalesBlockTimeTo = #{IM_szDailySalesBlockTimeTo,jdbcType=VARCHAR},
+      IM_szPrimaryVendorID = #{IM_szPrimaryVendorID,jdbcType=VARCHAR},
+      IM_szPrimaryCDCRetailStoreExternalID = #{IM_szPrimaryCDCRetailStoreExternalID,jdbcType=VARCHAR},
+      IM_bParkingCoupon = #{IM_bParkingCoupon,jdbcType=INTEGER},
+      IM_dMaxOrderQty = #{IM_dMaxOrderQty,jdbcType=DECIMAL},
+      IM_bCoreItem = #{IM_bCoreItem,jdbcType=INTEGER},
+      IM_bUnderCDUControl = #{IM_bUnderCDUControl,jdbcType=INTEGER},
+      IM_bUnderStockControl = #{IM_bUnderStockControl,jdbcType=INTEGER},
+      IM_lSupplySource = #{IM_lSupplySource,jdbcType=INTEGER},
+      IM_szArticleType = #{IM_szArticleType,jdbcType=VARCHAR},
+      IM_szPurchaseGroup = #{IM_szPurchaseGroup,jdbcType=VARCHAR},
+      IM_bGRWithoutPOAllowed = #{IM_bGRWithoutPOAllowed,jdbcType=INTEGER},
+      IM_bConsignment = #{IM_bConsignment,jdbcType=INTEGER},
+      IM_bWriteOffAllowed = #{IM_bWriteOffAllowed,jdbcType=INTEGER},
+      IM_szOrderCycleCode = #{IM_szOrderCycleCode,jdbcType=VARCHAR},
+      IM_szIMPSA = #{IM_szIMPSA,jdbcType=VARCHAR},
+      IM_szABCIndicator = #{IM_szABCIndicator,jdbcType=VARCHAR},
+      IM_lDeliveryLeadTime = #{IM_lDeliveryLeadTime,jdbcType=INTEGER}
+    where szPOSItemID = #{szPOSItemID,jdbcType=VARCHAR}
+      and lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+  </update>
+</mapper>

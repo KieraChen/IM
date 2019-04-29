@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.IMStorageLocationMapper" >
+  <resultMap id="BaseResultMap" type="com.model.IMStorageLocation" >
+    <id column="lRetailStoreID" property="lRetailStoreID" jdbcType="INTEGER" />
+    <id column="szStorageLocationID" property="szStorageLocationID" jdbcType="VARCHAR" />
+    <result column="szStorageLocationName" property="szStorageLocationName" jdbcType="VARCHAR" />
+    <result column="szStorageLocationDesc" property="szStorageLocationDesc" jdbcType="VARCHAR" />
+    <result column="lChangedOperatorID" property="lChangedOperatorID" jdbcType="INTEGER" />
+    <result column="lTechLayerAccessID" property="lTechLayerAccessID" jdbcType="INTEGER" />
+    <result column="szLastUpdLocal" property="szLastUpdLocal" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    lRetailStoreID, szStorageLocationID, szStorageLocationName, szStorageLocationDesc, 
+    lChangedOperatorID, lTechLayerAccessID, szLastUpdLocal
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.model.IMStorageLocationExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from IMStorageLocation
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.model.IMStorageLocationKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from IMStorageLocation
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and szStorageLocationID = #{szStorageLocationID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.model.IMStorageLocationKey" >
+    delete from IMStorageLocation
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and szStorageLocationID = #{szStorageLocationID,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.model.IMStorageLocationExample" >
+    delete from IMStorageLocation
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.model.IMStorageLocation" >
+    insert into IMStorageLocation (lRetailStoreID, szStorageLocationID, 
+      szStorageLocationName, szStorageLocationDesc, 
+      lChangedOperatorID, lTechLayerAccessID, 
+      szLastUpdLocal)
+    values (#{lRetailStoreID,jdbcType=INTEGER}, #{szStorageLocationID,jdbcType=VARCHAR}, 
+      #{szStorageLocationName,jdbcType=VARCHAR}, #{szStorageLocationDesc,jdbcType=VARCHAR}, 
+      #{lChangedOperatorID,jdbcType=INTEGER}, #{lTechLayerAccessID,jdbcType=INTEGER}, 
+      #{szLastUpdLocal,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.model.IMStorageLocation" >
+    insert into IMStorageLocation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lRetailStoreID != null" >
+        lRetailStoreID,
+      </if>
+      <if test="szStorageLocationID != null" >
+        szStorageLocationID,
+      </if>
+      <if test="szStorageLocationName != null" >
+        szStorageLocationName,
+      </if>
+      <if test="szStorageLocationDesc != null" >
+        szStorageLocationDesc,
+      </if>
+      <if test="lChangedOperatorID != null" >
+        lChangedOperatorID,
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        lTechLayerAccessID,
+      </if>
+      <if test="szLastUpdLocal != null" >
+        szLastUpdLocal,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lRetailStoreID != null" >
+        #{lRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="szStorageLocationID != null" >
+        #{szStorageLocationID,jdbcType=VARCHAR},
+      </if>
+      <if test="szStorageLocationName != null" >
+        #{szStorageLocationName,jdbcType=VARCHAR},
+      </if>
+      <if test="szStorageLocationDesc != null" >
+        #{szStorageLocationDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="lChangedOperatorID != null" >
+        #{lChangedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        #{lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="szLastUpdLocal != null" >
+        #{szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.model.IMStorageLocationExample" resultType="java.lang.Integer" >
+    select count(*) from IMStorageLocation
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update IMStorageLocation
+    <set >
+      <if test="record.lRetailStoreID != null" >
+        lRetailStoreID = #{record.lRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="record.szStorageLocationID != null" >
+        szStorageLocationID = #{record.szStorageLocationID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szStorageLocationName != null" >
+        szStorageLocationName = #{record.szStorageLocationName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szStorageLocationDesc != null" >
+        szStorageLocationDesc = #{record.szStorageLocationDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lChangedOperatorID != null" >
+        lChangedOperatorID = #{record.lChangedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="record.lTechLayerAccessID != null" >
+        lTechLayerAccessID = #{record.lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="record.szLastUpdLocal != null" >
+        szLastUpdLocal = #{record.szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update IMStorageLocation
+    set lRetailStoreID = #{record.lRetailStoreID,jdbcType=INTEGER},
+      szStorageLocationID = #{record.szStorageLocationID,jdbcType=VARCHAR},
+      szStorageLocationName = #{record.szStorageLocationName,jdbcType=VARCHAR},
+      szStorageLocationDesc = #{record.szStorageLocationDesc,jdbcType=VARCHAR},
+      lChangedOperatorID = #{record.lChangedOperatorID,jdbcType=INTEGER},
+      lTechLayerAccessID = #{record.lTechLayerAccessID,jdbcType=INTEGER},
+      szLastUpdLocal = #{record.szLastUpdLocal,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.model.IMStorageLocation" >
+    update IMStorageLocation
+    <set >
+      <if test="szStorageLocationName != null" >
+        szStorageLocationName = #{szStorageLocationName,jdbcType=VARCHAR},
+      </if>
+      <if test="szStorageLocationDesc != null" >
+        szStorageLocationDesc = #{szStorageLocationDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="lChangedOperatorID != null" >
+        lChangedOperatorID = #{lChangedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        lTechLayerAccessID = #{lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="szLastUpdLocal != null" >
+        szLastUpdLocal = #{szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and szStorageLocationID = #{szStorageLocationID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.model.IMStorageLocation" >
+    update IMStorageLocation
+    set szStorageLocationName = #{szStorageLocationName,jdbcType=VARCHAR},
+      szStorageLocationDesc = #{szStorageLocationDesc,jdbcType=VARCHAR},
+      lChangedOperatorID = #{lChangedOperatorID,jdbcType=INTEGER},
+      lTechLayerAccessID = #{lTechLayerAccessID,jdbcType=INTEGER},
+      szLastUpdLocal = #{szLastUpdLocal,jdbcType=VARCHAR}
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and szStorageLocationID = #{szStorageLocationID,jdbcType=VARCHAR}
+  </update>
+</mapper>

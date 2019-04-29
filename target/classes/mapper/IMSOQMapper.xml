@@ -1,0 +1,816 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.IMSOQMapper" >
+  <resultMap id="BaseResultMap" type="com.model.IMSOQ" >
+    <id column="lRetailStoreID" property="lRetailStoreID" jdbcType="INTEGER" />
+    <id column="szDate" property="szDate" jdbcType="VARCHAR" />
+    <id column="szPOSItemID" property="szPOSItemID" jdbcType="VARCHAR" />
+    <result column="szRetailStoreExternalID" property="szRetailStoreExternalID" jdbcType="VARCHAR" />
+    <result column="lWorkstationNmbr" property="lWorkstationNmbr" jdbcType="INTEGER" />
+    <result column="szDescription" property="szDescription" jdbcType="VARCHAR" />
+    <result column="szPurchasingGroup" property="szPurchasingGroup" jdbcType="VARCHAR" />
+    <result column="dWk4" property="dWk4" jdbcType="DECIMAL" />
+    <result column="dWk3" property="dWk3" jdbcType="DECIMAL" />
+    <result column="dWk2" property="dWk2" jdbcType="DECIMAL" />
+    <result column="dWk1" property="dWk1" jdbcType="DECIMAL" />
+    <result column="dForecastPerWeek" property="dForecastPerWeek" jdbcType="DECIMAL" />
+    <result column="dRevisedForecastPerWeek" property="dRevisedForecastPerWeek" jdbcType="DECIMAL" />
+    <result column="dSafetyMinQty" property="dSafetyMinQty" jdbcType="DECIMAL" />
+    <result column="dMaximum" property="dMaximum" jdbcType="DECIMAL" />
+    <result column="dInventory" property="dInventory" jdbcType="DECIMAL" />
+    <result column="dSOQ" property="dSOQ" jdbcType="DECIMAL" />
+    <result column="dForecastDays" property="dForecastDays" jdbcType="DECIMAL" />
+    <result column="dRevisedSOQ" property="dRevisedSOQ" jdbcType="DECIMAL" />
+    <result column="dItemMOQ" property="dItemMOQ" jdbcType="DECIMAL" />
+    <result column="dItemLDU" property="dItemLDU" jdbcType="DECIMAL" />
+    <result column="lExternalItemSequenceNumber" property="lExternalItemSequenceNumber" jdbcType="INTEGER" />
+    <result column="bConfirmedByUser" property="bConfirmedByUser" jdbcType="INTEGER" />
+    <result column="bForecastRevised" property="bForecastRevised" jdbcType="INTEGER" />
+    <result column="lItemABCRanking" property="lItemABCRanking" jdbcType="INTEGER" />
+    <result column="lChangedOperatorID" property="lChangedOperatorID" jdbcType="INTEGER" />
+    <result column="lHostInterfaceID1" property="lHostInterfaceID1" jdbcType="INTEGER" />
+    <result column="szExternalDocumentNmbr" property="szExternalDocumentNmbr" jdbcType="VARCHAR" />
+    <result column="szItemName" property="szItemName" jdbcType="VARCHAR" />
+    <result column="szItemShelfLoc" property="szItemShelfLoc" jdbcType="VARCHAR" />
+    <result column="lTechLayerAccessID" property="lTechLayerAccessID" jdbcType="INTEGER" />
+    <result column="szLastUpdLocal" property="szLastUpdLocal" jdbcType="VARCHAR" />
+    <result column="dUnitRetail" property="dUnitRetail" jdbcType="DECIMAL" />
+    <result column="szGondolaNmbr" property="szGondolaNmbr" jdbcType="VARCHAR" />
+    <result column="lShelfNmbr" property="lShelfNmbr" jdbcType="INTEGER" />
+    <result column="lShelfSeqNmbr" property="lShelfSeqNmbr" jdbcType="INTEGER" />
+    <result column="szSubCategory" property="szSubCategory" jdbcType="VARCHAR" />
+    <result column="dOriginalSOQPerLDU" property="dOriginalSOQPerLDU" jdbcType="DECIMAL" />
+    <result column="szUploadFTPStatus" property="szUploadFTPStatus" jdbcType="VARCHAR" />
+    <result column="szABCIndicator" property="szABCIndicator" jdbcType="VARCHAR" />
+    <result column="bZeroRise" property="bZeroRise" jdbcType="INTEGER" />
+    <result column="dTestDescription" property="dTestDescription" jdbcType="VARCHAR" />
+    <result column="szSerialNmbr" property="szSerialNmbr" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    lRetailStoreID, szDate, szPOSItemID, szRetailStoreExternalID, lWorkstationNmbr, szDescription, 
+    szPurchasingGroup, dWk4, dWk3, dWk2, dWk1, dForecastPerWeek, dRevisedForecastPerWeek, 
+    dSafetyMinQty, dMaximum, dInventory, dSOQ, dForecastDays, dRevisedSOQ, dItemMOQ, 
+    dItemLDU, lExternalItemSequenceNumber, bConfirmedByUser, bForecastRevised, lItemABCRanking, 
+    lChangedOperatorID, lHostInterfaceID1, szExternalDocumentNmbr, szItemName, szItemShelfLoc, 
+    lTechLayerAccessID, szLastUpdLocal, dUnitRetail, szGondolaNmbr, lShelfNmbr, lShelfSeqNmbr, 
+    szSubCategory, dOriginalSOQPerLDU, szUploadFTPStatus, szABCIndicator, bZeroRise, 
+    dTestDescription, szSerialNmbr
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.model.IMSOQExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from IMSOQ
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.model.IMSOQKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from IMSOQ
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and szDate = #{szDate,jdbcType=VARCHAR}
+      and szPOSItemID = #{szPOSItemID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.model.IMSOQKey" >
+    delete from IMSOQ
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and szDate = #{szDate,jdbcType=VARCHAR}
+      and szPOSItemID = #{szPOSItemID,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.model.IMSOQExample" >
+    delete from IMSOQ
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.model.IMSOQ" >
+    insert into IMSOQ (lRetailStoreID, szDate, szPOSItemID, 
+      szRetailStoreExternalID, lWorkstationNmbr, 
+      szDescription, szPurchasingGroup, dWk4, 
+      dWk3, dWk2, dWk1, dForecastPerWeek, 
+      dRevisedForecastPerWeek, dSafetyMinQty, 
+      dMaximum, dInventory, dSOQ, 
+      dForecastDays, dRevisedSOQ, dItemMOQ, 
+      dItemLDU, lExternalItemSequenceNumber, 
+      bConfirmedByUser, bForecastRevised, lItemABCRanking, 
+      lChangedOperatorID, lHostInterfaceID1, 
+      szExternalDocumentNmbr, szItemName, szItemShelfLoc, 
+      lTechLayerAccessID, szLastUpdLocal, dUnitRetail, 
+      szGondolaNmbr, lShelfNmbr, lShelfSeqNmbr, 
+      szSubCategory, dOriginalSOQPerLDU, szUploadFTPStatus, 
+      szABCIndicator, bZeroRise, dTestDescription, 
+      szSerialNmbr)
+    values (#{lRetailStoreID,jdbcType=INTEGER}, #{szDate,jdbcType=VARCHAR}, #{szPOSItemID,jdbcType=VARCHAR}, 
+      #{szRetailStoreExternalID,jdbcType=VARCHAR}, #{lWorkstationNmbr,jdbcType=INTEGER}, 
+      #{szDescription,jdbcType=VARCHAR}, #{szPurchasingGroup,jdbcType=VARCHAR}, #{dWk4,jdbcType=DECIMAL}, 
+      #{dWk3,jdbcType=DECIMAL}, #{dWk2,jdbcType=DECIMAL}, #{dWk1,jdbcType=DECIMAL}, #{dForecastPerWeek,jdbcType=DECIMAL}, 
+      #{dRevisedForecastPerWeek,jdbcType=DECIMAL}, #{dSafetyMinQty,jdbcType=DECIMAL}, 
+      #{dMaximum,jdbcType=DECIMAL}, #{dInventory,jdbcType=DECIMAL}, #{dSOQ,jdbcType=DECIMAL}, 
+      #{dForecastDays,jdbcType=DECIMAL}, #{dRevisedSOQ,jdbcType=DECIMAL}, #{dItemMOQ,jdbcType=DECIMAL}, 
+      #{dItemLDU,jdbcType=DECIMAL}, #{lExternalItemSequenceNumber,jdbcType=INTEGER}, 
+      #{bConfirmedByUser,jdbcType=INTEGER}, #{bForecastRevised,jdbcType=INTEGER}, #{lItemABCRanking,jdbcType=INTEGER}, 
+      #{lChangedOperatorID,jdbcType=INTEGER}, #{lHostInterfaceID1,jdbcType=INTEGER}, 
+      #{szExternalDocumentNmbr,jdbcType=VARCHAR}, #{szItemName,jdbcType=VARCHAR}, #{szItemShelfLoc,jdbcType=VARCHAR}, 
+      #{lTechLayerAccessID,jdbcType=INTEGER}, #{szLastUpdLocal,jdbcType=VARCHAR}, #{dUnitRetail,jdbcType=DECIMAL}, 
+      #{szGondolaNmbr,jdbcType=VARCHAR}, #{lShelfNmbr,jdbcType=INTEGER}, #{lShelfSeqNmbr,jdbcType=INTEGER}, 
+      #{szSubCategory,jdbcType=VARCHAR}, #{dOriginalSOQPerLDU,jdbcType=DECIMAL}, #{szUploadFTPStatus,jdbcType=VARCHAR}, 
+      #{szABCIndicator,jdbcType=VARCHAR}, #{bZeroRise,jdbcType=INTEGER}, #{dTestDescription,jdbcType=VARCHAR}, 
+      #{szSerialNmbr,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.model.IMSOQ" >
+    insert into IMSOQ
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lRetailStoreID != null" >
+        lRetailStoreID,
+      </if>
+      <if test="szDate != null" >
+        szDate,
+      </if>
+      <if test="szPOSItemID != null" >
+        szPOSItemID,
+      </if>
+      <if test="szRetailStoreExternalID != null" >
+        szRetailStoreExternalID,
+      </if>
+      <if test="lWorkstationNmbr != null" >
+        lWorkstationNmbr,
+      </if>
+      <if test="szDescription != null" >
+        szDescription,
+      </if>
+      <if test="szPurchasingGroup != null" >
+        szPurchasingGroup,
+      </if>
+      <if test="dWk4 != null" >
+        dWk4,
+      </if>
+      <if test="dWk3 != null" >
+        dWk3,
+      </if>
+      <if test="dWk2 != null" >
+        dWk2,
+      </if>
+      <if test="dWk1 != null" >
+        dWk1,
+      </if>
+      <if test="dForecastPerWeek != null" >
+        dForecastPerWeek,
+      </if>
+      <if test="dRevisedForecastPerWeek != null" >
+        dRevisedForecastPerWeek,
+      </if>
+      <if test="dSafetyMinQty != null" >
+        dSafetyMinQty,
+      </if>
+      <if test="dMaximum != null" >
+        dMaximum,
+      </if>
+      <if test="dInventory != null" >
+        dInventory,
+      </if>
+      <if test="dSOQ != null" >
+        dSOQ,
+      </if>
+      <if test="dForecastDays != null" >
+        dForecastDays,
+      </if>
+      <if test="dRevisedSOQ != null" >
+        dRevisedSOQ,
+      </if>
+      <if test="dItemMOQ != null" >
+        dItemMOQ,
+      </if>
+      <if test="dItemLDU != null" >
+        dItemLDU,
+      </if>
+      <if test="lExternalItemSequenceNumber != null" >
+        lExternalItemSequenceNumber,
+      </if>
+      <if test="bConfirmedByUser != null" >
+        bConfirmedByUser,
+      </if>
+      <if test="bForecastRevised != null" >
+        bForecastRevised,
+      </if>
+      <if test="lItemABCRanking != null" >
+        lItemABCRanking,
+      </if>
+      <if test="lChangedOperatorID != null" >
+        lChangedOperatorID,
+      </if>
+      <if test="lHostInterfaceID1 != null" >
+        lHostInterfaceID1,
+      </if>
+      <if test="szExternalDocumentNmbr != null" >
+        szExternalDocumentNmbr,
+      </if>
+      <if test="szItemName != null" >
+        szItemName,
+      </if>
+      <if test="szItemShelfLoc != null" >
+        szItemShelfLoc,
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        lTechLayerAccessID,
+      </if>
+      <if test="szLastUpdLocal != null" >
+        szLastUpdLocal,
+      </if>
+      <if test="dUnitRetail != null" >
+        dUnitRetail,
+      </if>
+      <if test="szGondolaNmbr != null" >
+        szGondolaNmbr,
+      </if>
+      <if test="lShelfNmbr != null" >
+        lShelfNmbr,
+      </if>
+      <if test="lShelfSeqNmbr != null" >
+        lShelfSeqNmbr,
+      </if>
+      <if test="szSubCategory != null" >
+        szSubCategory,
+      </if>
+      <if test="dOriginalSOQPerLDU != null" >
+        dOriginalSOQPerLDU,
+      </if>
+      <if test="szUploadFTPStatus != null" >
+        szUploadFTPStatus,
+      </if>
+      <if test="szABCIndicator != null" >
+        szABCIndicator,
+      </if>
+      <if test="bZeroRise != null" >
+        bZeroRise,
+      </if>
+      <if test="dTestDescription != null" >
+        dTestDescription,
+      </if>
+      <if test="szSerialNmbr != null" >
+        szSerialNmbr,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lRetailStoreID != null" >
+        #{lRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="szDate != null" >
+        #{szDate,jdbcType=VARCHAR},
+      </if>
+      <if test="szPOSItemID != null" >
+        #{szPOSItemID,jdbcType=VARCHAR},
+      </if>
+      <if test="szRetailStoreExternalID != null" >
+        #{szRetailStoreExternalID,jdbcType=VARCHAR},
+      </if>
+      <if test="lWorkstationNmbr != null" >
+        #{lWorkstationNmbr,jdbcType=INTEGER},
+      </if>
+      <if test="szDescription != null" >
+        #{szDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="szPurchasingGroup != null" >
+        #{szPurchasingGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="dWk4 != null" >
+        #{dWk4,jdbcType=DECIMAL},
+      </if>
+      <if test="dWk3 != null" >
+        #{dWk3,jdbcType=DECIMAL},
+      </if>
+      <if test="dWk2 != null" >
+        #{dWk2,jdbcType=DECIMAL},
+      </if>
+      <if test="dWk1 != null" >
+        #{dWk1,jdbcType=DECIMAL},
+      </if>
+      <if test="dForecastPerWeek != null" >
+        #{dForecastPerWeek,jdbcType=DECIMAL},
+      </if>
+      <if test="dRevisedForecastPerWeek != null" >
+        #{dRevisedForecastPerWeek,jdbcType=DECIMAL},
+      </if>
+      <if test="dSafetyMinQty != null" >
+        #{dSafetyMinQty,jdbcType=DECIMAL},
+      </if>
+      <if test="dMaximum != null" >
+        #{dMaximum,jdbcType=DECIMAL},
+      </if>
+      <if test="dInventory != null" >
+        #{dInventory,jdbcType=DECIMAL},
+      </if>
+      <if test="dSOQ != null" >
+        #{dSOQ,jdbcType=DECIMAL},
+      </if>
+      <if test="dForecastDays != null" >
+        #{dForecastDays,jdbcType=DECIMAL},
+      </if>
+      <if test="dRevisedSOQ != null" >
+        #{dRevisedSOQ,jdbcType=DECIMAL},
+      </if>
+      <if test="dItemMOQ != null" >
+        #{dItemMOQ,jdbcType=DECIMAL},
+      </if>
+      <if test="dItemLDU != null" >
+        #{dItemLDU,jdbcType=DECIMAL},
+      </if>
+      <if test="lExternalItemSequenceNumber != null" >
+        #{lExternalItemSequenceNumber,jdbcType=INTEGER},
+      </if>
+      <if test="bConfirmedByUser != null" >
+        #{bConfirmedByUser,jdbcType=INTEGER},
+      </if>
+      <if test="bForecastRevised != null" >
+        #{bForecastRevised,jdbcType=INTEGER},
+      </if>
+      <if test="lItemABCRanking != null" >
+        #{lItemABCRanking,jdbcType=INTEGER},
+      </if>
+      <if test="lChangedOperatorID != null" >
+        #{lChangedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="lHostInterfaceID1 != null" >
+        #{lHostInterfaceID1,jdbcType=INTEGER},
+      </if>
+      <if test="szExternalDocumentNmbr != null" >
+        #{szExternalDocumentNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="szItemName != null" >
+        #{szItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="szItemShelfLoc != null" >
+        #{szItemShelfLoc,jdbcType=VARCHAR},
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        #{lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="szLastUpdLocal != null" >
+        #{szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="dUnitRetail != null" >
+        #{dUnitRetail,jdbcType=DECIMAL},
+      </if>
+      <if test="szGondolaNmbr != null" >
+        #{szGondolaNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="lShelfNmbr != null" >
+        #{lShelfNmbr,jdbcType=INTEGER},
+      </if>
+      <if test="lShelfSeqNmbr != null" >
+        #{lShelfSeqNmbr,jdbcType=INTEGER},
+      </if>
+      <if test="szSubCategory != null" >
+        #{szSubCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="dOriginalSOQPerLDU != null" >
+        #{dOriginalSOQPerLDU,jdbcType=DECIMAL},
+      </if>
+      <if test="szUploadFTPStatus != null" >
+        #{szUploadFTPStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="szABCIndicator != null" >
+        #{szABCIndicator,jdbcType=VARCHAR},
+      </if>
+      <if test="bZeroRise != null" >
+        #{bZeroRise,jdbcType=INTEGER},
+      </if>
+      <if test="dTestDescription != null" >
+        #{dTestDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="szSerialNmbr != null" >
+        #{szSerialNmbr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.model.IMSOQExample" resultType="java.lang.Integer" >
+    select count(*) from IMSOQ
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update IMSOQ
+    <set >
+      <if test="record.lRetailStoreID != null" >
+        lRetailStoreID = #{record.lRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="record.szDate != null" >
+        szDate = #{record.szDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szPOSItemID != null" >
+        szPOSItemID = #{record.szPOSItemID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szRetailStoreExternalID != null" >
+        szRetailStoreExternalID = #{record.szRetailStoreExternalID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lWorkstationNmbr != null" >
+        lWorkstationNmbr = #{record.lWorkstationNmbr,jdbcType=INTEGER},
+      </if>
+      <if test="record.szDescription != null" >
+        szDescription = #{record.szDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szPurchasingGroup != null" >
+        szPurchasingGroup = #{record.szPurchasingGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dWk4 != null" >
+        dWk4 = #{record.dWk4,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dWk3 != null" >
+        dWk3 = #{record.dWk3,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dWk2 != null" >
+        dWk2 = #{record.dWk2,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dWk1 != null" >
+        dWk1 = #{record.dWk1,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dForecastPerWeek != null" >
+        dForecastPerWeek = #{record.dForecastPerWeek,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dRevisedForecastPerWeek != null" >
+        dRevisedForecastPerWeek = #{record.dRevisedForecastPerWeek,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dSafetyMinQty != null" >
+        dSafetyMinQty = #{record.dSafetyMinQty,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dMaximum != null" >
+        dMaximum = #{record.dMaximum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dInventory != null" >
+        dInventory = #{record.dInventory,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dSOQ != null" >
+        dSOQ = #{record.dSOQ,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dForecastDays != null" >
+        dForecastDays = #{record.dForecastDays,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dRevisedSOQ != null" >
+        dRevisedSOQ = #{record.dRevisedSOQ,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dItemMOQ != null" >
+        dItemMOQ = #{record.dItemMOQ,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dItemLDU != null" >
+        dItemLDU = #{record.dItemLDU,jdbcType=DECIMAL},
+      </if>
+      <if test="record.lExternalItemSequenceNumber != null" >
+        lExternalItemSequenceNumber = #{record.lExternalItemSequenceNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.bConfirmedByUser != null" >
+        bConfirmedByUser = #{record.bConfirmedByUser,jdbcType=INTEGER},
+      </if>
+      <if test="record.bForecastRevised != null" >
+        bForecastRevised = #{record.bForecastRevised,jdbcType=INTEGER},
+      </if>
+      <if test="record.lItemABCRanking != null" >
+        lItemABCRanking = #{record.lItemABCRanking,jdbcType=INTEGER},
+      </if>
+      <if test="record.lChangedOperatorID != null" >
+        lChangedOperatorID = #{record.lChangedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="record.lHostInterfaceID1 != null" >
+        lHostInterfaceID1 = #{record.lHostInterfaceID1,jdbcType=INTEGER},
+      </if>
+      <if test="record.szExternalDocumentNmbr != null" >
+        szExternalDocumentNmbr = #{record.szExternalDocumentNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szItemName != null" >
+        szItemName = #{record.szItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szItemShelfLoc != null" >
+        szItemShelfLoc = #{record.szItemShelfLoc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lTechLayerAccessID != null" >
+        lTechLayerAccessID = #{record.lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="record.szLastUpdLocal != null" >
+        szLastUpdLocal = #{record.szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dUnitRetail != null" >
+        dUnitRetail = #{record.dUnitRetail,jdbcType=DECIMAL},
+      </if>
+      <if test="record.szGondolaNmbr != null" >
+        szGondolaNmbr = #{record.szGondolaNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lShelfNmbr != null" >
+        lShelfNmbr = #{record.lShelfNmbr,jdbcType=INTEGER},
+      </if>
+      <if test="record.lShelfSeqNmbr != null" >
+        lShelfSeqNmbr = #{record.lShelfSeqNmbr,jdbcType=INTEGER},
+      </if>
+      <if test="record.szSubCategory != null" >
+        szSubCategory = #{record.szSubCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dOriginalSOQPerLDU != null" >
+        dOriginalSOQPerLDU = #{record.dOriginalSOQPerLDU,jdbcType=DECIMAL},
+      </if>
+      <if test="record.szUploadFTPStatus != null" >
+        szUploadFTPStatus = #{record.szUploadFTPStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szABCIndicator != null" >
+        szABCIndicator = #{record.szABCIndicator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bZeroRise != null" >
+        bZeroRise = #{record.bZeroRise,jdbcType=INTEGER},
+      </if>
+      <if test="record.dTestDescription != null" >
+        dTestDescription = #{record.dTestDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szSerialNmbr != null" >
+        szSerialNmbr = #{record.szSerialNmbr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update IMSOQ
+    set lRetailStoreID = #{record.lRetailStoreID,jdbcType=INTEGER},
+      szDate = #{record.szDate,jdbcType=VARCHAR},
+      szPOSItemID = #{record.szPOSItemID,jdbcType=VARCHAR},
+      szRetailStoreExternalID = #{record.szRetailStoreExternalID,jdbcType=VARCHAR},
+      lWorkstationNmbr = #{record.lWorkstationNmbr,jdbcType=INTEGER},
+      szDescription = #{record.szDescription,jdbcType=VARCHAR},
+      szPurchasingGroup = #{record.szPurchasingGroup,jdbcType=VARCHAR},
+      dWk4 = #{record.dWk4,jdbcType=DECIMAL},
+      dWk3 = #{record.dWk3,jdbcType=DECIMAL},
+      dWk2 = #{record.dWk2,jdbcType=DECIMAL},
+      dWk1 = #{record.dWk1,jdbcType=DECIMAL},
+      dForecastPerWeek = #{record.dForecastPerWeek,jdbcType=DECIMAL},
+      dRevisedForecastPerWeek = #{record.dRevisedForecastPerWeek,jdbcType=DECIMAL},
+      dSafetyMinQty = #{record.dSafetyMinQty,jdbcType=DECIMAL},
+      dMaximum = #{record.dMaximum,jdbcType=DECIMAL},
+      dInventory = #{record.dInventory,jdbcType=DECIMAL},
+      dSOQ = #{record.dSOQ,jdbcType=DECIMAL},
+      dForecastDays = #{record.dForecastDays,jdbcType=DECIMAL},
+      dRevisedSOQ = #{record.dRevisedSOQ,jdbcType=DECIMAL},
+      dItemMOQ = #{record.dItemMOQ,jdbcType=DECIMAL},
+      dItemLDU = #{record.dItemLDU,jdbcType=DECIMAL},
+      lExternalItemSequenceNumber = #{record.lExternalItemSequenceNumber,jdbcType=INTEGER},
+      bConfirmedByUser = #{record.bConfirmedByUser,jdbcType=INTEGER},
+      bForecastRevised = #{record.bForecastRevised,jdbcType=INTEGER},
+      lItemABCRanking = #{record.lItemABCRanking,jdbcType=INTEGER},
+      lChangedOperatorID = #{record.lChangedOperatorID,jdbcType=INTEGER},
+      lHostInterfaceID1 = #{record.lHostInterfaceID1,jdbcType=INTEGER},
+      szExternalDocumentNmbr = #{record.szExternalDocumentNmbr,jdbcType=VARCHAR},
+      szItemName = #{record.szItemName,jdbcType=VARCHAR},
+      szItemShelfLoc = #{record.szItemShelfLoc,jdbcType=VARCHAR},
+      lTechLayerAccessID = #{record.lTechLayerAccessID,jdbcType=INTEGER},
+      szLastUpdLocal = #{record.szLastUpdLocal,jdbcType=VARCHAR},
+      dUnitRetail = #{record.dUnitRetail,jdbcType=DECIMAL},
+      szGondolaNmbr = #{record.szGondolaNmbr,jdbcType=VARCHAR},
+      lShelfNmbr = #{record.lShelfNmbr,jdbcType=INTEGER},
+      lShelfSeqNmbr = #{record.lShelfSeqNmbr,jdbcType=INTEGER},
+      szSubCategory = #{record.szSubCategory,jdbcType=VARCHAR},
+      dOriginalSOQPerLDU = #{record.dOriginalSOQPerLDU,jdbcType=DECIMAL},
+      szUploadFTPStatus = #{record.szUploadFTPStatus,jdbcType=VARCHAR},
+      szABCIndicator = #{record.szABCIndicator,jdbcType=VARCHAR},
+      bZeroRise = #{record.bZeroRise,jdbcType=INTEGER},
+      dTestDescription = #{record.dTestDescription,jdbcType=VARCHAR},
+      szSerialNmbr = #{record.szSerialNmbr,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.model.IMSOQ" >
+    update IMSOQ
+    <set >
+      <if test="szRetailStoreExternalID != null" >
+        szRetailStoreExternalID = #{szRetailStoreExternalID,jdbcType=VARCHAR},
+      </if>
+      <if test="lWorkstationNmbr != null" >
+        lWorkstationNmbr = #{lWorkstationNmbr,jdbcType=INTEGER},
+      </if>
+      <if test="szDescription != null" >
+        szDescription = #{szDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="szPurchasingGroup != null" >
+        szPurchasingGroup = #{szPurchasingGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="dWk4 != null" >
+        dWk4 = #{dWk4,jdbcType=DECIMAL},
+      </if>
+      <if test="dWk3 != null" >
+        dWk3 = #{dWk3,jdbcType=DECIMAL},
+      </if>
+      <if test="dWk2 != null" >
+        dWk2 = #{dWk2,jdbcType=DECIMAL},
+      </if>
+      <if test="dWk1 != null" >
+        dWk1 = #{dWk1,jdbcType=DECIMAL},
+      </if>
+      <if test="dForecastPerWeek != null" >
+        dForecastPerWeek = #{dForecastPerWeek,jdbcType=DECIMAL},
+      </if>
+      <if test="dRevisedForecastPerWeek != null" >
+        dRevisedForecastPerWeek = #{dRevisedForecastPerWeek,jdbcType=DECIMAL},
+      </if>
+      <if test="dSafetyMinQty != null" >
+        dSafetyMinQty = #{dSafetyMinQty,jdbcType=DECIMAL},
+      </if>
+      <if test="dMaximum != null" >
+        dMaximum = #{dMaximum,jdbcType=DECIMAL},
+      </if>
+      <if test="dInventory != null" >
+        dInventory = #{dInventory,jdbcType=DECIMAL},
+      </if>
+      <if test="dSOQ != null" >
+        dSOQ = #{dSOQ,jdbcType=DECIMAL},
+      </if>
+      <if test="dForecastDays != null" >
+        dForecastDays = #{dForecastDays,jdbcType=DECIMAL},
+      </if>
+      <if test="dRevisedSOQ != null" >
+        dRevisedSOQ = #{dRevisedSOQ,jdbcType=DECIMAL},
+      </if>
+      <if test="dItemMOQ != null" >
+        dItemMOQ = #{dItemMOQ,jdbcType=DECIMAL},
+      </if>
+      <if test="dItemLDU != null" >
+        dItemLDU = #{dItemLDU,jdbcType=DECIMAL},
+      </if>
+      <if test="lExternalItemSequenceNumber != null" >
+        lExternalItemSequenceNumber = #{lExternalItemSequenceNumber,jdbcType=INTEGER},
+      </if>
+      <if test="bConfirmedByUser != null" >
+        bConfirmedByUser = #{bConfirmedByUser,jdbcType=INTEGER},
+      </if>
+      <if test="bForecastRevised != null" >
+        bForecastRevised = #{bForecastRevised,jdbcType=INTEGER},
+      </if>
+      <if test="lItemABCRanking != null" >
+        lItemABCRanking = #{lItemABCRanking,jdbcType=INTEGER},
+      </if>
+      <if test="lChangedOperatorID != null" >
+        lChangedOperatorID = #{lChangedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="lHostInterfaceID1 != null" >
+        lHostInterfaceID1 = #{lHostInterfaceID1,jdbcType=INTEGER},
+      </if>
+      <if test="szExternalDocumentNmbr != null" >
+        szExternalDocumentNmbr = #{szExternalDocumentNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="szItemName != null" >
+        szItemName = #{szItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="szItemShelfLoc != null" >
+        szItemShelfLoc = #{szItemShelfLoc,jdbcType=VARCHAR},
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        lTechLayerAccessID = #{lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="szLastUpdLocal != null" >
+        szLastUpdLocal = #{szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="dUnitRetail != null" >
+        dUnitRetail = #{dUnitRetail,jdbcType=DECIMAL},
+      </if>
+      <if test="szGondolaNmbr != null" >
+        szGondolaNmbr = #{szGondolaNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="lShelfNmbr != null" >
+        lShelfNmbr = #{lShelfNmbr,jdbcType=INTEGER},
+      </if>
+      <if test="lShelfSeqNmbr != null" >
+        lShelfSeqNmbr = #{lShelfSeqNmbr,jdbcType=INTEGER},
+      </if>
+      <if test="szSubCategory != null" >
+        szSubCategory = #{szSubCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="dOriginalSOQPerLDU != null" >
+        dOriginalSOQPerLDU = #{dOriginalSOQPerLDU,jdbcType=DECIMAL},
+      </if>
+      <if test="szUploadFTPStatus != null" >
+        szUploadFTPStatus = #{szUploadFTPStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="szABCIndicator != null" >
+        szABCIndicator = #{szABCIndicator,jdbcType=VARCHAR},
+      </if>
+      <if test="bZeroRise != null" >
+        bZeroRise = #{bZeroRise,jdbcType=INTEGER},
+      </if>
+      <if test="dTestDescription != null" >
+        dTestDescription = #{dTestDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="szSerialNmbr != null" >
+        szSerialNmbr = #{szSerialNmbr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and szDate = #{szDate,jdbcType=VARCHAR}
+      and szPOSItemID = #{szPOSItemID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.model.IMSOQ" >
+    update IMSOQ
+    set szRetailStoreExternalID = #{szRetailStoreExternalID,jdbcType=VARCHAR},
+      lWorkstationNmbr = #{lWorkstationNmbr,jdbcType=INTEGER},
+      szDescription = #{szDescription,jdbcType=VARCHAR},
+      szPurchasingGroup = #{szPurchasingGroup,jdbcType=VARCHAR},
+      dWk4 = #{dWk4,jdbcType=DECIMAL},
+      dWk3 = #{dWk3,jdbcType=DECIMAL},
+      dWk2 = #{dWk2,jdbcType=DECIMAL},
+      dWk1 = #{dWk1,jdbcType=DECIMAL},
+      dForecastPerWeek = #{dForecastPerWeek,jdbcType=DECIMAL},
+      dRevisedForecastPerWeek = #{dRevisedForecastPerWeek,jdbcType=DECIMAL},
+      dSafetyMinQty = #{dSafetyMinQty,jdbcType=DECIMAL},
+      dMaximum = #{dMaximum,jdbcType=DECIMAL},
+      dInventory = #{dInventory,jdbcType=DECIMAL},
+      dSOQ = #{dSOQ,jdbcType=DECIMAL},
+      dForecastDays = #{dForecastDays,jdbcType=DECIMAL},
+      dRevisedSOQ = #{dRevisedSOQ,jdbcType=DECIMAL},
+      dItemMOQ = #{dItemMOQ,jdbcType=DECIMAL},
+      dItemLDU = #{dItemLDU,jdbcType=DECIMAL},
+      lExternalItemSequenceNumber = #{lExternalItemSequenceNumber,jdbcType=INTEGER},
+      bConfirmedByUser = #{bConfirmedByUser,jdbcType=INTEGER},
+      bForecastRevised = #{bForecastRevised,jdbcType=INTEGER},
+      lItemABCRanking = #{lItemABCRanking,jdbcType=INTEGER},
+      lChangedOperatorID = #{lChangedOperatorID,jdbcType=INTEGER},
+      lHostInterfaceID1 = #{lHostInterfaceID1,jdbcType=INTEGER},
+      szExternalDocumentNmbr = #{szExternalDocumentNmbr,jdbcType=VARCHAR},
+      szItemName = #{szItemName,jdbcType=VARCHAR},
+      szItemShelfLoc = #{szItemShelfLoc,jdbcType=VARCHAR},
+      lTechLayerAccessID = #{lTechLayerAccessID,jdbcType=INTEGER},
+      szLastUpdLocal = #{szLastUpdLocal,jdbcType=VARCHAR},
+      dUnitRetail = #{dUnitRetail,jdbcType=DECIMAL},
+      szGondolaNmbr = #{szGondolaNmbr,jdbcType=VARCHAR},
+      lShelfNmbr = #{lShelfNmbr,jdbcType=INTEGER},
+      lShelfSeqNmbr = #{lShelfSeqNmbr,jdbcType=INTEGER},
+      szSubCategory = #{szSubCategory,jdbcType=VARCHAR},
+      dOriginalSOQPerLDU = #{dOriginalSOQPerLDU,jdbcType=DECIMAL},
+      szUploadFTPStatus = #{szUploadFTPStatus,jdbcType=VARCHAR},
+      szABCIndicator = #{szABCIndicator,jdbcType=VARCHAR},
+      bZeroRise = #{bZeroRise,jdbcType=INTEGER},
+      dTestDescription = #{dTestDescription,jdbcType=VARCHAR},
+      szSerialNmbr = #{szSerialNmbr,jdbcType=VARCHAR}
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and szDate = #{szDate,jdbcType=VARCHAR}
+      and szPOSItemID = #{szPOSItemID,jdbcType=VARCHAR}
+  </update>
+</mapper>

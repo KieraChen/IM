@@ -28,6 +28,7 @@ public class OperatorServiceImpl implements IOperatorService {
         return operatorList;
     }
 
+    //查询用户
     public PageInfo<Operator> selectOperator(Operator operator,Integer pageNow){
         OperatorExample operatorExample = new OperatorExample();
         if(operator.getSzSignOnName() != null && !"".equals(operator.getSzSignOnName())){

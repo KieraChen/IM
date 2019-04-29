@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.IMStockTakeItemMapper" >
+  <resultMap id="BaseResultMap" type="com.model.IMStockTakeItem" >
+    <id column="lRetailStoreID" property="lRetailStoreID" jdbcType="INTEGER" />
+    <id column="szDocumentNmbr" property="szDocumentNmbr" jdbcType="VARCHAR" />
+    <id column="szPosItemID" property="szPosItemID" jdbcType="VARCHAR" />
+    <result column="szItemName" property="szItemName" jdbcType="VARCHAR" />
+    <result column="lChangedOperatorID" property="lChangedOperatorID" jdbcType="INTEGER" />
+    <result column="lTechLayerAccessID" property="lTechLayerAccessID" jdbcType="INTEGER" />
+    <result column="szLastUpdLocal" property="szLastUpdLocal" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    lRetailStoreID, szDocumentNmbr, szPosItemID, szItemName, lChangedOperatorID, lTechLayerAccessID, 
+    szLastUpdLocal
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.model.IMStockTakeItemExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from IMStockTakeItem
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.model.IMStockTakeItemKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from IMStockTakeItem
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and szDocumentNmbr = #{szDocumentNmbr,jdbcType=VARCHAR}
+      and szPosItemID = #{szPosItemID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.model.IMStockTakeItemKey" >
+    delete from IMStockTakeItem
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and szDocumentNmbr = #{szDocumentNmbr,jdbcType=VARCHAR}
+      and szPosItemID = #{szPosItemID,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.model.IMStockTakeItemExample" >
+    delete from IMStockTakeItem
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.model.IMStockTakeItem" >
+    insert into IMStockTakeItem (lRetailStoreID, szDocumentNmbr, szPosItemID, 
+      szItemName, lChangedOperatorID, lTechLayerAccessID, 
+      szLastUpdLocal)
+    values (#{lRetailStoreID,jdbcType=INTEGER}, #{szDocumentNmbr,jdbcType=VARCHAR}, #{szPosItemID,jdbcType=VARCHAR}, 
+      #{szItemName,jdbcType=VARCHAR}, #{lChangedOperatorID,jdbcType=INTEGER}, #{lTechLayerAccessID,jdbcType=INTEGER}, 
+      #{szLastUpdLocal,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.model.IMStockTakeItem" >
+    insert into IMStockTakeItem
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lRetailStoreID != null" >
+        lRetailStoreID,
+      </if>
+      <if test="szDocumentNmbr != null" >
+        szDocumentNmbr,
+      </if>
+      <if test="szPosItemID != null" >
+        szPosItemID,
+      </if>
+      <if test="szItemName != null" >
+        szItemName,
+      </if>
+      <if test="lChangedOperatorID != null" >
+        lChangedOperatorID,
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        lTechLayerAccessID,
+      </if>
+      <if test="szLastUpdLocal != null" >
+        szLastUpdLocal,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lRetailStoreID != null" >
+        #{lRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="szDocumentNmbr != null" >
+        #{szDocumentNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="szPosItemID != null" >
+        #{szPosItemID,jdbcType=VARCHAR},
+      </if>
+      <if test="szItemName != null" >
+        #{szItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="lChangedOperatorID != null" >
+        #{lChangedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        #{lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="szLastUpdLocal != null" >
+        #{szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.model.IMStockTakeItemExample" resultType="java.lang.Integer" >
+    select count(*) from IMStockTakeItem
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update IMStockTakeItem
+    <set >
+      <if test="record.lRetailStoreID != null" >
+        lRetailStoreID = #{record.lRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="record.szDocumentNmbr != null" >
+        szDocumentNmbr = #{record.szDocumentNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szPosItemID != null" >
+        szPosItemID = #{record.szPosItemID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szItemName != null" >
+        szItemName = #{record.szItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lChangedOperatorID != null" >
+        lChangedOperatorID = #{record.lChangedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="record.lTechLayerAccessID != null" >
+        lTechLayerAccessID = #{record.lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="record.szLastUpdLocal != null" >
+        szLastUpdLocal = #{record.szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update IMStockTakeItem
+    set lRetailStoreID = #{record.lRetailStoreID,jdbcType=INTEGER},
+      szDocumentNmbr = #{record.szDocumentNmbr,jdbcType=VARCHAR},
+      szPosItemID = #{record.szPosItemID,jdbcType=VARCHAR},
+      szItemName = #{record.szItemName,jdbcType=VARCHAR},
+      lChangedOperatorID = #{record.lChangedOperatorID,jdbcType=INTEGER},
+      lTechLayerAccessID = #{record.lTechLayerAccessID,jdbcType=INTEGER},
+      szLastUpdLocal = #{record.szLastUpdLocal,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.model.IMStockTakeItem" >
+    update IMStockTakeItem
+    <set >
+      <if test="szItemName != null" >
+        szItemName = #{szItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="lChangedOperatorID != null" >
+        lChangedOperatorID = #{lChangedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        lTechLayerAccessID = #{lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="szLastUpdLocal != null" >
+        szLastUpdLocal = #{szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and szDocumentNmbr = #{szDocumentNmbr,jdbcType=VARCHAR}
+      and szPosItemID = #{szPosItemID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.model.IMStockTakeItem" >
+    update IMStockTakeItem
+    set szItemName = #{szItemName,jdbcType=VARCHAR},
+      lChangedOperatorID = #{lChangedOperatorID,jdbcType=INTEGER},
+      lTechLayerAccessID = #{lTechLayerAccessID,jdbcType=INTEGER},
+      szLastUpdLocal = #{szLastUpdLocal,jdbcType=VARCHAR}
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and szDocumentNmbr = #{szDocumentNmbr,jdbcType=VARCHAR}
+      and szPosItemID = #{szPosItemID,jdbcType=VARCHAR}
+  </update>
+</mapper>

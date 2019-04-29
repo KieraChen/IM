@@ -1,0 +1,704 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.IMStockTakeDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.model.IMStockTakeDetail" >
+    <id column="lRetailStoreID" property="lRetailStoreID" jdbcType="INTEGER" />
+    <id column="szDocumentNmbr" property="szDocumentNmbr" jdbcType="VARCHAR" />
+    <id column="szPosItemID" property="szPosItemID" jdbcType="VARCHAR" />
+    <id column="szGondolaNmbr" property="szGondolaNmbr" jdbcType="VARCHAR" />
+    <result column="szCountedDate" property="szCountedDate" jdbcType="VARCHAR" />
+    <result column="szCountedTime" property="szCountedTime" jdbcType="VARCHAR" />
+    <result column="szItemName" property="szItemName" jdbcType="VARCHAR" />
+    <result column="szGondolaDesc" property="szGondolaDesc" jdbcType="VARCHAR" />
+    <result column="szGondolaStorageLocationID" property="szGondolaStorageLocationID" jdbcType="VARCHAR" />
+    <result column="szGondolaStorageLocationName" property="szGondolaStorageLocationName" jdbcType="VARCHAR" />
+    <result column="szPSA_ID" property="szPSA_ID" jdbcType="VARCHAR" />
+    <result column="szPSAName" property="szPSAName" jdbcType="VARCHAR" />
+    <result column="szPriceUnitOfMeasureName" property="szPriceUnitOfMeasureName" jdbcType="VARCHAR" />
+    <result column="dQty" property="dQty" jdbcType="DECIMAL" />
+    <result column="dAdjQty" property="dAdjQty" jdbcType="DECIMAL" />
+    <result column="dFinalQty" property="dFinalQty" jdbcType="DECIMAL" />
+    <result column="dBookQty" property="dBookQty" jdbcType="DECIMAL" />
+    <result column="dPackingUnitPriceAmount" property="dPackingUnitPriceAmount" jdbcType="DECIMAL" />
+    <result column="dMap" property="dMap" jdbcType="DECIMAL" />
+    <result column="szInputType" property="szInputType" jdbcType="VARCHAR" />
+    <result column="dDiffQty" property="dDiffQty" jdbcType="DECIMAL" />
+    <result column="dDiffAmount" property="dDiffAmount" jdbcType="DECIMAL" />
+    <result column="lChangedOperatorID" property="lChangedOperatorID" jdbcType="INTEGER" />
+    <result column="lTechLayerAccessID" property="lTechLayerAccessID" jdbcType="INTEGER" />
+    <result column="szLastUpdLocal" property="szLastUpdLocal" jdbcType="VARCHAR" />
+    <result column="szIMPSA" property="szIMPSA" jdbcType="VARCHAR" />
+    <result column="dQty2" property="dQty2" jdbcType="DECIMAL" />
+    <result column="dQty3" property="dQty3" jdbcType="DECIMAL" />
+    <result column="bScanduringCount2" property="bScanduringCount2" jdbcType="INTEGER" />
+    <result column="bScanduringCount3" property="bScanduringCount3" jdbcType="INTEGER" />
+    <result column="dLastestQty" property="dLastestQty" jdbcType="DECIMAL" />
+    <result column="dBookQtyPSA" property="dBookQtyPSA" jdbcType="DECIMAL" />
+    <result column="bMasterGondola" property="bMasterGondola" jdbcType="INTEGER" />
+    <result column="bScanduringCount1" property="bScanduringCount1" jdbcType="INTEGER" />
+    <result column="dMovementInventory" property="dMovementInventory" jdbcType="DECIMAL" />
+    <result column="dMovementInventoryLocation" property="dMovementInventoryLocation" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    lRetailStoreID, szDocumentNmbr, szPosItemID, szGondolaNmbr, szCountedDate, szCountedTime, 
+    szItemName, szGondolaDesc, szGondolaStorageLocationID, szGondolaStorageLocationName, 
+    szPSA_ID, szPSAName, szPriceUnitOfMeasureName, dQty, dAdjQty, dFinalQty, dBookQty, 
+    dPackingUnitPriceAmount, dMap, szInputType, dDiffQty, dDiffAmount, lChangedOperatorID, 
+    lTechLayerAccessID, szLastUpdLocal, szIMPSA, dQty2, dQty3, bScanduringCount2, bScanduringCount3, 
+    dLastestQty, dBookQtyPSA, bMasterGondola, bScanduringCount1, dMovementInventory, 
+    dMovementInventoryLocation
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.model.IMStockTakeDetailExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from IMStockTakeDetail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.model.IMStockTakeDetailKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from IMStockTakeDetail
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and szDocumentNmbr = #{szDocumentNmbr,jdbcType=VARCHAR}
+      and szPosItemID = #{szPosItemID,jdbcType=VARCHAR}
+      and szGondolaNmbr = #{szGondolaNmbr,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.model.IMStockTakeDetailKey" >
+    delete from IMStockTakeDetail
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and szDocumentNmbr = #{szDocumentNmbr,jdbcType=VARCHAR}
+      and szPosItemID = #{szPosItemID,jdbcType=VARCHAR}
+      and szGondolaNmbr = #{szGondolaNmbr,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.model.IMStockTakeDetailExample" >
+    delete from IMStockTakeDetail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.model.IMStockTakeDetail" >
+    insert into IMStockTakeDetail (lRetailStoreID, szDocumentNmbr, szPosItemID, 
+      szGondolaNmbr, szCountedDate, szCountedTime, 
+      szItemName, szGondolaDesc, szGondolaStorageLocationID, 
+      szGondolaStorageLocationName, szPSA_ID, 
+      szPSAName, szPriceUnitOfMeasureName, dQty, 
+      dAdjQty, dFinalQty, dBookQty, 
+      dPackingUnitPriceAmount, dMap, szInputType, 
+      dDiffQty, dDiffAmount, lChangedOperatorID, 
+      lTechLayerAccessID, szLastUpdLocal, szIMPSA, 
+      dQty2, dQty3, bScanduringCount2, 
+      bScanduringCount3, dLastestQty, dBookQtyPSA, 
+      bMasterGondola, bScanduringCount1, dMovementInventory, 
+      dMovementInventoryLocation)
+    values (#{lRetailStoreID,jdbcType=INTEGER}, #{szDocumentNmbr,jdbcType=VARCHAR}, #{szPosItemID,jdbcType=VARCHAR}, 
+      #{szGondolaNmbr,jdbcType=VARCHAR}, #{szCountedDate,jdbcType=VARCHAR}, #{szCountedTime,jdbcType=VARCHAR}, 
+      #{szItemName,jdbcType=VARCHAR}, #{szGondolaDesc,jdbcType=VARCHAR}, #{szGondolaStorageLocationID,jdbcType=VARCHAR}, 
+      #{szGondolaStorageLocationName,jdbcType=VARCHAR}, #{szPSA_ID,jdbcType=VARCHAR}, 
+      #{szPSAName,jdbcType=VARCHAR}, #{szPriceUnitOfMeasureName,jdbcType=VARCHAR}, #{dQty,jdbcType=DECIMAL}, 
+      #{dAdjQty,jdbcType=DECIMAL}, #{dFinalQty,jdbcType=DECIMAL}, #{dBookQty,jdbcType=DECIMAL}, 
+      #{dPackingUnitPriceAmount,jdbcType=DECIMAL}, #{dMap,jdbcType=DECIMAL}, #{szInputType,jdbcType=VARCHAR}, 
+      #{dDiffQty,jdbcType=DECIMAL}, #{dDiffAmount,jdbcType=DECIMAL}, #{lChangedOperatorID,jdbcType=INTEGER}, 
+      #{lTechLayerAccessID,jdbcType=INTEGER}, #{szLastUpdLocal,jdbcType=VARCHAR}, #{szIMPSA,jdbcType=VARCHAR}, 
+      #{dQty2,jdbcType=DECIMAL}, #{dQty3,jdbcType=DECIMAL}, #{bScanduringCount2,jdbcType=INTEGER}, 
+      #{bScanduringCount3,jdbcType=INTEGER}, #{dLastestQty,jdbcType=DECIMAL}, #{dBookQtyPSA,jdbcType=DECIMAL}, 
+      #{bMasterGondola,jdbcType=INTEGER}, #{bScanduringCount1,jdbcType=INTEGER}, #{dMovementInventory,jdbcType=DECIMAL}, 
+      #{dMovementInventoryLocation,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.model.IMStockTakeDetail" >
+    insert into IMStockTakeDetail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lRetailStoreID != null" >
+        lRetailStoreID,
+      </if>
+      <if test="szDocumentNmbr != null" >
+        szDocumentNmbr,
+      </if>
+      <if test="szPosItemID != null" >
+        szPosItemID,
+      </if>
+      <if test="szGondolaNmbr != null" >
+        szGondolaNmbr,
+      </if>
+      <if test="szCountedDate != null" >
+        szCountedDate,
+      </if>
+      <if test="szCountedTime != null" >
+        szCountedTime,
+      </if>
+      <if test="szItemName != null" >
+        szItemName,
+      </if>
+      <if test="szGondolaDesc != null" >
+        szGondolaDesc,
+      </if>
+      <if test="szGondolaStorageLocationID != null" >
+        szGondolaStorageLocationID,
+      </if>
+      <if test="szGondolaStorageLocationName != null" >
+        szGondolaStorageLocationName,
+      </if>
+      <if test="szPSA_ID != null" >
+        szPSA_ID,
+      </if>
+      <if test="szPSAName != null" >
+        szPSAName,
+      </if>
+      <if test="szPriceUnitOfMeasureName != null" >
+        szPriceUnitOfMeasureName,
+      </if>
+      <if test="dQty != null" >
+        dQty,
+      </if>
+      <if test="dAdjQty != null" >
+        dAdjQty,
+      </if>
+      <if test="dFinalQty != null" >
+        dFinalQty,
+      </if>
+      <if test="dBookQty != null" >
+        dBookQty,
+      </if>
+      <if test="dPackingUnitPriceAmount != null" >
+        dPackingUnitPriceAmount,
+      </if>
+      <if test="dMap != null" >
+        dMap,
+      </if>
+      <if test="szInputType != null" >
+        szInputType,
+      </if>
+      <if test="dDiffQty != null" >
+        dDiffQty,
+      </if>
+      <if test="dDiffAmount != null" >
+        dDiffAmount,
+      </if>
+      <if test="lChangedOperatorID != null" >
+        lChangedOperatorID,
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        lTechLayerAccessID,
+      </if>
+      <if test="szLastUpdLocal != null" >
+        szLastUpdLocal,
+      </if>
+      <if test="szIMPSA != null" >
+        szIMPSA,
+      </if>
+      <if test="dQty2 != null" >
+        dQty2,
+      </if>
+      <if test="dQty3 != null" >
+        dQty3,
+      </if>
+      <if test="bScanduringCount2 != null" >
+        bScanduringCount2,
+      </if>
+      <if test="bScanduringCount3 != null" >
+        bScanduringCount3,
+      </if>
+      <if test="dLastestQty != null" >
+        dLastestQty,
+      </if>
+      <if test="dBookQtyPSA != null" >
+        dBookQtyPSA,
+      </if>
+      <if test="bMasterGondola != null" >
+        bMasterGondola,
+      </if>
+      <if test="bScanduringCount1 != null" >
+        bScanduringCount1,
+      </if>
+      <if test="dMovementInventory != null" >
+        dMovementInventory,
+      </if>
+      <if test="dMovementInventoryLocation != null" >
+        dMovementInventoryLocation,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lRetailStoreID != null" >
+        #{lRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="szDocumentNmbr != null" >
+        #{szDocumentNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="szPosItemID != null" >
+        #{szPosItemID,jdbcType=VARCHAR},
+      </if>
+      <if test="szGondolaNmbr != null" >
+        #{szGondolaNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="szCountedDate != null" >
+        #{szCountedDate,jdbcType=VARCHAR},
+      </if>
+      <if test="szCountedTime != null" >
+        #{szCountedTime,jdbcType=VARCHAR},
+      </if>
+      <if test="szItemName != null" >
+        #{szItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="szGondolaDesc != null" >
+        #{szGondolaDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="szGondolaStorageLocationID != null" >
+        #{szGondolaStorageLocationID,jdbcType=VARCHAR},
+      </if>
+      <if test="szGondolaStorageLocationName != null" >
+        #{szGondolaStorageLocationName,jdbcType=VARCHAR},
+      </if>
+      <if test="szPSA_ID != null" >
+        #{szPSA_ID,jdbcType=VARCHAR},
+      </if>
+      <if test="szPSAName != null" >
+        #{szPSAName,jdbcType=VARCHAR},
+      </if>
+      <if test="szPriceUnitOfMeasureName != null" >
+        #{szPriceUnitOfMeasureName,jdbcType=VARCHAR},
+      </if>
+      <if test="dQty != null" >
+        #{dQty,jdbcType=DECIMAL},
+      </if>
+      <if test="dAdjQty != null" >
+        #{dAdjQty,jdbcType=DECIMAL},
+      </if>
+      <if test="dFinalQty != null" >
+        #{dFinalQty,jdbcType=DECIMAL},
+      </if>
+      <if test="dBookQty != null" >
+        #{dBookQty,jdbcType=DECIMAL},
+      </if>
+      <if test="dPackingUnitPriceAmount != null" >
+        #{dPackingUnitPriceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="dMap != null" >
+        #{dMap,jdbcType=DECIMAL},
+      </if>
+      <if test="szInputType != null" >
+        #{szInputType,jdbcType=VARCHAR},
+      </if>
+      <if test="dDiffQty != null" >
+        #{dDiffQty,jdbcType=DECIMAL},
+      </if>
+      <if test="dDiffAmount != null" >
+        #{dDiffAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="lChangedOperatorID != null" >
+        #{lChangedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        #{lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="szLastUpdLocal != null" >
+        #{szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="szIMPSA != null" >
+        #{szIMPSA,jdbcType=VARCHAR},
+      </if>
+      <if test="dQty2 != null" >
+        #{dQty2,jdbcType=DECIMAL},
+      </if>
+      <if test="dQty3 != null" >
+        #{dQty3,jdbcType=DECIMAL},
+      </if>
+      <if test="bScanduringCount2 != null" >
+        #{bScanduringCount2,jdbcType=INTEGER},
+      </if>
+      <if test="bScanduringCount3 != null" >
+        #{bScanduringCount3,jdbcType=INTEGER},
+      </if>
+      <if test="dLastestQty != null" >
+        #{dLastestQty,jdbcType=DECIMAL},
+      </if>
+      <if test="dBookQtyPSA != null" >
+        #{dBookQtyPSA,jdbcType=DECIMAL},
+      </if>
+      <if test="bMasterGondola != null" >
+        #{bMasterGondola,jdbcType=INTEGER},
+      </if>
+      <if test="bScanduringCount1 != null" >
+        #{bScanduringCount1,jdbcType=INTEGER},
+      </if>
+      <if test="dMovementInventory != null" >
+        #{dMovementInventory,jdbcType=DECIMAL},
+      </if>
+      <if test="dMovementInventoryLocation != null" >
+        #{dMovementInventoryLocation,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.model.IMStockTakeDetailExample" resultType="java.lang.Integer" >
+    select count(*) from IMStockTakeDetail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update IMStockTakeDetail
+    <set >
+      <if test="record.lRetailStoreID != null" >
+        lRetailStoreID = #{record.lRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="record.szDocumentNmbr != null" >
+        szDocumentNmbr = #{record.szDocumentNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szPosItemID != null" >
+        szPosItemID = #{record.szPosItemID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szGondolaNmbr != null" >
+        szGondolaNmbr = #{record.szGondolaNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szCountedDate != null" >
+        szCountedDate = #{record.szCountedDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szCountedTime != null" >
+        szCountedTime = #{record.szCountedTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szItemName != null" >
+        szItemName = #{record.szItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szGondolaDesc != null" >
+        szGondolaDesc = #{record.szGondolaDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szGondolaStorageLocationID != null" >
+        szGondolaStorageLocationID = #{record.szGondolaStorageLocationID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szGondolaStorageLocationName != null" >
+        szGondolaStorageLocationName = #{record.szGondolaStorageLocationName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szPSA_ID != null" >
+        szPSA_ID = #{record.szPSA_ID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szPSAName != null" >
+        szPSAName = #{record.szPSAName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szPriceUnitOfMeasureName != null" >
+        szPriceUnitOfMeasureName = #{record.szPriceUnitOfMeasureName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dQty != null" >
+        dQty = #{record.dQty,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dAdjQty != null" >
+        dAdjQty = #{record.dAdjQty,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dFinalQty != null" >
+        dFinalQty = #{record.dFinalQty,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dBookQty != null" >
+        dBookQty = #{record.dBookQty,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dPackingUnitPriceAmount != null" >
+        dPackingUnitPriceAmount = #{record.dPackingUnitPriceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dMap != null" >
+        dMap = #{record.dMap,jdbcType=DECIMAL},
+      </if>
+      <if test="record.szInputType != null" >
+        szInputType = #{record.szInputType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dDiffQty != null" >
+        dDiffQty = #{record.dDiffQty,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dDiffAmount != null" >
+        dDiffAmount = #{record.dDiffAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.lChangedOperatorID != null" >
+        lChangedOperatorID = #{record.lChangedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="record.lTechLayerAccessID != null" >
+        lTechLayerAccessID = #{record.lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="record.szLastUpdLocal != null" >
+        szLastUpdLocal = #{record.szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szIMPSA != null" >
+        szIMPSA = #{record.szIMPSA,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dQty2 != null" >
+        dQty2 = #{record.dQty2,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dQty3 != null" >
+        dQty3 = #{record.dQty3,jdbcType=DECIMAL},
+      </if>
+      <if test="record.bScanduringCount2 != null" >
+        bScanduringCount2 = #{record.bScanduringCount2,jdbcType=INTEGER},
+      </if>
+      <if test="record.bScanduringCount3 != null" >
+        bScanduringCount3 = #{record.bScanduringCount3,jdbcType=INTEGER},
+      </if>
+      <if test="record.dLastestQty != null" >
+        dLastestQty = #{record.dLastestQty,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dBookQtyPSA != null" >
+        dBookQtyPSA = #{record.dBookQtyPSA,jdbcType=DECIMAL},
+      </if>
+      <if test="record.bMasterGondola != null" >
+        bMasterGondola = #{record.bMasterGondola,jdbcType=INTEGER},
+      </if>
+      <if test="record.bScanduringCount1 != null" >
+        bScanduringCount1 = #{record.bScanduringCount1,jdbcType=INTEGER},
+      </if>
+      <if test="record.dMovementInventory != null" >
+        dMovementInventory = #{record.dMovementInventory,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dMovementInventoryLocation != null" >
+        dMovementInventoryLocation = #{record.dMovementInventoryLocation,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update IMStockTakeDetail
+    set lRetailStoreID = #{record.lRetailStoreID,jdbcType=INTEGER},
+      szDocumentNmbr = #{record.szDocumentNmbr,jdbcType=VARCHAR},
+      szPosItemID = #{record.szPosItemID,jdbcType=VARCHAR},
+      szGondolaNmbr = #{record.szGondolaNmbr,jdbcType=VARCHAR},
+      szCountedDate = #{record.szCountedDate,jdbcType=VARCHAR},
+      szCountedTime = #{record.szCountedTime,jdbcType=VARCHAR},
+      szItemName = #{record.szItemName,jdbcType=VARCHAR},
+      szGondolaDesc = #{record.szGondolaDesc,jdbcType=VARCHAR},
+      szGondolaStorageLocationID = #{record.szGondolaStorageLocationID,jdbcType=VARCHAR},
+      szGondolaStorageLocationName = #{record.szGondolaStorageLocationName,jdbcType=VARCHAR},
+      szPSA_ID = #{record.szPSA_ID,jdbcType=VARCHAR},
+      szPSAName = #{record.szPSAName,jdbcType=VARCHAR},
+      szPriceUnitOfMeasureName = #{record.szPriceUnitOfMeasureName,jdbcType=VARCHAR},
+      dQty = #{record.dQty,jdbcType=DECIMAL},
+      dAdjQty = #{record.dAdjQty,jdbcType=DECIMAL},
+      dFinalQty = #{record.dFinalQty,jdbcType=DECIMAL},
+      dBookQty = #{record.dBookQty,jdbcType=DECIMAL},
+      dPackingUnitPriceAmount = #{record.dPackingUnitPriceAmount,jdbcType=DECIMAL},
+      dMap = #{record.dMap,jdbcType=DECIMAL},
+      szInputType = #{record.szInputType,jdbcType=VARCHAR},
+      dDiffQty = #{record.dDiffQty,jdbcType=DECIMAL},
+      dDiffAmount = #{record.dDiffAmount,jdbcType=DECIMAL},
+      lChangedOperatorID = #{record.lChangedOperatorID,jdbcType=INTEGER},
+      lTechLayerAccessID = #{record.lTechLayerAccessID,jdbcType=INTEGER},
+      szLastUpdLocal = #{record.szLastUpdLocal,jdbcType=VARCHAR},
+      szIMPSA = #{record.szIMPSA,jdbcType=VARCHAR},
+      dQty2 = #{record.dQty2,jdbcType=DECIMAL},
+      dQty3 = #{record.dQty3,jdbcType=DECIMAL},
+      bScanduringCount2 = #{record.bScanduringCount2,jdbcType=INTEGER},
+      bScanduringCount3 = #{record.bScanduringCount3,jdbcType=INTEGER},
+      dLastestQty = #{record.dLastestQty,jdbcType=DECIMAL},
+      dBookQtyPSA = #{record.dBookQtyPSA,jdbcType=DECIMAL},
+      bMasterGondola = #{record.bMasterGondola,jdbcType=INTEGER},
+      bScanduringCount1 = #{record.bScanduringCount1,jdbcType=INTEGER},
+      dMovementInventory = #{record.dMovementInventory,jdbcType=DECIMAL},
+      dMovementInventoryLocation = #{record.dMovementInventoryLocation,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.model.IMStockTakeDetail" >
+    update IMStockTakeDetail
+    <set >
+      <if test="szCountedDate != null" >
+        szCountedDate = #{szCountedDate,jdbcType=VARCHAR},
+      </if>
+      <if test="szCountedTime != null" >
+        szCountedTime = #{szCountedTime,jdbcType=VARCHAR},
+      </if>
+      <if test="szItemName != null" >
+        szItemName = #{szItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="szGondolaDesc != null" >
+        szGondolaDesc = #{szGondolaDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="szGondolaStorageLocationID != null" >
+        szGondolaStorageLocationID = #{szGondolaStorageLocationID,jdbcType=VARCHAR},
+      </if>
+      <if test="szGondolaStorageLocationName != null" >
+        szGondolaStorageLocationName = #{szGondolaStorageLocationName,jdbcType=VARCHAR},
+      </if>
+      <if test="szPSA_ID != null" >
+        szPSA_ID = #{szPSA_ID,jdbcType=VARCHAR},
+      </if>
+      <if test="szPSAName != null" >
+        szPSAName = #{szPSAName,jdbcType=VARCHAR},
+      </if>
+      <if test="szPriceUnitOfMeasureName != null" >
+        szPriceUnitOfMeasureName = #{szPriceUnitOfMeasureName,jdbcType=VARCHAR},
+      </if>
+      <if test="dQty != null" >
+        dQty = #{dQty,jdbcType=DECIMAL},
+      </if>
+      <if test="dAdjQty != null" >
+        dAdjQty = #{dAdjQty,jdbcType=DECIMAL},
+      </if>
+      <if test="dFinalQty != null" >
+        dFinalQty = #{dFinalQty,jdbcType=DECIMAL},
+      </if>
+      <if test="dBookQty != null" >
+        dBookQty = #{dBookQty,jdbcType=DECIMAL},
+      </if>
+      <if test="dPackingUnitPriceAmount != null" >
+        dPackingUnitPriceAmount = #{dPackingUnitPriceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="dMap != null" >
+        dMap = #{dMap,jdbcType=DECIMAL},
+      </if>
+      <if test="szInputType != null" >
+        szInputType = #{szInputType,jdbcType=VARCHAR},
+      </if>
+      <if test="dDiffQty != null" >
+        dDiffQty = #{dDiffQty,jdbcType=DECIMAL},
+      </if>
+      <if test="dDiffAmount != null" >
+        dDiffAmount = #{dDiffAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="lChangedOperatorID != null" >
+        lChangedOperatorID = #{lChangedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        lTechLayerAccessID = #{lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="szLastUpdLocal != null" >
+        szLastUpdLocal = #{szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="szIMPSA != null" >
+        szIMPSA = #{szIMPSA,jdbcType=VARCHAR},
+      </if>
+      <if test="dQty2 != null" >
+        dQty2 = #{dQty2,jdbcType=DECIMAL},
+      </if>
+      <if test="dQty3 != null" >
+        dQty3 = #{dQty3,jdbcType=DECIMAL},
+      </if>
+      <if test="bScanduringCount2 != null" >
+        bScanduringCount2 = #{bScanduringCount2,jdbcType=INTEGER},
+      </if>
+      <if test="bScanduringCount3 != null" >
+        bScanduringCount3 = #{bScanduringCount3,jdbcType=INTEGER},
+      </if>
+      <if test="dLastestQty != null" >
+        dLastestQty = #{dLastestQty,jdbcType=DECIMAL},
+      </if>
+      <if test="dBookQtyPSA != null" >
+        dBookQtyPSA = #{dBookQtyPSA,jdbcType=DECIMAL},
+      </if>
+      <if test="bMasterGondola != null" >
+        bMasterGondola = #{bMasterGondola,jdbcType=INTEGER},
+      </if>
+      <if test="bScanduringCount1 != null" >
+        bScanduringCount1 = #{bScanduringCount1,jdbcType=INTEGER},
+      </if>
+      <if test="dMovementInventory != null" >
+        dMovementInventory = #{dMovementInventory,jdbcType=DECIMAL},
+      </if>
+      <if test="dMovementInventoryLocation != null" >
+        dMovementInventoryLocation = #{dMovementInventoryLocation,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and szDocumentNmbr = #{szDocumentNmbr,jdbcType=VARCHAR}
+      and szPosItemID = #{szPosItemID,jdbcType=VARCHAR}
+      and szGondolaNmbr = #{szGondolaNmbr,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.model.IMStockTakeDetail" >
+    update IMStockTakeDetail
+    set szCountedDate = #{szCountedDate,jdbcType=VARCHAR},
+      szCountedTime = #{szCountedTime,jdbcType=VARCHAR},
+      szItemName = #{szItemName,jdbcType=VARCHAR},
+      szGondolaDesc = #{szGondolaDesc,jdbcType=VARCHAR},
+      szGondolaStorageLocationID = #{szGondolaStorageLocationID,jdbcType=VARCHAR},
+      szGondolaStorageLocationName = #{szGondolaStorageLocationName,jdbcType=VARCHAR},
+      szPSA_ID = #{szPSA_ID,jdbcType=VARCHAR},
+      szPSAName = #{szPSAName,jdbcType=VARCHAR},
+      szPriceUnitOfMeasureName = #{szPriceUnitOfMeasureName,jdbcType=VARCHAR},
+      dQty = #{dQty,jdbcType=DECIMAL},
+      dAdjQty = #{dAdjQty,jdbcType=DECIMAL},
+      dFinalQty = #{dFinalQty,jdbcType=DECIMAL},
+      dBookQty = #{dBookQty,jdbcType=DECIMAL},
+      dPackingUnitPriceAmount = #{dPackingUnitPriceAmount,jdbcType=DECIMAL},
+      dMap = #{dMap,jdbcType=DECIMAL},
+      szInputType = #{szInputType,jdbcType=VARCHAR},
+      dDiffQty = #{dDiffQty,jdbcType=DECIMAL},
+      dDiffAmount = #{dDiffAmount,jdbcType=DECIMAL},
+      lChangedOperatorID = #{lChangedOperatorID,jdbcType=INTEGER},
+      lTechLayerAccessID = #{lTechLayerAccessID,jdbcType=INTEGER},
+      szLastUpdLocal = #{szLastUpdLocal,jdbcType=VARCHAR},
+      szIMPSA = #{szIMPSA,jdbcType=VARCHAR},
+      dQty2 = #{dQty2,jdbcType=DECIMAL},
+      dQty3 = #{dQty3,jdbcType=DECIMAL},
+      bScanduringCount2 = #{bScanduringCount2,jdbcType=INTEGER},
+      bScanduringCount3 = #{bScanduringCount3,jdbcType=INTEGER},
+      dLastestQty = #{dLastestQty,jdbcType=DECIMAL},
+      dBookQtyPSA = #{dBookQtyPSA,jdbcType=DECIMAL},
+      bMasterGondola = #{bMasterGondola,jdbcType=INTEGER},
+      bScanduringCount1 = #{bScanduringCount1,jdbcType=INTEGER},
+      dMovementInventory = #{dMovementInventory,jdbcType=DECIMAL},
+      dMovementInventoryLocation = #{dMovementInventoryLocation,jdbcType=DECIMAL}
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and szDocumentNmbr = #{szDocumentNmbr,jdbcType=VARCHAR}
+      and szPosItemID = #{szPosItemID,jdbcType=VARCHAR}
+      and szGondolaNmbr = #{szGondolaNmbr,jdbcType=VARCHAR}
+  </update>
+</mapper>

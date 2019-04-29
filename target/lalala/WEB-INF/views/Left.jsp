@@ -38,23 +38,24 @@ body{overflow-x:hidden; background:url(${pageContext.request.contextPath}/images
       <div class="collapsed">
         <span>系统管理</span>
         <a href="${pageContext.request.contextPath}/operator/selectOperator.do" target="mainFrame" onFocus="this.blur()">用户管理</a>
-        <a href="${pageContext.request.contextPath}/" target="mainFrame" onFocus="this.blur()">门店管理</a>
+        <a href="${pageContext.request.contextPath}/store/selectStore.do" target="mainFrame" onFocus="this.blur()">门店管理</a>
       </div>
       <div class="collapsed">
         <span>业务管理</span>
-        <a href="${pageContext.request.contextPath}/" target="mainFrame" onFocus="this.blur()">收货</a>
-        <a href="${pageContext.request.contextPath}/" target="mainFrame" onFocus="this.blur()">订货</a>
-        <a href="${pageContext.request.contextPath}/" target="mainFrame" onFocus="this.blur()">退货</a>
-        <a href="${pageContext.request.contextPath}/" target="mainFrame" onFocus="this.blur()">门店调拨</a>
-        <a href="${pageContext.request.contextPath}/" target="mainFrame" onFocus="this.blur()">库存调整</a>
-        <a href="${pageContext.request.contextPath}/" target="mainFrame" onFocus="this.blur()">盘点</a>
+        <a href="${pageContext.request.contextPath}/poReceiving/poReceivingHeader.do" target="mainFrame" onFocus="this.blur()">收货</a>
+        <a href="${pageContext.request.contextPath}/order/imSOQ.do" target="mainFrame" onFocus="this.blur()">订货</a>
+        <a href="${pageContext.request.contextPath}/return/returnFirst.do" target="mainFrame" onFocus="this.blur()">退货</a>
+        <a href="${pageContext.request.contextPath}/transfer/transferFirst.do" target="mainFrame" onFocus="this.blur()">门店调拨</a>
+        <a href="${pageContext.request.contextPath}/adjust/adjustFirst.do" target="mainFrame" onFocus="this.blur()">库存调整</a>
+        <a href="${pageContext.request.contextPath}/stocktake/stocktakeFirst.do" target="mainFrame" onFocus="this.blur()">盘点</a>
       </div>
       <div class="collapsed">
         <span>报表查询</span>
-        <a href="${pageContext.request.contextPath}/" target="mainFrame" onFocus="this.blur()">收货历史</a>
-        <a href="${pageContext.request.contextPath}/" target="mainFrame" onFocus="this.blur()">退货清单</a>
-        <a href="${pageContext.request.contextPath}/" target="mainFrame" onFocus="this.blur()">调拨清单</a>
-        <a href="${pageContext.request.contextPath}/" target="mainFrame" onFocus="this.blur()">库存调整清单</a>
+        <a href="${pageContext.request.contextPath}/poReceiving/bPOReceiving.do" target="mainFrame" onFocus="this.blur()">收货历史</a>
+        <a href="${pageContext.request.contextPath}/return/bReturn.do" target="mainFrame" onFocus="this.blur()">退货清单</a>
+        <a href="${pageContext.request.contextPath}/transfer/bTransfer.do" target="mainFrame" onFocus="this.blur()">调拨清单</a>
+        <a href="${pageContext.request.contextPath}/adjust/bAdjust.do" target="mainFrame" onFocus="this.blur()">库存调整清单</a>
+        <a href="${pageContext.request.contextPath}/stocktake/bStocktake.do" target="mainFrame" onFocus="this.blur()">盘点清单</a>
       </div>
       
     </div>

@@ -1,0 +1,1013 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.RetailStoreMapper" >
+  <resultMap id="BaseResultMap" type="com.model.RetailStore" >
+    <id column="lRetailStoreID" property="lRetailStoreID" jdbcType="INTEGER" />
+    <result column="lPartyID" property="lPartyID" jdbcType="INTEGER" />
+    <result column="szPartyRoleTypeCode" property="szPartyRoleTypeCode" jdbcType="VARCHAR" />
+    <result column="szStoreTypeCode" property="szStoreTypeCode" jdbcType="VARCHAR" />
+    <result column="szDescription" property="szDescription" jdbcType="VARCHAR" />
+    <result column="szResponsible" property="szResponsible" jdbcType="VARCHAR" />
+    <result column="lCurrentEODCounter" property="lCurrentEODCounter" jdbcType="INTEGER" />
+    <result column="lStartEODCounter" property="lStartEODCounter" jdbcType="INTEGER" />
+    <result column="bAbortEndOfPeriod" property="bAbortEndOfPeriod" jdbcType="SMALLINT" />
+    <result column="szCompanyTaxNmbr" property="szCompanyTaxNmbr" jdbcType="VARCHAR" />
+    <result column="lTxPosSecurityInDays" property="lTxPosSecurityInDays" jdbcType="INTEGER" />
+    <result column="lTxServerSecurityInDays" property="lTxServerSecurityInDays" jdbcType="INTEGER" />
+    <result column="bDefaultRetailStoreParameters" property="bDefaultRetailStoreParameters" jdbcType="SMALLINT" />
+    <result column="szDefaultLanguageCode" property="szDefaultLanguageCode" jdbcType="VARCHAR" />
+    <result column="szExternalID" property="szExternalID" jdbcType="VARCHAR" />
+    <result column="lParentRetailStoreID" property="lParentRetailStoreID" jdbcType="INTEGER" />
+    <result column="szMultiStoreTypeCode" property="szMultiStoreTypeCode" jdbcType="VARCHAR" />
+    <result column="lClientID" property="lClientID" jdbcType="INTEGER" />
+    <result column="szExternalClientID" property="szExternalClientID" jdbcType="VARCHAR" />
+    <result column="szClientName" property="szClientName" jdbcType="VARCHAR" />
+    <result column="lProdRangeStoreGroupID" property="lProdRangeStoreGroupID" jdbcType="INTEGER" />
+    <result column="szTaxStoreLocationID" property="szTaxStoreLocationID" jdbcType="VARCHAR" />
+    <result column="lTechLayerAccessID" property="lTechLayerAccessID" jdbcType="INTEGER" />
+    <result column="szLastUpdLocal" property="szLastUpdLocal" jdbcType="VARCHAR" />
+    <result column="szGBoiUniqueCustomerID" property="szGBoiUniqueCustomerID" jdbcType="VARCHAR" />
+    <result column="szGBoiTFSUserName" property="szGBoiTFSUserName" jdbcType="VARCHAR" />
+    <result column="szGBoiTFSPassword" property="szGBoiTFSPassword" jdbcType="VARCHAR" />
+    <result column="szGBoiUniqueMerchantID" property="szGBoiUniqueMerchantID" jdbcType="VARCHAR" />
+    <result column="szCompanyTaxNmbr2" property="szCompanyTaxNmbr2" jdbcType="VARCHAR" />
+    <result column="szCompanyTaxNmbr3" property="szCompanyTaxNmbr3" jdbcType="VARCHAR" />
+    <result column="szCompanyTaxNmbr4" property="szCompanyTaxNmbr4" jdbcType="VARCHAR" />
+    <result column="szCompanyTaxNmbr5" property="szCompanyTaxNmbr5" jdbcType="VARCHAR" />
+    <result column="lRolloverTransactionNmbrAt" property="lRolloverTransactionNmbrAt" jdbcType="INTEGER" />
+    <result column="lChannelID" property="lChannelID" jdbcType="INTEGER" />
+    <result column="szExternalChannelID" property="szExternalChannelID" jdbcType="VARCHAR" />
+    <result column="szAlpha2Code" property="szAlpha2Code" jdbcType="VARCHAR" />
+    <result column="bIsCountryReferenceStore" property="bIsCountryReferenceStore" jdbcType="SMALLINT" />
+    <result column="IM_bIsCDC" property="IM_bIsCDC" jdbcType="INTEGER" />
+    <result column="IM_szRegionDescription" property="IM_szRegionDescription" jdbcType="VARCHAR" />
+    <result column="IM_szBlockingReason" property="IM_szBlockingReason" jdbcType="VARCHAR" />
+    <result column="IM_szBlockingReasonText" property="IM_szBlockingReasonText" jdbcType="VARCHAR" />
+    <result column="IM_szBlockingDateFrom" property="IM_szBlockingDateFrom" jdbcType="VARCHAR" />
+    <result column="IM_szBlockingDateTo" property="IM_szBlockingDateTo" jdbcType="VARCHAR" />
+    <result column="IM_szStoreType" property="IM_szStoreType" jdbcType="VARCHAR" />
+    <result column="IM_szDepartment" property="IM_szDepartment" jdbcType="VARCHAR" />
+    <result column="IM_szDepartmentDescription" property="IM_szDepartmentDescription" jdbcType="VARCHAR" />
+    <result column="IM_szOpeningDate" property="IM_szOpeningDate" jdbcType="VARCHAR" />
+    <result column="IM_szClosingDate" property="IM_szClosingDate" jdbcType="VARCHAR" />
+    <result column="IM_szBuildingTypeCode" property="IM_szBuildingTypeCode" jdbcType="VARCHAR" />
+    <result column="IM_szBuildingTypeDescription" property="IM_szBuildingTypeDescription" jdbcType="VARCHAR" />
+    <result column="IM_szFullDayOperationCode" property="IM_szFullDayOperationCode" jdbcType="VARCHAR" />
+    <result column="IM_szFullDayOperationDescription" property="IM_szFullDayOperationDescription" jdbcType="VARCHAR" />
+    <result column="IM_szEffectiveDate" property="IM_szEffectiveDate" jdbcType="VARCHAR" />
+    <result column="IM_bIsReturnCDC" property="IM_bIsReturnCDC" jdbcType="INTEGER" />
+    <result column="IM_bUnconfirmedTimesheet" property="IM_bUnconfirmedTimesheet" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    lRetailStoreID, lPartyID, szPartyRoleTypeCode, szStoreTypeCode, szDescription, szResponsible, 
+    lCurrentEODCounter, lStartEODCounter, bAbortEndOfPeriod, szCompanyTaxNmbr, lTxPosSecurityInDays, 
+    lTxServerSecurityInDays, bDefaultRetailStoreParameters, szDefaultLanguageCode, szExternalID, 
+    lParentRetailStoreID, szMultiStoreTypeCode, lClientID, szExternalClientID, szClientName, 
+    lProdRangeStoreGroupID, szTaxStoreLocationID, lTechLayerAccessID, szLastUpdLocal, 
+    szGBoiUniqueCustomerID, szGBoiTFSUserName, szGBoiTFSPassword, szGBoiUniqueMerchantID, 
+    szCompanyTaxNmbr2, szCompanyTaxNmbr3, szCompanyTaxNmbr4, szCompanyTaxNmbr5, lRolloverTransactionNmbrAt, 
+    lChannelID, szExternalChannelID, szAlpha2Code, bIsCountryReferenceStore, IM_bIsCDC, 
+    IM_szRegionDescription, IM_szBlockingReason, IM_szBlockingReasonText, IM_szBlockingDateFrom, 
+    IM_szBlockingDateTo, IM_szStoreType, IM_szDepartment, IM_szDepartmentDescription, 
+    IM_szOpeningDate, IM_szClosingDate, IM_szBuildingTypeCode, IM_szBuildingTypeDescription, 
+    IM_szFullDayOperationCode, IM_szFullDayOperationDescription, IM_szEffectiveDate, 
+    IM_bIsReturnCDC, IM_bUnconfirmedTimesheet
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.model.RetailStoreExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from RetailStore
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from RetailStore
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from RetailStore
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.model.RetailStoreExample" >
+    delete from RetailStore
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.model.RetailStore" >
+    insert into RetailStore (lRetailStoreID, lPartyID, szPartyRoleTypeCode, 
+      szStoreTypeCode, szDescription, szResponsible, 
+      lCurrentEODCounter, lStartEODCounter, bAbortEndOfPeriod, 
+      szCompanyTaxNmbr, lTxPosSecurityInDays, 
+      lTxServerSecurityInDays, bDefaultRetailStoreParameters, 
+      szDefaultLanguageCode, szExternalID, lParentRetailStoreID, 
+      szMultiStoreTypeCode, lClientID, szExternalClientID, 
+      szClientName, lProdRangeStoreGroupID, szTaxStoreLocationID, 
+      lTechLayerAccessID, szLastUpdLocal, szGBoiUniqueCustomerID, 
+      szGBoiTFSUserName, szGBoiTFSPassword, szGBoiUniqueMerchantID, 
+      szCompanyTaxNmbr2, szCompanyTaxNmbr3, szCompanyTaxNmbr4, 
+      szCompanyTaxNmbr5, lRolloverTransactionNmbrAt, 
+      lChannelID, szExternalChannelID, szAlpha2Code, 
+      bIsCountryReferenceStore, IM_bIsCDC, IM_szRegionDescription, 
+      IM_szBlockingReason, IM_szBlockingReasonText, 
+      IM_szBlockingDateFrom, IM_szBlockingDateTo, 
+      IM_szStoreType, IM_szDepartment, IM_szDepartmentDescription, 
+      IM_szOpeningDate, IM_szClosingDate, IM_szBuildingTypeCode, 
+      IM_szBuildingTypeDescription, IM_szFullDayOperationCode, 
+      IM_szFullDayOperationDescription, IM_szEffectiveDate, 
+      IM_bIsReturnCDC, IM_bUnconfirmedTimesheet
+      )
+    values (#{lRetailStoreID,jdbcType=INTEGER}, #{lPartyID,jdbcType=INTEGER}, #{szPartyRoleTypeCode,jdbcType=VARCHAR}, 
+      #{szStoreTypeCode,jdbcType=VARCHAR}, #{szDescription,jdbcType=VARCHAR}, #{szResponsible,jdbcType=VARCHAR}, 
+      #{lCurrentEODCounter,jdbcType=INTEGER}, #{lStartEODCounter,jdbcType=INTEGER}, #{bAbortEndOfPeriod,jdbcType=SMALLINT}, 
+      #{szCompanyTaxNmbr,jdbcType=VARCHAR}, #{lTxPosSecurityInDays,jdbcType=INTEGER}, 
+      #{lTxServerSecurityInDays,jdbcType=INTEGER}, #{bDefaultRetailStoreParameters,jdbcType=SMALLINT}, 
+      #{szDefaultLanguageCode,jdbcType=VARCHAR}, #{szExternalID,jdbcType=VARCHAR}, #{lParentRetailStoreID,jdbcType=INTEGER}, 
+      #{szMultiStoreTypeCode,jdbcType=VARCHAR}, #{lClientID,jdbcType=INTEGER}, #{szExternalClientID,jdbcType=VARCHAR}, 
+      #{szClientName,jdbcType=VARCHAR}, #{lProdRangeStoreGroupID,jdbcType=INTEGER}, #{szTaxStoreLocationID,jdbcType=VARCHAR}, 
+      #{lTechLayerAccessID,jdbcType=INTEGER}, #{szLastUpdLocal,jdbcType=VARCHAR}, #{szGBoiUniqueCustomerID,jdbcType=VARCHAR}, 
+      #{szGBoiTFSUserName,jdbcType=VARCHAR}, #{szGBoiTFSPassword,jdbcType=VARCHAR}, #{szGBoiUniqueMerchantID,jdbcType=VARCHAR}, 
+      #{szCompanyTaxNmbr2,jdbcType=VARCHAR}, #{szCompanyTaxNmbr3,jdbcType=VARCHAR}, #{szCompanyTaxNmbr4,jdbcType=VARCHAR}, 
+      #{szCompanyTaxNmbr5,jdbcType=VARCHAR}, #{lRolloverTransactionNmbrAt,jdbcType=INTEGER}, 
+      #{lChannelID,jdbcType=INTEGER}, #{szExternalChannelID,jdbcType=VARCHAR}, #{szAlpha2Code,jdbcType=VARCHAR}, 
+      #{bIsCountryReferenceStore,jdbcType=SMALLINT}, #{IM_bIsCDC,jdbcType=INTEGER}, #{IM_szRegionDescription,jdbcType=VARCHAR}, 
+      #{IM_szBlockingReason,jdbcType=VARCHAR}, #{IM_szBlockingReasonText,jdbcType=VARCHAR}, 
+      #{IM_szBlockingDateFrom,jdbcType=VARCHAR}, #{IM_szBlockingDateTo,jdbcType=VARCHAR}, 
+      #{IM_szStoreType,jdbcType=VARCHAR}, #{IM_szDepartment,jdbcType=VARCHAR}, #{IM_szDepartmentDescription,jdbcType=VARCHAR}, 
+      #{IM_szOpeningDate,jdbcType=VARCHAR}, #{IM_szClosingDate,jdbcType=VARCHAR}, #{IM_szBuildingTypeCode,jdbcType=VARCHAR}, 
+      #{IM_szBuildingTypeDescription,jdbcType=VARCHAR}, #{IM_szFullDayOperationCode,jdbcType=VARCHAR}, 
+      #{IM_szFullDayOperationDescription,jdbcType=VARCHAR}, #{IM_szEffectiveDate,jdbcType=VARCHAR}, 
+      #{IM_bIsReturnCDC,jdbcType=INTEGER}, #{IM_bUnconfirmedTimesheet,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.model.RetailStore" >
+    insert into RetailStore
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lRetailStoreID != null" >
+        lRetailStoreID,
+      </if>
+      <if test="lPartyID != null" >
+        lPartyID,
+      </if>
+      <if test="szPartyRoleTypeCode != null" >
+        szPartyRoleTypeCode,
+      </if>
+      <if test="szStoreTypeCode != null" >
+        szStoreTypeCode,
+      </if>
+      <if test="szDescription != null" >
+        szDescription,
+      </if>
+      <if test="szResponsible != null" >
+        szResponsible,
+      </if>
+      <if test="lCurrentEODCounter != null" >
+        lCurrentEODCounter,
+      </if>
+      <if test="lStartEODCounter != null" >
+        lStartEODCounter,
+      </if>
+      <if test="bAbortEndOfPeriod != null" >
+        bAbortEndOfPeriod,
+      </if>
+      <if test="szCompanyTaxNmbr != null" >
+        szCompanyTaxNmbr,
+      </if>
+      <if test="lTxPosSecurityInDays != null" >
+        lTxPosSecurityInDays,
+      </if>
+      <if test="lTxServerSecurityInDays != null" >
+        lTxServerSecurityInDays,
+      </if>
+      <if test="bDefaultRetailStoreParameters != null" >
+        bDefaultRetailStoreParameters,
+      </if>
+      <if test="szDefaultLanguageCode != null" >
+        szDefaultLanguageCode,
+      </if>
+      <if test="szExternalID != null" >
+        szExternalID,
+      </if>
+      <if test="lParentRetailStoreID != null" >
+        lParentRetailStoreID,
+      </if>
+      <if test="szMultiStoreTypeCode != null" >
+        szMultiStoreTypeCode,
+      </if>
+      <if test="lClientID != null" >
+        lClientID,
+      </if>
+      <if test="szExternalClientID != null" >
+        szExternalClientID,
+      </if>
+      <if test="szClientName != null" >
+        szClientName,
+      </if>
+      <if test="lProdRangeStoreGroupID != null" >
+        lProdRangeStoreGroupID,
+      </if>
+      <if test="szTaxStoreLocationID != null" >
+        szTaxStoreLocationID,
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        lTechLayerAccessID,
+      </if>
+      <if test="szLastUpdLocal != null" >
+        szLastUpdLocal,
+      </if>
+      <if test="szGBoiUniqueCustomerID != null" >
+        szGBoiUniqueCustomerID,
+      </if>
+      <if test="szGBoiTFSUserName != null" >
+        szGBoiTFSUserName,
+      </if>
+      <if test="szGBoiTFSPassword != null" >
+        szGBoiTFSPassword,
+      </if>
+      <if test="szGBoiUniqueMerchantID != null" >
+        szGBoiUniqueMerchantID,
+      </if>
+      <if test="szCompanyTaxNmbr2 != null" >
+        szCompanyTaxNmbr2,
+      </if>
+      <if test="szCompanyTaxNmbr3 != null" >
+        szCompanyTaxNmbr3,
+      </if>
+      <if test="szCompanyTaxNmbr4 != null" >
+        szCompanyTaxNmbr4,
+      </if>
+      <if test="szCompanyTaxNmbr5 != null" >
+        szCompanyTaxNmbr5,
+      </if>
+      <if test="lRolloverTransactionNmbrAt != null" >
+        lRolloverTransactionNmbrAt,
+      </if>
+      <if test="lChannelID != null" >
+        lChannelID,
+      </if>
+      <if test="szExternalChannelID != null" >
+        szExternalChannelID,
+      </if>
+      <if test="szAlpha2Code != null" >
+        szAlpha2Code,
+      </if>
+      <if test="bIsCountryReferenceStore != null" >
+        bIsCountryReferenceStore,
+      </if>
+      <if test="IM_bIsCDC != null" >
+        IM_bIsCDC,
+      </if>
+      <if test="IM_szRegionDescription != null" >
+        IM_szRegionDescription,
+      </if>
+      <if test="IM_szBlockingReason != null" >
+        IM_szBlockingReason,
+      </if>
+      <if test="IM_szBlockingReasonText != null" >
+        IM_szBlockingReasonText,
+      </if>
+      <if test="IM_szBlockingDateFrom != null" >
+        IM_szBlockingDateFrom,
+      </if>
+      <if test="IM_szBlockingDateTo != null" >
+        IM_szBlockingDateTo,
+      </if>
+      <if test="IM_szStoreType != null" >
+        IM_szStoreType,
+      </if>
+      <if test="IM_szDepartment != null" >
+        IM_szDepartment,
+      </if>
+      <if test="IM_szDepartmentDescription != null" >
+        IM_szDepartmentDescription,
+      </if>
+      <if test="IM_szOpeningDate != null" >
+        IM_szOpeningDate,
+      </if>
+      <if test="IM_szClosingDate != null" >
+        IM_szClosingDate,
+      </if>
+      <if test="IM_szBuildingTypeCode != null" >
+        IM_szBuildingTypeCode,
+      </if>
+      <if test="IM_szBuildingTypeDescription != null" >
+        IM_szBuildingTypeDescription,
+      </if>
+      <if test="IM_szFullDayOperationCode != null" >
+        IM_szFullDayOperationCode,
+      </if>
+      <if test="IM_szFullDayOperationDescription != null" >
+        IM_szFullDayOperationDescription,
+      </if>
+      <if test="IM_szEffectiveDate != null" >
+        IM_szEffectiveDate,
+      </if>
+      <if test="IM_bIsReturnCDC != null" >
+        IM_bIsReturnCDC,
+      </if>
+      <if test="IM_bUnconfirmedTimesheet != null" >
+        IM_bUnconfirmedTimesheet,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lRetailStoreID != null" >
+        #{lRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="lPartyID != null" >
+        #{lPartyID,jdbcType=INTEGER},
+      </if>
+      <if test="szPartyRoleTypeCode != null" >
+        #{szPartyRoleTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="szStoreTypeCode != null" >
+        #{szStoreTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="szDescription != null" >
+        #{szDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="szResponsible != null" >
+        #{szResponsible,jdbcType=VARCHAR},
+      </if>
+      <if test="lCurrentEODCounter != null" >
+        #{lCurrentEODCounter,jdbcType=INTEGER},
+      </if>
+      <if test="lStartEODCounter != null" >
+        #{lStartEODCounter,jdbcType=INTEGER},
+      </if>
+      <if test="bAbortEndOfPeriod != null" >
+        #{bAbortEndOfPeriod,jdbcType=SMALLINT},
+      </if>
+      <if test="szCompanyTaxNmbr != null" >
+        #{szCompanyTaxNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="lTxPosSecurityInDays != null" >
+        #{lTxPosSecurityInDays,jdbcType=INTEGER},
+      </if>
+      <if test="lTxServerSecurityInDays != null" >
+        #{lTxServerSecurityInDays,jdbcType=INTEGER},
+      </if>
+      <if test="bDefaultRetailStoreParameters != null" >
+        #{bDefaultRetailStoreParameters,jdbcType=SMALLINT},
+      </if>
+      <if test="szDefaultLanguageCode != null" >
+        #{szDefaultLanguageCode,jdbcType=VARCHAR},
+      </if>
+      <if test="szExternalID != null" >
+        #{szExternalID,jdbcType=VARCHAR},
+      </if>
+      <if test="lParentRetailStoreID != null" >
+        #{lParentRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="szMultiStoreTypeCode != null" >
+        #{szMultiStoreTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="lClientID != null" >
+        #{lClientID,jdbcType=INTEGER},
+      </if>
+      <if test="szExternalClientID != null" >
+        #{szExternalClientID,jdbcType=VARCHAR},
+      </if>
+      <if test="szClientName != null" >
+        #{szClientName,jdbcType=VARCHAR},
+      </if>
+      <if test="lProdRangeStoreGroupID != null" >
+        #{lProdRangeStoreGroupID,jdbcType=INTEGER},
+      </if>
+      <if test="szTaxStoreLocationID != null" >
+        #{szTaxStoreLocationID,jdbcType=VARCHAR},
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        #{lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="szLastUpdLocal != null" >
+        #{szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="szGBoiUniqueCustomerID != null" >
+        #{szGBoiUniqueCustomerID,jdbcType=VARCHAR},
+      </if>
+      <if test="szGBoiTFSUserName != null" >
+        #{szGBoiTFSUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="szGBoiTFSPassword != null" >
+        #{szGBoiTFSPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="szGBoiUniqueMerchantID != null" >
+        #{szGBoiUniqueMerchantID,jdbcType=VARCHAR},
+      </if>
+      <if test="szCompanyTaxNmbr2 != null" >
+        #{szCompanyTaxNmbr2,jdbcType=VARCHAR},
+      </if>
+      <if test="szCompanyTaxNmbr3 != null" >
+        #{szCompanyTaxNmbr3,jdbcType=VARCHAR},
+      </if>
+      <if test="szCompanyTaxNmbr4 != null" >
+        #{szCompanyTaxNmbr4,jdbcType=VARCHAR},
+      </if>
+      <if test="szCompanyTaxNmbr5 != null" >
+        #{szCompanyTaxNmbr5,jdbcType=VARCHAR},
+      </if>
+      <if test="lRolloverTransactionNmbrAt != null" >
+        #{lRolloverTransactionNmbrAt,jdbcType=INTEGER},
+      </if>
+      <if test="lChannelID != null" >
+        #{lChannelID,jdbcType=INTEGER},
+      </if>
+      <if test="szExternalChannelID != null" >
+        #{szExternalChannelID,jdbcType=VARCHAR},
+      </if>
+      <if test="szAlpha2Code != null" >
+        #{szAlpha2Code,jdbcType=VARCHAR},
+      </if>
+      <if test="bIsCountryReferenceStore != null" >
+        #{bIsCountryReferenceStore,jdbcType=SMALLINT},
+      </if>
+      <if test="IM_bIsCDC != null" >
+        #{IM_bIsCDC,jdbcType=INTEGER},
+      </if>
+      <if test="IM_szRegionDescription != null" >
+        #{IM_szRegionDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szBlockingReason != null" >
+        #{IM_szBlockingReason,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szBlockingReasonText != null" >
+        #{IM_szBlockingReasonText,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szBlockingDateFrom != null" >
+        #{IM_szBlockingDateFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szBlockingDateTo != null" >
+        #{IM_szBlockingDateTo,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szStoreType != null" >
+        #{IM_szStoreType,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szDepartment != null" >
+        #{IM_szDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szDepartmentDescription != null" >
+        #{IM_szDepartmentDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szOpeningDate != null" >
+        #{IM_szOpeningDate,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szClosingDate != null" >
+        #{IM_szClosingDate,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szBuildingTypeCode != null" >
+        #{IM_szBuildingTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szBuildingTypeDescription != null" >
+        #{IM_szBuildingTypeDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szFullDayOperationCode != null" >
+        #{IM_szFullDayOperationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szFullDayOperationDescription != null" >
+        #{IM_szFullDayOperationDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szEffectiveDate != null" >
+        #{IM_szEffectiveDate,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_bIsReturnCDC != null" >
+        #{IM_bIsReturnCDC,jdbcType=INTEGER},
+      </if>
+      <if test="IM_bUnconfirmedTimesheet != null" >
+        #{IM_bUnconfirmedTimesheet,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.model.RetailStoreExample" resultType="java.lang.Integer" >
+    select count(*) from RetailStore
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update RetailStore
+    <set >
+      <if test="record.lRetailStoreID != null" >
+        lRetailStoreID = #{record.lRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="record.lPartyID != null" >
+        lPartyID = #{record.lPartyID,jdbcType=INTEGER},
+      </if>
+      <if test="record.szPartyRoleTypeCode != null" >
+        szPartyRoleTypeCode = #{record.szPartyRoleTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szStoreTypeCode != null" >
+        szStoreTypeCode = #{record.szStoreTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szDescription != null" >
+        szDescription = #{record.szDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szResponsible != null" >
+        szResponsible = #{record.szResponsible,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lCurrentEODCounter != null" >
+        lCurrentEODCounter = #{record.lCurrentEODCounter,jdbcType=INTEGER},
+      </if>
+      <if test="record.lStartEODCounter != null" >
+        lStartEODCounter = #{record.lStartEODCounter,jdbcType=INTEGER},
+      </if>
+      <if test="record.bAbortEndOfPeriod != null" >
+        bAbortEndOfPeriod = #{record.bAbortEndOfPeriod,jdbcType=SMALLINT},
+      </if>
+      <if test="record.szCompanyTaxNmbr != null" >
+        szCompanyTaxNmbr = #{record.szCompanyTaxNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lTxPosSecurityInDays != null" >
+        lTxPosSecurityInDays = #{record.lTxPosSecurityInDays,jdbcType=INTEGER},
+      </if>
+      <if test="record.lTxServerSecurityInDays != null" >
+        lTxServerSecurityInDays = #{record.lTxServerSecurityInDays,jdbcType=INTEGER},
+      </if>
+      <if test="record.bDefaultRetailStoreParameters != null" >
+        bDefaultRetailStoreParameters = #{record.bDefaultRetailStoreParameters,jdbcType=SMALLINT},
+      </if>
+      <if test="record.szDefaultLanguageCode != null" >
+        szDefaultLanguageCode = #{record.szDefaultLanguageCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szExternalID != null" >
+        szExternalID = #{record.szExternalID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lParentRetailStoreID != null" >
+        lParentRetailStoreID = #{record.lParentRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="record.szMultiStoreTypeCode != null" >
+        szMultiStoreTypeCode = #{record.szMultiStoreTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lClientID != null" >
+        lClientID = #{record.lClientID,jdbcType=INTEGER},
+      </if>
+      <if test="record.szExternalClientID != null" >
+        szExternalClientID = #{record.szExternalClientID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szClientName != null" >
+        szClientName = #{record.szClientName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lProdRangeStoreGroupID != null" >
+        lProdRangeStoreGroupID = #{record.lProdRangeStoreGroupID,jdbcType=INTEGER},
+      </if>
+      <if test="record.szTaxStoreLocationID != null" >
+        szTaxStoreLocationID = #{record.szTaxStoreLocationID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lTechLayerAccessID != null" >
+        lTechLayerAccessID = #{record.lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="record.szLastUpdLocal != null" >
+        szLastUpdLocal = #{record.szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szGBoiUniqueCustomerID != null" >
+        szGBoiUniqueCustomerID = #{record.szGBoiUniqueCustomerID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szGBoiTFSUserName != null" >
+        szGBoiTFSUserName = #{record.szGBoiTFSUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szGBoiTFSPassword != null" >
+        szGBoiTFSPassword = #{record.szGBoiTFSPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szGBoiUniqueMerchantID != null" >
+        szGBoiUniqueMerchantID = #{record.szGBoiUniqueMerchantID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szCompanyTaxNmbr2 != null" >
+        szCompanyTaxNmbr2 = #{record.szCompanyTaxNmbr2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szCompanyTaxNmbr3 != null" >
+        szCompanyTaxNmbr3 = #{record.szCompanyTaxNmbr3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szCompanyTaxNmbr4 != null" >
+        szCompanyTaxNmbr4 = #{record.szCompanyTaxNmbr4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szCompanyTaxNmbr5 != null" >
+        szCompanyTaxNmbr5 = #{record.szCompanyTaxNmbr5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lRolloverTransactionNmbrAt != null" >
+        lRolloverTransactionNmbrAt = #{record.lRolloverTransactionNmbrAt,jdbcType=INTEGER},
+      </if>
+      <if test="record.lChannelID != null" >
+        lChannelID = #{record.lChannelID,jdbcType=INTEGER},
+      </if>
+      <if test="record.szExternalChannelID != null" >
+        szExternalChannelID = #{record.szExternalChannelID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szAlpha2Code != null" >
+        szAlpha2Code = #{record.szAlpha2Code,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bIsCountryReferenceStore != null" >
+        bIsCountryReferenceStore = #{record.bIsCountryReferenceStore,jdbcType=SMALLINT},
+      </if>
+      <if test="record.IM_bIsCDC != null" >
+        IM_bIsCDC = #{record.IM_bIsCDC,jdbcType=INTEGER},
+      </if>
+      <if test="record.IM_szRegionDescription != null" >
+        IM_szRegionDescription = #{record.IM_szRegionDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_szBlockingReason != null" >
+        IM_szBlockingReason = #{record.IM_szBlockingReason,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_szBlockingReasonText != null" >
+        IM_szBlockingReasonText = #{record.IM_szBlockingReasonText,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_szBlockingDateFrom != null" >
+        IM_szBlockingDateFrom = #{record.IM_szBlockingDateFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_szBlockingDateTo != null" >
+        IM_szBlockingDateTo = #{record.IM_szBlockingDateTo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_szStoreType != null" >
+        IM_szStoreType = #{record.IM_szStoreType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_szDepartment != null" >
+        IM_szDepartment = #{record.IM_szDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_szDepartmentDescription != null" >
+        IM_szDepartmentDescription = #{record.IM_szDepartmentDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_szOpeningDate != null" >
+        IM_szOpeningDate = #{record.IM_szOpeningDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_szClosingDate != null" >
+        IM_szClosingDate = #{record.IM_szClosingDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_szBuildingTypeCode != null" >
+        IM_szBuildingTypeCode = #{record.IM_szBuildingTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_szBuildingTypeDescription != null" >
+        IM_szBuildingTypeDescription = #{record.IM_szBuildingTypeDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_szFullDayOperationCode != null" >
+        IM_szFullDayOperationCode = #{record.IM_szFullDayOperationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_szFullDayOperationDescription != null" >
+        IM_szFullDayOperationDescription = #{record.IM_szFullDayOperationDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_szEffectiveDate != null" >
+        IM_szEffectiveDate = #{record.IM_szEffectiveDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_bIsReturnCDC != null" >
+        IM_bIsReturnCDC = #{record.IM_bIsReturnCDC,jdbcType=INTEGER},
+      </if>
+      <if test="record.IM_bUnconfirmedTimesheet != null" >
+        IM_bUnconfirmedTimesheet = #{record.IM_bUnconfirmedTimesheet,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update RetailStore
+    set lRetailStoreID = #{record.lRetailStoreID,jdbcType=INTEGER},
+      lPartyID = #{record.lPartyID,jdbcType=INTEGER},
+      szPartyRoleTypeCode = #{record.szPartyRoleTypeCode,jdbcType=VARCHAR},
+      szStoreTypeCode = #{record.szStoreTypeCode,jdbcType=VARCHAR},
+      szDescription = #{record.szDescription,jdbcType=VARCHAR},
+      szResponsible = #{record.szResponsible,jdbcType=VARCHAR},
+      lCurrentEODCounter = #{record.lCurrentEODCounter,jdbcType=INTEGER},
+      lStartEODCounter = #{record.lStartEODCounter,jdbcType=INTEGER},
+      bAbortEndOfPeriod = #{record.bAbortEndOfPeriod,jdbcType=SMALLINT},
+      szCompanyTaxNmbr = #{record.szCompanyTaxNmbr,jdbcType=VARCHAR},
+      lTxPosSecurityInDays = #{record.lTxPosSecurityInDays,jdbcType=INTEGER},
+      lTxServerSecurityInDays = #{record.lTxServerSecurityInDays,jdbcType=INTEGER},
+      bDefaultRetailStoreParameters = #{record.bDefaultRetailStoreParameters,jdbcType=SMALLINT},
+      szDefaultLanguageCode = #{record.szDefaultLanguageCode,jdbcType=VARCHAR},
+      szExternalID = #{record.szExternalID,jdbcType=VARCHAR},
+      lParentRetailStoreID = #{record.lParentRetailStoreID,jdbcType=INTEGER},
+      szMultiStoreTypeCode = #{record.szMultiStoreTypeCode,jdbcType=VARCHAR},
+      lClientID = #{record.lClientID,jdbcType=INTEGER},
+      szExternalClientID = #{record.szExternalClientID,jdbcType=VARCHAR},
+      szClientName = #{record.szClientName,jdbcType=VARCHAR},
+      lProdRangeStoreGroupID = #{record.lProdRangeStoreGroupID,jdbcType=INTEGER},
+      szTaxStoreLocationID = #{record.szTaxStoreLocationID,jdbcType=VARCHAR},
+      lTechLayerAccessID = #{record.lTechLayerAccessID,jdbcType=INTEGER},
+      szLastUpdLocal = #{record.szLastUpdLocal,jdbcType=VARCHAR},
+      szGBoiUniqueCustomerID = #{record.szGBoiUniqueCustomerID,jdbcType=VARCHAR},
+      szGBoiTFSUserName = #{record.szGBoiTFSUserName,jdbcType=VARCHAR},
+      szGBoiTFSPassword = #{record.szGBoiTFSPassword,jdbcType=VARCHAR},
+      szGBoiUniqueMerchantID = #{record.szGBoiUniqueMerchantID,jdbcType=VARCHAR},
+      szCompanyTaxNmbr2 = #{record.szCompanyTaxNmbr2,jdbcType=VARCHAR},
+      szCompanyTaxNmbr3 = #{record.szCompanyTaxNmbr3,jdbcType=VARCHAR},
+      szCompanyTaxNmbr4 = #{record.szCompanyTaxNmbr4,jdbcType=VARCHAR},
+      szCompanyTaxNmbr5 = #{record.szCompanyTaxNmbr5,jdbcType=VARCHAR},
+      lRolloverTransactionNmbrAt = #{record.lRolloverTransactionNmbrAt,jdbcType=INTEGER},
+      lChannelID = #{record.lChannelID,jdbcType=INTEGER},
+      szExternalChannelID = #{record.szExternalChannelID,jdbcType=VARCHAR},
+      szAlpha2Code = #{record.szAlpha2Code,jdbcType=VARCHAR},
+      bIsCountryReferenceStore = #{record.bIsCountryReferenceStore,jdbcType=SMALLINT},
+      IM_bIsCDC = #{record.IM_bIsCDC,jdbcType=INTEGER},
+      IM_szRegionDescription = #{record.IM_szRegionDescription,jdbcType=VARCHAR},
+      IM_szBlockingReason = #{record.IM_szBlockingReason,jdbcType=VARCHAR},
+      IM_szBlockingReasonText = #{record.IM_szBlockingReasonText,jdbcType=VARCHAR},
+      IM_szBlockingDateFrom = #{record.IM_szBlockingDateFrom,jdbcType=VARCHAR},
+      IM_szBlockingDateTo = #{record.IM_szBlockingDateTo,jdbcType=VARCHAR},
+      IM_szStoreType = #{record.IM_szStoreType,jdbcType=VARCHAR},
+      IM_szDepartment = #{record.IM_szDepartment,jdbcType=VARCHAR},
+      IM_szDepartmentDescription = #{record.IM_szDepartmentDescription,jdbcType=VARCHAR},
+      IM_szOpeningDate = #{record.IM_szOpeningDate,jdbcType=VARCHAR},
+      IM_szClosingDate = #{record.IM_szClosingDate,jdbcType=VARCHAR},
+      IM_szBuildingTypeCode = #{record.IM_szBuildingTypeCode,jdbcType=VARCHAR},
+      IM_szBuildingTypeDescription = #{record.IM_szBuildingTypeDescription,jdbcType=VARCHAR},
+      IM_szFullDayOperationCode = #{record.IM_szFullDayOperationCode,jdbcType=VARCHAR},
+      IM_szFullDayOperationDescription = #{record.IM_szFullDayOperationDescription,jdbcType=VARCHAR},
+      IM_szEffectiveDate = #{record.IM_szEffectiveDate,jdbcType=VARCHAR},
+      IM_bIsReturnCDC = #{record.IM_bIsReturnCDC,jdbcType=INTEGER},
+      IM_bUnconfirmedTimesheet = #{record.IM_bUnconfirmedTimesheet,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.model.RetailStore" >
+    update RetailStore
+    <set >
+      <if test="lPartyID != null" >
+        lPartyID = #{lPartyID,jdbcType=INTEGER},
+      </if>
+      <if test="szPartyRoleTypeCode != null" >
+        szPartyRoleTypeCode = #{szPartyRoleTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="szStoreTypeCode != null" >
+        szStoreTypeCode = #{szStoreTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="szDescription != null" >
+        szDescription = #{szDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="szResponsible != null" >
+        szResponsible = #{szResponsible,jdbcType=VARCHAR},
+      </if>
+      <if test="lCurrentEODCounter != null" >
+        lCurrentEODCounter = #{lCurrentEODCounter,jdbcType=INTEGER},
+      </if>
+      <if test="lStartEODCounter != null" >
+        lStartEODCounter = #{lStartEODCounter,jdbcType=INTEGER},
+      </if>
+      <if test="bAbortEndOfPeriod != null" >
+        bAbortEndOfPeriod = #{bAbortEndOfPeriod,jdbcType=SMALLINT},
+      </if>
+      <if test="szCompanyTaxNmbr != null" >
+        szCompanyTaxNmbr = #{szCompanyTaxNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="lTxPosSecurityInDays != null" >
+        lTxPosSecurityInDays = #{lTxPosSecurityInDays,jdbcType=INTEGER},
+      </if>
+      <if test="lTxServerSecurityInDays != null" >
+        lTxServerSecurityInDays = #{lTxServerSecurityInDays,jdbcType=INTEGER},
+      </if>
+      <if test="bDefaultRetailStoreParameters != null" >
+        bDefaultRetailStoreParameters = #{bDefaultRetailStoreParameters,jdbcType=SMALLINT},
+      </if>
+      <if test="szDefaultLanguageCode != null" >
+        szDefaultLanguageCode = #{szDefaultLanguageCode,jdbcType=VARCHAR},
+      </if>
+      <if test="szExternalID != null" >
+        szExternalID = #{szExternalID,jdbcType=VARCHAR},
+      </if>
+      <if test="lParentRetailStoreID != null" >
+        lParentRetailStoreID = #{lParentRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="szMultiStoreTypeCode != null" >
+        szMultiStoreTypeCode = #{szMultiStoreTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="lClientID != null" >
+        lClientID = #{lClientID,jdbcType=INTEGER},
+      </if>
+      <if test="szExternalClientID != null" >
+        szExternalClientID = #{szExternalClientID,jdbcType=VARCHAR},
+      </if>
+      <if test="szClientName != null" >
+        szClientName = #{szClientName,jdbcType=VARCHAR},
+      </if>
+      <if test="lProdRangeStoreGroupID != null" >
+        lProdRangeStoreGroupID = #{lProdRangeStoreGroupID,jdbcType=INTEGER},
+      </if>
+      <if test="szTaxStoreLocationID != null" >
+        szTaxStoreLocationID = #{szTaxStoreLocationID,jdbcType=VARCHAR},
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        lTechLayerAccessID = #{lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="szLastUpdLocal != null" >
+        szLastUpdLocal = #{szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="szGBoiUniqueCustomerID != null" >
+        szGBoiUniqueCustomerID = #{szGBoiUniqueCustomerID,jdbcType=VARCHAR},
+      </if>
+      <if test="szGBoiTFSUserName != null" >
+        szGBoiTFSUserName = #{szGBoiTFSUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="szGBoiTFSPassword != null" >
+        szGBoiTFSPassword = #{szGBoiTFSPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="szGBoiUniqueMerchantID != null" >
+        szGBoiUniqueMerchantID = #{szGBoiUniqueMerchantID,jdbcType=VARCHAR},
+      </if>
+      <if test="szCompanyTaxNmbr2 != null" >
+        szCompanyTaxNmbr2 = #{szCompanyTaxNmbr2,jdbcType=VARCHAR},
+      </if>
+      <if test="szCompanyTaxNmbr3 != null" >
+        szCompanyTaxNmbr3 = #{szCompanyTaxNmbr3,jdbcType=VARCHAR},
+      </if>
+      <if test="szCompanyTaxNmbr4 != null" >
+        szCompanyTaxNmbr4 = #{szCompanyTaxNmbr4,jdbcType=VARCHAR},
+      </if>
+      <if test="szCompanyTaxNmbr5 != null" >
+        szCompanyTaxNmbr5 = #{szCompanyTaxNmbr5,jdbcType=VARCHAR},
+      </if>
+      <if test="lRolloverTransactionNmbrAt != null" >
+        lRolloverTransactionNmbrAt = #{lRolloverTransactionNmbrAt,jdbcType=INTEGER},
+      </if>
+      <if test="lChannelID != null" >
+        lChannelID = #{lChannelID,jdbcType=INTEGER},
+      </if>
+      <if test="szExternalChannelID != null" >
+        szExternalChannelID = #{szExternalChannelID,jdbcType=VARCHAR},
+      </if>
+      <if test="szAlpha2Code != null" >
+        szAlpha2Code = #{szAlpha2Code,jdbcType=VARCHAR},
+      </if>
+      <if test="bIsCountryReferenceStore != null" >
+        bIsCountryReferenceStore = #{bIsCountryReferenceStore,jdbcType=SMALLINT},
+      </if>
+      <if test="IM_bIsCDC != null" >
+        IM_bIsCDC = #{IM_bIsCDC,jdbcType=INTEGER},
+      </if>
+      <if test="IM_szRegionDescription != null" >
+        IM_szRegionDescription = #{IM_szRegionDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szBlockingReason != null" >
+        IM_szBlockingReason = #{IM_szBlockingReason,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szBlockingReasonText != null" >
+        IM_szBlockingReasonText = #{IM_szBlockingReasonText,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szBlockingDateFrom != null" >
+        IM_szBlockingDateFrom = #{IM_szBlockingDateFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szBlockingDateTo != null" >
+        IM_szBlockingDateTo = #{IM_szBlockingDateTo,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szStoreType != null" >
+        IM_szStoreType = #{IM_szStoreType,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szDepartment != null" >
+        IM_szDepartment = #{IM_szDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szDepartmentDescription != null" >
+        IM_szDepartmentDescription = #{IM_szDepartmentDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szOpeningDate != null" >
+        IM_szOpeningDate = #{IM_szOpeningDate,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szClosingDate != null" >
+        IM_szClosingDate = #{IM_szClosingDate,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szBuildingTypeCode != null" >
+        IM_szBuildingTypeCode = #{IM_szBuildingTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szBuildingTypeDescription != null" >
+        IM_szBuildingTypeDescription = #{IM_szBuildingTypeDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szFullDayOperationCode != null" >
+        IM_szFullDayOperationCode = #{IM_szFullDayOperationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szFullDayOperationDescription != null" >
+        IM_szFullDayOperationDescription = #{IM_szFullDayOperationDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szEffectiveDate != null" >
+        IM_szEffectiveDate = #{IM_szEffectiveDate,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_bIsReturnCDC != null" >
+        IM_bIsReturnCDC = #{IM_bIsReturnCDC,jdbcType=INTEGER},
+      </if>
+      <if test="IM_bUnconfirmedTimesheet != null" >
+        IM_bUnconfirmedTimesheet = #{IM_bUnconfirmedTimesheet,jdbcType=INTEGER},
+      </if>
+    </set>
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.model.RetailStore" >
+    update RetailStore
+    set lPartyID = #{lPartyID,jdbcType=INTEGER},
+      szPartyRoleTypeCode = #{szPartyRoleTypeCode,jdbcType=VARCHAR},
+      szStoreTypeCode = #{szStoreTypeCode,jdbcType=VARCHAR},
+      szDescription = #{szDescription,jdbcType=VARCHAR},
+      szResponsible = #{szResponsible,jdbcType=VARCHAR},
+      lCurrentEODCounter = #{lCurrentEODCounter,jdbcType=INTEGER},
+      lStartEODCounter = #{lStartEODCounter,jdbcType=INTEGER},
+      bAbortEndOfPeriod = #{bAbortEndOfPeriod,jdbcType=SMALLINT},
+      szCompanyTaxNmbr = #{szCompanyTaxNmbr,jdbcType=VARCHAR},
+      lTxPosSecurityInDays = #{lTxPosSecurityInDays,jdbcType=INTEGER},
+      lTxServerSecurityInDays = #{lTxServerSecurityInDays,jdbcType=INTEGER},
+      bDefaultRetailStoreParameters = #{bDefaultRetailStoreParameters,jdbcType=SMALLINT},
+      szDefaultLanguageCode = #{szDefaultLanguageCode,jdbcType=VARCHAR},
+      szExternalID = #{szExternalID,jdbcType=VARCHAR},
+      lParentRetailStoreID = #{lParentRetailStoreID,jdbcType=INTEGER},
+      szMultiStoreTypeCode = #{szMultiStoreTypeCode,jdbcType=VARCHAR},
+      lClientID = #{lClientID,jdbcType=INTEGER},
+      szExternalClientID = #{szExternalClientID,jdbcType=VARCHAR},
+      szClientName = #{szClientName,jdbcType=VARCHAR},
+      lProdRangeStoreGroupID = #{lProdRangeStoreGroupID,jdbcType=INTEGER},
+      szTaxStoreLocationID = #{szTaxStoreLocationID,jdbcType=VARCHAR},
+      lTechLayerAccessID = #{lTechLayerAccessID,jdbcType=INTEGER},
+      szLastUpdLocal = #{szLastUpdLocal,jdbcType=VARCHAR},
+      szGBoiUniqueCustomerID = #{szGBoiUniqueCustomerID,jdbcType=VARCHAR},
+      szGBoiTFSUserName = #{szGBoiTFSUserName,jdbcType=VARCHAR},
+      szGBoiTFSPassword = #{szGBoiTFSPassword,jdbcType=VARCHAR},
+      szGBoiUniqueMerchantID = #{szGBoiUniqueMerchantID,jdbcType=VARCHAR},
+      szCompanyTaxNmbr2 = #{szCompanyTaxNmbr2,jdbcType=VARCHAR},
+      szCompanyTaxNmbr3 = #{szCompanyTaxNmbr3,jdbcType=VARCHAR},
+      szCompanyTaxNmbr4 = #{szCompanyTaxNmbr4,jdbcType=VARCHAR},
+      szCompanyTaxNmbr5 = #{szCompanyTaxNmbr5,jdbcType=VARCHAR},
+      lRolloverTransactionNmbrAt = #{lRolloverTransactionNmbrAt,jdbcType=INTEGER},
+      lChannelID = #{lChannelID,jdbcType=INTEGER},
+      szExternalChannelID = #{szExternalChannelID,jdbcType=VARCHAR},
+      szAlpha2Code = #{szAlpha2Code,jdbcType=VARCHAR},
+      bIsCountryReferenceStore = #{bIsCountryReferenceStore,jdbcType=SMALLINT},
+      IM_bIsCDC = #{IM_bIsCDC,jdbcType=INTEGER},
+      IM_szRegionDescription = #{IM_szRegionDescription,jdbcType=VARCHAR},
+      IM_szBlockingReason = #{IM_szBlockingReason,jdbcType=VARCHAR},
+      IM_szBlockingReasonText = #{IM_szBlockingReasonText,jdbcType=VARCHAR},
+      IM_szBlockingDateFrom = #{IM_szBlockingDateFrom,jdbcType=VARCHAR},
+      IM_szBlockingDateTo = #{IM_szBlockingDateTo,jdbcType=VARCHAR},
+      IM_szStoreType = #{IM_szStoreType,jdbcType=VARCHAR},
+      IM_szDepartment = #{IM_szDepartment,jdbcType=VARCHAR},
+      IM_szDepartmentDescription = #{IM_szDepartmentDescription,jdbcType=VARCHAR},
+      IM_szOpeningDate = #{IM_szOpeningDate,jdbcType=VARCHAR},
+      IM_szClosingDate = #{IM_szClosingDate,jdbcType=VARCHAR},
+      IM_szBuildingTypeCode = #{IM_szBuildingTypeCode,jdbcType=VARCHAR},
+      IM_szBuildingTypeDescription = #{IM_szBuildingTypeDescription,jdbcType=VARCHAR},
+      IM_szFullDayOperationCode = #{IM_szFullDayOperationCode,jdbcType=VARCHAR},
+      IM_szFullDayOperationDescription = #{IM_szFullDayOperationDescription,jdbcType=VARCHAR},
+      IM_szEffectiveDate = #{IM_szEffectiveDate,jdbcType=VARCHAR},
+      IM_bIsReturnCDC = #{IM_bIsReturnCDC,jdbcType=INTEGER},
+      IM_bUnconfirmedTimesheet = #{IM_bUnconfirmedTimesheet,jdbcType=INTEGER}
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+  </update>
+</mapper>

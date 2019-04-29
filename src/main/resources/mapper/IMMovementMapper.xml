@@ -1,0 +1,819 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.IMMovementMapper" >
+  <resultMap id="BaseResultMap" type="com.model.IMMovement" >
+    <id column="lRetailStoreID" property="lRetailStoreID" jdbcType="INTEGER" />
+    <id column="lDocType" property="lDocType" jdbcType="INTEGER" />
+    <id column="szDocumentNmbr" property="szDocumentNmbr" jdbcType="VARCHAR" />
+    <result column="szRetailStoreExternalID" property="szRetailStoreExternalID" jdbcType="VARCHAR" />
+    <result column="szDate" property="szDate" jdbcType="VARCHAR" />
+    <result column="szTime" property="szTime" jdbcType="VARCHAR" />
+    <result column="lWorkstationNmbr" property="lWorkstationNmbr" jdbcType="INTEGER" />
+    <result column="lCreatedOperatorID" property="lCreatedOperatorID" jdbcType="INTEGER" />
+    <result column="szExternalDocumentNmbr" property="szExternalDocumentNmbr" jdbcType="VARCHAR" />
+    <result column="szExternalDocumentDate" property="szExternalDocumentDate" jdbcType="VARCHAR" />
+    <result column="szVendorID" property="szVendorID" jdbcType="VARCHAR" />
+    <result column="lRetailStoreIDFrom" property="lRetailStoreIDFrom" jdbcType="INTEGER" />
+    <result column="szRetailStoreExternalIDFrom" property="szRetailStoreExternalIDFrom" jdbcType="VARCHAR" />
+    <result column="lRetailStoreIDTo" property="lRetailStoreIDTo" jdbcType="INTEGER" />
+    <result column="szRetailStoreExternalIDTo" property="szRetailStoreExternalIDTo" jdbcType="VARCHAR" />
+    <result column="szVendorOrStoreName" property="szVendorOrStoreName" jdbcType="VARCHAR" />
+    <result column="szStorageLocationIDFrom" property="szStorageLocationIDFrom" jdbcType="VARCHAR" />
+    <result column="szStorageLocationIDTo" property="szStorageLocationIDTo" jdbcType="VARCHAR" />
+    <result column="szExpectedDeliveryDate" property="szExpectedDeliveryDate" jdbcType="VARCHAR" />
+    <result column="szInvoiceNmbr" property="szInvoiceNmbr" jdbcType="VARCHAR" />
+    <result column="szInvoiceDate" property="szInvoiceDate" jdbcType="VARCHAR" />
+    <result column="dInvoiceAmount" property="dInvoiceAmount" jdbcType="DECIMAL" />
+    <result column="szDSDReceiptNmbr" property="szDSDReceiptNmbr" jdbcType="VARCHAR" />
+    <result column="szReasonCode" property="szReasonCode" jdbcType="VARCHAR" />
+    <result column="szReference" property="szReference" jdbcType="VARCHAR" />
+    <result column="bConfirmed" property="bConfirmed" jdbcType="INTEGER" />
+    <result column="lChangedOperatorID" property="lChangedOperatorID" jdbcType="INTEGER" />
+    <result column="lHostInterfaceID1" property="lHostInterfaceID1" jdbcType="INTEGER" />
+    <result column="lTechLayerAccessID" property="lTechLayerAccessID" jdbcType="INTEGER" />
+    <result column="szLastUpdLocal" property="szLastUpdLocal" jdbcType="VARCHAR" />
+    <result column="szDocTypeName" property="szDocTypeName" jdbcType="VARCHAR" />
+    <result column="bIsCDC" property="bIsCDC" jdbcType="INTEGER" />
+    <result column="lStockTakeType" property="lStockTakeType" jdbcType="INTEGER" />
+    <result column="szExternalPurchaseGroup" property="szExternalPurchaseGroup" jdbcType="VARCHAR" />
+    <result column="szRDODate" property="szRDODate" jdbcType="VARCHAR" />
+    <result column="szRDOTime" property="szRDOTime" jdbcType="VARCHAR" />
+    <result column="szStatusPO" property="szStatusPO" jdbcType="VARCHAR" />
+    <result column="szSaveDSDReceiptNmbr" property="szSaveDSDReceiptNmbr" jdbcType="VARCHAR" />
+    <result column="szReceiptDocumentNmbr" property="szReceiptDocumentNmbr" jdbcType="VARCHAR" />
+    <result column="szSerialNmbr" property="szSerialNmbr" jdbcType="VARCHAR" />
+    <result column="bNoObject" property="bNoObject" jdbcType="INTEGER" />
+    <result column="szRVRSerialNmbr" property="szRVRSerialNmbr" jdbcType="VARCHAR" />
+    <result column="szPoDocumentNmber" property="szPoDocumentNmber" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    lRetailStoreID, lDocType, szDocumentNmbr, szRetailStoreExternalID, szDate, szTime, 
+    lWorkstationNmbr, lCreatedOperatorID, szExternalDocumentNmbr, szExternalDocumentDate, 
+    szVendorID, lRetailStoreIDFrom, szRetailStoreExternalIDFrom, lRetailStoreIDTo, szRetailStoreExternalIDTo, 
+    szVendorOrStoreName, szStorageLocationIDFrom, szStorageLocationIDTo, szExpectedDeliveryDate, 
+    szInvoiceNmbr, szInvoiceDate, dInvoiceAmount, szDSDReceiptNmbr, szReasonCode, szReference, 
+    bConfirmed, lChangedOperatorID, lHostInterfaceID1, lTechLayerAccessID, szLastUpdLocal, 
+    szDocTypeName, bIsCDC, lStockTakeType, szExternalPurchaseGroup, szRDODate, szRDOTime, 
+    szStatusPO, szSaveDSDReceiptNmbr, szReceiptDocumentNmbr, szSerialNmbr, bNoObject, 
+    szRVRSerialNmbr, szPoDocumentNmber
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.model.IMMovementExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from IMMovement
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.model.IMMovementKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from IMMovement
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and lDocType = #{lDocType,jdbcType=INTEGER}
+      and szDocumentNmbr = #{szDocumentNmbr,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.model.IMMovementKey" >
+    delete from IMMovement
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and lDocType = #{lDocType,jdbcType=INTEGER}
+      and szDocumentNmbr = #{szDocumentNmbr,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.model.IMMovementExample" >
+    delete from IMMovement
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.model.IMMovement" >
+    insert into IMMovement (lRetailStoreID, lDocType, szDocumentNmbr, 
+      szRetailStoreExternalID, szDate, szTime, 
+      lWorkstationNmbr, lCreatedOperatorID, szExternalDocumentNmbr, 
+      szExternalDocumentDate, szVendorID, lRetailStoreIDFrom, 
+      szRetailStoreExternalIDFrom, lRetailStoreIDTo, 
+      szRetailStoreExternalIDTo, szVendorOrStoreName, 
+      szStorageLocationIDFrom, szStorageLocationIDTo, 
+      szExpectedDeliveryDate, szInvoiceNmbr, 
+      szInvoiceDate, dInvoiceAmount, szDSDReceiptNmbr, 
+      szReasonCode, szReference, bConfirmed, 
+      lChangedOperatorID, lHostInterfaceID1, 
+      lTechLayerAccessID, szLastUpdLocal, szDocTypeName, 
+      bIsCDC, lStockTakeType, szExternalPurchaseGroup, 
+      szRDODate, szRDOTime, szStatusPO, 
+      szSaveDSDReceiptNmbr, szReceiptDocumentNmbr, 
+      szSerialNmbr, bNoObject, szRVRSerialNmbr, 
+      szPoDocumentNmber)
+    values (#{lRetailStoreID,jdbcType=INTEGER}, #{lDocType,jdbcType=INTEGER}, #{szDocumentNmbr,jdbcType=VARCHAR}, 
+      #{szRetailStoreExternalID,jdbcType=VARCHAR}, #{szDate,jdbcType=VARCHAR}, #{szTime,jdbcType=VARCHAR}, 
+      #{lWorkstationNmbr,jdbcType=INTEGER}, #{lCreatedOperatorID,jdbcType=INTEGER}, #{szExternalDocumentNmbr,jdbcType=VARCHAR}, 
+      #{szExternalDocumentDate,jdbcType=VARCHAR}, #{szVendorID,jdbcType=VARCHAR}, #{lRetailStoreIDFrom,jdbcType=INTEGER}, 
+      #{szRetailStoreExternalIDFrom,jdbcType=VARCHAR}, #{lRetailStoreIDTo,jdbcType=INTEGER}, 
+      #{szRetailStoreExternalIDTo,jdbcType=VARCHAR}, #{szVendorOrStoreName,jdbcType=VARCHAR}, 
+      #{szStorageLocationIDFrom,jdbcType=VARCHAR}, #{szStorageLocationIDTo,jdbcType=VARCHAR}, 
+      #{szExpectedDeliveryDate,jdbcType=VARCHAR}, #{szInvoiceNmbr,jdbcType=VARCHAR}, 
+      #{szInvoiceDate,jdbcType=VARCHAR}, #{dInvoiceAmount,jdbcType=DECIMAL}, #{szDSDReceiptNmbr,jdbcType=VARCHAR}, 
+      #{szReasonCode,jdbcType=VARCHAR}, #{szReference,jdbcType=VARCHAR}, #{bConfirmed,jdbcType=INTEGER}, 
+      #{lChangedOperatorID,jdbcType=INTEGER}, #{lHostInterfaceID1,jdbcType=INTEGER}, 
+      #{lTechLayerAccessID,jdbcType=INTEGER}, #{szLastUpdLocal,jdbcType=VARCHAR}, #{szDocTypeName,jdbcType=VARCHAR}, 
+      #{bIsCDC,jdbcType=INTEGER}, #{lStockTakeType,jdbcType=INTEGER}, #{szExternalPurchaseGroup,jdbcType=VARCHAR}, 
+      #{szRDODate,jdbcType=VARCHAR}, #{szRDOTime,jdbcType=VARCHAR}, #{szStatusPO,jdbcType=VARCHAR}, 
+      #{szSaveDSDReceiptNmbr,jdbcType=VARCHAR}, #{szReceiptDocumentNmbr,jdbcType=VARCHAR}, 
+      #{szSerialNmbr,jdbcType=VARCHAR}, #{bNoObject,jdbcType=INTEGER}, #{szRVRSerialNmbr,jdbcType=VARCHAR}, 
+      #{szPoDocumentNmber,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.model.IMMovement" >
+    insert into IMMovement
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lRetailStoreID != null" >
+        lRetailStoreID,
+      </if>
+      <if test="lDocType != null" >
+        lDocType,
+      </if>
+      <if test="szDocumentNmbr != null" >
+        szDocumentNmbr,
+      </if>
+      <if test="szRetailStoreExternalID != null" >
+        szRetailStoreExternalID,
+      </if>
+      <if test="szDate != null" >
+        szDate,
+      </if>
+      <if test="szTime != null" >
+        szTime,
+      </if>
+      <if test="lWorkstationNmbr != null" >
+        lWorkstationNmbr,
+      </if>
+      <if test="lCreatedOperatorID != null" >
+        lCreatedOperatorID,
+      </if>
+      <if test="szExternalDocumentNmbr != null" >
+        szExternalDocumentNmbr,
+      </if>
+      <if test="szExternalDocumentDate != null" >
+        szExternalDocumentDate,
+      </if>
+      <if test="szVendorID != null" >
+        szVendorID,
+      </if>
+      <if test="lRetailStoreIDFrom != null" >
+        lRetailStoreIDFrom,
+      </if>
+      <if test="szRetailStoreExternalIDFrom != null" >
+        szRetailStoreExternalIDFrom,
+      </if>
+      <if test="lRetailStoreIDTo != null" >
+        lRetailStoreIDTo,
+      </if>
+      <if test="szRetailStoreExternalIDTo != null" >
+        szRetailStoreExternalIDTo,
+      </if>
+      <if test="szVendorOrStoreName != null" >
+        szVendorOrStoreName,
+      </if>
+      <if test="szStorageLocationIDFrom != null" >
+        szStorageLocationIDFrom,
+      </if>
+      <if test="szStorageLocationIDTo != null" >
+        szStorageLocationIDTo,
+      </if>
+      <if test="szExpectedDeliveryDate != null" >
+        szExpectedDeliveryDate,
+      </if>
+      <if test="szInvoiceNmbr != null" >
+        szInvoiceNmbr,
+      </if>
+      <if test="szInvoiceDate != null" >
+        szInvoiceDate,
+      </if>
+      <if test="dInvoiceAmount != null" >
+        dInvoiceAmount,
+      </if>
+      <if test="szDSDReceiptNmbr != null" >
+        szDSDReceiptNmbr,
+      </if>
+      <if test="szReasonCode != null" >
+        szReasonCode,
+      </if>
+      <if test="szReference != null" >
+        szReference,
+      </if>
+      <if test="bConfirmed != null" >
+        bConfirmed,
+      </if>
+      <if test="lChangedOperatorID != null" >
+        lChangedOperatorID,
+      </if>
+      <if test="lHostInterfaceID1 != null" >
+        lHostInterfaceID1,
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        lTechLayerAccessID,
+      </if>
+      <if test="szLastUpdLocal != null" >
+        szLastUpdLocal,
+      </if>
+      <if test="szDocTypeName != null" >
+        szDocTypeName,
+      </if>
+      <if test="bIsCDC != null" >
+        bIsCDC,
+      </if>
+      <if test="lStockTakeType != null" >
+        lStockTakeType,
+      </if>
+      <if test="szExternalPurchaseGroup != null" >
+        szExternalPurchaseGroup,
+      </if>
+      <if test="szRDODate != null" >
+        szRDODate,
+      </if>
+      <if test="szRDOTime != null" >
+        szRDOTime,
+      </if>
+      <if test="szStatusPO != null" >
+        szStatusPO,
+      </if>
+      <if test="szSaveDSDReceiptNmbr != null" >
+        szSaveDSDReceiptNmbr,
+      </if>
+      <if test="szReceiptDocumentNmbr != null" >
+        szReceiptDocumentNmbr,
+      </if>
+      <if test="szSerialNmbr != null" >
+        szSerialNmbr,
+      </if>
+      <if test="bNoObject != null" >
+        bNoObject,
+      </if>
+      <if test="szRVRSerialNmbr != null" >
+        szRVRSerialNmbr,
+      </if>
+      <if test="szPoDocumentNmber != null" >
+        szPoDocumentNmber,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lRetailStoreID != null" >
+        #{lRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="lDocType != null" >
+        #{lDocType,jdbcType=INTEGER},
+      </if>
+      <if test="szDocumentNmbr != null" >
+        #{szDocumentNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="szRetailStoreExternalID != null" >
+        #{szRetailStoreExternalID,jdbcType=VARCHAR},
+      </if>
+      <if test="szDate != null" >
+        #{szDate,jdbcType=VARCHAR},
+      </if>
+      <if test="szTime != null" >
+        #{szTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lWorkstationNmbr != null" >
+        #{lWorkstationNmbr,jdbcType=INTEGER},
+      </if>
+      <if test="lCreatedOperatorID != null" >
+        #{lCreatedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="szExternalDocumentNmbr != null" >
+        #{szExternalDocumentNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="szExternalDocumentDate != null" >
+        #{szExternalDocumentDate,jdbcType=VARCHAR},
+      </if>
+      <if test="szVendorID != null" >
+        #{szVendorID,jdbcType=VARCHAR},
+      </if>
+      <if test="lRetailStoreIDFrom != null" >
+        #{lRetailStoreIDFrom,jdbcType=INTEGER},
+      </if>
+      <if test="szRetailStoreExternalIDFrom != null" >
+        #{szRetailStoreExternalIDFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="lRetailStoreIDTo != null" >
+        #{lRetailStoreIDTo,jdbcType=INTEGER},
+      </if>
+      <if test="szRetailStoreExternalIDTo != null" >
+        #{szRetailStoreExternalIDTo,jdbcType=VARCHAR},
+      </if>
+      <if test="szVendorOrStoreName != null" >
+        #{szVendorOrStoreName,jdbcType=VARCHAR},
+      </if>
+      <if test="szStorageLocationIDFrom != null" >
+        #{szStorageLocationIDFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="szStorageLocationIDTo != null" >
+        #{szStorageLocationIDTo,jdbcType=VARCHAR},
+      </if>
+      <if test="szExpectedDeliveryDate != null" >
+        #{szExpectedDeliveryDate,jdbcType=VARCHAR},
+      </if>
+      <if test="szInvoiceNmbr != null" >
+        #{szInvoiceNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="szInvoiceDate != null" >
+        #{szInvoiceDate,jdbcType=VARCHAR},
+      </if>
+      <if test="dInvoiceAmount != null" >
+        #{dInvoiceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="szDSDReceiptNmbr != null" >
+        #{szDSDReceiptNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="szReasonCode != null" >
+        #{szReasonCode,jdbcType=VARCHAR},
+      </if>
+      <if test="szReference != null" >
+        #{szReference,jdbcType=VARCHAR},
+      </if>
+      <if test="bConfirmed != null" >
+        #{bConfirmed,jdbcType=INTEGER},
+      </if>
+      <if test="lChangedOperatorID != null" >
+        #{lChangedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="lHostInterfaceID1 != null" >
+        #{lHostInterfaceID1,jdbcType=INTEGER},
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        #{lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="szLastUpdLocal != null" >
+        #{szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="szDocTypeName != null" >
+        #{szDocTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="bIsCDC != null" >
+        #{bIsCDC,jdbcType=INTEGER},
+      </if>
+      <if test="lStockTakeType != null" >
+        #{lStockTakeType,jdbcType=INTEGER},
+      </if>
+      <if test="szExternalPurchaseGroup != null" >
+        #{szExternalPurchaseGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="szRDODate != null" >
+        #{szRDODate,jdbcType=VARCHAR},
+      </if>
+      <if test="szRDOTime != null" >
+        #{szRDOTime,jdbcType=VARCHAR},
+      </if>
+      <if test="szStatusPO != null" >
+        #{szStatusPO,jdbcType=VARCHAR},
+      </if>
+      <if test="szSaveDSDReceiptNmbr != null" >
+        #{szSaveDSDReceiptNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="szReceiptDocumentNmbr != null" >
+        #{szReceiptDocumentNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="szSerialNmbr != null" >
+        #{szSerialNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="bNoObject != null" >
+        #{bNoObject,jdbcType=INTEGER},
+      </if>
+      <if test="szRVRSerialNmbr != null" >
+        #{szRVRSerialNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="szPoDocumentNmber != null" >
+        #{szPoDocumentNmber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.model.IMMovementExample" resultType="java.lang.Integer" >
+    select count(*) from IMMovement
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update IMMovement
+    <set >
+      <if test="record.lRetailStoreID != null" >
+        lRetailStoreID = #{record.lRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="record.lDocType != null" >
+        lDocType = #{record.lDocType,jdbcType=INTEGER},
+      </if>
+      <if test="record.szDocumentNmbr != null" >
+        szDocumentNmbr = #{record.szDocumentNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szRetailStoreExternalID != null" >
+        szRetailStoreExternalID = #{record.szRetailStoreExternalID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szDate != null" >
+        szDate = #{record.szDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szTime != null" >
+        szTime = #{record.szTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lWorkstationNmbr != null" >
+        lWorkstationNmbr = #{record.lWorkstationNmbr,jdbcType=INTEGER},
+      </if>
+      <if test="record.lCreatedOperatorID != null" >
+        lCreatedOperatorID = #{record.lCreatedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="record.szExternalDocumentNmbr != null" >
+        szExternalDocumentNmbr = #{record.szExternalDocumentNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szExternalDocumentDate != null" >
+        szExternalDocumentDate = #{record.szExternalDocumentDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szVendorID != null" >
+        szVendorID = #{record.szVendorID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lRetailStoreIDFrom != null" >
+        lRetailStoreIDFrom = #{record.lRetailStoreIDFrom,jdbcType=INTEGER},
+      </if>
+      <if test="record.szRetailStoreExternalIDFrom != null" >
+        szRetailStoreExternalIDFrom = #{record.szRetailStoreExternalIDFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lRetailStoreIDTo != null" >
+        lRetailStoreIDTo = #{record.lRetailStoreIDTo,jdbcType=INTEGER},
+      </if>
+      <if test="record.szRetailStoreExternalIDTo != null" >
+        szRetailStoreExternalIDTo = #{record.szRetailStoreExternalIDTo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szVendorOrStoreName != null" >
+        szVendorOrStoreName = #{record.szVendorOrStoreName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szStorageLocationIDFrom != null" >
+        szStorageLocationIDFrom = #{record.szStorageLocationIDFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szStorageLocationIDTo != null" >
+        szStorageLocationIDTo = #{record.szStorageLocationIDTo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szExpectedDeliveryDate != null" >
+        szExpectedDeliveryDate = #{record.szExpectedDeliveryDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szInvoiceNmbr != null" >
+        szInvoiceNmbr = #{record.szInvoiceNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szInvoiceDate != null" >
+        szInvoiceDate = #{record.szInvoiceDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dInvoiceAmount != null" >
+        dInvoiceAmount = #{record.dInvoiceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.szDSDReceiptNmbr != null" >
+        szDSDReceiptNmbr = #{record.szDSDReceiptNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szReasonCode != null" >
+        szReasonCode = #{record.szReasonCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szReference != null" >
+        szReference = #{record.szReference,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bConfirmed != null" >
+        bConfirmed = #{record.bConfirmed,jdbcType=INTEGER},
+      </if>
+      <if test="record.lChangedOperatorID != null" >
+        lChangedOperatorID = #{record.lChangedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="record.lHostInterfaceID1 != null" >
+        lHostInterfaceID1 = #{record.lHostInterfaceID1,jdbcType=INTEGER},
+      </if>
+      <if test="record.lTechLayerAccessID != null" >
+        lTechLayerAccessID = #{record.lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="record.szLastUpdLocal != null" >
+        szLastUpdLocal = #{record.szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szDocTypeName != null" >
+        szDocTypeName = #{record.szDocTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bIsCDC != null" >
+        bIsCDC = #{record.bIsCDC,jdbcType=INTEGER},
+      </if>
+      <if test="record.lStockTakeType != null" >
+        lStockTakeType = #{record.lStockTakeType,jdbcType=INTEGER},
+      </if>
+      <if test="record.szExternalPurchaseGroup != null" >
+        szExternalPurchaseGroup = #{record.szExternalPurchaseGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szRDODate != null" >
+        szRDODate = #{record.szRDODate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szRDOTime != null" >
+        szRDOTime = #{record.szRDOTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szStatusPO != null" >
+        szStatusPO = #{record.szStatusPO,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szSaveDSDReceiptNmbr != null" >
+        szSaveDSDReceiptNmbr = #{record.szSaveDSDReceiptNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szReceiptDocumentNmbr != null" >
+        szReceiptDocumentNmbr = #{record.szReceiptDocumentNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szSerialNmbr != null" >
+        szSerialNmbr = #{record.szSerialNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bNoObject != null" >
+        bNoObject = #{record.bNoObject,jdbcType=INTEGER},
+      </if>
+      <if test="record.szRVRSerialNmbr != null" >
+        szRVRSerialNmbr = #{record.szRVRSerialNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szPoDocumentNmber != null" >
+        szPoDocumentNmber = #{record.szPoDocumentNmber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update IMMovement
+    set lRetailStoreID = #{record.lRetailStoreID,jdbcType=INTEGER},
+      lDocType = #{record.lDocType,jdbcType=INTEGER},
+      szDocumentNmbr = #{record.szDocumentNmbr,jdbcType=VARCHAR},
+      szRetailStoreExternalID = #{record.szRetailStoreExternalID,jdbcType=VARCHAR},
+      szDate = #{record.szDate,jdbcType=VARCHAR},
+      szTime = #{record.szTime,jdbcType=VARCHAR},
+      lWorkstationNmbr = #{record.lWorkstationNmbr,jdbcType=INTEGER},
+      lCreatedOperatorID = #{record.lCreatedOperatorID,jdbcType=INTEGER},
+      szExternalDocumentNmbr = #{record.szExternalDocumentNmbr,jdbcType=VARCHAR},
+      szExternalDocumentDate = #{record.szExternalDocumentDate,jdbcType=VARCHAR},
+      szVendorID = #{record.szVendorID,jdbcType=VARCHAR},
+      lRetailStoreIDFrom = #{record.lRetailStoreIDFrom,jdbcType=INTEGER},
+      szRetailStoreExternalIDFrom = #{record.szRetailStoreExternalIDFrom,jdbcType=VARCHAR},
+      lRetailStoreIDTo = #{record.lRetailStoreIDTo,jdbcType=INTEGER},
+      szRetailStoreExternalIDTo = #{record.szRetailStoreExternalIDTo,jdbcType=VARCHAR},
+      szVendorOrStoreName = #{record.szVendorOrStoreName,jdbcType=VARCHAR},
+      szStorageLocationIDFrom = #{record.szStorageLocationIDFrom,jdbcType=VARCHAR},
+      szStorageLocationIDTo = #{record.szStorageLocationIDTo,jdbcType=VARCHAR},
+      szExpectedDeliveryDate = #{record.szExpectedDeliveryDate,jdbcType=VARCHAR},
+      szInvoiceNmbr = #{record.szInvoiceNmbr,jdbcType=VARCHAR},
+      szInvoiceDate = #{record.szInvoiceDate,jdbcType=VARCHAR},
+      dInvoiceAmount = #{record.dInvoiceAmount,jdbcType=DECIMAL},
+      szDSDReceiptNmbr = #{record.szDSDReceiptNmbr,jdbcType=VARCHAR},
+      szReasonCode = #{record.szReasonCode,jdbcType=VARCHAR},
+      szReference = #{record.szReference,jdbcType=VARCHAR},
+      bConfirmed = #{record.bConfirmed,jdbcType=INTEGER},
+      lChangedOperatorID = #{record.lChangedOperatorID,jdbcType=INTEGER},
+      lHostInterfaceID1 = #{record.lHostInterfaceID1,jdbcType=INTEGER},
+      lTechLayerAccessID = #{record.lTechLayerAccessID,jdbcType=INTEGER},
+      szLastUpdLocal = #{record.szLastUpdLocal,jdbcType=VARCHAR},
+      szDocTypeName = #{record.szDocTypeName,jdbcType=VARCHAR},
+      bIsCDC = #{record.bIsCDC,jdbcType=INTEGER},
+      lStockTakeType = #{record.lStockTakeType,jdbcType=INTEGER},
+      szExternalPurchaseGroup = #{record.szExternalPurchaseGroup,jdbcType=VARCHAR},
+      szRDODate = #{record.szRDODate,jdbcType=VARCHAR},
+      szRDOTime = #{record.szRDOTime,jdbcType=VARCHAR},
+      szStatusPO = #{record.szStatusPO,jdbcType=VARCHAR},
+      szSaveDSDReceiptNmbr = #{record.szSaveDSDReceiptNmbr,jdbcType=VARCHAR},
+      szReceiptDocumentNmbr = #{record.szReceiptDocumentNmbr,jdbcType=VARCHAR},
+      szSerialNmbr = #{record.szSerialNmbr,jdbcType=VARCHAR},
+      bNoObject = #{record.bNoObject,jdbcType=INTEGER},
+      szRVRSerialNmbr = #{record.szRVRSerialNmbr,jdbcType=VARCHAR},
+      szPoDocumentNmber = #{record.szPoDocumentNmber,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.model.IMMovement" >
+    update IMMovement
+    <set >
+      <if test="szRetailStoreExternalID != null" >
+        szRetailStoreExternalID = #{szRetailStoreExternalID,jdbcType=VARCHAR},
+      </if>
+      <if test="szDate != null" >
+        szDate = #{szDate,jdbcType=VARCHAR},
+      </if>
+      <if test="szTime != null" >
+        szTime = #{szTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lWorkstationNmbr != null" >
+        lWorkstationNmbr = #{lWorkstationNmbr,jdbcType=INTEGER},
+      </if>
+      <if test="lCreatedOperatorID != null" >
+        lCreatedOperatorID = #{lCreatedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="szExternalDocumentNmbr != null" >
+        szExternalDocumentNmbr = #{szExternalDocumentNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="szExternalDocumentDate != null" >
+        szExternalDocumentDate = #{szExternalDocumentDate,jdbcType=VARCHAR},
+      </if>
+      <if test="szVendorID != null" >
+        szVendorID = #{szVendorID,jdbcType=VARCHAR},
+      </if>
+      <if test="lRetailStoreIDFrom != null" >
+        lRetailStoreIDFrom = #{lRetailStoreIDFrom,jdbcType=INTEGER},
+      </if>
+      <if test="szRetailStoreExternalIDFrom != null" >
+        szRetailStoreExternalIDFrom = #{szRetailStoreExternalIDFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="lRetailStoreIDTo != null" >
+        lRetailStoreIDTo = #{lRetailStoreIDTo,jdbcType=INTEGER},
+      </if>
+      <if test="szRetailStoreExternalIDTo != null" >
+        szRetailStoreExternalIDTo = #{szRetailStoreExternalIDTo,jdbcType=VARCHAR},
+      </if>
+      <if test="szVendorOrStoreName != null" >
+        szVendorOrStoreName = #{szVendorOrStoreName,jdbcType=VARCHAR},
+      </if>
+      <if test="szStorageLocationIDFrom != null" >
+        szStorageLocationIDFrom = #{szStorageLocationIDFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="szStorageLocationIDTo != null" >
+        szStorageLocationIDTo = #{szStorageLocationIDTo,jdbcType=VARCHAR},
+      </if>
+      <if test="szExpectedDeliveryDate != null" >
+        szExpectedDeliveryDate = #{szExpectedDeliveryDate,jdbcType=VARCHAR},
+      </if>
+      <if test="szInvoiceNmbr != null" >
+        szInvoiceNmbr = #{szInvoiceNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="szInvoiceDate != null" >
+        szInvoiceDate = #{szInvoiceDate,jdbcType=VARCHAR},
+      </if>
+      <if test="dInvoiceAmount != null" >
+        dInvoiceAmount = #{dInvoiceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="szDSDReceiptNmbr != null" >
+        szDSDReceiptNmbr = #{szDSDReceiptNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="szReasonCode != null" >
+        szReasonCode = #{szReasonCode,jdbcType=VARCHAR},
+      </if>
+      <if test="szReference != null" >
+        szReference = #{szReference,jdbcType=VARCHAR},
+      </if>
+      <if test="bConfirmed != null" >
+        bConfirmed = #{bConfirmed,jdbcType=INTEGER},
+      </if>
+      <if test="lChangedOperatorID != null" >
+        lChangedOperatorID = #{lChangedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="lHostInterfaceID1 != null" >
+        lHostInterfaceID1 = #{lHostInterfaceID1,jdbcType=INTEGER},
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        lTechLayerAccessID = #{lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="szLastUpdLocal != null" >
+        szLastUpdLocal = #{szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="szDocTypeName != null" >
+        szDocTypeName = #{szDocTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="bIsCDC != null" >
+        bIsCDC = #{bIsCDC,jdbcType=INTEGER},
+      </if>
+      <if test="lStockTakeType != null" >
+        lStockTakeType = #{lStockTakeType,jdbcType=INTEGER},
+      </if>
+      <if test="szExternalPurchaseGroup != null" >
+        szExternalPurchaseGroup = #{szExternalPurchaseGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="szRDODate != null" >
+        szRDODate = #{szRDODate,jdbcType=VARCHAR},
+      </if>
+      <if test="szRDOTime != null" >
+        szRDOTime = #{szRDOTime,jdbcType=VARCHAR},
+      </if>
+      <if test="szStatusPO != null" >
+        szStatusPO = #{szStatusPO,jdbcType=VARCHAR},
+      </if>
+      <if test="szSaveDSDReceiptNmbr != null" >
+        szSaveDSDReceiptNmbr = #{szSaveDSDReceiptNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="szReceiptDocumentNmbr != null" >
+        szReceiptDocumentNmbr = #{szReceiptDocumentNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="szSerialNmbr != null" >
+        szSerialNmbr = #{szSerialNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="bNoObject != null" >
+        bNoObject = #{bNoObject,jdbcType=INTEGER},
+      </if>
+      <if test="szRVRSerialNmbr != null" >
+        szRVRSerialNmbr = #{szRVRSerialNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="szPoDocumentNmber != null" >
+        szPoDocumentNmber = #{szPoDocumentNmber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and lDocType = #{lDocType,jdbcType=INTEGER}
+      and szDocumentNmbr = #{szDocumentNmbr,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.model.IMMovement" >
+    update IMMovement
+    set szRetailStoreExternalID = #{szRetailStoreExternalID,jdbcType=VARCHAR},
+      szDate = #{szDate,jdbcType=VARCHAR},
+      szTime = #{szTime,jdbcType=VARCHAR},
+      lWorkstationNmbr = #{lWorkstationNmbr,jdbcType=INTEGER},
+      lCreatedOperatorID = #{lCreatedOperatorID,jdbcType=INTEGER},
+      szExternalDocumentNmbr = #{szExternalDocumentNmbr,jdbcType=VARCHAR},
+      szExternalDocumentDate = #{szExternalDocumentDate,jdbcType=VARCHAR},
+      szVendorID = #{szVendorID,jdbcType=VARCHAR},
+      lRetailStoreIDFrom = #{lRetailStoreIDFrom,jdbcType=INTEGER},
+      szRetailStoreExternalIDFrom = #{szRetailStoreExternalIDFrom,jdbcType=VARCHAR},
+      lRetailStoreIDTo = #{lRetailStoreIDTo,jdbcType=INTEGER},
+      szRetailStoreExternalIDTo = #{szRetailStoreExternalIDTo,jdbcType=VARCHAR},
+      szVendorOrStoreName = #{szVendorOrStoreName,jdbcType=VARCHAR},
+      szStorageLocationIDFrom = #{szStorageLocationIDFrom,jdbcType=VARCHAR},
+      szStorageLocationIDTo = #{szStorageLocationIDTo,jdbcType=VARCHAR},
+      szExpectedDeliveryDate = #{szExpectedDeliveryDate,jdbcType=VARCHAR},
+      szInvoiceNmbr = #{szInvoiceNmbr,jdbcType=VARCHAR},
+      szInvoiceDate = #{szInvoiceDate,jdbcType=VARCHAR},
+      dInvoiceAmount = #{dInvoiceAmount,jdbcType=DECIMAL},
+      szDSDReceiptNmbr = #{szDSDReceiptNmbr,jdbcType=VARCHAR},
+      szReasonCode = #{szReasonCode,jdbcType=VARCHAR},
+      szReference = #{szReference,jdbcType=VARCHAR},
+      bConfirmed = #{bConfirmed,jdbcType=INTEGER},
+      lChangedOperatorID = #{lChangedOperatorID,jdbcType=INTEGER},
+      lHostInterfaceID1 = #{lHostInterfaceID1,jdbcType=INTEGER},
+      lTechLayerAccessID = #{lTechLayerAccessID,jdbcType=INTEGER},
+      szLastUpdLocal = #{szLastUpdLocal,jdbcType=VARCHAR},
+      szDocTypeName = #{szDocTypeName,jdbcType=VARCHAR},
+      bIsCDC = #{bIsCDC,jdbcType=INTEGER},
+      lStockTakeType = #{lStockTakeType,jdbcType=INTEGER},
+      szExternalPurchaseGroup = #{szExternalPurchaseGroup,jdbcType=VARCHAR},
+      szRDODate = #{szRDODate,jdbcType=VARCHAR},
+      szRDOTime = #{szRDOTime,jdbcType=VARCHAR},
+      szStatusPO = #{szStatusPO,jdbcType=VARCHAR},
+      szSaveDSDReceiptNmbr = #{szSaveDSDReceiptNmbr,jdbcType=VARCHAR},
+      szReceiptDocumentNmbr = #{szReceiptDocumentNmbr,jdbcType=VARCHAR},
+      szSerialNmbr = #{szSerialNmbr,jdbcType=VARCHAR},
+      bNoObject = #{bNoObject,jdbcType=INTEGER},
+      szRVRSerialNmbr = #{szRVRSerialNmbr,jdbcType=VARCHAR},
+      szPoDocumentNmber = #{szPoDocumentNmber,jdbcType=VARCHAR}
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and lDocType = #{lDocType,jdbcType=INTEGER}
+      and szDocumentNmbr = #{szDocumentNmbr,jdbcType=VARCHAR}
+  </update>
+</mapper>

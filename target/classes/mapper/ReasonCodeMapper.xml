@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.ReasonCodeMapper" >
+  <resultMap id="BaseResultMap" type="com.model.ReasonCode" >
+    <id column="lRetailStoreID" property="lRetailStoreID" jdbcType="INTEGER" />
+    <id column="lDomainID" property="lDomainID" jdbcType="INTEGER" />
+    <id column="szLanguageCode" property="szLanguageCode" jdbcType="VARCHAR" />
+    <id column="szDomainAreaKeyPart1" property="szDomainAreaKeyPart1" jdbcType="VARCHAR" />
+    <id column="szDomainAreaKeyPart2" property="szDomainAreaKeyPart2" jdbcType="VARCHAR" />
+    <result column="szDescription" property="szDescription" jdbcType="VARCHAR" />
+    <result column="lTechLayerAccessID" property="lTechLayerAccessID" jdbcType="INTEGER" />
+    <result column="szLastUpdLocal" property="szLastUpdLocal" jdbcType="VARCHAR" />
+    <result column="IM_szReasonGroupCode" property="IM_szReasonGroupCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    lRetailStoreID, lDomainID, szLanguageCode, szDomainAreaKeyPart1, szDomainAreaKeyPart2, 
+    szDescription, lTechLayerAccessID, szLastUpdLocal, IM_szReasonGroupCode
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.model.ReasonCodeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from DomainAreaSpecificLiterals
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.model.ReasonCodeKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from DomainAreaSpecificLiterals
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and lDomainID = #{lDomainID,jdbcType=INTEGER}
+      and szLanguageCode = #{szLanguageCode,jdbcType=VARCHAR}
+      and szDomainAreaKeyPart1 = #{szDomainAreaKeyPart1,jdbcType=VARCHAR}
+      and szDomainAreaKeyPart2 = #{szDomainAreaKeyPart2,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.model.ReasonCodeKey" >
+    delete from DomainAreaSpecificLiterals
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and lDomainID = #{lDomainID,jdbcType=INTEGER}
+      and szLanguageCode = #{szLanguageCode,jdbcType=VARCHAR}
+      and szDomainAreaKeyPart1 = #{szDomainAreaKeyPart1,jdbcType=VARCHAR}
+      and szDomainAreaKeyPart2 = #{szDomainAreaKeyPart2,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.model.ReasonCodeExample" >
+    delete from DomainAreaSpecificLiterals
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.model.ReasonCode" >
+    insert into DomainAreaSpecificLiterals (lRetailStoreID, lDomainID, szLanguageCode, 
+      szDomainAreaKeyPart1, szDomainAreaKeyPart2, 
+      szDescription, lTechLayerAccessID, szLastUpdLocal, 
+      IM_szReasonGroupCode)
+    values (#{lRetailStoreID,jdbcType=INTEGER}, #{lDomainID,jdbcType=INTEGER}, #{szLanguageCode,jdbcType=VARCHAR}, 
+      #{szDomainAreaKeyPart1,jdbcType=VARCHAR}, #{szDomainAreaKeyPart2,jdbcType=VARCHAR}, 
+      #{szDescription,jdbcType=VARCHAR}, #{lTechLayerAccessID,jdbcType=INTEGER}, #{szLastUpdLocal,jdbcType=VARCHAR}, 
+      #{IM_szReasonGroupCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.model.ReasonCode" >
+    insert into DomainAreaSpecificLiterals
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lRetailStoreID != null" >
+        lRetailStoreID,
+      </if>
+      <if test="lDomainID != null" >
+        lDomainID,
+      </if>
+      <if test="szLanguageCode != null" >
+        szLanguageCode,
+      </if>
+      <if test="szDomainAreaKeyPart1 != null" >
+        szDomainAreaKeyPart1,
+      </if>
+      <if test="szDomainAreaKeyPart2 != null" >
+        szDomainAreaKeyPart2,
+      </if>
+      <if test="szDescription != null" >
+        szDescription,
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        lTechLayerAccessID,
+      </if>
+      <if test="szLastUpdLocal != null" >
+        szLastUpdLocal,
+      </if>
+      <if test="IM_szReasonGroupCode != null" >
+        IM_szReasonGroupCode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lRetailStoreID != null" >
+        #{lRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="lDomainID != null" >
+        #{lDomainID,jdbcType=INTEGER},
+      </if>
+      <if test="szLanguageCode != null" >
+        #{szLanguageCode,jdbcType=VARCHAR},
+      </if>
+      <if test="szDomainAreaKeyPart1 != null" >
+        #{szDomainAreaKeyPart1,jdbcType=VARCHAR},
+      </if>
+      <if test="szDomainAreaKeyPart2 != null" >
+        #{szDomainAreaKeyPart2,jdbcType=VARCHAR},
+      </if>
+      <if test="szDescription != null" >
+        #{szDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        #{lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="szLastUpdLocal != null" >
+        #{szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szReasonGroupCode != null" >
+        #{IM_szReasonGroupCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.model.ReasonCodeExample" resultType="java.lang.Integer" >
+    select count(*) from DomainAreaSpecificLiterals
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update DomainAreaSpecificLiterals
+    <set >
+      <if test="record.lRetailStoreID != null" >
+        lRetailStoreID = #{record.lRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="record.lDomainID != null" >
+        lDomainID = #{record.lDomainID,jdbcType=INTEGER},
+      </if>
+      <if test="record.szLanguageCode != null" >
+        szLanguageCode = #{record.szLanguageCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szDomainAreaKeyPart1 != null" >
+        szDomainAreaKeyPart1 = #{record.szDomainAreaKeyPart1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szDomainAreaKeyPart2 != null" >
+        szDomainAreaKeyPart2 = #{record.szDomainAreaKeyPart2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szDescription != null" >
+        szDescription = #{record.szDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lTechLayerAccessID != null" >
+        lTechLayerAccessID = #{record.lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="record.szLastUpdLocal != null" >
+        szLastUpdLocal = #{record.szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IM_szReasonGroupCode != null" >
+        IM_szReasonGroupCode = #{record.IM_szReasonGroupCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update DomainAreaSpecificLiterals
+    set lRetailStoreID = #{record.lRetailStoreID,jdbcType=INTEGER},
+      lDomainID = #{record.lDomainID,jdbcType=INTEGER},
+      szLanguageCode = #{record.szLanguageCode,jdbcType=VARCHAR},
+      szDomainAreaKeyPart1 = #{record.szDomainAreaKeyPart1,jdbcType=VARCHAR},
+      szDomainAreaKeyPart2 = #{record.szDomainAreaKeyPart2,jdbcType=VARCHAR},
+      szDescription = #{record.szDescription,jdbcType=VARCHAR},
+      lTechLayerAccessID = #{record.lTechLayerAccessID,jdbcType=INTEGER},
+      szLastUpdLocal = #{record.szLastUpdLocal,jdbcType=VARCHAR},
+      IM_szReasonGroupCode = #{record.IM_szReasonGroupCode,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.model.ReasonCode" >
+    update DomainAreaSpecificLiterals
+    <set >
+      <if test="szDescription != null" >
+        szDescription = #{szDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        lTechLayerAccessID = #{lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="szLastUpdLocal != null" >
+        szLastUpdLocal = #{szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="IM_szReasonGroupCode != null" >
+        IM_szReasonGroupCode = #{IM_szReasonGroupCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and lDomainID = #{lDomainID,jdbcType=INTEGER}
+      and szLanguageCode = #{szLanguageCode,jdbcType=VARCHAR}
+      and szDomainAreaKeyPart1 = #{szDomainAreaKeyPart1,jdbcType=VARCHAR}
+      and szDomainAreaKeyPart2 = #{szDomainAreaKeyPart2,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.model.ReasonCode" >
+    update DomainAreaSpecificLiterals
+    set szDescription = #{szDescription,jdbcType=VARCHAR},
+      lTechLayerAccessID = #{lTechLayerAccessID,jdbcType=INTEGER},
+      szLastUpdLocal = #{szLastUpdLocal,jdbcType=VARCHAR},
+      IM_szReasonGroupCode = #{IM_szReasonGroupCode,jdbcType=VARCHAR}
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and lDomainID = #{lDomainID,jdbcType=INTEGER}
+      and szLanguageCode = #{szLanguageCode,jdbcType=VARCHAR}
+      and szDomainAreaKeyPart1 = #{szDomainAreaKeyPart1,jdbcType=VARCHAR}
+      and szDomainAreaKeyPart2 = #{szDomainAreaKeyPart2,jdbcType=VARCHAR}
+  </update>
+</mapper>

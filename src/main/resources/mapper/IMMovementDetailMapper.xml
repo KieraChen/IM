@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.IMMovementDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.model.IMMovementDetail" >
+    <id column="lRetailStoreID" property="lRetailStoreID" jdbcType="INTEGER" />
+    <id column="lDocType" property="lDocType" jdbcType="INTEGER" />
+    <id column="szDocumentNmbr" property="szDocumentNmbr" jdbcType="VARCHAR" />
+    <id column="lSequenceNumber" property="lSequenceNumber" jdbcType="INTEGER" />
+    <result column="szPOSItemID" property="szPOSItemID" jdbcType="VARCHAR" />
+    <result column="szDesc" property="szDesc" jdbcType="VARCHAR" />
+    <result column="szStorageLocationID" property="szStorageLocationID" jdbcType="VARCHAR" />
+    <result column="szPriceUnitOfMeasureName" property="szPriceUnitOfMeasureName" jdbcType="VARCHAR" />
+    <result column="dOrderQty" property="dOrderQty" jdbcType="DECIMAL" />
+    <result column="dQty" property="dQty" jdbcType="DECIMAL" />
+    <result column="lChangedOperatorID" property="lChangedOperatorID" jdbcType="INTEGER" />
+    <result column="lTechLayerAccessID" property="lTechLayerAccessID" jdbcType="INTEGER" />
+    <result column="szLastUpdLocal" property="szLastUpdLocal" jdbcType="VARCHAR" />
+    <result column="szItemShelfLoc" property="szItemShelfLoc" jdbcType="VARCHAR" />
+    <result column="dPackingUnitPriceAmount" property="dPackingUnitPriceAmount" jdbcType="DECIMAL" />
+    <result column="dMAP" property="dMAP" jdbcType="DECIMAL" />
+    <result column="szStorageLocationName" property="szStorageLocationName" jdbcType="VARCHAR" />
+    <result column="dTotalRetailAmount" property="dTotalRetailAmount" jdbcType="DECIMAL" />
+    <result column="bParkingCoupon" property="bParkingCoupon" jdbcType="INTEGER" />
+    <result column="lSupplySource" property="lSupplySource" jdbcType="INTEGER" />
+    <result column="bConsignment" property="bConsignment" jdbcType="INTEGER" />
+    <result column="szArticleType" property="szArticleType" jdbcType="VARCHAR" />
+    <result column="szPurchaseGroup" property="szPurchaseGroup" jdbcType="VARCHAR" />
+    <result column="szVendorIDOrCDCExternalID" property="szVendorIDOrCDCExternalID" jdbcType="VARCHAR" />
+    <result column="szReasonCode" property="szReasonCode" jdbcType="VARCHAR" />
+    <result column="szReasonName" property="szReasonName" jdbcType="VARCHAR" />
+    <result column="dLossQty" property="dLossQty" jdbcType="DECIMAL" />
+    <result column="dRvrActualQty" property="dRvrActualQty" jdbcType="DECIMAL" />
+    <result column="dCompensateDamageQty" property="dCompensateDamageQty" jdbcType="DECIMAL" />
+    <result column="dCompensateDiffQty" property="dCompensateDiffQty" jdbcType="DECIMAL" />
+    <result column="szDamaConfirm" property="szDamaConfirm" jdbcType="INTEGER" />
+    <result column="szDiffConfirm" property="szDiffConfirm" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    lRetailStoreID, lDocType, szDocumentNmbr, lSequenceNumber, szPOSItemID, szDesc, szStorageLocationID, 
+    szPriceUnitOfMeasureName, dOrderQty, dQty, lChangedOperatorID, lTechLayerAccessID, 
+    szLastUpdLocal, szItemShelfLoc, dPackingUnitPriceAmount, dMAP, szStorageLocationName, 
+    dTotalRetailAmount, bParkingCoupon, lSupplySource, bConsignment, szArticleType, szPurchaseGroup, 
+    szVendorIDOrCDCExternalID, szReasonCode, szReasonName, dLossQty, dRvrActualQty, dCompensateDamageQty, 
+    dCompensateDiffQty, szDamaConfirm, szDiffConfirm
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.model.IMMovementDetailExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from IMMovementDetail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.model.IMMovementDetailKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from IMMovementDetail
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and lDocType = #{lDocType,jdbcType=INTEGER}
+      and szDocumentNmbr = #{szDocumentNmbr,jdbcType=VARCHAR}
+      and lSequenceNumber = #{lSequenceNumber,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.model.IMMovementDetailKey" >
+    delete from IMMovementDetail
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and lDocType = #{lDocType,jdbcType=INTEGER}
+      and szDocumentNmbr = #{szDocumentNmbr,jdbcType=VARCHAR}
+      and lSequenceNumber = #{lSequenceNumber,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.model.IMMovementDetailExample" >
+    delete from IMMovementDetail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.model.IMMovementDetail" >
+    insert into IMMovementDetail (lRetailStoreID, lDocType, szDocumentNmbr, 
+      lSequenceNumber, szPOSItemID, szDesc, 
+      szStorageLocationID, szPriceUnitOfMeasureName, 
+      dOrderQty, dQty, lChangedOperatorID, 
+      lTechLayerAccessID, szLastUpdLocal, szItemShelfLoc, 
+      dPackingUnitPriceAmount, dMAP, szStorageLocationName, 
+      dTotalRetailAmount, bParkingCoupon, lSupplySource, 
+      bConsignment, szArticleType, szPurchaseGroup, 
+      szVendorIDOrCDCExternalID, szReasonCode, 
+      szReasonName, dLossQty, dRvrActualQty, 
+      dCompensateDamageQty, dCompensateDiffQty, 
+      szDamaConfirm, szDiffConfirm)
+    values (#{lRetailStoreID,jdbcType=INTEGER}, #{lDocType,jdbcType=INTEGER}, #{szDocumentNmbr,jdbcType=VARCHAR}, 
+      #{lSequenceNumber,jdbcType=INTEGER}, #{szPOSItemID,jdbcType=VARCHAR}, #{szDesc,jdbcType=VARCHAR}, 
+      #{szStorageLocationID,jdbcType=VARCHAR}, #{szPriceUnitOfMeasureName,jdbcType=VARCHAR}, 
+      #{dOrderQty,jdbcType=DECIMAL}, #{dQty,jdbcType=DECIMAL}, #{lChangedOperatorID,jdbcType=INTEGER}, 
+      #{lTechLayerAccessID,jdbcType=INTEGER}, #{szLastUpdLocal,jdbcType=VARCHAR}, #{szItemShelfLoc,jdbcType=VARCHAR}, 
+      #{dPackingUnitPriceAmount,jdbcType=DECIMAL}, #{dMAP,jdbcType=DECIMAL}, #{szStorageLocationName,jdbcType=VARCHAR}, 
+      #{dTotalRetailAmount,jdbcType=DECIMAL}, #{bParkingCoupon,jdbcType=INTEGER}, #{lSupplySource,jdbcType=INTEGER}, 
+      #{bConsignment,jdbcType=INTEGER}, #{szArticleType,jdbcType=VARCHAR}, #{szPurchaseGroup,jdbcType=VARCHAR}, 
+      #{szVendorIDOrCDCExternalID,jdbcType=VARCHAR}, #{szReasonCode,jdbcType=VARCHAR}, 
+      #{szReasonName,jdbcType=VARCHAR}, #{dLossQty,jdbcType=DECIMAL}, #{dRvrActualQty,jdbcType=DECIMAL}, 
+      #{dCompensateDamageQty,jdbcType=DECIMAL}, #{dCompensateDiffQty,jdbcType=DECIMAL}, 
+      #{szDamaConfirm,jdbcType=INTEGER}, #{szDiffConfirm,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.model.IMMovementDetail" >
+    insert into IMMovementDetail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lRetailStoreID != null" >
+        lRetailStoreID,
+      </if>
+      <if test="lDocType != null" >
+        lDocType,
+      </if>
+      <if test="szDocumentNmbr != null" >
+        szDocumentNmbr,
+      </if>
+      <if test="lSequenceNumber != null" >
+        lSequenceNumber,
+      </if>
+      <if test="szPOSItemID != null" >
+        szPOSItemID,
+      </if>
+      <if test="szDesc != null" >
+        szDesc,
+      </if>
+      <if test="szStorageLocationID != null" >
+        szStorageLocationID,
+      </if>
+      <if test="szPriceUnitOfMeasureName != null" >
+        szPriceUnitOfMeasureName,
+      </if>
+      <if test="dOrderQty != null" >
+        dOrderQty,
+      </if>
+      <if test="dQty != null" >
+        dQty,
+      </if>
+      <if test="lChangedOperatorID != null" >
+        lChangedOperatorID,
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        lTechLayerAccessID,
+      </if>
+      <if test="szLastUpdLocal != null" >
+        szLastUpdLocal,
+      </if>
+      <if test="szItemShelfLoc != null" >
+        szItemShelfLoc,
+      </if>
+      <if test="dPackingUnitPriceAmount != null" >
+        dPackingUnitPriceAmount,
+      </if>
+      <if test="dMAP != null" >
+        dMAP,
+      </if>
+      <if test="szStorageLocationName != null" >
+        szStorageLocationName,
+      </if>
+      <if test="dTotalRetailAmount != null" >
+        dTotalRetailAmount,
+      </if>
+      <if test="bParkingCoupon != null" >
+        bParkingCoupon,
+      </if>
+      <if test="lSupplySource != null" >
+        lSupplySource,
+      </if>
+      <if test="bConsignment != null" >
+        bConsignment,
+      </if>
+      <if test="szArticleType != null" >
+        szArticleType,
+      </if>
+      <if test="szPurchaseGroup != null" >
+        szPurchaseGroup,
+      </if>
+      <if test="szVendorIDOrCDCExternalID != null" >
+        szVendorIDOrCDCExternalID,
+      </if>
+      <if test="szReasonCode != null" >
+        szReasonCode,
+      </if>
+      <if test="szReasonName != null" >
+        szReasonName,
+      </if>
+      <if test="dLossQty != null" >
+        dLossQty,
+      </if>
+      <if test="dRvrActualQty != null" >
+        dRvrActualQty,
+      </if>
+      <if test="dCompensateDamageQty != null" >
+        dCompensateDamageQty,
+      </if>
+      <if test="dCompensateDiffQty != null" >
+        dCompensateDiffQty,
+      </if>
+      <if test="szDamaConfirm != null" >
+        szDamaConfirm,
+      </if>
+      <if test="szDiffConfirm != null" >
+        szDiffConfirm,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lRetailStoreID != null" >
+        #{lRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="lDocType != null" >
+        #{lDocType,jdbcType=INTEGER},
+      </if>
+      <if test="szDocumentNmbr != null" >
+        #{szDocumentNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="lSequenceNumber != null" >
+        #{lSequenceNumber,jdbcType=INTEGER},
+      </if>
+      <if test="szPOSItemID != null" >
+        #{szPOSItemID,jdbcType=VARCHAR},
+      </if>
+      <if test="szDesc != null" >
+        #{szDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="szStorageLocationID != null" >
+        #{szStorageLocationID,jdbcType=VARCHAR},
+      </if>
+      <if test="szPriceUnitOfMeasureName != null" >
+        #{szPriceUnitOfMeasureName,jdbcType=VARCHAR},
+      </if>
+      <if test="dOrderQty != null" >
+        #{dOrderQty,jdbcType=DECIMAL},
+      </if>
+      <if test="dQty != null" >
+        #{dQty,jdbcType=DECIMAL},
+      </if>
+      <if test="lChangedOperatorID != null" >
+        #{lChangedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        #{lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="szLastUpdLocal != null" >
+        #{szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="szItemShelfLoc != null" >
+        #{szItemShelfLoc,jdbcType=VARCHAR},
+      </if>
+      <if test="dPackingUnitPriceAmount != null" >
+        #{dPackingUnitPriceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="dMAP != null" >
+        #{dMAP,jdbcType=DECIMAL},
+      </if>
+      <if test="szStorageLocationName != null" >
+        #{szStorageLocationName,jdbcType=VARCHAR},
+      </if>
+      <if test="dTotalRetailAmount != null" >
+        #{dTotalRetailAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="bParkingCoupon != null" >
+        #{bParkingCoupon,jdbcType=INTEGER},
+      </if>
+      <if test="lSupplySource != null" >
+        #{lSupplySource,jdbcType=INTEGER},
+      </if>
+      <if test="bConsignment != null" >
+        #{bConsignment,jdbcType=INTEGER},
+      </if>
+      <if test="szArticleType != null" >
+        #{szArticleType,jdbcType=VARCHAR},
+      </if>
+      <if test="szPurchaseGroup != null" >
+        #{szPurchaseGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="szVendorIDOrCDCExternalID != null" >
+        #{szVendorIDOrCDCExternalID,jdbcType=VARCHAR},
+      </if>
+      <if test="szReasonCode != null" >
+        #{szReasonCode,jdbcType=VARCHAR},
+      </if>
+      <if test="szReasonName != null" >
+        #{szReasonName,jdbcType=VARCHAR},
+      </if>
+      <if test="dLossQty != null" >
+        #{dLossQty,jdbcType=DECIMAL},
+      </if>
+      <if test="dRvrActualQty != null" >
+        #{dRvrActualQty,jdbcType=DECIMAL},
+      </if>
+      <if test="dCompensateDamageQty != null" >
+        #{dCompensateDamageQty,jdbcType=DECIMAL},
+      </if>
+      <if test="dCompensateDiffQty != null" >
+        #{dCompensateDiffQty,jdbcType=DECIMAL},
+      </if>
+      <if test="szDamaConfirm != null" >
+        #{szDamaConfirm,jdbcType=INTEGER},
+      </if>
+      <if test="szDiffConfirm != null" >
+        #{szDiffConfirm,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.model.IMMovementDetailExample" resultType="java.lang.Integer" >
+    select count(*) from IMMovementDetail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update IMMovementDetail
+    <set >
+      <if test="record.lRetailStoreID != null" >
+        lRetailStoreID = #{record.lRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="record.lDocType != null" >
+        lDocType = #{record.lDocType,jdbcType=INTEGER},
+      </if>
+      <if test="record.szDocumentNmbr != null" >
+        szDocumentNmbr = #{record.szDocumentNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lSequenceNumber != null" >
+        lSequenceNumber = #{record.lSequenceNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.szPOSItemID != null" >
+        szPOSItemID = #{record.szPOSItemID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szDesc != null" >
+        szDesc = #{record.szDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szStorageLocationID != null" >
+        szStorageLocationID = #{record.szStorageLocationID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szPriceUnitOfMeasureName != null" >
+        szPriceUnitOfMeasureName = #{record.szPriceUnitOfMeasureName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dOrderQty != null" >
+        dOrderQty = #{record.dOrderQty,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dQty != null" >
+        dQty = #{record.dQty,jdbcType=DECIMAL},
+      </if>
+      <if test="record.lChangedOperatorID != null" >
+        lChangedOperatorID = #{record.lChangedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="record.lTechLayerAccessID != null" >
+        lTechLayerAccessID = #{record.lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="record.szLastUpdLocal != null" >
+        szLastUpdLocal = #{record.szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szItemShelfLoc != null" >
+        szItemShelfLoc = #{record.szItemShelfLoc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dPackingUnitPriceAmount != null" >
+        dPackingUnitPriceAmount = #{record.dPackingUnitPriceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dMAP != null" >
+        dMAP = #{record.dMAP,jdbcType=DECIMAL},
+      </if>
+      <if test="record.szStorageLocationName != null" >
+        szStorageLocationName = #{record.szStorageLocationName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dTotalRetailAmount != null" >
+        dTotalRetailAmount = #{record.dTotalRetailAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.bParkingCoupon != null" >
+        bParkingCoupon = #{record.bParkingCoupon,jdbcType=INTEGER},
+      </if>
+      <if test="record.lSupplySource != null" >
+        lSupplySource = #{record.lSupplySource,jdbcType=INTEGER},
+      </if>
+      <if test="record.bConsignment != null" >
+        bConsignment = #{record.bConsignment,jdbcType=INTEGER},
+      </if>
+      <if test="record.szArticleType != null" >
+        szArticleType = #{record.szArticleType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szPurchaseGroup != null" >
+        szPurchaseGroup = #{record.szPurchaseGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szVendorIDOrCDCExternalID != null" >
+        szVendorIDOrCDCExternalID = #{record.szVendorIDOrCDCExternalID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szReasonCode != null" >
+        szReasonCode = #{record.szReasonCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szReasonName != null" >
+        szReasonName = #{record.szReasonName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dLossQty != null" >
+        dLossQty = #{record.dLossQty,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dRvrActualQty != null" >
+        dRvrActualQty = #{record.dRvrActualQty,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dCompensateDamageQty != null" >
+        dCompensateDamageQty = #{record.dCompensateDamageQty,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dCompensateDiffQty != null" >
+        dCompensateDiffQty = #{record.dCompensateDiffQty,jdbcType=DECIMAL},
+      </if>
+      <if test="record.szDamaConfirm != null" >
+        szDamaConfirm = #{record.szDamaConfirm,jdbcType=INTEGER},
+      </if>
+      <if test="record.szDiffConfirm != null" >
+        szDiffConfirm = #{record.szDiffConfirm,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update IMMovementDetail
+    set lRetailStoreID = #{record.lRetailStoreID,jdbcType=INTEGER},
+      lDocType = #{record.lDocType,jdbcType=INTEGER},
+      szDocumentNmbr = #{record.szDocumentNmbr,jdbcType=VARCHAR},
+      lSequenceNumber = #{record.lSequenceNumber,jdbcType=INTEGER},
+      szPOSItemID = #{record.szPOSItemID,jdbcType=VARCHAR},
+      szDesc = #{record.szDesc,jdbcType=VARCHAR},
+      szStorageLocationID = #{record.szStorageLocationID,jdbcType=VARCHAR},
+      szPriceUnitOfMeasureName = #{record.szPriceUnitOfMeasureName,jdbcType=VARCHAR},
+      dOrderQty = #{record.dOrderQty,jdbcType=DECIMAL},
+      dQty = #{record.dQty,jdbcType=DECIMAL},
+      lChangedOperatorID = #{record.lChangedOperatorID,jdbcType=INTEGER},
+      lTechLayerAccessID = #{record.lTechLayerAccessID,jdbcType=INTEGER},
+      szLastUpdLocal = #{record.szLastUpdLocal,jdbcType=VARCHAR},
+      szItemShelfLoc = #{record.szItemShelfLoc,jdbcType=VARCHAR},
+      dPackingUnitPriceAmount = #{record.dPackingUnitPriceAmount,jdbcType=DECIMAL},
+      dMAP = #{record.dMAP,jdbcType=DECIMAL},
+      szStorageLocationName = #{record.szStorageLocationName,jdbcType=VARCHAR},
+      dTotalRetailAmount = #{record.dTotalRetailAmount,jdbcType=DECIMAL},
+      bParkingCoupon = #{record.bParkingCoupon,jdbcType=INTEGER},
+      lSupplySource = #{record.lSupplySource,jdbcType=INTEGER},
+      bConsignment = #{record.bConsignment,jdbcType=INTEGER},
+      szArticleType = #{record.szArticleType,jdbcType=VARCHAR},
+      szPurchaseGroup = #{record.szPurchaseGroup,jdbcType=VARCHAR},
+      szVendorIDOrCDCExternalID = #{record.szVendorIDOrCDCExternalID,jdbcType=VARCHAR},
+      szReasonCode = #{record.szReasonCode,jdbcType=VARCHAR},
+      szReasonName = #{record.szReasonName,jdbcType=VARCHAR},
+      dLossQty = #{record.dLossQty,jdbcType=DECIMAL},
+      dRvrActualQty = #{record.dRvrActualQty,jdbcType=DECIMAL},
+      dCompensateDamageQty = #{record.dCompensateDamageQty,jdbcType=DECIMAL},
+      dCompensateDiffQty = #{record.dCompensateDiffQty,jdbcType=DECIMAL},
+      szDamaConfirm = #{record.szDamaConfirm,jdbcType=INTEGER},
+      szDiffConfirm = #{record.szDiffConfirm,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.model.IMMovementDetail" >
+    update IMMovementDetail
+    <set >
+      <if test="szPOSItemID != null" >
+        szPOSItemID = #{szPOSItemID,jdbcType=VARCHAR},
+      </if>
+      <if test="szDesc != null" >
+        szDesc = #{szDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="szStorageLocationID != null" >
+        szStorageLocationID = #{szStorageLocationID,jdbcType=VARCHAR},
+      </if>
+      <if test="szPriceUnitOfMeasureName != null" >
+        szPriceUnitOfMeasureName = #{szPriceUnitOfMeasureName,jdbcType=VARCHAR},
+      </if>
+      <if test="dOrderQty != null" >
+        dOrderQty = #{dOrderQty,jdbcType=DECIMAL},
+      </if>
+      <if test="dQty != null" >
+        dQty = #{dQty,jdbcType=DECIMAL},
+      </if>
+      <if test="lChangedOperatorID != null" >
+        lChangedOperatorID = #{lChangedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        lTechLayerAccessID = #{lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="szLastUpdLocal != null" >
+        szLastUpdLocal = #{szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="szItemShelfLoc != null" >
+        szItemShelfLoc = #{szItemShelfLoc,jdbcType=VARCHAR},
+      </if>
+      <if test="dPackingUnitPriceAmount != null" >
+        dPackingUnitPriceAmount = #{dPackingUnitPriceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="dMAP != null" >
+        dMAP = #{dMAP,jdbcType=DECIMAL},
+      </if>
+      <if test="szStorageLocationName != null" >
+        szStorageLocationName = #{szStorageLocationName,jdbcType=VARCHAR},
+      </if>
+      <if test="dTotalRetailAmount != null" >
+        dTotalRetailAmount = #{dTotalRetailAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="bParkingCoupon != null" >
+        bParkingCoupon = #{bParkingCoupon,jdbcType=INTEGER},
+      </if>
+      <if test="lSupplySource != null" >
+        lSupplySource = #{lSupplySource,jdbcType=INTEGER},
+      </if>
+      <if test="bConsignment != null" >
+        bConsignment = #{bConsignment,jdbcType=INTEGER},
+      </if>
+      <if test="szArticleType != null" >
+        szArticleType = #{szArticleType,jdbcType=VARCHAR},
+      </if>
+      <if test="szPurchaseGroup != null" >
+        szPurchaseGroup = #{szPurchaseGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="szVendorIDOrCDCExternalID != null" >
+        szVendorIDOrCDCExternalID = #{szVendorIDOrCDCExternalID,jdbcType=VARCHAR},
+      </if>
+      <if test="szReasonCode != null" >
+        szReasonCode = #{szReasonCode,jdbcType=VARCHAR},
+      </if>
+      <if test="szReasonName != null" >
+        szReasonName = #{szReasonName,jdbcType=VARCHAR},
+      </if>
+      <if test="dLossQty != null" >
+        dLossQty = #{dLossQty,jdbcType=DECIMAL},
+      </if>
+      <if test="dRvrActualQty != null" >
+        dRvrActualQty = #{dRvrActualQty,jdbcType=DECIMAL},
+      </if>
+      <if test="dCompensateDamageQty != null" >
+        dCompensateDamageQty = #{dCompensateDamageQty,jdbcType=DECIMAL},
+      </if>
+      <if test="dCompensateDiffQty != null" >
+        dCompensateDiffQty = #{dCompensateDiffQty,jdbcType=DECIMAL},
+      </if>
+      <if test="szDamaConfirm != null" >
+        szDamaConfirm = #{szDamaConfirm,jdbcType=INTEGER},
+      </if>
+      <if test="szDiffConfirm != null" >
+        szDiffConfirm = #{szDiffConfirm,jdbcType=INTEGER},
+      </if>
+    </set>
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and lDocType = #{lDocType,jdbcType=INTEGER}
+      and szDocumentNmbr = #{szDocumentNmbr,jdbcType=VARCHAR}
+      and lSequenceNumber = #{lSequenceNumber,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.model.IMMovementDetail" >
+    update IMMovementDetail
+    set szPOSItemID = #{szPOSItemID,jdbcType=VARCHAR},
+      szDesc = #{szDesc,jdbcType=VARCHAR},
+      szStorageLocationID = #{szStorageLocationID,jdbcType=VARCHAR},
+      szPriceUnitOfMeasureName = #{szPriceUnitOfMeasureName,jdbcType=VARCHAR},
+      dOrderQty = #{dOrderQty,jdbcType=DECIMAL},
+      dQty = #{dQty,jdbcType=DECIMAL},
+      lChangedOperatorID = #{lChangedOperatorID,jdbcType=INTEGER},
+      lTechLayerAccessID = #{lTechLayerAccessID,jdbcType=INTEGER},
+      szLastUpdLocal = #{szLastUpdLocal,jdbcType=VARCHAR},
+      szItemShelfLoc = #{szItemShelfLoc,jdbcType=VARCHAR},
+      dPackingUnitPriceAmount = #{dPackingUnitPriceAmount,jdbcType=DECIMAL},
+      dMAP = #{dMAP,jdbcType=DECIMAL},
+      szStorageLocationName = #{szStorageLocationName,jdbcType=VARCHAR},
+      dTotalRetailAmount = #{dTotalRetailAmount,jdbcType=DECIMAL},
+      bParkingCoupon = #{bParkingCoupon,jdbcType=INTEGER},
+      lSupplySource = #{lSupplySource,jdbcType=INTEGER},
+      bConsignment = #{bConsignment,jdbcType=INTEGER},
+      szArticleType = #{szArticleType,jdbcType=VARCHAR},
+      szPurchaseGroup = #{szPurchaseGroup,jdbcType=VARCHAR},
+      szVendorIDOrCDCExternalID = #{szVendorIDOrCDCExternalID,jdbcType=VARCHAR},
+      szReasonCode = #{szReasonCode,jdbcType=VARCHAR},
+      szReasonName = #{szReasonName,jdbcType=VARCHAR},
+      dLossQty = #{dLossQty,jdbcType=DECIMAL},
+      dRvrActualQty = #{dRvrActualQty,jdbcType=DECIMAL},
+      dCompensateDamageQty = #{dCompensateDamageQty,jdbcType=DECIMAL},
+      dCompensateDiffQty = #{dCompensateDiffQty,jdbcType=DECIMAL},
+      szDamaConfirm = #{szDamaConfirm,jdbcType=INTEGER},
+      szDiffConfirm = #{szDiffConfirm,jdbcType=INTEGER}
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and lDocType = #{lDocType,jdbcType=INTEGER}
+      and szDocumentNmbr = #{szDocumentNmbr,jdbcType=VARCHAR}
+      and lSequenceNumber = #{lSequenceNumber,jdbcType=INTEGER}
+  </update>
+</mapper>

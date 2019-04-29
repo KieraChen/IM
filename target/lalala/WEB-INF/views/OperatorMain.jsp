@@ -1,10 +1,14 @@
+<%@ page import="com.model.Operator" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<c:if test="${empty sessionScope.operator}">
-<c:redirect url="Index.jsp"></c:redirect>
-</c:if>
+<%
+  Operator o = (Operator) session.getAttribute("operator");
+  if(o==null){
+    response.sendRedirect("Index.do");
+    return;
+  } %>
 
 <html>
 <head>
@@ -42,7 +46,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 <!--main_top-->
 <table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
   <tr>
-    <td width="99%" align="left" valign="top">您的位置：系统管理</td>
+    <td width="99%" align="left" valign="top">您的位置:&nbsp;系统管理&nbsp;>&nbsp;用户管理</td>
   </tr>
   <tr>
     <td align="left" valign="top">
@@ -67,7 +71,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
          </td>
          <c:if test="${sessionScope.operator.szPower==1 }">
   		  <td width="10%" align="center" valign="middle" style="text-align:right; width:150px;">
-  		  <a href='添加用户' target="mainFrame" onFocus="this.blur()" class="add">添加用户</a></td>
+  		  <a href='${pageContext.request.contextPath}/operator/addOperator.do' target="mainFrame" onFocus="this.blur()" class="add">添加用户</a></td>
   		 </c:if>
   		</tr>
 	</table>
@@ -111,9 +115,9 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         </c:if>
       <c:if test="${sessionScope.operator.szPower==1 }">
         <td align="center" valign="middle" class="borderbottom">
-        <a href="${pageContext.request.contextPath}/operator/deleteOperator.do?lOperatorID=${o.lOperatorID }&pn=${pageInfo.pageNum }&szSignOnName=${operator.szSignOnName }&sdepId=${sdepId}" target="mainFrame" onFocus="this.blur()" class="add">删除</a>
+        <a href="${pageContext.request.contextPath}/operator/deleteOperator.do?lOperatorID=${o.lOperatorID }&pn=${pageInfo.pageNum }&szSignOnName=${operator.szSignOnName }" target="mainFrame" onFocus="this.blur()" class="add">删除</a>
         <span class="gray">&nbsp;|&nbsp;</span>
-        <a href="UserController?flag=edit&id=${u.id }&pageNow=${pageNow }&suserName=${suserName }&sdepId=${sdepId}" target="mainFrame" onFocus="this.blur()" class="add">编辑</a></td>
+        <a href="${pageContext.request.contextPath}/operator/editOperator.do?" target="mainFrame" onFocus="this.blur()" class="add">编辑</a></td>
     </c:if>
      </tr>
      </c:forEach>

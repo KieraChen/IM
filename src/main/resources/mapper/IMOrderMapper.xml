@@ -1,0 +1,719 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.IMOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.model.IMOrder" >
+    <id column="lRetailStoreID" property="lRetailStoreID" jdbcType="INTEGER" />
+    <id column="szDocumentType" property="szDocumentType" jdbcType="VARCHAR" />
+    <id column="szDate" property="szDate" jdbcType="VARCHAR" />
+    <id column="szPOSItemID" property="szPOSItemID" jdbcType="VARCHAR" />
+    <result column="szTime" property="szTime" jdbcType="VARCHAR" />
+    <result column="szRetailStoreExternalID" property="szRetailStoreExternalID" jdbcType="VARCHAR" />
+    <result column="lWorkstationNmbr" property="lWorkstationNmbr" jdbcType="INTEGER" />
+    <result column="lCreatedOperatorID" property="lCreatedOperatorID" jdbcType="INTEGER" />
+    <result column="szStorageLocationID" property="szStorageLocationID" jdbcType="VARCHAR" />
+    <result column="szVendorID" property="szVendorID" jdbcType="VARCHAR" />
+    <result column="szPriceUnitOfMeasureName" property="szPriceUnitOfMeasureName" jdbcType="VARCHAR" />
+    <result column="szItemClassification" property="szItemClassification" jdbcType="VARCHAR" />
+    <result column="dQty" property="dQty" jdbcType="DECIMAL" />
+    <result column="dShift1Qty" property="dShift1Qty" jdbcType="DECIMAL" />
+    <result column="dShift2Qty" property="dShift2Qty" jdbcType="DECIMAL" />
+    <result column="dShift3Qty" property="dShift3Qty" jdbcType="DECIMAL" />
+    <result column="szDeliveryDate" property="szDeliveryDate" jdbcType="VARCHAR" />
+    <result column="dOrderDayOnHand" property="dOrderDayOnHand" jdbcType="DECIMAL" />
+    <result column="dOrderDayForecast" property="dOrderDayForecast" jdbcType="DECIMAL" />
+    <result column="dNextDayOnHand" property="dNextDayOnHand" jdbcType="DECIMAL" />
+    <result column="dNextDayForecast" property="dNextDayForecast" jdbcType="DECIMAL" />
+    <result column="szItemName" property="szItemName" jdbcType="VARCHAR" />
+    <result column="dItemMOQ" property="dItemMOQ" jdbcType="DECIMAL" />
+    <result column="dItemLDU" property="dItemLDU" jdbcType="DECIMAL" />
+    <result column="lChangedOperatorID" property="lChangedOperatorID" jdbcType="INTEGER" />
+    <result column="lHostInterfaceID1" property="lHostInterfaceID1" jdbcType="INTEGER" />
+    <result column="lTechLayerAccessID" property="lTechLayerAccessID" jdbcType="INTEGER" />
+    <result column="szLastUpdLocal" property="szLastUpdLocal" jdbcType="VARCHAR" />
+    <result column="lSupplySource" property="lSupplySource" jdbcType="INTEGER" />
+    <result column="bConsignment" property="bConsignment" jdbcType="INTEGER" />
+    <result column="szArticleType" property="szArticleType" jdbcType="VARCHAR" />
+    <result column="szRetailStoreExternalIDFrom" property="szRetailStoreExternalIDFrom" jdbcType="VARCHAR" />
+    <result column="szPurchaseGroup" property="szPurchaseGroup" jdbcType="VARCHAR" />
+    <result column="szUploadFTPStatus" property="szUploadFTPStatus" jdbcType="VARCHAR" />
+    <result column="szSerialNmbr" property="szSerialNmbr" jdbcType="VARCHAR" />
+    <result column="szABCIndicator" property="szABCIndicator" jdbcType="VARCHAR" />
+    <result column="szABCIndicatorDesc" property="szABCIndicatorDesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    lRetailStoreID, szDocumentType, szDate, szPOSItemID, szTime, szRetailStoreExternalID, 
+    lWorkstationNmbr, lCreatedOperatorID, szStorageLocationID, szVendorID, szPriceUnitOfMeasureName, 
+    szItemClassification, dQty, dShift1Qty, dShift2Qty, dShift3Qty, szDeliveryDate, dOrderDayOnHand, 
+    dOrderDayForecast, dNextDayOnHand, dNextDayForecast, szItemName, dItemMOQ, dItemLDU, 
+    lChangedOperatorID, lHostInterfaceID1, lTechLayerAccessID, szLastUpdLocal, lSupplySource, 
+    bConsignment, szArticleType, szRetailStoreExternalIDFrom, szPurchaseGroup, szUploadFTPStatus, 
+    szSerialNmbr, szABCIndicator, szABCIndicatorDesc
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.model.IMOrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from IMOrder
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.model.IMOrderKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from IMOrder
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and szDocumentType = #{szDocumentType,jdbcType=VARCHAR}
+      and szDate = #{szDate,jdbcType=VARCHAR}
+      and szPOSItemID = #{szPOSItemID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.model.IMOrderKey" >
+    delete from IMOrder
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and szDocumentType = #{szDocumentType,jdbcType=VARCHAR}
+      and szDate = #{szDate,jdbcType=VARCHAR}
+      and szPOSItemID = #{szPOSItemID,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.model.IMOrderExample" >
+    delete from IMOrder
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.model.IMOrder" >
+    insert into IMOrder (lRetailStoreID, szDocumentType, szDate, 
+      szPOSItemID, szTime, szRetailStoreExternalID, 
+      lWorkstationNmbr, lCreatedOperatorID, szStorageLocationID, 
+      szVendorID, szPriceUnitOfMeasureName, szItemClassification, 
+      dQty, dShift1Qty, dShift2Qty, 
+      dShift3Qty, szDeliveryDate, dOrderDayOnHand, 
+      dOrderDayForecast, dNextDayOnHand, dNextDayForecast, 
+      szItemName, dItemMOQ, dItemLDU, 
+      lChangedOperatorID, lHostInterfaceID1, 
+      lTechLayerAccessID, szLastUpdLocal, lSupplySource, 
+      bConsignment, szArticleType, szRetailStoreExternalIDFrom, 
+      szPurchaseGroup, szUploadFTPStatus, szSerialNmbr, 
+      szABCIndicator, szABCIndicatorDesc)
+    values (#{lRetailStoreID,jdbcType=INTEGER}, #{szDocumentType,jdbcType=VARCHAR}, #{szDate,jdbcType=VARCHAR}, 
+      #{szPOSItemID,jdbcType=VARCHAR}, #{szTime,jdbcType=VARCHAR}, #{szRetailStoreExternalID,jdbcType=VARCHAR}, 
+      #{lWorkstationNmbr,jdbcType=INTEGER}, #{lCreatedOperatorID,jdbcType=INTEGER}, #{szStorageLocationID,jdbcType=VARCHAR}, 
+      #{szVendorID,jdbcType=VARCHAR}, #{szPriceUnitOfMeasureName,jdbcType=VARCHAR}, #{szItemClassification,jdbcType=VARCHAR}, 
+      #{dQty,jdbcType=DECIMAL}, #{dShift1Qty,jdbcType=DECIMAL}, #{dShift2Qty,jdbcType=DECIMAL}, 
+      #{dShift3Qty,jdbcType=DECIMAL}, #{szDeliveryDate,jdbcType=VARCHAR}, #{dOrderDayOnHand,jdbcType=DECIMAL}, 
+      #{dOrderDayForecast,jdbcType=DECIMAL}, #{dNextDayOnHand,jdbcType=DECIMAL}, #{dNextDayForecast,jdbcType=DECIMAL}, 
+      #{szItemName,jdbcType=VARCHAR}, #{dItemMOQ,jdbcType=DECIMAL}, #{dItemLDU,jdbcType=DECIMAL}, 
+      #{lChangedOperatorID,jdbcType=INTEGER}, #{lHostInterfaceID1,jdbcType=INTEGER}, 
+      #{lTechLayerAccessID,jdbcType=INTEGER}, #{szLastUpdLocal,jdbcType=VARCHAR}, #{lSupplySource,jdbcType=INTEGER}, 
+      #{bConsignment,jdbcType=INTEGER}, #{szArticleType,jdbcType=VARCHAR}, #{szRetailStoreExternalIDFrom,jdbcType=VARCHAR}, 
+      #{szPurchaseGroup,jdbcType=VARCHAR}, #{szUploadFTPStatus,jdbcType=VARCHAR}, #{szSerialNmbr,jdbcType=VARCHAR}, 
+      #{szABCIndicator,jdbcType=VARCHAR}, #{szABCIndicatorDesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.model.IMOrder" >
+    insert into IMOrder
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lRetailStoreID != null" >
+        lRetailStoreID,
+      </if>
+      <if test="szDocumentType != null" >
+        szDocumentType,
+      </if>
+      <if test="szDate != null" >
+        szDate,
+      </if>
+      <if test="szPOSItemID != null" >
+        szPOSItemID,
+      </if>
+      <if test="szTime != null" >
+        szTime,
+      </if>
+      <if test="szRetailStoreExternalID != null" >
+        szRetailStoreExternalID,
+      </if>
+      <if test="lWorkstationNmbr != null" >
+        lWorkstationNmbr,
+      </if>
+      <if test="lCreatedOperatorID != null" >
+        lCreatedOperatorID,
+      </if>
+      <if test="szStorageLocationID != null" >
+        szStorageLocationID,
+      </if>
+      <if test="szVendorID != null" >
+        szVendorID,
+      </if>
+      <if test="szPriceUnitOfMeasureName != null" >
+        szPriceUnitOfMeasureName,
+      </if>
+      <if test="szItemClassification != null" >
+        szItemClassification,
+      </if>
+      <if test="dQty != null" >
+        dQty,
+      </if>
+      <if test="dShift1Qty != null" >
+        dShift1Qty,
+      </if>
+      <if test="dShift2Qty != null" >
+        dShift2Qty,
+      </if>
+      <if test="dShift3Qty != null" >
+        dShift3Qty,
+      </if>
+      <if test="szDeliveryDate != null" >
+        szDeliveryDate,
+      </if>
+      <if test="dOrderDayOnHand != null" >
+        dOrderDayOnHand,
+      </if>
+      <if test="dOrderDayForecast != null" >
+        dOrderDayForecast,
+      </if>
+      <if test="dNextDayOnHand != null" >
+        dNextDayOnHand,
+      </if>
+      <if test="dNextDayForecast != null" >
+        dNextDayForecast,
+      </if>
+      <if test="szItemName != null" >
+        szItemName,
+      </if>
+      <if test="dItemMOQ != null" >
+        dItemMOQ,
+      </if>
+      <if test="dItemLDU != null" >
+        dItemLDU,
+      </if>
+      <if test="lChangedOperatorID != null" >
+        lChangedOperatorID,
+      </if>
+      <if test="lHostInterfaceID1 != null" >
+        lHostInterfaceID1,
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        lTechLayerAccessID,
+      </if>
+      <if test="szLastUpdLocal != null" >
+        szLastUpdLocal,
+      </if>
+      <if test="lSupplySource != null" >
+        lSupplySource,
+      </if>
+      <if test="bConsignment != null" >
+        bConsignment,
+      </if>
+      <if test="szArticleType != null" >
+        szArticleType,
+      </if>
+      <if test="szRetailStoreExternalIDFrom != null" >
+        szRetailStoreExternalIDFrom,
+      </if>
+      <if test="szPurchaseGroup != null" >
+        szPurchaseGroup,
+      </if>
+      <if test="szUploadFTPStatus != null" >
+        szUploadFTPStatus,
+      </if>
+      <if test="szSerialNmbr != null" >
+        szSerialNmbr,
+      </if>
+      <if test="szABCIndicator != null" >
+        szABCIndicator,
+      </if>
+      <if test="szABCIndicatorDesc != null" >
+        szABCIndicatorDesc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lRetailStoreID != null" >
+        #{lRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="szDocumentType != null" >
+        #{szDocumentType,jdbcType=VARCHAR},
+      </if>
+      <if test="szDate != null" >
+        #{szDate,jdbcType=VARCHAR},
+      </if>
+      <if test="szPOSItemID != null" >
+        #{szPOSItemID,jdbcType=VARCHAR},
+      </if>
+      <if test="szTime != null" >
+        #{szTime,jdbcType=VARCHAR},
+      </if>
+      <if test="szRetailStoreExternalID != null" >
+        #{szRetailStoreExternalID,jdbcType=VARCHAR},
+      </if>
+      <if test="lWorkstationNmbr != null" >
+        #{lWorkstationNmbr,jdbcType=INTEGER},
+      </if>
+      <if test="lCreatedOperatorID != null" >
+        #{lCreatedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="szStorageLocationID != null" >
+        #{szStorageLocationID,jdbcType=VARCHAR},
+      </if>
+      <if test="szVendorID != null" >
+        #{szVendorID,jdbcType=VARCHAR},
+      </if>
+      <if test="szPriceUnitOfMeasureName != null" >
+        #{szPriceUnitOfMeasureName,jdbcType=VARCHAR},
+      </if>
+      <if test="szItemClassification != null" >
+        #{szItemClassification,jdbcType=VARCHAR},
+      </if>
+      <if test="dQty != null" >
+        #{dQty,jdbcType=DECIMAL},
+      </if>
+      <if test="dShift1Qty != null" >
+        #{dShift1Qty,jdbcType=DECIMAL},
+      </if>
+      <if test="dShift2Qty != null" >
+        #{dShift2Qty,jdbcType=DECIMAL},
+      </if>
+      <if test="dShift3Qty != null" >
+        #{dShift3Qty,jdbcType=DECIMAL},
+      </if>
+      <if test="szDeliveryDate != null" >
+        #{szDeliveryDate,jdbcType=VARCHAR},
+      </if>
+      <if test="dOrderDayOnHand != null" >
+        #{dOrderDayOnHand,jdbcType=DECIMAL},
+      </if>
+      <if test="dOrderDayForecast != null" >
+        #{dOrderDayForecast,jdbcType=DECIMAL},
+      </if>
+      <if test="dNextDayOnHand != null" >
+        #{dNextDayOnHand,jdbcType=DECIMAL},
+      </if>
+      <if test="dNextDayForecast != null" >
+        #{dNextDayForecast,jdbcType=DECIMAL},
+      </if>
+      <if test="szItemName != null" >
+        #{szItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="dItemMOQ != null" >
+        #{dItemMOQ,jdbcType=DECIMAL},
+      </if>
+      <if test="dItemLDU != null" >
+        #{dItemLDU,jdbcType=DECIMAL},
+      </if>
+      <if test="lChangedOperatorID != null" >
+        #{lChangedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="lHostInterfaceID1 != null" >
+        #{lHostInterfaceID1,jdbcType=INTEGER},
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        #{lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="szLastUpdLocal != null" >
+        #{szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="lSupplySource != null" >
+        #{lSupplySource,jdbcType=INTEGER},
+      </if>
+      <if test="bConsignment != null" >
+        #{bConsignment,jdbcType=INTEGER},
+      </if>
+      <if test="szArticleType != null" >
+        #{szArticleType,jdbcType=VARCHAR},
+      </if>
+      <if test="szRetailStoreExternalIDFrom != null" >
+        #{szRetailStoreExternalIDFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="szPurchaseGroup != null" >
+        #{szPurchaseGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="szUploadFTPStatus != null" >
+        #{szUploadFTPStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="szSerialNmbr != null" >
+        #{szSerialNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="szABCIndicator != null" >
+        #{szABCIndicator,jdbcType=VARCHAR},
+      </if>
+      <if test="szABCIndicatorDesc != null" >
+        #{szABCIndicatorDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.model.IMOrderExample" resultType="java.lang.Integer" >
+    select count(*) from IMOrder
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update IMOrder
+    <set >
+      <if test="record.lRetailStoreID != null" >
+        lRetailStoreID = #{record.lRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="record.szDocumentType != null" >
+        szDocumentType = #{record.szDocumentType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szDate != null" >
+        szDate = #{record.szDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szPOSItemID != null" >
+        szPOSItemID = #{record.szPOSItemID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szTime != null" >
+        szTime = #{record.szTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szRetailStoreExternalID != null" >
+        szRetailStoreExternalID = #{record.szRetailStoreExternalID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lWorkstationNmbr != null" >
+        lWorkstationNmbr = #{record.lWorkstationNmbr,jdbcType=INTEGER},
+      </if>
+      <if test="record.lCreatedOperatorID != null" >
+        lCreatedOperatorID = #{record.lCreatedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="record.szStorageLocationID != null" >
+        szStorageLocationID = #{record.szStorageLocationID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szVendorID != null" >
+        szVendorID = #{record.szVendorID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szPriceUnitOfMeasureName != null" >
+        szPriceUnitOfMeasureName = #{record.szPriceUnitOfMeasureName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szItemClassification != null" >
+        szItemClassification = #{record.szItemClassification,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dQty != null" >
+        dQty = #{record.dQty,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dShift1Qty != null" >
+        dShift1Qty = #{record.dShift1Qty,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dShift2Qty != null" >
+        dShift2Qty = #{record.dShift2Qty,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dShift3Qty != null" >
+        dShift3Qty = #{record.dShift3Qty,jdbcType=DECIMAL},
+      </if>
+      <if test="record.szDeliveryDate != null" >
+        szDeliveryDate = #{record.szDeliveryDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dOrderDayOnHand != null" >
+        dOrderDayOnHand = #{record.dOrderDayOnHand,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dOrderDayForecast != null" >
+        dOrderDayForecast = #{record.dOrderDayForecast,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dNextDayOnHand != null" >
+        dNextDayOnHand = #{record.dNextDayOnHand,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dNextDayForecast != null" >
+        dNextDayForecast = #{record.dNextDayForecast,jdbcType=DECIMAL},
+      </if>
+      <if test="record.szItemName != null" >
+        szItemName = #{record.szItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dItemMOQ != null" >
+        dItemMOQ = #{record.dItemMOQ,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dItemLDU != null" >
+        dItemLDU = #{record.dItemLDU,jdbcType=DECIMAL},
+      </if>
+      <if test="record.lChangedOperatorID != null" >
+        lChangedOperatorID = #{record.lChangedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="record.lHostInterfaceID1 != null" >
+        lHostInterfaceID1 = #{record.lHostInterfaceID1,jdbcType=INTEGER},
+      </if>
+      <if test="record.lTechLayerAccessID != null" >
+        lTechLayerAccessID = #{record.lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="record.szLastUpdLocal != null" >
+        szLastUpdLocal = #{record.szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lSupplySource != null" >
+        lSupplySource = #{record.lSupplySource,jdbcType=INTEGER},
+      </if>
+      <if test="record.bConsignment != null" >
+        bConsignment = #{record.bConsignment,jdbcType=INTEGER},
+      </if>
+      <if test="record.szArticleType != null" >
+        szArticleType = #{record.szArticleType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szRetailStoreExternalIDFrom != null" >
+        szRetailStoreExternalIDFrom = #{record.szRetailStoreExternalIDFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szPurchaseGroup != null" >
+        szPurchaseGroup = #{record.szPurchaseGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szUploadFTPStatus != null" >
+        szUploadFTPStatus = #{record.szUploadFTPStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szSerialNmbr != null" >
+        szSerialNmbr = #{record.szSerialNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szABCIndicator != null" >
+        szABCIndicator = #{record.szABCIndicator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szABCIndicatorDesc != null" >
+        szABCIndicatorDesc = #{record.szABCIndicatorDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update IMOrder
+    set lRetailStoreID = #{record.lRetailStoreID,jdbcType=INTEGER},
+      szDocumentType = #{record.szDocumentType,jdbcType=VARCHAR},
+      szDate = #{record.szDate,jdbcType=VARCHAR},
+      szPOSItemID = #{record.szPOSItemID,jdbcType=VARCHAR},
+      szTime = #{record.szTime,jdbcType=VARCHAR},
+      szRetailStoreExternalID = #{record.szRetailStoreExternalID,jdbcType=VARCHAR},
+      lWorkstationNmbr = #{record.lWorkstationNmbr,jdbcType=INTEGER},
+      lCreatedOperatorID = #{record.lCreatedOperatorID,jdbcType=INTEGER},
+      szStorageLocationID = #{record.szStorageLocationID,jdbcType=VARCHAR},
+      szVendorID = #{record.szVendorID,jdbcType=VARCHAR},
+      szPriceUnitOfMeasureName = #{record.szPriceUnitOfMeasureName,jdbcType=VARCHAR},
+      szItemClassification = #{record.szItemClassification,jdbcType=VARCHAR},
+      dQty = #{record.dQty,jdbcType=DECIMAL},
+      dShift1Qty = #{record.dShift1Qty,jdbcType=DECIMAL},
+      dShift2Qty = #{record.dShift2Qty,jdbcType=DECIMAL},
+      dShift3Qty = #{record.dShift3Qty,jdbcType=DECIMAL},
+      szDeliveryDate = #{record.szDeliveryDate,jdbcType=VARCHAR},
+      dOrderDayOnHand = #{record.dOrderDayOnHand,jdbcType=DECIMAL},
+      dOrderDayForecast = #{record.dOrderDayForecast,jdbcType=DECIMAL},
+      dNextDayOnHand = #{record.dNextDayOnHand,jdbcType=DECIMAL},
+      dNextDayForecast = #{record.dNextDayForecast,jdbcType=DECIMAL},
+      szItemName = #{record.szItemName,jdbcType=VARCHAR},
+      dItemMOQ = #{record.dItemMOQ,jdbcType=DECIMAL},
+      dItemLDU = #{record.dItemLDU,jdbcType=DECIMAL},
+      lChangedOperatorID = #{record.lChangedOperatorID,jdbcType=INTEGER},
+      lHostInterfaceID1 = #{record.lHostInterfaceID1,jdbcType=INTEGER},
+      lTechLayerAccessID = #{record.lTechLayerAccessID,jdbcType=INTEGER},
+      szLastUpdLocal = #{record.szLastUpdLocal,jdbcType=VARCHAR},
+      lSupplySource = #{record.lSupplySource,jdbcType=INTEGER},
+      bConsignment = #{record.bConsignment,jdbcType=INTEGER},
+      szArticleType = #{record.szArticleType,jdbcType=VARCHAR},
+      szRetailStoreExternalIDFrom = #{record.szRetailStoreExternalIDFrom,jdbcType=VARCHAR},
+      szPurchaseGroup = #{record.szPurchaseGroup,jdbcType=VARCHAR},
+      szUploadFTPStatus = #{record.szUploadFTPStatus,jdbcType=VARCHAR},
+      szSerialNmbr = #{record.szSerialNmbr,jdbcType=VARCHAR},
+      szABCIndicator = #{record.szABCIndicator,jdbcType=VARCHAR},
+      szABCIndicatorDesc = #{record.szABCIndicatorDesc,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.model.IMOrder" >
+    update IMOrder
+    <set >
+      <if test="szTime != null" >
+        szTime = #{szTime,jdbcType=VARCHAR},
+      </if>
+      <if test="szRetailStoreExternalID != null" >
+        szRetailStoreExternalID = #{szRetailStoreExternalID,jdbcType=VARCHAR},
+      </if>
+      <if test="lWorkstationNmbr != null" >
+        lWorkstationNmbr = #{lWorkstationNmbr,jdbcType=INTEGER},
+      </if>
+      <if test="lCreatedOperatorID != null" >
+        lCreatedOperatorID = #{lCreatedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="szStorageLocationID != null" >
+        szStorageLocationID = #{szStorageLocationID,jdbcType=VARCHAR},
+      </if>
+      <if test="szVendorID != null" >
+        szVendorID = #{szVendorID,jdbcType=VARCHAR},
+      </if>
+      <if test="szPriceUnitOfMeasureName != null" >
+        szPriceUnitOfMeasureName = #{szPriceUnitOfMeasureName,jdbcType=VARCHAR},
+      </if>
+      <if test="szItemClassification != null" >
+        szItemClassification = #{szItemClassification,jdbcType=VARCHAR},
+      </if>
+      <if test="dQty != null" >
+        dQty = #{dQty,jdbcType=DECIMAL},
+      </if>
+      <if test="dShift1Qty != null" >
+        dShift1Qty = #{dShift1Qty,jdbcType=DECIMAL},
+      </if>
+      <if test="dShift2Qty != null" >
+        dShift2Qty = #{dShift2Qty,jdbcType=DECIMAL},
+      </if>
+      <if test="dShift3Qty != null" >
+        dShift3Qty = #{dShift3Qty,jdbcType=DECIMAL},
+      </if>
+      <if test="szDeliveryDate != null" >
+        szDeliveryDate = #{szDeliveryDate,jdbcType=VARCHAR},
+      </if>
+      <if test="dOrderDayOnHand != null" >
+        dOrderDayOnHand = #{dOrderDayOnHand,jdbcType=DECIMAL},
+      </if>
+      <if test="dOrderDayForecast != null" >
+        dOrderDayForecast = #{dOrderDayForecast,jdbcType=DECIMAL},
+      </if>
+      <if test="dNextDayOnHand != null" >
+        dNextDayOnHand = #{dNextDayOnHand,jdbcType=DECIMAL},
+      </if>
+      <if test="dNextDayForecast != null" >
+        dNextDayForecast = #{dNextDayForecast,jdbcType=DECIMAL},
+      </if>
+      <if test="szItemName != null" >
+        szItemName = #{szItemName,jdbcType=VARCHAR},
+      </if>
+      <if test="dItemMOQ != null" >
+        dItemMOQ = #{dItemMOQ,jdbcType=DECIMAL},
+      </if>
+      <if test="dItemLDU != null" >
+        dItemLDU = #{dItemLDU,jdbcType=DECIMAL},
+      </if>
+      <if test="lChangedOperatorID != null" >
+        lChangedOperatorID = #{lChangedOperatorID,jdbcType=INTEGER},
+      </if>
+      <if test="lHostInterfaceID1 != null" >
+        lHostInterfaceID1 = #{lHostInterfaceID1,jdbcType=INTEGER},
+      </if>
+      <if test="lTechLayerAccessID != null" >
+        lTechLayerAccessID = #{lTechLayerAccessID,jdbcType=INTEGER},
+      </if>
+      <if test="szLastUpdLocal != null" >
+        szLastUpdLocal = #{szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="lSupplySource != null" >
+        lSupplySource = #{lSupplySource,jdbcType=INTEGER},
+      </if>
+      <if test="bConsignment != null" >
+        bConsignment = #{bConsignment,jdbcType=INTEGER},
+      </if>
+      <if test="szArticleType != null" >
+        szArticleType = #{szArticleType,jdbcType=VARCHAR},
+      </if>
+      <if test="szRetailStoreExternalIDFrom != null" >
+        szRetailStoreExternalIDFrom = #{szRetailStoreExternalIDFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="szPurchaseGroup != null" >
+        szPurchaseGroup = #{szPurchaseGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="szUploadFTPStatus != null" >
+        szUploadFTPStatus = #{szUploadFTPStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="szSerialNmbr != null" >
+        szSerialNmbr = #{szSerialNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="szABCIndicator != null" >
+        szABCIndicator = #{szABCIndicator,jdbcType=VARCHAR},
+      </if>
+      <if test="szABCIndicatorDesc != null" >
+        szABCIndicatorDesc = #{szABCIndicatorDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and szDocumentType = #{szDocumentType,jdbcType=VARCHAR}
+      and szDate = #{szDate,jdbcType=VARCHAR}
+      and szPOSItemID = #{szPOSItemID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.model.IMOrder" >
+    update IMOrder
+    set szTime = #{szTime,jdbcType=VARCHAR},
+      szRetailStoreExternalID = #{szRetailStoreExternalID,jdbcType=VARCHAR},
+      lWorkstationNmbr = #{lWorkstationNmbr,jdbcType=INTEGER},
+      lCreatedOperatorID = #{lCreatedOperatorID,jdbcType=INTEGER},
+      szStorageLocationID = #{szStorageLocationID,jdbcType=VARCHAR},
+      szVendorID = #{szVendorID,jdbcType=VARCHAR},
+      szPriceUnitOfMeasureName = #{szPriceUnitOfMeasureName,jdbcType=VARCHAR},
+      szItemClassification = #{szItemClassification,jdbcType=VARCHAR},
+      dQty = #{dQty,jdbcType=DECIMAL},
+      dShift1Qty = #{dShift1Qty,jdbcType=DECIMAL},
+      dShift2Qty = #{dShift2Qty,jdbcType=DECIMAL},
+      dShift3Qty = #{dShift3Qty,jdbcType=DECIMAL},
+      szDeliveryDate = #{szDeliveryDate,jdbcType=VARCHAR},
+      dOrderDayOnHand = #{dOrderDayOnHand,jdbcType=DECIMAL},
+      dOrderDayForecast = #{dOrderDayForecast,jdbcType=DECIMAL},
+      dNextDayOnHand = #{dNextDayOnHand,jdbcType=DECIMAL},
+      dNextDayForecast = #{dNextDayForecast,jdbcType=DECIMAL},
+      szItemName = #{szItemName,jdbcType=VARCHAR},
+      dItemMOQ = #{dItemMOQ,jdbcType=DECIMAL},
+      dItemLDU = #{dItemLDU,jdbcType=DECIMAL},
+      lChangedOperatorID = #{lChangedOperatorID,jdbcType=INTEGER},
+      lHostInterfaceID1 = #{lHostInterfaceID1,jdbcType=INTEGER},
+      lTechLayerAccessID = #{lTechLayerAccessID,jdbcType=INTEGER},
+      szLastUpdLocal = #{szLastUpdLocal,jdbcType=VARCHAR},
+      lSupplySource = #{lSupplySource,jdbcType=INTEGER},
+      bConsignment = #{bConsignment,jdbcType=INTEGER},
+      szArticleType = #{szArticleType,jdbcType=VARCHAR},
+      szRetailStoreExternalIDFrom = #{szRetailStoreExternalIDFrom,jdbcType=VARCHAR},
+      szPurchaseGroup = #{szPurchaseGroup,jdbcType=VARCHAR},
+      szUploadFTPStatus = #{szUploadFTPStatus,jdbcType=VARCHAR},
+      szSerialNmbr = #{szSerialNmbr,jdbcType=VARCHAR},
+      szABCIndicator = #{szABCIndicator,jdbcType=VARCHAR},
+      szABCIndicatorDesc = #{szABCIndicatorDesc,jdbcType=VARCHAR}
+    where lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER}
+      and szDocumentType = #{szDocumentType,jdbcType=VARCHAR}
+      and szDate = #{szDate,jdbcType=VARCHAR}
+      and szPOSItemID = #{szPOSItemID,jdbcType=VARCHAR}
+  </update>
+</mapper>

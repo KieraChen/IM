@@ -83,9 +83,49 @@
         <table tableName="t_saas_order_performance_proportion" domainObjectName="SaasOrderProportion"/>
         <table tableName="t_saas_order_finance_pay_receipt" domainObjectName="SaasOrderPayReceipt"/>-->
         <!--<table tableName="t_order_attachment" domainObjectName="SaasOrderAttachment"/>-->
-        <table tableName="Operator" domainObjectName="Operator">
+        <table tableName="DomainAreaSpecificLiterals" domainObjectName="ReasonCode">
           <property name="useActualColumnNames" value="true"/>
         </table>
+        <table tableName="IMMovement" domainObjectName="IMMovement">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="IMMovementDetail" domainObjectName="IMMovementDetail">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="IMOrder" domainObjectName="IMOrder">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="IMRetailStore" domainObjectName="IMRetailStore">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="IMReturn" domainObjectName="IMReturn">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="IMSOQ" domainObjectName="IMSOQ">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="IMStockTake" domainObjectName="IMStockTake">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="IMStockTakeDetail" domainObjectName="IMStockTakeDetail">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="IMStockTakeItem" domainObjectName="IMStockTakeItem">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="IMStorageLocation" domainObjectName="IMStorageLocation">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="ItemCategory" domainObjectName="ItemCategory">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="POSIdentity" domainObjectName="POSIdentity">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="RetailStore" domainObjectName="RetailStore">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+
         <!--<table tableName="t_saas_order_procedure_template" domainObjectName="SaasOrderStepTemplate"/>-->
         <!--<table tableName="t_saas_order_procedure_template" domainObjectName="SaasOrderStepTemplate"/>-->
         <!--<table tableName="t_saas_order_step_template" domainObjectName="SaasOrderStepTemplate2"/>-->

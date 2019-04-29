@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.IMReturnMapper" >
+  <resultMap id="BaseResultMap" type="com.model.IMReturn" >
+    <id column="lSequenceNumber" property="lSequenceNumber" jdbcType="BIGINT" />
+    <result column="lRetailStoreID" property="lRetailStoreID" jdbcType="INTEGER" />
+    <result column="lDocType" property="lDocType" jdbcType="INTEGER" />
+    <result column="szPOSItemID" property="szPOSItemID" jdbcType="VARCHAR" />
+    <result column="szItemLookupCode" property="szItemLookupCode" jdbcType="VARCHAR" />
+    <result column="szVendorID" property="szVendorID" jdbcType="VARCHAR" />
+    <result column="szVendorName" property="szVendorName" jdbcType="VARCHAR" />
+    <result column="dPackingUnitPriceAmount" property="dPackingUnitPriceAmount" jdbcType="DECIMAL" />
+    <result column="szDesc" property="szDesc" jdbcType="VARCHAR" />
+    <result column="dQty" property="dQty" jdbcType="DECIMAL" />
+    <result column="szReasonCode" property="szReasonCode" jdbcType="VARCHAR" />
+    <result column="szReasonName" property="szReasonName" jdbcType="VARCHAR" />
+    <result column="lStatus" property="lStatus" jdbcType="INTEGER" />
+    <result column="szLastUpdLocal" property="szLastUpdLocal" jdbcType="VARCHAR" />
+    <result column="szDocumentNmbr" property="szDocumentNmbr" jdbcType="VARCHAR" />
+    <result column="lHostInterfaceID1" property="lHostInterfaceID1" jdbcType="INTEGER" />
+    <result column="szSerialNmbr" property="szSerialNmbr" jdbcType="VARCHAR" />
+    <result column="bNoObject" property="bNoObject" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    lSequenceNumber, lRetailStoreID, lDocType, szPOSItemID, szItemLookupCode, szVendorID, 
+    szVendorName, dPackingUnitPriceAmount, szDesc, dQty, szReasonCode, szReasonName, 
+    lStatus, szLastUpdLocal, szDocumentNmbr, lHostInterfaceID1, szSerialNmbr, bNoObject
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.model.IMReturnExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from IMReturn
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from IMReturn
+    where lSequenceNumber = #{lSequenceNumber,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from IMReturn
+    where lSequenceNumber = #{lSequenceNumber,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.model.IMReturnExample" >
+    delete from IMReturn
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.model.IMReturn" >
+    insert into IMReturn (lSequenceNumber, lRetailStoreID, lDocType, 
+      szPOSItemID, szItemLookupCode, szVendorID, 
+      szVendorName, dPackingUnitPriceAmount, 
+      szDesc, dQty, szReasonCode, 
+      szReasonName, lStatus, szLastUpdLocal, 
+      szDocumentNmbr, lHostInterfaceID1, szSerialNmbr, 
+      bNoObject)
+    values (#{lSequenceNumber,jdbcType=BIGINT}, #{lRetailStoreID,jdbcType=INTEGER}, #{lDocType,jdbcType=INTEGER}, 
+      #{szPOSItemID,jdbcType=VARCHAR}, #{szItemLookupCode,jdbcType=VARCHAR}, #{szVendorID,jdbcType=VARCHAR}, 
+      #{szVendorName,jdbcType=VARCHAR}, #{dPackingUnitPriceAmount,jdbcType=DECIMAL}, 
+      #{szDesc,jdbcType=VARCHAR}, #{dQty,jdbcType=DECIMAL}, #{szReasonCode,jdbcType=VARCHAR}, 
+      #{szReasonName,jdbcType=VARCHAR}, #{lStatus,jdbcType=INTEGER}, #{szLastUpdLocal,jdbcType=VARCHAR}, 
+      #{szDocumentNmbr,jdbcType=VARCHAR}, #{lHostInterfaceID1,jdbcType=INTEGER}, #{szSerialNmbr,jdbcType=VARCHAR}, 
+      #{bNoObject,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.model.IMReturn" >
+    insert into IMReturn
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lSequenceNumber != null" >
+        lSequenceNumber,
+      </if>
+      <if test="lRetailStoreID != null" >
+        lRetailStoreID,
+      </if>
+      <if test="lDocType != null" >
+        lDocType,
+      </if>
+      <if test="szPOSItemID != null" >
+        szPOSItemID,
+      </if>
+      <if test="szItemLookupCode != null" >
+        szItemLookupCode,
+      </if>
+      <if test="szVendorID != null" >
+        szVendorID,
+      </if>
+      <if test="szVendorName != null" >
+        szVendorName,
+      </if>
+      <if test="dPackingUnitPriceAmount != null" >
+        dPackingUnitPriceAmount,
+      </if>
+      <if test="szDesc != null" >
+        szDesc,
+      </if>
+      <if test="dQty != null" >
+        dQty,
+      </if>
+      <if test="szReasonCode != null" >
+        szReasonCode,
+      </if>
+      <if test="szReasonName != null" >
+        szReasonName,
+      </if>
+      <if test="lStatus != null" >
+        lStatus,
+      </if>
+      <if test="szLastUpdLocal != null" >
+        szLastUpdLocal,
+      </if>
+      <if test="szDocumentNmbr != null" >
+        szDocumentNmbr,
+      </if>
+      <if test="lHostInterfaceID1 != null" >
+        lHostInterfaceID1,
+      </if>
+      <if test="szSerialNmbr != null" >
+        szSerialNmbr,
+      </if>
+      <if test="bNoObject != null" >
+        bNoObject,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lSequenceNumber != null" >
+        #{lSequenceNumber,jdbcType=BIGINT},
+      </if>
+      <if test="lRetailStoreID != null" >
+        #{lRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="lDocType != null" >
+        #{lDocType,jdbcType=INTEGER},
+      </if>
+      <if test="szPOSItemID != null" >
+        #{szPOSItemID,jdbcType=VARCHAR},
+      </if>
+      <if test="szItemLookupCode != null" >
+        #{szItemLookupCode,jdbcType=VARCHAR},
+      </if>
+      <if test="szVendorID != null" >
+        #{szVendorID,jdbcType=VARCHAR},
+      </if>
+      <if test="szVendorName != null" >
+        #{szVendorName,jdbcType=VARCHAR},
+      </if>
+      <if test="dPackingUnitPriceAmount != null" >
+        #{dPackingUnitPriceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="szDesc != null" >
+        #{szDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="dQty != null" >
+        #{dQty,jdbcType=DECIMAL},
+      </if>
+      <if test="szReasonCode != null" >
+        #{szReasonCode,jdbcType=VARCHAR},
+      </if>
+      <if test="szReasonName != null" >
+        #{szReasonName,jdbcType=VARCHAR},
+      </if>
+      <if test="lStatus != null" >
+        #{lStatus,jdbcType=INTEGER},
+      </if>
+      <if test="szLastUpdLocal != null" >
+        #{szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="szDocumentNmbr != null" >
+        #{szDocumentNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="lHostInterfaceID1 != null" >
+        #{lHostInterfaceID1,jdbcType=INTEGER},
+      </if>
+      <if test="szSerialNmbr != null" >
+        #{szSerialNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="bNoObject != null" >
+        #{bNoObject,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.model.IMReturnExample" resultType="java.lang.Integer" >
+    select count(*) from IMReturn
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update IMReturn
+    <set >
+      <if test="record.lSequenceNumber != null" >
+        lSequenceNumber = #{record.lSequenceNumber,jdbcType=BIGINT},
+      </if>
+      <if test="record.lRetailStoreID != null" >
+        lRetailStoreID = #{record.lRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="record.lDocType != null" >
+        lDocType = #{record.lDocType,jdbcType=INTEGER},
+      </if>
+      <if test="record.szPOSItemID != null" >
+        szPOSItemID = #{record.szPOSItemID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szItemLookupCode != null" >
+        szItemLookupCode = #{record.szItemLookupCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szVendorID != null" >
+        szVendorID = #{record.szVendorID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szVendorName != null" >
+        szVendorName = #{record.szVendorName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dPackingUnitPriceAmount != null" >
+        dPackingUnitPriceAmount = #{record.dPackingUnitPriceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.szDesc != null" >
+        szDesc = #{record.szDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dQty != null" >
+        dQty = #{record.dQty,jdbcType=DECIMAL},
+      </if>
+      <if test="record.szReasonCode != null" >
+        szReasonCode = #{record.szReasonCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szReasonName != null" >
+        szReasonName = #{record.szReasonName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lStatus != null" >
+        lStatus = #{record.lStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.szLastUpdLocal != null" >
+        szLastUpdLocal = #{record.szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.szDocumentNmbr != null" >
+        szDocumentNmbr = #{record.szDocumentNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lHostInterfaceID1 != null" >
+        lHostInterfaceID1 = #{record.lHostInterfaceID1,jdbcType=INTEGER},
+      </if>
+      <if test="record.szSerialNmbr != null" >
+        szSerialNmbr = #{record.szSerialNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bNoObject != null" >
+        bNoObject = #{record.bNoObject,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update IMReturn
+    set lSequenceNumber = #{record.lSequenceNumber,jdbcType=BIGINT},
+      lRetailStoreID = #{record.lRetailStoreID,jdbcType=INTEGER},
+      lDocType = #{record.lDocType,jdbcType=INTEGER},
+      szPOSItemID = #{record.szPOSItemID,jdbcType=VARCHAR},
+      szItemLookupCode = #{record.szItemLookupCode,jdbcType=VARCHAR},
+      szVendorID = #{record.szVendorID,jdbcType=VARCHAR},
+      szVendorName = #{record.szVendorName,jdbcType=VARCHAR},
+      dPackingUnitPriceAmount = #{record.dPackingUnitPriceAmount,jdbcType=DECIMAL},
+      szDesc = #{record.szDesc,jdbcType=VARCHAR},
+      dQty = #{record.dQty,jdbcType=DECIMAL},
+      szReasonCode = #{record.szReasonCode,jdbcType=VARCHAR},
+      szReasonName = #{record.szReasonName,jdbcType=VARCHAR},
+      lStatus = #{record.lStatus,jdbcType=INTEGER},
+      szLastUpdLocal = #{record.szLastUpdLocal,jdbcType=VARCHAR},
+      szDocumentNmbr = #{record.szDocumentNmbr,jdbcType=VARCHAR},
+      lHostInterfaceID1 = #{record.lHostInterfaceID1,jdbcType=INTEGER},
+      szSerialNmbr = #{record.szSerialNmbr,jdbcType=VARCHAR},
+      bNoObject = #{record.bNoObject,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.model.IMReturn" >
+    update IMReturn
+    <set >
+      <if test="lRetailStoreID != null" >
+        lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER},
+      </if>
+      <if test="lDocType != null" >
+        lDocType = #{lDocType,jdbcType=INTEGER},
+      </if>
+      <if test="szPOSItemID != null" >
+        szPOSItemID = #{szPOSItemID,jdbcType=VARCHAR},
+      </if>
+      <if test="szItemLookupCode != null" >
+        szItemLookupCode = #{szItemLookupCode,jdbcType=VARCHAR},
+      </if>
+      <if test="szVendorID != null" >
+        szVendorID = #{szVendorID,jdbcType=VARCHAR},
+      </if>
+      <if test="szVendorName != null" >
+        szVendorName = #{szVendorName,jdbcType=VARCHAR},
+      </if>
+      <if test="dPackingUnitPriceAmount != null" >
+        dPackingUnitPriceAmount = #{dPackingUnitPriceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="szDesc != null" >
+        szDesc = #{szDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="dQty != null" >
+        dQty = #{dQty,jdbcType=DECIMAL},
+      </if>
+      <if test="szReasonCode != null" >
+        szReasonCode = #{szReasonCode,jdbcType=VARCHAR},
+      </if>
+      <if test="szReasonName != null" >
+        szReasonName = #{szReasonName,jdbcType=VARCHAR},
+      </if>
+      <if test="lStatus != null" >
+        lStatus = #{lStatus,jdbcType=INTEGER},
+      </if>
+      <if test="szLastUpdLocal != null" >
+        szLastUpdLocal = #{szLastUpdLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="szDocumentNmbr != null" >
+        szDocumentNmbr = #{szDocumentNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="lHostInterfaceID1 != null" >
+        lHostInterfaceID1 = #{lHostInterfaceID1,jdbcType=INTEGER},
+      </if>
+      <if test="szSerialNmbr != null" >
+        szSerialNmbr = #{szSerialNmbr,jdbcType=VARCHAR},
+      </if>
+      <if test="bNoObject != null" >
+        bNoObject = #{bNoObject,jdbcType=INTEGER},
+      </if>
+    </set>
+    where lSequenceNumber = #{lSequenceNumber,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.model.IMReturn" >
+    update IMReturn
+    set lRetailStoreID = #{lRetailStoreID,jdbcType=INTEGER},
+      lDocType = #{lDocType,jdbcType=INTEGER},
+      szPOSItemID = #{szPOSItemID,jdbcType=VARCHAR},
+      szItemLookupCode = #{szItemLookupCode,jdbcType=VARCHAR},
+      szVendorID = #{szVendorID,jdbcType=VARCHAR},
+      szVendorName = #{szVendorName,jdbcType=VARCHAR},
+      dPackingUnitPriceAmount = #{dPackingUnitPriceAmount,jdbcType=DECIMAL},
+      szDesc = #{szDesc,jdbcType=VARCHAR},
+      dQty = #{dQty,jdbcType=DECIMAL},
+      szReasonCode = #{szReasonCode,jdbcType=VARCHAR},
+      szReasonName = #{szReasonName,jdbcType=VARCHAR},
+      lStatus = #{lStatus,jdbcType=INTEGER},
+      szLastUpdLocal = #{szLastUpdLocal,jdbcType=VARCHAR},
+      szDocumentNmbr = #{szDocumentNmbr,jdbcType=VARCHAR},
+      lHostInterfaceID1 = #{lHostInterfaceID1,jdbcType=INTEGER},
+      szSerialNmbr = #{szSerialNmbr,jdbcType=VARCHAR},
+      bNoObject = #{bNoObject,jdbcType=INTEGER}
+    where lSequenceNumber = #{lSequenceNumber,jdbcType=BIGINT}
+  </update>
+</mapper>

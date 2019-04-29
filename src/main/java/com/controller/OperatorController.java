@@ -1,6 +1,5 @@
 package com.controller;
 
-import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.model.Operator;
 import com.service.IOperatorService;
@@ -108,7 +107,7 @@ public class OperatorController {
 
     }
 
-    //验证登录
+    //用户管理
     @RequestMapping("selectOperator")
     public String selectOperator(Model model, Operator operator, @RequestParam(value="pn",defaultValue="1")Integer pn){
 
@@ -135,6 +134,18 @@ public class OperatorController {
 
         operatorService.deleteOperator(ids);
         selectOperator(model,operator,pn);
+    }
+
+    //添加用户
+    @RequestMapping("addOperator")
+    public String addOperator(){
+        return "AddOperator";
+    }
+
+    //编辑用户
+    @RequestMapping("editOperator")
+    public String editOperator(){
+        return "EditOperator";
     }
 
 
